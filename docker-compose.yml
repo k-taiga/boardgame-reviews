@@ -9,7 +9,6 @@ services:
     volumes:
       - ./docker/web/default.conf:/etc/nginx/conf.d/default.conf
       - .:/var/www/html
-
   app:
     build: ./docker/php
     volumes:
@@ -27,5 +26,13 @@ services:
       - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    links:
+      - mysql:db
+    ports:
+      - 80:80
+    restart: always
 volumes:
   mysql-data:
