@@ -9,8 +9,13 @@ zip \
 unzip \
 vim
 
+# install nodejs
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN apt-get install -y nodejs
+
 RUN apt-get update \
     && apt-get install -y libpq-dev \
     && docker-php-ext-install pdo_mysql pdo_pgsql
+
 
 WORKDIR /var/www/html
