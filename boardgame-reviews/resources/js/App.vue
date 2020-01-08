@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <bd-nav-bar :user="user"></bd-nav-bar>
+    <bdNavbar :user="user"></bdNavbar>
     <main>
       <router-view />
     </main>
