@@ -19,7 +19,7 @@
 * 3306→MySql
 
 
-### laravel
+### laravelプロジェクト作成後の手順
 
 * docker-compose exec app bashで入ってcomposerを使って
 　<br>```composer create-project --prefer-dist laravel/laravel my-laravel-app```
