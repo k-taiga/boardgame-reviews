@@ -218,13 +218,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "bd-nav-bar",
+  name: "Navbar",
   components: {
     bdIcon: _Icon_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
     user: Object
-  } //   methods: {
+  } //   },
+  //   methods: {
   //     signOut() {
   //       this.$emit("sign-out-clicked");
   //     }
@@ -721,7 +722,7 @@ var render = function() {
     "div",
     { attrs: { id: "app" } },
     [
-      _c("bd-nav-bar", { attrs: { user: _vm.user } }),
+      _c("bdNavbar", { attrs: { user: _vm.user } }),
       _vm._v(" "),
       _c("main", [_c("router-view")], 1)
     ],

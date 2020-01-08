@@ -57,12 +57,12 @@
 import bdIcon from "./Icon.vue";
 
 export default {
-  name: "bd-nav-bar",
+  name: "Navbar",
   components: { bdIcon },
   props: {
     user: Object
   }
-
+  //   },
   //   methods: {
   //     signOut() {
   //       this.$emit("sign-out-clicked");
