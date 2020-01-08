@@ -589,7 +589,10 @@ var render = function() {
               _c(
                 "router-link",
                 { staticClass: "navbar-item", attrs: { to: "/" } },
-                [_vm._v("BoardGameReviews")]
+                [
+                  _c("i", { staticClass: "fas fa-chess-knight" }),
+                  _vm._v("BoardGameReviews\n        ")
+                ]
               ),
               _vm._v(" "),
               _vm._m(0)

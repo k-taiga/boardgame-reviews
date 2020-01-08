@@ -25,4 +25,7 @@
     <div id="app"></div>
 </body>
 
+<!-- font awesome -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/js/all.js"></script>
+
 </html>
