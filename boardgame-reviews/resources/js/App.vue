@@ -1,31 +1,23 @@
 <template>
   <div id="app">
-    <nav id="nav" class="navbar has-shadow" role="navigation" aria-label="main navigation">
-      <div class="container">
-        <div class="navbar-brand">
-          <router-link to="/" class="navbar-item">
-            <i class="fas fa-chess-knight"></i>BoardGameReviews
-          </router-link>
-          <a
-            role="button"
-            id="navbar-burger"
-            class="navbar-burger burger"
-            aria-label="menu"
-            aria-expanded="false"
-            data-target="navbar-links"
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-        <div id="navbar-links" class="navbar-menu">
-          <div class="navbar-end"></div>
-        </div>
-      </div>
-    </nav>
+    <bd-nav-bar :user="user"></bd-nav-bar>
     <main>
       <router-view />
     </main>
   </div>
 </template>
+
+<script>
+// ここではパスカルケースだけどtemplate内はケバブケース
+import bdNavbar from "./components/Navbar.vue";
+
+export default {
+  name: "app",
+  components: { bdNavbar },
+  data() {
+    return {
+      user: null
+    };
+  }
+};
+</script>
