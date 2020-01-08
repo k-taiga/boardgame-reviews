@@ -3,7 +3,9 @@
     <nav id="nav" class="navbar has-shadow" role="navigation" aria-label="main navigation">
       <div class="container">
         <div class="navbar-brand">
-          <router-link to="/" class="navbar-item">BoardGameReviews</router-link>
+          <router-link to="/" class="navbar-item">
+            <i class="fas fa-chess-knight"></i>BoardGameReviews
+          </router-link>
           <a
             role="button"
             id="navbar-burger"
