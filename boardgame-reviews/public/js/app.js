@@ -15732,21 +15732,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router */ "./resources/js/router.js");
 /* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
- // ルーティングの定義をインポートする
 
- // ルートコンポーネントをインポートする
+ // ルートコンポーネント
 
 
 new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   router: _router__WEBPACK_IMPORTED_MODULE_1__["default"],
-  // ルーティングの定義を読み込む
   components: {
     App: _App_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
-  // ルートコンポーネントの使用を宣言する
-  template: '<App />' // ルートコンポーネントを描画する
-
+  template: '<App />'
 });
 
 /***/ }),
