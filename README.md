@@ -34,3 +34,10 @@
 
 同じくpullした場合はnode_modulesもローカルでインストールする必要がある
 ```npm run install```
+
+### ホットリロード
+Dockerなのでホットリロードを開発環境で使う場合は
+
+npm run watch-poll
+
+を利用する
