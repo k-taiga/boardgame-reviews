@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Home from "./views/Home.vue";
 
 
 // VueRouterプラグインを使用する
@@ -8,6 +9,11 @@ Vue.use(VueRouter)
 
 // パスとコンポーネントのマッピング
 const routes = [
+    {
+        path: "/",
+        name: "home",
+        component: Home
+    }
 ]
 
 // VueRouterインスタンスをエクスポートする
