@@ -4,16 +4,17 @@
     <main>
       <router-view />
     </main>
+    <bdFooter></bdFooter>
   </div>
 </template>
 
 <script>
-// ここではパスカルケースだけどtemplate内はケバブケース
 import bdNavbar from "./components/Navbar.vue";
+import bdFooter from "./components/Footer.vue";
 
 export default {
   name: "app",
-  components: { bdNavbar },
+  components: { bdNavbar, bdFooter },
   data() {
     return {
       user: null

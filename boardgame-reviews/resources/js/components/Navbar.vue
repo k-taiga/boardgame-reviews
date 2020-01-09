@@ -1,9 +1,9 @@
 <template>
-  <nav id="nav" class="navbar has-shadow" role="navigation" aria-label="main navigation">
+  <nav id="nav" class="navbar has-shadow is-dark" role="navigation" aria-label="main navigation">
     <div class="container">
       <div class="navbar-brand">
         <router-link to="/" class="navbar-item">
-          <bd-icon name="chess-knight"></bd-icon>BoardGameReviews
+          <bdIcon name="chess-knight"></bdIcon>BoardGameReviews
         </router-link>
         <a
           role="button"
@@ -22,12 +22,12 @@
         <div class="navbar-end" v-if="user">
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
-              <bd-icon name="user"></bd-icon>
+              <bdIcon name="user"></bdIcon>
             </a>
             <div class="navbar-dropdown is-right">
               <a class="navbar-item" @click="signOut">
-                <bd-icon name="sign-out-alt"></bd-icon>
-                <span>サインアウト</span>
+                <bdIcon name="sign-out-alt has-text-white"></bdIcon>
+                <span class="has-text-white">サインアウト</span>
               </a>
             </div>
           </div>
@@ -35,16 +35,16 @@
         <div class="navbar-end" v-else>
           <div class="navbar-item">
             <router-link :to="{ name: 'sign_in' }" class="button is-text">
-              <bd-icon name="sign-in-alt"></bd-icon>
-              <span>サインイン</span>
+              <bdIcon name="sign-in-alt has-text-white"></bdIcon>
+              <span class="has-text-white">サインイン</span>
             </router-link>
           </div>
           <div class="navbar-item">
             <router-link :to="{ name: 'sign_up' }" class="button is-text">
-              <span class="bd-icon">
-                <bd-icon name="user-plus"></bd-icon>
+              <span class="bdIcon has-text-white">
+                <bdIcon name="user-plus"></bdIcon>
               </span>
-              <span>サインアップ</span>
+              <span class="has-text-white">サインアップ</span>
             </router-link>
           </div>
         </div>
@@ -70,3 +70,5 @@ export default {
   //   }
 };
 </script>
+
+
