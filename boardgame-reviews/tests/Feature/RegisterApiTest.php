@@ -14,7 +14,7 @@ class RegisterApiTest extends TestCase
     /**
      * @test
      */
-    public function test_regist_user()
+    public function testRegistUser()
     {
         $data = [
             'name' => 'boardgameReviews user',
