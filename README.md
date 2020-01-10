@@ -32,6 +32,8 @@
 ```php artisan key:generate```
 を実行する
 
+* テスト用のDBを使う場合は.envとは別途、.env.testingを用意しphpunit.xmlにその環境を用いることを記述する
+
 同じくpullした場合はnode_modulesもローカルでインストールする必要がある
 ```npm run install```
 
