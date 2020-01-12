@@ -1,11 +1,14 @@
-import Vue from 'vue'
-import router from './router'
+import Vue from "vue";
+import router from "./router";
 // ルートコンポーネント
-import App from './App.vue'
+import App from "./App.vue";
+// vuexのstore
+import store from "./store";
 
 new Vue({
-    el: '#app',
+    el: "#app",
     router,
+    store,
     components: { App },
-    template: '<App />'
-})
+    template: "<App />"
+});
