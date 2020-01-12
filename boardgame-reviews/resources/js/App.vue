@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <bdNavbar :user="user"></bdNavbar>
-    <main>
-      <router-view />
-    </main>
+    <router-view />
     <bdFooter></bdFooter>
   </div>
 </template>
@@ -22,3 +20,4 @@ export default {
   }
 };
 </script>
+
