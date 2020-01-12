@@ -27,7 +27,7 @@
             <div class="navbar-dropdown is-right">
               <a class="navbar-item" @click="signOut">
                 <bdIcon name="sign-out-alt has-text-white"></bdIcon>
-                <span class="has-text-white">サインアウト</span>
+                <span class="has-text-white">ログアウト</span>
               </a>
             </div>
           </div>
@@ -36,7 +36,7 @@
           <div class="navbar-item">
             <router-link :to="{ name: 'sign_in' }" class="button is-text">
               <bdIcon name="sign-in-alt has-text-white"></bdIcon>
-              <span class="has-text-white">サインイン</span>
+              <span class="has-text-white">ログイン</span>
             </router-link>
           </div>
           <div class="navbar-item">
@@ -44,7 +44,7 @@
               <span class="bdIcon has-text-white">
                 <bdIcon name="user-plus"></bdIcon>
               </span>
-              <span class="has-text-white">サインアップ</span>
+              <span class="has-text-white">ユーザー登録</span>
             </router-link>
           </div>
         </div>

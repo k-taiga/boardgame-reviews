@@ -19,7 +19,7 @@
             <button
               class="button is-block is-info is-large is-fullwidth"
               @click.prevent="signIn"
-            >登録する</button>
+            >ログインする</button>
           </div>
         </div>
         <p class="has-text-grey">
@@ -31,10 +31,10 @@
 </template>
 
 <script>
-import bdTextField from "../components/TextField.vue";
+import bdTextField from "../components/TextField";
 
 export default {
-  name: "sign_up",
+  name: "sign_in",
   components: { bdTextField },
   data() {
     return {
@@ -52,7 +52,7 @@ export default {
         }
       });
     },
-    signUp(e) {
+    signIn(e) {
       alert(`Email: ${this.email}, Password: ${this.password}`);
       this.email = null;
       this.password = null;
