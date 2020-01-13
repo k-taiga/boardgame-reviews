@@ -82,12 +82,6 @@ export default {
             // トップページに移動する
             this.$router.push("/");
         }
-
-        // signUp() {
-        //     alert(
-        //         `Email: ${this.email}, Password: ${this.password},Password_confirm:${this.password_confirmation},Username:${this.username}`
-        //     );
-        // }
     }
 };
 </script>
