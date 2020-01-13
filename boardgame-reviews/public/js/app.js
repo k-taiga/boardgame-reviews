@@ -1881,12 +1881,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       user: null
     };
   },
-  created: function created() {
-    this.user = this.$store.getters["auth/check"];
-    console.log(this.user);
-  },
+  // created() {
+  //     this.user = this.$store.dispatch("auth/currentUser");
+  //     console.log(this.user);
+  // },
   updated: function updated() {
-    this.user = this.$store.getters["auth/check"];
+    // this.user = this.$store.dispatch("auth/currentUser");
     console.log(this.user);
   },
   methods: {
@@ -20412,6 +20412,8 @@ __webpack_require__.r(__webpack_exports__);
 
  // vuexのstore
 
+ // const createApp = async () => {
+//     await store.dispatch("auth/currentUser");
 
 new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
   el: "#app",
@@ -20421,7 +20423,8 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
     App: _App_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   template: "<App />"
-});
+}); // };
+// createApp();
 
 /***/ }),
 
@@ -20880,6 +20883,38 @@ var actions = {
     }
 
     return logout;
+  }(),
+  currentUser: function () {
+    var _currentUser = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(context) {
+      var response, user;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return axios.get("/api/user");
+
+            case 2:
+              response = _context4.sent;
+              // ログインしていなければnull
+              user = response.data || null;
+              context.commit("setUser", user);
+
+            case 5:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }));
+
+    function currentUser(_x7) {
+      return _currentUser.apply(this, arguments);
+    }
+
+    return currentUser;
   }()
 };
 /* harmony default export */ __webpack_exports__["default"] = ({

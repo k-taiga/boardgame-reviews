@@ -18,12 +18,12 @@ export default {
             user: null
         };
     },
-    created() {
-        this.user = this.$store.getters["auth/check"];
-        console.log(this.user);
-    },
+    // created() {
+    //     this.user = this.$store.dispatch("auth/currentUser");
+    //     console.log(this.user);
+    // },
     updated() {
-        this.user = this.$store.getters["auth/check"];
+        // this.user = this.$store.dispatch("auth/currentUser");
         console.log(this.user);
     },
     methods: {
