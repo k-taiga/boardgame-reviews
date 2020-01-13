@@ -1881,24 +1881,50 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       user: null
     };
   },
-  // created() {
-  //     this.user = this.$store.dispatch("auth/currentUser");
-  //     console.log(this.user);
-  // },
+  created: function () {
+    var _created = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return this.$store.dispatch("auth/currentUser");
+
+            case 2:
+              this.user = _context.sent;
+              console.log(this.user);
+
+            case 4:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this);
+    }));
+
+    function created() {
+      return _created.apply(this, arguments);
+    }
+
+    return created;
+  }(),
   updated: function updated() {
-    // this.user = this.$store.dispatch("auth/currentUser");
+    this.user = this.$store.getters["auth/check"]; // this.user = this.$store.dispatch("auth/currentUser");
+
     console.log(this.user);
   },
   methods: {
     signOut: function () {
       var _signOut = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
-            switch (_context.prev = _context.next) {
+            switch (_context2.prev = _context2.next) {
               case 0:
-                _context.next = 2;
+                _context2.next = 2;
                 return this.$store.dispatch("auth/logout");
 
               case 2:
@@ -1906,10 +1932,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
               case "end":
-                return _context.stop();
+                return _context2.stop();
             }
           }
-        }, _callee, this);
+        }, _callee2, this);
       }));
 
       function signOut() {
