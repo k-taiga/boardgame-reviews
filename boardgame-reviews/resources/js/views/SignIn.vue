@@ -5,21 +5,21 @@
                 <article v-show="errorMessage" class="message is-warning">
                     <div class="message-body">{{ error_message }}</div>
                 </article>
-                <form class="form" @submit.prevent="signUp">
+                <form class="form" @submit.prevent="login">
                     <div class="column is-4 is-offset-4">
                         <div class="box">
                             <bdTextField
                                 type="email"
                                 placeholder="メールアドレス"
                                 icon="envelope"
-                                v-model="email"
+                                v-model="loginForm.email"
                             ></bdTextField>
                             <!-- パスワードの入力欄としてテキストフィールドコンポーネントを使用 -->
                             <bdTextField
                                 type="password"
                                 placeholder="パスワード"
                                 icon="lock"
-                                v-model="password"
+                                v-model="loginForm.password"
                             ></bdTextField>
                             <div class="field">
                                 <label class="checkbox">
@@ -29,7 +29,6 @@
                             </div>
                             <button
                                 class="button is-block is-info is-large is-fullwidth"
-                                @click.prevent="signIn"
                             >
                                 ログインする
                             </button>
@@ -52,24 +51,16 @@ export default {
     components: { bdTextField },
     data() {
         return {
-            email: "",
-            password: "",
-            error_message: null
+            loginForm: {
+                email: "",
+                password: ""
+            }
         };
     },
     methods: {
-        login() {
-            this.$store.dispatch("auth/create", {
-                user: {
-                    email: this.email,
-                    password: this.password
-                }
-            });
-        },
-        signIn(e) {
-            alert(`Email: ${this.email}, Password: ${this.password}`);
-            this.email = null;
-            this.password = null;
+        async login() {
+            await this.$store.dispatch("auth/login", this.loginForm);
+            this.$router.push("/");
         }
     }
 };
