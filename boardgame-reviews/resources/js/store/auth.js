@@ -27,6 +27,12 @@ const actions = {
     async logout(context, data) {
         const response = await axios.post("/api/logout");
         context.commit("setUser", null);
+    },
+    async currentUser(context) {
+        const response = await axios.get("/api/user");
+        // ログインしていなければnull
+        const user = response.data || null;
+        context.commit("setUser", user);
     }
 };
 

@@ -7,6 +7,9 @@ import App from "./App.vue";
 // vuexのstore
 import store from "./store";
 
+// const createApp = async () => {
+//     await store.dispatch("auth/currentUser");
+
 new Vue({
     el: "#app",
     router,
@@ -14,3 +17,6 @@ new Vue({
     components: { App },
     template: "<App />"
 });
+// };
+
+// createApp();
