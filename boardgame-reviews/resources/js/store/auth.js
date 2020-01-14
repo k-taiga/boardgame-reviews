@@ -1,9 +1,10 @@
 import Axios from "axios";
-import { OK } from "../util";
+import { OK, UNPROCESSABLE_ENTITY } from "../util";
 
 const state = {
     user: null,
-    apiStatus: null
+    apiStatus: null,
+    loginErrorMessages: null
 };
 
 const getters = {
@@ -18,6 +19,9 @@ const mutations = {
     },
     setApiStatus(state, status) {
         state.apiStatus = status;
+    },
+    setLoginErrorMessages(state, msg) {
+        state.loginErrorMessages = msg;
     }
 };
 
@@ -40,8 +44,12 @@ const actions = {
         }
 
         context.commit("setApiStatus", false);
-        // 別のモジュールのミューテーションを commit する場合は第三引数に { root: true } を追加
-        context.commit("error/setCode", response.status, { root: true });
+        if (response.status === UNPROCESSABLE_ENTITY) {
+            context.commit("setLoginErrorMessages", response.data.errors);
+        } else {
+            // 別のモジュールのミューテーションを commit する場合は第三引数に { root: true } を追加
+            context.commit("error/setCode", response.status, { root: true });
+        }
     },
     async logout(context, data) {
         const response = await axios.post("/api/logout");

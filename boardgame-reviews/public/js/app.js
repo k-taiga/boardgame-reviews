@@ -1854,6 +1854,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Navbar_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Navbar.vue */ "./resources/js/components/Navbar.vue");
 /* harmony import */ var _components_Footer_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Footer.vue */ "./resources/js/components/Footer.vue");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util */ "./resources/js/util.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -1870,6 +1871,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "app",
   components: {
@@ -1880,6 +1882,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       user: null
     };
+  },
+  // storeのステートを算出プロパティで参照しwatchで監視する
+  computed: {
+    errorCode: function errorCode() {
+      return this.$store.state.error.code;
+    }
+  },
+  watch: {
+    errorCode: {
+      handler: function handler(val) {
+        if (val === _util__WEBPACK_IMPORTED_MODULE_3__["INTERNAL_SERVER_ERROR"]) {
+          this.$router.push("/500");
+        }
+      },
+      immediate: true
+    },
+    $route: function $route() {
+      this.$store.commit("error/setCode", null);
+    }
   },
   created: function () {
     var _created = _asyncToGenerator(
@@ -2144,6 +2165,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_TextField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/TextField */ "./resources/js/components/TextField.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2195,6 +2217,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "sign_in",
@@ -2209,6 +2236,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     };
   },
+  computed: {
+    apiStatus: function apiStatus() {
+      return this.$store.state.auth.apiStatus;
+    },
+    loginErrors: function loginErrors() {
+      return this.$store.state.auth.loginErrorMessages;
+    }
+  },
   methods: {
     login: function () {
       var _login = _asyncToGenerator(
@@ -2222,7 +2257,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return this.$store.dispatch("auth/login", this.loginForm);
 
               case 2:
-                this.$router.push("/");
+                if (this.apiStatus) {
+                  this.$router.push("/");
+                }
 
               case 3:
               case "end":
@@ -2237,7 +2274,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return login;
-    }()
+    }(),
+    clearError: function clearError() {
+      this.$store.commit("auth/setLoginErrorMessages", null);
+    }
+  },
+  created: function created() {
+    this.clearError;
   }
 });
 
@@ -3997,6 +4040,34 @@ var render = function() {
                 "div",
                 { staticClass: "box" },
                 [
+                  _vm.loginErrors
+                    ? _c("div", { staticClass: "errors" }, [
+                        _vm.loginErrors.email
+                          ? _c(
+                              "ul",
+                              _vm._l(_vm.loginErrors.email, function(msg) {
+                                return _c("li", { key: msg }, [
+                                  _vm._v(_vm._s(msg))
+                                ])
+                              }),
+                              0
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.loginErrors.password
+                          ? _c(
+                              "ul",
+                              _vm._l(_vm.loginErrors.password, function(msg) {
+                                return _c("li", { key: msg }, [
+                                  _vm._v(_vm._s(msg))
+                                ])
+                              }),
+                              0
+                            )
+                          : _vm._e()
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
                   _c("bdTextField", {
                     attrs: {
                       type: "email",
@@ -4035,11 +4106,7 @@ var render = function() {
                       staticClass:
                         "button is-block is-info is-large is-fullwidth"
                     },
-                    [
-                      _vm._v(
-                        "\n                            ログインする\n                        "
-                      )
-                    ]
+                    [_vm._v("ログインする")]
                   )
                 ],
                 1
@@ -4061,9 +4128,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "field" }, [
       _c("label", { staticClass: "checkbox" }, [
         _c("input", { attrs: { type: "checkbox" } }),
-        _vm._v(
-          "\n                                ログインしたままにする\n                            "
-        )
+        _vm._v("\n                ログインしたままにする\n              ")
       ])
     ])
   },
@@ -4251,6 +4316,30 @@ var staticRenderFns = [
     ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/errors/System.vue?vue&type=template&id=51a9bd84&":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/errors/System.vue?vue&type=template&id=51a9bd84& ***!
+  \***********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("p", [_vm._v("システムエラーが発生しました。")])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -20749,7 +20838,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_Home_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/Home.vue */ "./resources/js/views/Home.vue");
 /* harmony import */ var _views_SignUp_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/SignUp.vue */ "./resources/js/views/SignUp.vue");
 /* harmony import */ var _views_SignIn_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/SignIn.vue */ "./resources/js/views/SignIn.vue");
-!(function webpackMissingModule() { var e = new Error("Cannot find module './views/errros/System.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _views_errors_System_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/errors/System.vue */ "./resources/js/views/errors/System.vue");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
 
 
@@ -20789,7 +20878,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: "/500",
     name: "system_error",
-    component: !(function webpackMissingModule() { var e = new Error("Cannot find module './views/errros/System.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+    component: _views_errors_System_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }]
 }); // beforeEach の登録
 // router.beforeEach((to, from, next) => {
@@ -20852,7 +20941,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var state = {
   user: null,
-  apiStatus: null
+  apiStatus: null,
+  loginErrorMessages: null
 };
 var getters = {
   check: function check(state) {
@@ -20871,6 +20961,9 @@ var mutations = {
   },
   setApiStatus: function setApiStatus(state, status) {
     state.apiStatus = status;
+  },
+  setLoginErrorMessages: function setLoginErrorMessages(state, msg) {
+    state.loginErrorMessages = msg;
   }
 };
 var actions = {
@@ -20932,11 +21025,16 @@ var actions = {
               return _context2.abrupt("return", false);
 
             case 8:
-              context.commit("setApiStatus", false); // 別のモジュールのミューテーションを commit する場合は第三引数に { root: true } を追加
+              context.commit("setApiStatus", false);
 
-              context.commit("error/setCode", response.status, {
-                root: true
-              });
+              if (response.status === _util__WEBPACK_IMPORTED_MODULE_2__["UNPROCESSABLE_ENTITY"]) {
+                context.commit("setLoginErrorMessages", response.data.errors);
+              } else {
+                // 別のモジュールのミューテーションを commit する場合は第三引数に { root: true } を追加
+                context.commit("error/setCode", response.status, {
+                  root: true
+                });
+              }
 
             case 10:
             case "end":
@@ -21083,7 +21181,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
 /*!******************************!*\
   !*** ./resources/js/util.js ***!
   \******************************/
-/*! exports provided: getCookieValue, OK, CREATED, INTERNAL_SERVER_ERROR */
+/*! exports provided: getCookieValue, OK, CREATED, INTERNAL_SERVER_ERROR, UNPROCESSABLE_ENTITY */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21092,6 +21190,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OK", function() { return OK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CREATED", function() { return CREATED; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "INTERNAL_SERVER_ERROR", function() { return INTERNAL_SERVER_ERROR; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UNPROCESSABLE_ENTITY", function() { return UNPROCESSABLE_ENTITY; });
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -21126,6 +21225,7 @@ function getCookieValue(searchKey) {
 var OK = 200;
 var CREATED = 201;
 var INTERNAL_SERVER_ERROR = 500;
+var UNPROCESSABLE_ENTITY = 422;
 
 /***/ }),
 
@@ -21315,6 +21415,59 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SignUp_vue_vue_type_template_id_6170cb17___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SignUp_vue_vue_type_template_id_6170cb17___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/views/errors/System.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/views/errors/System.vue ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _System_vue_vue_type_template_id_51a9bd84___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./System.vue?vue&type=template&id=51a9bd84& */ "./resources/js/views/errors/System.vue?vue&type=template&id=51a9bd84&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _System_vue_vue_type_template_id_51a9bd84___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _System_vue_vue_type_template_id_51a9bd84___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/errors/System.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/errors/System.vue?vue&type=template&id=51a9bd84&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/views/errors/System.vue?vue&type=template&id=51a9bd84& ***!
+  \*****************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_System_vue_vue_type_template_id_51a9bd84___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./System.vue?vue&type=template&id=51a9bd84& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/errors/System.vue?vue&type=template&id=51a9bd84&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_System_vue_vue_type_template_id_51a9bd84___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_System_vue_vue_type_template_id_51a9bd84___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
