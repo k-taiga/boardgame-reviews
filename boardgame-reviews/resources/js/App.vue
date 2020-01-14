@@ -1,9 +1,7 @@
 <template>
   <div id="app">
-    <bdNavbar :user="user"></bdNavbar>
-    <main>
-      <router-view />
-    </main>
+    <bdNavbar :user="user" @sign-out-clicked="signOut"></bdNavbar>
+    <router-view />
     <bdFooter></bdFooter>
   </div>
 </template>
@@ -19,6 +17,21 @@ export default {
     return {
       user: null
     };
+  },
+  async created() {
+    this.user = await this.$store.dispatch("auth/currentUser");
+    // console.log(this.user);
+  },
+  updated() {
+    this.user = this.$store.getters["auth/check"];
+    // this.user = this.$store.dispatch("auth/currentUser");
+    // console.log(this.user);
+  },
+  methods: {
+    async signOut() {
+      await this.$store.dispatch("auth/logout");
+      this.$router.push("/sign_in");
+    }
   }
 };
 </script>
