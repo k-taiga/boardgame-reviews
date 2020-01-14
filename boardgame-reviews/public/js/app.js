@@ -1894,9 +1894,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
             case 2:
               this.user = _context.sent;
-              console.log(this.user);
 
-            case 4:
+            case 3:
             case "end":
               return _context.stop();
           }
@@ -1912,8 +1911,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   }(),
   updated: function updated() {
     this.user = this.$store.getters["auth/check"]; // this.user = this.$store.dispatch("auth/currentUser");
-
-    console.log(this.user);
+    // console.log(this.user);
   },
   methods: {
     signOut: function () {
@@ -20751,34 +20749,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_Home_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/Home.vue */ "./resources/js/views/Home.vue");
 /* harmony import */ var _views_SignUp_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/SignUp.vue */ "./resources/js/views/SignUp.vue");
 /* harmony import */ var _views_SignIn_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/SignIn.vue */ "./resources/js/views/SignIn.vue");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
 
 
 
+
+ // vuex
 
  // VueRouterプラグインを使用する
 // これによって<RouterView />コンポーネントなどを使うことができる
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]); // パスとコンポーネントのマッピング
-
-var routes = [{
-  path: "/",
-  name: "home",
-  component: _views_Home_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
-}, {
-  path: "/sign_up",
-  name: "sign_up",
-  component: _views_SignUp_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
-}, {
-  path: "/sign_in",
-  name: "sign_in",
-  component: _views_SignIn_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
-}]; // VueRouterインスタンスをエクスポートする
+// const routes = [];
+// VueRouterインスタンスをエクスポートする
 // app.jsでインポートするため
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: "history",
-  routes: routes
-});
+  routes: [{
+    path: "/",
+    name: "home",
+    component: _views_Home_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }, {
+    path: "/sign_up",
+    name: "sign_up",
+    component: _views_SignUp_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    meta: {
+      login: true
+    }
+  }, {
+    path: "/sign_in",
+    name: "sign_in",
+    component: _views_SignIn_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    meta: {
+      login: true
+    }
+  }]
+}); // beforeEach の登録
+// router.beforeEach((to, from, next) => {
+//     // 表示しようとしているページがlogin設定されているかどうかを判別する
+//     if (to.matched.some(rec => rec.meta.login)) {
+//         console.log(store.getters);
+//         console.log(store.getters["auth/check"]);
+//         if (store.getters["auth/user"]) {
+//             // if (store.getters["auth/check"]) {
+//             // ログインしているので(/)を表示
+//             // console.log(store.getters["auth/user"]);
+//             next({ name: "home" });
+//             // next("/");
+//         } else {
+//             // ログインしていないのでそのまま表示する
+//             // console.log(store.getters["auth/user"]);
+//             next();
+//             // next({ name: "home" });
+//         }
+//         // } else if (to.matched.some(rec => rec.meta.private)) {
+//         //     // 表示しようとしているページがlogin設定されているかどうかを判別する
+//         //     if (store.getters["auth/check"]) {
+//         //         // サインインしているのでそのまま表示
+//         //         next();
+//         //     } else {
+//         //         // サインインしていないのでエラーページを表示する
+//         //         next({ name: "error_unauthorized" });
+//         //     }
+//         //     // どちらでもなければそのまま表示
+//     } else {
+//         next();
+//     }
+// });
+
 /* harmony default export */ __webpack_exports__["default"] = (router);
 
 /***/ }),
@@ -20809,6 +20848,9 @@ var state = {
 var getters = {
   check: function check(state) {
     return !!state.user;
+  },
+  user: function user(state) {
+    return state.user;
   },
   username: function username(state) {
     return state.user ? state.user.name : "";
