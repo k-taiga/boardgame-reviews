@@ -1,7 +1,9 @@
 import Axios from "axios";
+import { OK } from "../util";
 
 const state = {
-    user: null
+    user: null,
+    apiStatus: null
 };
 
 const getters = {
@@ -13,6 +15,9 @@ const getters = {
 const mutations = {
     setUser(state, user) {
         state.user = user;
+    },
+    setApiStatus(state, status) {
+        state.apiStatus = status;
     }
 };
 
@@ -22,8 +27,21 @@ const actions = {
         context.commit("setUser", response.data);
     },
     async login(context, data) {
-        const response = await axios.post("/api/login", data);
-        context.commit("setUser", response.data);
+        context.commit("setApiStatus", null);
+        const response = await axios
+            .post("/api/login", data)
+            .catch(err => err.response || err);
+
+        // response.statusが200だったら
+        if (response.status === OK) {
+            context.commit("setApiStatus", true);
+            context.commit("setUser", response.data);
+            return false;
+        }
+
+        context.commit("setApiStatus", false);
+        // 別のモジュールのミューテーションを commit する場合は第三引数に { root: true } を追加
+        context.commit("error/setCode", response.status, { root: true });
     },
     async logout(context, data) {
         const response = await axios.post("/api/logout");
