@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Home from "./views/Home.vue";
 import SignUp from "./views/SignUp.vue";
 import SignIn from "./views/SignIn.vue";
+import SystemError from "./views/errros/System.vue";
 
 // vuex
 import store from "./store";
@@ -35,6 +36,11 @@ const router = new VueRouter({
             name: "sign_in",
             component: SignIn,
             meta: { login: true }
+        },
+        {
+            path: "/500",
+            name: "system_error",
+            component: SystemError
         }
     ]
 });
