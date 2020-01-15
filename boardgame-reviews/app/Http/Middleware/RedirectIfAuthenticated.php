@@ -21,7 +21,7 @@ class RedirectIfAuthenticated
         if (Auth::guard($guard)->check()) {
             // return redirect(RouteServiceProvider::HOME);
             // ログインしていない時に返すrouteを修正
-            return redirect()->route('user')
+            return redirect()->route('user');
         }
 
         return $next($request);
