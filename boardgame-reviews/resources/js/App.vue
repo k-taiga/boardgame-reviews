@@ -24,6 +24,9 @@ export default {
   computed: {
     errorCode() {
       return this.$store.state.error.code;
+    },
+    apiStatus() {
+      return this.$store.state.auth.apiStatus;
     }
   },
   watch: {
@@ -51,7 +54,9 @@ export default {
   methods: {
     async signOut() {
       await this.$store.dispatch("auth/logout");
-      this.$router.push("/sign_in");
+      if (this.apiStatus) {
+        this.$router.push("/sign_in");
+      }
     }
   }
 };

@@ -1887,6 +1887,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   computed: {
     errorCode: function errorCode() {
       return this.$store.state.error.code;
+    },
+    apiStatus: function apiStatus() {
+      return this.$store.state.auth.apiStatus;
     }
   },
   watch: {
@@ -1947,7 +1950,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return this.$store.dispatch("auth/logout");
 
               case 2:
-                this.$router.push("/sign_in");
+                if (this.apiStatus) {
+                  this.$router.push("/sign_in");
+                }
 
               case 3:
               case "end":
@@ -2008,19 +2013,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Icon_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Icon.vue */ "./resources/js/components/Icon.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2280,6 +2272,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   created: function created() {
+    this.clearError;
+  },
+  beforeMount: function beforeMount() {
     this.clearError;
   }
 });
@@ -3794,7 +3789,7 @@ var render = function() {
               { staticClass: "navbar-item", attrs: { to: "/" } },
               [
                 _c("bdIcon", { attrs: { name: "chess-knight" } }),
-                _vm._v("BoardGameReviews\n            ")
+                _vm._v("BoardGameReviews\n      ")
               ],
               1
             ),
