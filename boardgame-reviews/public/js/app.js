@@ -2362,6 +2362,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "sign_up",
@@ -2378,6 +2384,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     };
   },
+  computed: {
+    apiStatus: function apiStatus() {
+      return this.$store.state.auth.apiStatus;
+    },
+    registerErrors: function registerErrors() {
+      console.log(this.$store.state.auth.registerErrorMessages);
+      return this.$store.state.auth.registerErrorMessages;
+    }
+  },
   methods: {
     signUp: function () {
       var _signUp = _asyncToGenerator(
@@ -2391,8 +2406,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return this.$store.dispatch("auth/register", this.registerForm);
 
               case 2:
-                // トップページに移動する
-                this.$router.push("/");
+                if (this.apiStatus) {
+                  // トップページに移動する
+                  this.$router.push("/");
+                }
 
               case 3:
               case "end":
@@ -2407,7 +2424,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return signUp;
-    }()
+    }(),
+    clearError: function clearError() {
+      this.$store.commit("auth/setRegisterErrorMessages", null);
+    }
+  },
+  created: function created() {
+    this.clearError;
   }
 });
 
@@ -4204,6 +4227,48 @@ var render = function() {
                 "div",
                 { staticClass: "box" },
                 [
+                  _vm.registerErrors
+                    ? _c("div", { staticClass: "errors" }, [
+                        _vm.registerErrors.name
+                          ? _c(
+                              "ul",
+                              _vm._l(_vm.registerErrors.name, function(msg) {
+                                return _c("li", { key: msg }, [
+                                  _vm._v(_vm._s(msg))
+                                ])
+                              }),
+                              0
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.registerErrors.email
+                          ? _c(
+                              "ul",
+                              _vm._l(_vm.registerErrors.email, function(msg) {
+                                return _c("li", { key: msg }, [
+                                  _vm._v(_vm._s(msg))
+                                ])
+                              }),
+                              0
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.registerErrors.password
+                          ? _c(
+                              "ul",
+                              _vm._l(_vm.registerErrors.password, function(
+                                msg
+                              ) {
+                                return _c("li", { key: msg }, [
+                                  _vm._v(_vm._s(msg))
+                                ])
+                              }),
+                              0
+                            )
+                          : _vm._e()
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
                   _c("bdTextField", {
                     attrs: {
                       type: "text",
@@ -4273,11 +4338,7 @@ var render = function() {
                         "button is-block is-info is-large is-fullwidth",
                       attrs: { type: "submit" }
                     },
-                    [
-                      _vm._v(
-                        "\n                            登録する\n                        "
-                      )
-                    ]
+                    [_vm._v("登録する")]
                   )
                 ],
                 1
@@ -4299,9 +4360,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "field" }, [
       _c("label", { staticClass: "checkbox" }, [
         _c("input", { attrs: { type: "checkbox" } }),
-        _vm._v(
-          "\n                                ログインしたままにする\n                            "
-        )
+        _vm._v("\n                ログインしたままにする\n              ")
       ])
     ])
   },
@@ -20559,6 +20618,13 @@ window.axios.interceptors.request.use(function (config) {
   // クッキーからトークンを取り出してヘッダーに添付する
   config.headers["X-XSRF-TOKEN"] = Object(_util__WEBPACK_IMPORTED_MODULE_0__["getCookieValue"])("XSRF-TOKEN");
   return config;
+}); // interceptorはレスポンスを受けた後の処理を上書きする
+// 第一引数が成功時、第二引数が失敗時のエラーを返す
+
+window.axios.interceptors.response.use(function (response) {
+  return response;
+}, function (error) {
+  return error.response || error;
 });
 
 /***/ }),
@@ -20942,7 +21008,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var state = {
   user: null,
   apiStatus: null,
-  loginErrorMessages: null
+  loginErrorMessages: null,
+  registerErrorMessages: null
 };
 var getters = {
   check: function check(state) {
@@ -20964,6 +21031,9 @@ var mutations = {
   },
   setLoginErrorMessages: function setLoginErrorMessages(state, msg) {
     state.loginErrorMessages = msg;
+  },
+  setRegisterErrorMessages: function setRegisterErrorMessages(state, msg) {
+    state.registerErrorMessages = msg;
   }
 };
 var actions = {
@@ -20976,14 +21046,34 @@ var actions = {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
+              context.commit("setApiStatus", null);
+              _context.next = 3;
               return axios.post("/api/register", data);
 
-            case 2:
+            case 3:
               response = _context.sent;
-              context.commit("setUser", response.data);
 
-            case 4:
+              if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_2__["CREATED"])) {
+                _context.next = 8;
+                break;
+              }
+
+              context.commit("setApiStatus", true);
+              context.commit("setUser", response.data);
+              return _context.abrupt("return", false);
+
+            case 8:
+              context.commit("setApiStatus", false);
+
+              if (response.status === _util__WEBPACK_IMPORTED_MODULE_2__["UNPROCESSABLE_ENTITY"]) {
+                context.commit("setRegisterErrorMessages", response.data.errors);
+              } else {
+                context.commit("error/setCode", response.status, {
+                  root: true
+                });
+              }
+
+            case 10:
             case "end":
               return _context.stop();
           }
@@ -21059,14 +21149,29 @@ var actions = {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              _context3.next = 2;
+              context.commit("setApiStatus", null);
+              _context3.next = 3;
               return axios.post("/api/logout");
 
-            case 2:
+            case 3:
               response = _context3.sent;
-              context.commit("setUser", null);
 
-            case 4:
+              if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_2__["OK"])) {
+                _context3.next = 8;
+                break;
+              }
+
+              context.commit("setApiStatus", true);
+              context.commit("setUser", null);
+              return _context3.abrupt("return", false);
+
+            case 8:
+              context.commit("setApiStatus", false);
+              context.commit("error/setCode", response.status, {
+                root: true
+              });
+
+            case 10:
             case "end":
               return _context3.stop();
           }
@@ -21080,6 +21185,7 @@ var actions = {
 
     return logout;
   }(),
+  // ログインしているかどうかチェック
   currentUser: function () {
     var _currentUser = _asyncToGenerator(
     /*#__PURE__*/
@@ -21098,7 +21204,22 @@ var actions = {
               user = response.data || null;
               context.commit("setUser", user);
 
-            case 5:
+              if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_2__["OK"])) {
+                _context4.next = 9;
+                break;
+              }
+
+              context.commit("setApiStatus", true);
+              context.commit("setUser", user);
+              return _context4.abrupt("return", false);
+
+            case 9:
+              context.commit("setApiStatus", false);
+              context.commit("error/setCode", response.status, {
+                root: true
+              });
+
+            case 11:
             case "end":
               return _context4.stop();
           }
