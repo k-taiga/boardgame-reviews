@@ -1,8 +1,8 @@
-# ボードゲームカフェのレビューサイト
-Laravel5.6
-PHP7
-MySQL
-Vue.js
+# Boardgame-reviews
+-Laravel 6.10.1
+-PHP7.4.1
+-MySQL
+-Vue.js
 
 ## プロダクト作成手順
 
