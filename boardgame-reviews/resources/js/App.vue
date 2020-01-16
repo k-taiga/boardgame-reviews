@@ -39,9 +39,6 @@ export default {
       immediate: true
     },
     $route(to, from) {
-      //   console.log("$routerが切り替わりました");
-      //   console.log(to);
-      //   console.log(from);
       this.$store.commit("error/setCode", null);
       if (to.path == "/sign_in" || to.path == "/sign_up") {
         console.log("$routerが切り替わりました");
