@@ -1,6 +1,12 @@
-# プロダクト作成手順
+# ボードゲームカフェのレビューサイト
+Laravel5.6
+PHP7
+MySQL
+Vue.js
 
-## 導入手順
+## プロダクト作成手順
+
+### 導入手順
 
 1.```git clone```する
 
@@ -12,14 +18,14 @@
 　
  ```docker-compose up -d```
 
-### ポートフォワーディング
+#### ポートフォワーディング
 
 * 8000→php
 * 80→phpmyadmin
 * 3306→MySql
 
 
-### laravelプロジェクト作成後の手順
+#### laravelプロジェクト作成後の手順
 
 * docker-compose exec app bashで入ってcomposerを使って
 　<br>```composer create-project --prefer-dist laravel/laravel my-laravel-app```
@@ -37,7 +43,7 @@
 同じくpullした場合はnode_modulesもローカルでインストールする必要がある
 ```npm install```
 
-### ホットリロード
+#### ホットリロード
 Dockerなのでホットリロードを開発環境で使う場合は
 
 npm run watch-poll
