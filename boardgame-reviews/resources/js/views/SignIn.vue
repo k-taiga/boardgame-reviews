@@ -8,6 +8,7 @@
         <form class="form" @submit.prevent="login">
           <div class="column is-4 is-offset-4">
             <div class="box">
+            <transition name="error">
               <div v-if="loginErrors" class="errors">
                 <ul v-if="loginErrors.email">
                   <li v-for="msg in loginErrors.email" :key="msg">{{ msg }}</li>
@@ -16,6 +17,7 @@
                   <li v-for="msg in loginErrors.password" :key="msg">{{ msg }}</li>
                 </ul>
               </div>
+            </transition>
               <bdTextField
                 type="email"
                 placeholder="メールアドレス"
@@ -35,7 +37,7 @@
                   ログインしたままにする
                 </label>
               </div>
-              <button class="button is-block is-info is-large is-fullwidth">ログインする</button>
+              <button class="button is-block is-info is-large is-fullwidth" @click="clearError">ログインする</button>
             </div>
           </div>
         </form>
@@ -90,3 +92,15 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.error-enter, .error-leave-to {
+    opacity: 0;
+}
+.error-enter-to, .error-leave {
+    opacity: 1;
+}
+.error-enter-active, .error-leave-active {
+    transition: opacity 1s;
+}
+</style>
