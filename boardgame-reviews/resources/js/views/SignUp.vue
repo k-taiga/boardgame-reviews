@@ -2,25 +2,22 @@
   <div class="hero is-light is-fullheight">
     <div class="hero-body">
       <div class="container has-text-centered">
-        <article v-show="errorMessage" class="message is-warning">
-          <div class="message-body">{{ error_message }}</div>
-        </article>
         <form class="form" @submit.prevent="signUp">
           <div class="column is-4 is-offset-4">
             <div class="box">
-            <transition name="error">
-              <div v-if="registerErrors" class="errors">
-                <ul v-if="registerErrors.name">
-                  <li v-for="msg in registerErrors.name" :key="msg">{{ msg }}</li>
-                </ul>
-                <ul v-if="registerErrors.email">
-                  <li v-for="msg in registerErrors.email" :key="msg">{{ msg }}</li>
-                </ul>
-                <ul v-if="registerErrors.password">
-                  <li v-for="msg in registerErrors.password" :key="msg">{{ msg }}</li>
-                </ul>
-              </div>
-                </transition>
+              <transition name="error">
+                <div v-if="registerErrors" class="errors">
+                  <ul v-if="registerErrors.name">
+                    <li v-for="msg in registerErrors.name" :key="msg">{{ msg }}</li>
+                  </ul>
+                  <ul v-if="registerErrors.email">
+                    <li v-for="msg in registerErrors.email" :key="msg">{{ msg }}</li>
+                  </ul>
+                  <ul v-if="registerErrors.password">
+                    <li v-for="msg in registerErrors.password" :key="msg">{{ msg }}</li>
+                  </ul>
+                </div>
+              </transition>
               <bdTextField
                 type="text"
                 placeholder="username"
@@ -47,12 +44,14 @@
                 v-model="registerForm.password_confirmation"
               ></bdTextField>
               <div class="field">
-                <label class="checkbox">
-                  <input type="checkbox" />
-                  ログインしたままにする
-                </label>
+                <input type="checkbox" />
+                ログインしたままにする
               </div>
-              <button class="button is-block is-info is-large is-fullwidth" type="submit" @click="clearError">登録する</button>
+              <button
+                class="button is-block is-info is-large is-fullwidth"
+                type="submit"
+                @click="clearError"
+              >登録する</button>
             </div>
           </div>
         </form>
@@ -85,7 +84,7 @@ export default {
       return this.$store.state.auth.apiStatus;
     },
     registerErrors() {
-      console.log(this.$store.state.auth.registerErrorMessages);
+      //   console.log(this.$store.state.auth.registerErrorMessages);
       return this.$store.state.auth.registerErrorMessages;
     }
   },
@@ -112,13 +111,16 @@ export default {
 </script>
 
 <style scoped>
-.error-enter, .error-leave-to {
-    opacity: 0;
+.error-enter,
+.error-leave-to {
+  opacity: 0;
 }
-.error-enter-to, .error-leave {
-    opacity: 1;
+.error-enter-to,
+.error-leave {
+  opacity: 1;
 }
-.error-enter-active, .error-leave-active {
-    transition: opacity 1s;
+.error-enter-active,
+.error-leave-active {
+  transition: opacity 1s;
 }
 </style>
