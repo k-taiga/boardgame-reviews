@@ -1,2 +1,3 @@
 .DS_Store
-mix-manifest.json
+boardgame-reviews/public/mix-manifest.json
+boardgame-reviews/public/js/app.js
