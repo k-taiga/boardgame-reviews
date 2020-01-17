@@ -11,3 +11,10 @@ window.axios.interceptors.request.use(config => {
 
     return config;
 });
+
+// interceptorはレスポンスを受けた後の処理を上書きする
+// 第一引数が成功時、第二引数が失敗時のエラーを返す
+window.axios.interceptors.response.use(
+    response => response,
+    error => error.response || error
+);
