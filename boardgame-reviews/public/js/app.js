@@ -1901,8 +1901,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       },
       immediate: true
     },
-    $route: function $route() {
+    $route: function $route(to, from) {
       this.$store.commit("error/setCode", null);
+
+      if (to.path == "/sign_in" || to.path == "/sign_up") {
+        console.log("$routerが切り替わりました");
+        this.clearError();
+      }
     }
   },
   created: function () {
@@ -1967,7 +1972,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return signOut;
-    }()
+    }(),
+    clearError: function clearError() {
+      this.$store.commit("auth/setLoginErrorMessages", null);
+      this.$store.commit("auth/setRegisterErrorMessages", null);
+      console.log("clearErrorしました。");
+    }
   }
 });
 
@@ -2109,12 +2119,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "bdTextField",
@@ -2124,7 +2128,7 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     type: {
       type: String,
-      label: String,
+      //   label: String,
       "default": "text",
       validator: function validator(val) {
         return ["text", "email", "password", "search", "url"].includes(val);
@@ -2213,8 +2217,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2236,6 +2238,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     loginErrors: function loginErrors() {
       return this.$store.state.auth.loginErrorMessages;
+    }
+  },
+  watch: {
+    $route: function $route() {
+      // ルートの変更の検知...
+      console.log("$routerが切り替わりました");
     }
   },
   methods: {
@@ -2274,10 +2282,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   created: function created() {
-    this.clearError;
-  },
-  beforeMount: function beforeMount() {
-    this.clearError;
+    this.clearError();
   }
 });
 
@@ -2366,7 +2371,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "sign_up",
@@ -2388,7 +2392,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return this.$store.state.auth.apiStatus;
     },
     registerErrors: function registerErrors() {
-      console.log(this.$store.state.auth.registerErrorMessages);
+      //   console.log(this.$store.state.auth.registerErrorMessages);
       return this.$store.state.auth.registerErrorMessages;
     }
   },
@@ -2450,7 +2454,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.error-enter[data-v-4cda74a1], .error-leave-to[data-v-4cda74a1] {\n    opacity: 0;\n}\n.error-enter-to[data-v-4cda74a1], .error-leave[data-v-4cda74a1] {\n    opacity: 1;\n}\n.error-enter-active[data-v-4cda74a1], .error-leave-active[data-v-4cda74a1] {\n    transition: opacity 1s;\n}\n", ""]);
+exports.push([module.i, "\n.error-enter[data-v-4cda74a1],\n.error-leave-to[data-v-4cda74a1] {\n  opacity: 0;\n}\n.error-enter-to[data-v-4cda74a1],\n.error-leave[data-v-4cda74a1] {\n  opacity: 1;\n}\n.error-enter-active[data-v-4cda74a1],\n.error-leave-active[data-v-4cda74a1] {\n  transition: opacity 1s;\n}\n", ""]);
 
 // exports
 
@@ -2469,7 +2473,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.error-enter[data-v-6170cb17], .error-leave-to[data-v-6170cb17] {\n    opacity: 0;\n}\n.error-enter-to[data-v-6170cb17], .error-leave[data-v-6170cb17] {\n    opacity: 1;\n}\n.error-enter-active[data-v-6170cb17], .error-leave-active[data-v-6170cb17] {\n    transition: opacity 1s;\n}\n", ""]);
+exports.push([module.i, "\n.error-enter[data-v-6170cb17],\n.error-leave-to[data-v-6170cb17] {\n  opacity: 0;\n}\n.error-enter-to[data-v-6170cb17],\n.error-leave[data-v-6170cb17] {\n  opacity: 1;\n}\n.error-enter-active[data-v-6170cb17],\n.error-leave-active[data-v-6170cb17] {\n  transition: opacity 1s;\n}\n", ""]);
 
 // exports
 
@@ -4647,10 +4651,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "field" }, [
-    _vm.label
-      ? _c("label", { staticClass: "label" }, [_vm._v(_vm._s(_vm.label))])
-      : _vm._e(),
-    _vm._v(" "),
     _c(
       "div",
       { staticClass: "control", class: { "has-icons-left": _vm.icon } },
@@ -4722,26 +4722,6 @@ var render = function() {
   return _c("div", { staticClass: "hero is-light is-fullheight" }, [
     _c("div", { staticClass: "hero-body" }, [
       _c("div", { staticClass: "container has-text-centered" }, [
-        _c(
-          "article",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.errorMessage,
-                expression: "errorMessage"
-              }
-            ],
-            staticClass: "message is-warning"
-          },
-          [
-            _c("div", { staticClass: "message-body" }, [
-              _vm._v(_vm._s(_vm.error_message))
-            ])
-          ]
-        ),
-        _vm._v(" "),
         _c(
           "form",
           {
@@ -4848,10 +4828,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "field" }, [
-      _c("label", { staticClass: "checkbox" }, [
-        _c("input", { attrs: { type: "checkbox" } }),
-        _vm._v("\n                ログインしたままにする\n              ")
-      ])
+      _c("input", { attrs: { type: "checkbox" } }),
+      _vm._v("\n              ログインしたままにする\n            ")
     ])
   },
   function() {
@@ -4889,26 +4867,6 @@ var render = function() {
   return _c("div", { staticClass: "hero is-light is-fullheight" }, [
     _c("div", { staticClass: "hero-body" }, [
       _c("div", { staticClass: "container has-text-centered" }, [
-        _c(
-          "article",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.errorMessage,
-                expression: "errorMessage"
-              }
-            ],
-            staticClass: "message is-warning"
-          },
-          [
-            _c("div", { staticClass: "message-body" }, [
-              _vm._v(_vm._s(_vm.error_message))
-            ])
-          ]
-        ),
-        _vm._v(" "),
         _c(
           "form",
           {
@@ -5060,10 +5018,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "field" }, [
-      _c("label", { staticClass: "checkbox" }, [
-        _c("input", { attrs: { type: "checkbox" } }),
-        _vm._v("\n                ログインしたままにする\n              ")
-      ])
+      _c("input", { attrs: { type: "checkbox" } }),
+      _vm._v("\n              ログインしたままにする\n            ")
     ])
   },
   function() {
