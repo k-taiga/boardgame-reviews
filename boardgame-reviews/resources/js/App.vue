@@ -38,8 +38,12 @@ export default {
       },
       immediate: true
     },
-    $route() {
+    $route(to, from) {
       this.$store.commit("error/setCode", null);
+      if (to.path == "/sign_in" || to.path == "/sign_up") {
+        console.log("$routerが切り替わりました");
+        this.clearError();
+      }
     }
   },
   async created() {
@@ -57,6 +61,11 @@ export default {
       if (this.apiStatus) {
         this.$router.push("/sign_in");
       }
+    },
+    clearError() {
+      this.$store.commit("auth/setLoginErrorMessages", null);
+      this.$store.commit("auth/setRegisterErrorMessages", null);
+      console.log("clearErrorしました。");
     }
   }
 };

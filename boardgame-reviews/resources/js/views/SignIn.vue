@@ -2,22 +2,19 @@
   <div class="hero is-light is-fullheight">
     <div class="hero-body">
       <div class="container has-text-centered">
-        <article v-show="errorMessage" class="message is-warning">
-          <div class="message-body">{{ error_message }}</div>
-        </article>
         <form class="form" @submit.prevent="login">
           <div class="column is-4 is-offset-4">
             <div class="box">
-            <transition name="error">
-              <div v-if="loginErrors" class="errors">
-                <ul v-if="loginErrors.email">
-                  <li v-for="msg in loginErrors.email" :key="msg">{{ msg }}</li>
-                </ul>
-                <ul v-if="loginErrors.password">
-                  <li v-for="msg in loginErrors.password" :key="msg">{{ msg }}</li>
-                </ul>
-              </div>
-            </transition>
+              <transition name="error">
+                <div v-if="loginErrors" class="errors">
+                  <ul v-if="loginErrors.email">
+                    <li v-for="msg in loginErrors.email" :key="msg">{{ msg }}</li>
+                  </ul>
+                  <ul v-if="loginErrors.password">
+                    <li v-for="msg in loginErrors.password" :key="msg">{{ msg }}</li>
+                  </ul>
+                </div>
+              </transition>
               <bdTextField
                 type="email"
                 placeholder="メールアドレス"
@@ -32,12 +29,13 @@
                 v-model="loginForm.password"
               ></bdTextField>
               <div class="field">
-                <label class="checkbox">
-                  <input type="checkbox" />
-                  ログインしたままにする
-                </label>
+                <input type="checkbox" />
+                ログインしたままにする
               </div>
-              <button class="button is-block is-info is-large is-fullwidth" @click="clearError">ログインする</button>
+              <button
+                class="button is-block is-info is-large is-fullwidth"
+                @click="clearError"
+              >ログインする</button>
             </div>
           </div>
         </form>
@@ -72,6 +70,12 @@ export default {
       return this.$store.state.auth.loginErrorMessages;
     }
   },
+  watch: {
+    $route() {
+      // ルートの変更の検知...
+      console.log("$routerが切り替わりました");
+    }
+  },
   methods: {
     async login() {
       //   authストアのloginメソッド
@@ -85,22 +89,22 @@ export default {
     }
   },
   created() {
-    this.clearError;
-  },
-  beforeMount() {
-    this.clearError;
+    this.clearError();
   }
 };
 </script>
 
 <style scoped>
-.error-enter, .error-leave-to {
-    opacity: 0;
+.error-enter,
+.error-leave-to {
+  opacity: 0;
 }
-.error-enter-to, .error-leave {
-    opacity: 1;
+.error-enter-to,
+.error-leave {
+  opacity: 1;
 }
-.error-enter-active, .error-leave-active {
-    transition: opacity 1s;
+.error-enter-active,
+.error-leave-active {
+  transition: opacity 1s;
 }
 </style>
