@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <bdNavbar :user="user" @sign-out-clicked="signOut"></bdNavbar>
+    <transition name="fade" mode="out-in">
     <router-view />
+    </transition>
     <bdFooter></bdFooter>
   </div>
 </template>
@@ -70,3 +72,18 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-to,
+.fade-leave {
+  opacity: 1;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s;
+}
+</style>
