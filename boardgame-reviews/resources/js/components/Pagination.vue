@@ -4,13 +4,13 @@
             v-if="!isFirstPage"
             :to="`/?page=${currentPage - 1}`"
             class="button"
-            >&laquo; prev</router-link
+            >&laquo; 前のページ</router-link
         >
         <router-link
             v-if="!isLastPage"
             :to="`/?page=${currentPage + 1}`"
             class="button"
-            >next &raquo;</router-link
+            >次のページ &raquo;</router-link
         >
     </div>
 </template>
