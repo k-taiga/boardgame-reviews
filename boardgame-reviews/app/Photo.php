@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 
+use Illuminate\Support\Facades\Storage;
+
 class Photo extends Model
 {
     /** プライマリキーの型 */
@@ -13,11 +15,22 @@ class Photo extends Model
     /** IDの桁数 */
     const ID_LENGTH = 12;
 
+    /** JSONに含める属性 */
+    protected $appends = [
+        'url',
+    ];
+
+    /** JSONに含めない属性 */
+    protected $hidden = [
+        'user_id', 'filename',
+        self::CREATED_AT, self::UPDATED_AT,
+    ];
+
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
 
-        if (! Arr::get($this->attributes, 'id')) {
+        if (!Arr::get($this->attributes, 'id')) {
             $this->setId();
         }
     }
@@ -37,8 +50,10 @@ class Photo extends Model
     private function getRandomId()
     {
         $characters = array_merge(
-            range(0, 9), range('a', 'z'),
-            range('A', 'Z'), ['-', '_']
+            range(0, 9),
+            range('a', 'z'),
+            range('A', 'Z'),
+            ['-', '_']
         );
 
         $length = count($characters);
@@ -50,5 +65,22 @@ class Photo extends Model
         }
 
         return $id;
+    }
+    /**
+     * リレーションシップ - usersテーブル
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function owner()
+    {
+        return $this->belongsTo('App\User', 'user_id', 'id', 'users');
+    }
+
+    /**
+     * アクセサ - url
+     * @return string
+     */
+    public function getUrlAttribute()
+    {
+        return Storage::cloud()->url($this->attributes['filename']);
     }
 }

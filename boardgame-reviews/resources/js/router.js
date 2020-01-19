@@ -5,6 +5,8 @@ import SignUp from "./views/SignUp.vue";
 import SignIn from "./views/SignIn.vue";
 import SystemError from "./views/errors/System.vue";
 
+import PhotoList from "./views/PhotoList.vue";
+
 // vuex
 import store from "./store";
 
@@ -22,6 +24,11 @@ const router = new VueRouter({
     routes: [
         {
             path: "/",
+            name: "index",
+            component: PhotoList
+        },
+        {
+            path: "/home",
             name: "home",
             component: Home
         },
