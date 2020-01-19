@@ -24,8 +24,13 @@ const router = new VueRouter({
     routes: [
         {
             path: "/",
-            name: "index",
-            component: PhotoList
+            component: PhotoList,
+            props: route => {
+                // URL のクエリパラメータ page をページコンポーネントで取得しPhotoListのコンポーネントに返す
+                // routeからpageを取得し正規表現でチェック
+                const page = route.query.page;
+                return { page: /^[1-9][0-9]*$/.test(page) ? page * 1 : 1 };
+            }
         },
         {
             path: "/home",
