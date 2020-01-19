@@ -16,8 +16,20 @@ class PhotoController extends Controller
     public function __construct()
     {
         // 認証に通す
-        $this->middleware('auth');
+        // indexはauthに通らなくても使える
+        $this->middleware('auth')->except(['index']);
     }
+
+    /**
+     * 写真一覧取得
+     */
+    public function index()
+    {
+        $photos = Photo::with(['owner'])->orderBy(Photo::CREATED_AT, 'desc')->paginate();
+
+        return $photos;
+    }
+
 
     /**
      * 写真投稿

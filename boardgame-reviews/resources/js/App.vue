@@ -2,6 +2,7 @@
     <div id="app">
         <bdNavbar :user="user" @sign-out-clicked="signOut"></bdNavbar>
         <main>
+            <message />
             <transition name="fade" mode="out-in">
                 <router-view />
             </transition>
@@ -13,12 +14,13 @@
 <script>
 import bdNavbar from "./components/Navbar.vue";
 import bdFooter from "./components/Footer.vue";
+import message from "./components/Message.vue";
 
 import { INTERNAL_SERVER_ERROR } from "./util";
 
 export default {
     name: "app",
-    components: { bdNavbar, bdFooter },
+    components: { bdNavbar, bdFooter, message },
     data() {
         return {
             user: null
