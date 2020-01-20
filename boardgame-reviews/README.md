@@ -1,1 +1,1 @@
-(https://github.com/Kobatai/boardagame-reviews/master/Untitled Diagram.svg)
+(https://github.com/Kobatai/boardagame-reviews/master/er.svg)
