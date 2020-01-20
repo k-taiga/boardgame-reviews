@@ -1,11 +1,22 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "./views/Home.vue";
-import SignUp from "./views/SignUp.vue";
-import SignIn from "./views/SignIn.vue";
-import SystemError from "./views/errors/System.vue";
 
-import PhotoList from "./views/PhotoList.vue";
+// import Home from "./views/Home.vue";
+// import SignUp from "./views/SignUp.vue";
+// import SignIn from "./views/SignIn.vue";
+// import SystemError from "./views/errors/System.vue";
+
+// import PhotoList from "./views/PhotoList.vue";
+
+const Home = () => import(/* webpackChunkName:"Home" */ "./views/Home.vue");
+const SignUp = () =>
+    import(/* webpackChunkName:"SignUp" */ "./views/SignUp.vue");
+const SignIn = () =>
+    import(/* webpackChunkName:"SignIn" */ "./views/SignIn.vue");
+const SystemError = () =>
+    import(/* webpackChunkName:"Error" */ "./views/errors/System.vue");
+const PhotoList = () =>
+    import(/* webpackChunkName:"PhotoList" */ "./views/PhotoList.vue");
 
 // vuex
 import store from "./store";
@@ -13,9 +24,6 @@ import store from "./store";
 // VueRouterプラグインを使用する
 // これによって<RouterView />コンポーネントなどを使うことができる
 Vue.use(VueRouter);
-
-// パスとコンポーネントのマッピング
-// const routes = [];
 
 // VueRouterインスタンスをエクスポートする
 // app.jsでインポートするため
