@@ -1,9 +1,3 @@
-# Boardgame-reviews
-- Laravel 6.10.1
-- PHP 7.4.1
-- MySQL
-- Vue.js(vuex,vue router)
-
 ## プロダクト作成手順
 
 ### 導入手順
