@@ -15,9 +15,10 @@
             <div class="photo__controls">
                 <button
                     class="photo__action photo__action--like"
-                    title="Like photo"
+                    title="Like shop"
                 >
-                    <i class="icon ion-md-heart"></i>12
+                    <bdIcon name="thumbs-up"></bdIcon>12
+                    <!-- <i class="icon ion-md-heart"></i>12 -->
                 </button>
             </div>
             <div class="photo__username">
@@ -28,7 +29,9 @@
 </template>
 
 <script>
+import bdIcon from "./Icon";
 export default {
+    components: { bdIcon },
     props: {
         item: {
             type: Object,
