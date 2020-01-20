@@ -1,2 +1,2 @@
 ##ERD
-https://github.com/Kobatai/boardagame-reviews/master/er.svg
+https://github.com/Kobatai/boardagame-reviews/boardgame-reviews/master/er.svg
