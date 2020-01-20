@@ -134,8 +134,8 @@ img {
 }
 
 .photo__action--like .icon {
-  color: #e4406f;
-  margin-right: 0.5em;
+  color: #e4e140;
+  margin-right: 0.3em;
 }
 
 .photo__action--liked {
@@ -173,8 +173,10 @@ img {
   outline: none;
   padding: .5rem .75rem;
   text-decoration: none;
-  -webkit-transition: border-color 300ms ease-in-out, color 300ms ease-in-out;
-  transition: border-color 300ms ease-in-out, color 300ms ease-in-out;
+  -webkit-transition: border-color 300ms ease-in-out,
+ color 300ms ease-in-out;
+  transition: border-color 300ms ease-in-out,
+ color 300ms ease-in-out;
 }
 
 .button:hover {
