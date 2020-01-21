@@ -173,8 +173,8 @@ img {
   outline: none;
   padding: .5rem .75rem;
   text-decoration: none;
-  -webkit-transition: border-color 300ms ease-in-out, color 300ms ease-in-out;
-  transition: border-color 300ms ease-in-out, color 300ms ease-in-out;
+  -webkit-transition: border-color 300ms ease-in-out, color 300ms ease-in-out;
+  transition: border-color 300ms ease-in-out, color 300ms ease-in-out;
 }
 
 .button:hover {

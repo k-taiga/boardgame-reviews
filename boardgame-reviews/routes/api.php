@@ -17,5 +17,8 @@ Route::get('/user', fn () => Auth::user())->name('user');
 // 写真投稿
 Route::post('/photos', 'PhotoController@create')->name('photo.create');
 
-// 写真一覧
+// 店舗一覧
 Route::get('/photos', 'PhotoController@index')->name('photo.index');
+
+// 店舗詳細
+Route::get('/photos/{id}', 'PhotoController@show')->name('photo.show');

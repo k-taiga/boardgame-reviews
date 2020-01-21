@@ -54,7 +54,7 @@ export default {
     },
     async created() {
         this.user = await this.$store.dispatch("auth/currentUser");
-        // console.log(this.user);
+        console.log(this.user);
     },
     updated() {
         this.user = this.$store.getters["auth/check"];
