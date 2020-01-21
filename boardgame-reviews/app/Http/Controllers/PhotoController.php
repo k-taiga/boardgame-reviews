@@ -30,7 +30,6 @@ class PhotoController extends Controller
         return $photos;
     }
 
-
     /**
      * 写真投稿
      * @param StorePhoto $request
@@ -68,5 +67,17 @@ class PhotoController extends Controller
         // レスポンスコードは201(CREATED)を返却する
         // vueでキャッチする
         return response($photo, 201);
+    }
+
+    /**
+     * 写真詳細
+     * @param string $id
+     * @return Photo
+     */
+    public function show(string $id)
+    {
+        $photo = Photo::where('id', $id)->with(['owner'])->first();
+
+        return $photo ?? abort(404);
     }
 }

@@ -29,9 +29,13 @@ Vue.use(VueRouter);
 // app.jsでインポートするため
 const router = new VueRouter({
     mode: "history",
+    scrollBehavior () {
+        return { x: 0, y: 0 }
+    },
     routes: [
         {
             path: "/",
+            name: "index",
             component: PhotoList,
             props: route => {
                 // URL のクエリパラメータ page をページコンポーネントで取得しPhotoListのコンポーネントに返す
@@ -65,34 +69,24 @@ const router = new VueRouter({
     ]
 });
 
-// beforeEach の登録
+// ナビゲーションガード の登録
 // router.beforeEach((to, from, next) => {
+//     console.log(store.getters["auth/user"]);
 //     // 表示しようとしているページがlogin設定されているかどうかを判別する
 //     if (to.matched.some(rec => rec.meta.login)) {
-//         console.log(store.getters);
-//         console.log(store.getters["auth/check"]);
+//         console.log(to);
 //         if (store.getters["auth/user"]) {
 //             // if (store.getters["auth/check"]) {
 //             // ログインしているので(/)を表示
-//             // console.log(store.getters["auth/user"]);
-//             next({ name: "home" });
+//             console.log(store.getters["auth/user"]);
+//             next({ name: "index" });
 //             // next("/");
 //         } else {
 //             // ログインしていないのでそのまま表示する
-//             // console.log(store.getters["auth/user"]);
+//             console.log(store.getters["auth/user"]);
 //             next();
 //             // next({ name: "home" });
 //         }
-//         // } else if (to.matched.some(rec => rec.meta.private)) {
-//         //     // 表示しようとしているページがlogin設定されているかどうかを判別する
-//         //     if (store.getters["auth/check"]) {
-//         //         // サインインしているのでそのまま表示
-//         //         next();
-//         //     } else {
-//         //         // サインインしていないのでエラーページを表示する
-//         //         next({ name: "error_unauthorized" });
-//         //     }
-//         //     // どちらでもなければそのまま表示
 //     } else {
 //         next();
 //     }
