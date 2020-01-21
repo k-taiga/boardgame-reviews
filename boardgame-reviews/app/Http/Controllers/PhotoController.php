@@ -16,8 +16,8 @@ class PhotoController extends Controller
     public function __construct()
     {
         // 認証に通す
-        // indexはauthに通らなくても使える
-        $this->middleware('auth')->except(['index']);
+        // authに通らなくても使えるもの
+        $this->middleware('auth')->except(['index','show']);
     }
 
     /**
