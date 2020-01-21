@@ -26,7 +26,7 @@ class Photo extends Model
         self::CREATED_AT, self::UPDATED_AT,
     ];
 
-    protected $perPage = 1;
+    protected $perPage = 20;
 
     public function __construct(array $attributes = [])
     {
