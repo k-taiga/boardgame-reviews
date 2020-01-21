@@ -24,7 +24,7 @@
 
 <script>
 import { OK } from '../util'
-import bdIcon from "./Icon";
+import bdIcon from "../components/Icon";
 
 export default {
   components: { bdIcon },
