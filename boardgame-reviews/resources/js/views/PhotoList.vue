@@ -1,5 +1,5 @@
 <template>
-    <div class="photo-list">
+    <div class="photo-list container">
         <div class="grid">
             <photo
                 class="grid__item"

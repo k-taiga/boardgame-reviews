@@ -156,7 +156,7 @@ var render = function() {
     ? _c(
         "div",
         {
-          staticClass: "photo-detail",
+          staticClass: "photo-detail container",
           class: { "photo-detail--column": _vm.fullWidth }
         },
         [
@@ -221,7 +221,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("h2", { staticClass: "photo-detail__title" }, [
       _c("i", { staticClass: "icon ion-md-chatboxes" }),
-      _vm._v("Comments\n    ")
+      _vm._v("Reviews\n    ")
     ])
   }
 ]
