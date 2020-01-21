@@ -90,6 +90,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -308,14 +319,18 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "photo" },
+    { staticClass: "photo card" },
     [
-      _c("figure", { staticClass: "photo__wrapper" }, [
+      _c("figure", { staticClass: "photo__wrapper image is-4by3" }, [
         _c("img", {
           staticClass: "photo__image",
           attrs: { src: _vm.item.url, alt: "Photo by " + _vm.item.owner.name }
         })
       ]),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
       _vm._v(" "),
       _c(
         "RouterLink",
@@ -342,18 +357,48 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "photo__username" }, [
-            _vm._v(
-              "\n            " + _vm._s(_vm.item.owner.name) + "\n        "
-            )
-          ])
+          _c("div", { staticClass: "photo__username" })
         ]
       )
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "media-content" }, [
+      _c("p", { staticClass: "title is-4" }, [
+        _vm._v("JELLY JELLY CAFE 新宿店")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "subtitle is-6" }, [_vm._v("@東京")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "content" }, [
+      _vm._v(
+        "\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n  Phasellus nec iaculis mauris. "
+      ),
+      _c("a", [_vm._v("@bulmaio")]),
+      _vm._v(".\n  "),
+      _c("a", { attrs: { href: "#" } }, [_vm._v("#css")]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "#" } }, [_vm._v("#responsive")]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("time", { attrs: { datetime: "2016-1-1" } }, [
+        _vm._v("11:09 PM - 1 Jan 2016")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -377,7 +422,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "photo-list" },
+    { staticClass: "photo-list container" },
     [
       _c(
         "div",

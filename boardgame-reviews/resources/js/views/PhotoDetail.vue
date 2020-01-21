@@ -1,5 +1,5 @@
 <template>
-  <div v-if="photo" class="photo-detail" :class="{ 'photo-detail--column': fullWidth }">
+  <div v-if="photo" class="photo-detail container" :class="{ 'photo-detail--column': fullWidth }">
     <figure class="photo-detail__pane photo-detail__image image" @click="fullWidth = ! fullWidth">
       <img :src="photo.url" alt="">
       <figcaption>Posted by {{ photo.owner.name }}</figcaption>
@@ -16,7 +16,7 @@
         <i class="icon ion-md-arrow-round-down"></i>Download
       </a>
       <h2 class="photo-detail__title">
-        <i class="icon ion-md-chatboxes"></i>Comments
+        <i class="icon ion-md-chatboxes"></i>Reviews
       </h2>
     </div>
   </div>
