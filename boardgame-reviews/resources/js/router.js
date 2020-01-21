@@ -17,6 +17,8 @@ const SystemError = () =>
     import(/* webpackChunkName:"Error" */ "./views/errors/System.vue");
 const PhotoList = () =>
     import(/* webpackChunkName:"PhotoList" */ "./views/PhotoList.vue");
+const PhotoDetail = () =>
+import(/* webpackChunkName:"PhotoDetail" */ "./views/PhotoDetail.vue");
 
 // vuex
 import store from "./store";
@@ -43,6 +45,11 @@ const router = new VueRouter({
                 const page = route.query.page;
                 return { page: /^[1-9][0-9]*$/.test(page) ? page * 1 : 1 };
             }
+        },
+        {
+            path: '/photos/:id',
+            component: PhotoDetail,
+            props: true
         },
         {
             path: "/home",
