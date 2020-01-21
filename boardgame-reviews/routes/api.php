@@ -22,3 +22,6 @@ Route::get('/photos', 'PhotoController@index')->name('photo.index');
 
 // 店舗詳細
 Route::get('/photos/{id}', 'PhotoController@show')->name('photo.show');
+
+// レビュー
+Route::post('/photos/{photo}/comments', 'PhotoController@addComment')->name('photo.comment');

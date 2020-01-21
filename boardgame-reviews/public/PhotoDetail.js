@@ -39,10 +39,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -76,19 +72,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 response = _context.sent;
+                console.log(response);
 
                 if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
-                  _context.next = 6;
+                  _context.next = 7;
                   break;
                 }
 
-                this.$store.commit('error/setCode', response.status);
+                this.$store.commit("error/setCode", response.status);
                 return _context.abrupt("return", false);
 
-              case 6:
+              case 7:
                 this.photo = response.data;
 
-              case 7:
+              case 8:
               case "end":
                 return _context.stop();
             }

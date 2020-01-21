@@ -20,11 +20,16 @@ class Photo extends Model
         'url',
     ];
 
-    /** JSONに含めない属性 */
-    protected $hidden = [
-        'user_id', 'filename',
-        self::CREATED_AT, self::UPDATED_AT,
+    /** JSONに含める属性 */
+    protected $visible = [
+        'id', 'owner', 'url', 'comments',
     ];
+
+    /** JSONに含めない属性 */
+    // protected $hidden = [
+    //     'user_id', 'filename',
+    //     self::CREATED_AT, self::UPDATED_AT,
+    // ];
 
     protected $perPage = 20;
 
@@ -84,5 +89,14 @@ class Photo extends Model
     public function getUrlAttribute()
     {
         return Storage::cloud()->url($this->attributes['filename']);
+    }
+
+    /**
+     * リレーションシップ - reviewsテーブル
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function reviews()
+    {
+        return $this->hasMany('App\Review')->orderBy('id', 'desc');
     }
 }
