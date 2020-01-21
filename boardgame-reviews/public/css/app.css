@@ -2257,7 +2257,7 @@ a.box:active {
 
 .button .icon:first-child:last-child {
   margin-left: calc(-0.5em - 1px);
-  margin-right: calc(-0.5em - 1px);
+  margin-right: calc(-0.1em - 1px);
 }
 
 .button:hover,
