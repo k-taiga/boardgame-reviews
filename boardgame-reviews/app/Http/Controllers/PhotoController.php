@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePhoto;
 use App\Photo;
 
+use App\Review;
+use App\Http\Requests\StoreReview;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +20,7 @@ class PhotoController extends Controller
     {
         // 認証に通す
         // authに通らなくても使えるもの
-        $this->middleware('auth')->except(['index','show']);
+        $this->middleware('auth')->except(['index', 'show']);
     }
 
     /**
@@ -76,8 +79,27 @@ class PhotoController extends Controller
      */
     public function show(string $id)
     {
-        $photo = Photo::where('id', $id)->with(['owner'])->first();
+        $photo = Photo::where('id', $id)->with(['owner', 'reviews.author'])->first();
 
         return $photo ?? abort(404);
+    }
+
+    /**
+     * レビュー投稿
+     * @param Photo $photo
+     * @param StoreReview $request
+     * @return \Illuminate\Http\Response
+     */
+    public function addReview(Photo $photo, StoreReview $request)
+    {
+        $review = new Review();
+        $review->content = $request->get('content');
+        $review->user_id = Auth::user()->id;
+        $photo->reviews()->save($review);
+
+        // authorリレーションをロードするためにコメントを取得しなおす
+        $new_review = Review::where('id', $review->id)->with('author')->first();
+
+        return response($new_review, 201);
     }
 }
