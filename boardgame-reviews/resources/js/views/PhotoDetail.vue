@@ -14,6 +14,21 @@
       <h2 class="photo-detail__title">
         <i class="icon ion-md-chatboxes"></i>Reviews
       </h2>
+      <ul v-if="photo.reviews.length > 0" class="photo-detail__reviews">
+        <li
+            v-for="review in photo.reviews"
+            :key="review.content"
+            class="photo-detail__commentItem"
+        >
+            <p class="photo-detail__commentBody">
+            {{ review.content }}
+            </p>
+            <p class="photo-detail__commentInfo">
+            {{ review.author.name }}
+            </p>
+        </li>
+        </ul>
+        <p v-else>No reviews yet.</p>
       <form @submit.prevent="addReview" class="form" v-if="isLogin">
         <div v-if="reviewErrors" class="errors">
           <ul v-if="reviewErrors.content">
@@ -58,7 +73,7 @@ export default {
     async fetchPhoto() {
       const response = await axios.get(`/api/photos/${this.id}`);
 
-      console.log(response);
+    //   console.log(response);
       if (response.status !== OK) {
         this.$store.commit("error/setCode", response.status);
         return false;
@@ -86,6 +101,8 @@ export default {
         this.$store.commit("error/setCode", response.status);
         return false;
       }
+
+      this.fetchPhoto();
     }
   },
   watch: {
