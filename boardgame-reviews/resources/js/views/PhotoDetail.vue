@@ -14,12 +14,23 @@
       <h2 class="photo-detail__title">
         <i class="icon ion-md-chatboxes"></i>Reviews
       </h2>
+      <form @submit.prevent="addReview" class="form" v-if="isLogin">
+        <div v-if="reviewErrors" class="errors">
+          <ul v-if="reviewErrors.content">
+            <li v-for="msg in reviewErrors.content" :key="msg">{{ msg }}</li>
+          </ul>
+        </div>
+        <textarea class="form__item" v-model="reviewContent"></textarea>
+        <div class="form__button">
+          <button type="submit" class="button button--inverse">レビューを投稿する</button>
+        </div>
+      </form>
     </div>
   </div>
 </template>
 
 <script>
-import { OK } from "../util";
+import { OK, CREATED, UNPROCESSABLE_ENTITY } from "../util";
 import bdIcon from "../components/Icon";
 
 export default {
@@ -33,8 +44,15 @@ export default {
   data() {
     return {
       photo: null,
-      fullWidth: false
+      fullWidth: false,
+      reviewContent: "",
+      reviewErrors: null
     };
+  },
+  computed: {
+    isLogin() {
+      return this.$store.getters["auth/check"];
+    }
   },
   methods: {
     async fetchPhoto() {
@@ -47,6 +65,27 @@ export default {
       }
 
       this.photo = response.data;
+    },
+    async addReview() {
+      const response = await axios.post(`/api/photos/${this.id}/reviews`, {
+        content: this.reviewContent
+      });
+
+      // バリデーションエラー
+      if (response.status === UNPROCESSABLE_ENTITY) {
+        this.reviewErrors = response.data.errors;
+        return false;
+      }
+
+      this.reviewContent = "";
+
+      this.reviewErroros = null;
+
+      // その他のエラー
+      if (response.status !== CREATED) {
+        this.$store.commit("error/setCode", response.status);
+        return false;
+      }
     }
   },
   watch: {
