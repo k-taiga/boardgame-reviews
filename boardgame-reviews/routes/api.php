@@ -24,4 +24,4 @@ Route::get('/photos', 'PhotoController@index')->name('photo.index');
 Route::get('/photos/{id}', 'PhotoController@show')->name('photo.show');
 
 // レビュー
-Route::post('/photos/{photo}/comments', 'PhotoController@addComment')->name('photo.comment');
+Route::post('/photos/{photo}/reviews', 'PhotoController@addReview')->name('photo.review');
