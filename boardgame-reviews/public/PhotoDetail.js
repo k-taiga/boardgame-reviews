@@ -50,6 +50,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -90,20 +105,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 response = _context.sent;
-                console.log(response);
 
                 if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
-                  _context.next = 7;
+                  _context.next = 6;
                   break;
                 }
 
                 this.$store.commit("error/setCode", response.status);
                 return _context.abrupt("return", false);
 
-              case 7:
+              case 6:
                 this.photo = response.data;
 
-              case 8:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -155,6 +169,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context2.abrupt("return", false);
 
               case 11:
+                this.fetchPhoto();
+
+              case 12:
               case "end":
                 return _context2.stop();
             }
@@ -275,6 +292,40 @@ var render = function() {
             ),
             _vm._v(" "),
             _vm._m(0),
+            _vm._v(" "),
+            _vm.photo.reviews.length > 0
+              ? _c(
+                  "ul",
+                  { staticClass: "photo-detail__reviews" },
+                  _vm._l(_vm.photo.reviews, function(review) {
+                    return _c(
+                      "li",
+                      {
+                        key: review.content,
+                        staticClass: "photo-detail__commentItem"
+                      },
+                      [
+                        _c("p", { staticClass: "photo-detail__commentBody" }, [
+                          _vm._v(
+                            "\n          " +
+                              _vm._s(review.content) +
+                              "\n          "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "photo-detail__commentInfo" }, [
+                          _vm._v(
+                            "\n          " +
+                              _vm._s(review.author.name) +
+                              "\n          "
+                          )
+                        ])
+                      ]
+                    )
+                  }),
+                  0
+                )
+              : _c("p", [_vm._v("No reviews yet.")]),
             _vm._v(" "),
             _vm.isLogin
               ? _c(
