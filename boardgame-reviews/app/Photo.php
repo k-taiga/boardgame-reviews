@@ -108,4 +108,13 @@ class Photo extends Model
     {
         return $this->belongsToMany('App\User', 'likes')->withTimestamps();
     }
+
+    /**
+     * アクセサ - likes_count
+     * @return int
+     */
+    public function getLikesCountAttribute()
+    {
+        return $this->likes->count();
+    }
 }
