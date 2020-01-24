@@ -1,10 +1,10 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
+    "/js/app.js": "/js/app.js?id=e472fd3202865c5e7b2b",
+    "/css/app.css": "/css/app.css?id=cdbf34476f4b001dcf41",
     "/Error.js": "/Error.js?id=5d3e99c29f6791e6841e",
     "/Home.js": "/Home.js?id=2dbd7e55d704ca44a5df",
-    "/PhotoDetail.js": "/PhotoDetail.js?id=01cbcfa371c23b9f059f",
+    "/PhotoDetail.js": "/PhotoDetail.js?id=f25ada175e3a0305d150",
     "/PhotoList.js": "/PhotoList.js?id=1c647b24e887696465a3",
-    "/SignIn.js": "/SignIn.js?id=66daebd991398e8d4a68",
-    "/SignUp.js": "/SignUp.js?id=06fb8b0468774a80ee19"
+    "/SignIn.js": "/SignIn.js?id=b278a798f9af23e52ec9",
+    "/SignUp.js": "/SignUp.js?id=b791bb1ca6c1e2d49fa7"
 }

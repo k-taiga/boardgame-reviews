@@ -1,9 +1,24 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "./views/Home.vue";
-import SignUp from "./views/SignUp.vue";
-import SignIn from "./views/SignIn.vue";
-import SystemError from "./views/errors/System.vue";
+
+// import Home from "./views/Home.vue";
+// import SignUp from "./views/SignUp.vue";
+// import SignIn from "./views/SignIn.vue";
+// import SystemError from "./views/errors/System.vue";
+
+// import PhotoList from "./views/PhotoList.vue";
+
+const Home = () => import(/* webpackChunkName:"Home" */ "./views/Home.vue");
+const SignUp = () =>
+    import(/* webpackChunkName:"SignUp" */ "./views/SignUp.vue");
+const SignIn = () =>
+    import(/* webpackChunkName:"SignIn" */ "./views/SignIn.vue");
+const SystemError = () =>
+    import(/* webpackChunkName:"Error" */ "./views/errors/System.vue");
+const PhotoList = () =>
+    import(/* webpackChunkName:"PhotoList" */ "./views/PhotoList.vue");
+const PhotoDetail = () =>
+import(/* webpackChunkName:"PhotoDetail" */ "./views/PhotoDetail.vue");
 
 // vuex
 import store from "./store";
@@ -12,16 +27,32 @@ import store from "./store";
 // これによって<RouterView />コンポーネントなどを使うことができる
 Vue.use(VueRouter);
 
-// パスとコンポーネントのマッピング
-// const routes = [];
-
 // VueRouterインスタンスをエクスポートする
 // app.jsでインポートするため
 const router = new VueRouter({
     mode: "history",
+    scrollBehavior () {
+        return { x: 0, y: 0 }
+    },
     routes: [
         {
             path: "/",
+            name: "index",
+            component: PhotoList,
+            props: route => {
+                // URL のクエリパラメータ page をページコンポーネントで取得しPhotoListのコンポーネントに返す
+                // routeからpageを取得し正規表現でチェック
+                const page = route.query.page;
+                return { page: /^[1-9][0-9]*$/.test(page) ? page * 1 : 1 };
+            }
+        },
+        {
+            path: '/photos/:id',
+            component: PhotoDetail,
+            props: true
+        },
+        {
+            path: "/home",
             name: "home",
             component: Home
         },
@@ -45,34 +76,24 @@ const router = new VueRouter({
     ]
 });
 
-// beforeEach の登録
+// ナビゲーションガード の登録
 // router.beforeEach((to, from, next) => {
+//     console.log(store.getters["auth/user"]);
 //     // 表示しようとしているページがlogin設定されているかどうかを判別する
 //     if (to.matched.some(rec => rec.meta.login)) {
-//         console.log(store.getters);
-//         console.log(store.getters["auth/check"]);
+//         console.log(to);
 //         if (store.getters["auth/user"]) {
 //             // if (store.getters["auth/check"]) {
 //             // ログインしているので(/)を表示
-//             // console.log(store.getters["auth/user"]);
-//             next({ name: "home" });
+//             console.log(store.getters["auth/user"]);
+//             next({ name: "index" });
 //             // next("/");
 //         } else {
 //             // ログインしていないのでそのまま表示する
-//             // console.log(store.getters["auth/user"]);
+//             console.log(store.getters["auth/user"]);
 //             next();
 //             // next({ name: "home" });
 //         }
-//         // } else if (to.matched.some(rec => rec.meta.private)) {
-//         //     // 表示しようとしているページがlogin設定されているかどうかを判別する
-//         //     if (store.getters["auth/check"]) {
-//         //         // サインインしているのでそのまま表示
-//         //         next();
-//         //     } else {
-//         //         // サインインしていないのでエラーページを表示する
-//         //         next({ name: "error_unauthorized" });
-//         //     }
-//         //     // どちらでもなければそのまま表示
 //     } else {
 //         next();
 //     }
