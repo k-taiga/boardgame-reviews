@@ -7,6 +7,8 @@ use Illuminate\Support\Arr;
 
 use Illuminate\Support\Facades\Storage;
 
+use Illuminate\Support\Facades\Auth;
+
 class Photo extends Model
 {
     /** プライマリキーの型 */
@@ -101,6 +103,7 @@ class Photo extends Model
     }
 
     /**
+<<<<<<< HEAD
      * リレーションシップ - usersテーブル
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -116,5 +119,28 @@ class Photo extends Model
     public function getLikesCountAttribute()
     {
         return $this->likes->count();
+=======
+     * アクセサ - likes_count
+     * @return int
+     */
+    public function getLikesCountAttribute()
+    {
+        return $this->likes->count();
+    }
+
+    /**
+     * アクセサ - liked_by_user
+     * @return boolean
+     */
+    public function getLikedByUserAttribute()
+    {
+        if (Auth::guest()) {
+            return false;
+        }
+
+        return $this->likes->contains(function ($user) {
+            return $user->id === Auth::user()->id;
+        });
+>>>>>>> dev/PhotoSubmit
     }
 }

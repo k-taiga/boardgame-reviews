@@ -65,6 +65,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -82,7 +97,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       photo: null,
       fullWidth: false,
       reviewContent: "",
-      reviewErrors: null
+      reviewErrors: null,
+      active: false
     };
   },
   computed: {
@@ -249,7 +265,7 @@ var render = function() {
               staticClass: "photo-detail__pane photo-detail__image image",
               on: {
                 click: function($event) {
-                  _vm.fullWidth = !_vm.fullWidth
+                  _vm.active = !_vm.active
                 }
               }
             },
@@ -271,7 +287,7 @@ var render = function() {
               },
               [
                 _c("bdIcon", { attrs: { name: "thumbs-up" } }),
-                _vm._v("12\n    ")
+                _vm._v("12\n      ")
               ],
               1
             ),
@@ -287,7 +303,7 @@ var render = function() {
               },
               [
                 _c("i", { staticClass: "icon ion-md-arrow-round-down" }),
-                _vm._v("Download\n    ")
+                _vm._v("Download\n      ")
               ]
             ),
             _vm._v(" "),
@@ -297,30 +313,68 @@ var render = function() {
               ? _c(
                   "ul",
                   { staticClass: "photo-detail__reviews" },
-                  _vm._l(_vm.photo.reviews, function(review, index) {
-                    return _c(
-                      "li",
-                      { key: index, staticClass: "photo-detail__commentItem" },
-                      [
-                        _c("p", { staticClass: "photo-detail__commentBody" }, [
-                          _vm._v(
-                            "\n          " +
-                              _vm._s(review.content) +
-                              "\n          "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "photo-detail__commentInfo" }, [
-                          _vm._v(
-                            "\n          " +
-                              _vm._s(review.author.name) +
-                              "\n          "
-                          )
-                        ])
-                      ]
-                    )
-                  }),
-                  0
+                  [
+                    _vm._v("\n<<<<<<< HEAD\n        "),
+                    _vm._l(_vm.photo.reviews, function(review, index) {
+                      return _c(
+                        "li",
+                        {
+                          key: index,
+                          staticClass: "photo-detail__commentItem"
+                        },
+                        [
+                          _c(
+                            "p",
+                            { staticClass: "photo-detail__commentBody" },
+                            [
+                              _vm._v(
+                                "\n            " +
+                                  _vm._s(review.content) +
+                                  "\n            "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "p",
+                            { staticClass: "photo-detail__commentInfo" },
+                            [
+                              _vm._v(
+                                "\n            " +
+                                  _vm._s(review.author.name) +
+                                  "\n            "
+                              )
+                            ]
+                          ),
+                          _vm._v("\n=======\n        ")
+                        ]
+                      )
+                    }),
+                    _vm._l(_vm.photo.reviews, function(review) {
+                      return _c(
+                        "li",
+                        {
+                          key: review.content,
+                          staticClass: "photo-detail__commentItem"
+                        },
+                        [
+                          _c(
+                            "p",
+                            { staticClass: "photo-detail__commentBody" },
+                            [_vm._v(_vm._s(review.content))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "p",
+                            { staticClass: "photo-detail__commentInfo" },
+                            [_vm._v(_vm._s(review.author.name))]
+                          ),
+                          _vm._v("\n>>>>>>> dev/PhotoSubmit\n        ")
+                        ]
+                      )
+                    })
+                  ],
+                  2
                 )
               : _c("p", [_vm._v("No reviews yet.")]),
             _vm._v(" "),
@@ -378,7 +432,31 @@ var render = function() {
                   ]
                 )
               : _vm._e()
-          ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "modal", class: { "is-active": _vm.active } },
+            [
+              _c("div", { staticClass: "modal-background" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-content" }, [
+                _c("p", { staticClass: "image is-4by3" }, [
+                  _c("img", { attrs: { src: _vm.photo.url, alt: "" } })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("button", {
+                staticClass: "modal-close is-large",
+                attrs: { "aria-label": "close" },
+                on: {
+                  click: function($event) {
+                    _vm.active = false
+                  }
+                }
+              })
+            ]
+          )
         ]
       )
     : _vm._e()
@@ -390,7 +468,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("h2", { staticClass: "photo-detail__title" }, [
       _c("i", { staticClass: "icon ion-md-chatboxes" }),
-      _vm._v("Reviews\n    ")
+      _vm._v("Reviews\n      ")
     ])
   },
   function() {
