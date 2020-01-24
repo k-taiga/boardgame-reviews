@@ -300,10 +300,7 @@ var render = function() {
                   _vm._l(_vm.photo.reviews, function(review, index) {
                     return _c(
                       "li",
-                      {
-                        key: review.index,
-                        staticClass: "photo-detail__commentItem"
-                      },
+                      { key: index, staticClass: "photo-detail__commentItem" },
                       [
                         _c("p", { staticClass: "photo-detail__commentBody" }, [
                           _vm._v(
