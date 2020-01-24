@@ -1,3 +1,10 @@
 {
-    "/js/app.js": "/js/app.js?id=f5f349e9db0ff6b1200f"
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/Error.js": "/Error.js?id=5d3e99c29f6791e6841e",
+    "/Home.js": "/Home.js?id=2dbd7e55d704ca44a5df",
+    "/PhotoDetail.js": "/PhotoDetail.js?id=01cbcfa371c23b9f059f",
+    "/PhotoList.js": "/PhotoList.js?id=1c647b24e887696465a3",
+    "/SignIn.js": "/SignIn.js?id=66daebd991398e8d4a68",
+    "/SignUp.js": "/SignUp.js?id=06fb8b0468774a80ee19"
 }
