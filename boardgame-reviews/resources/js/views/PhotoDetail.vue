@@ -17,7 +17,7 @@
       <ul v-if="photo.reviews.length > 0" class="photo-detail__reviews">
         <li
             v-for="(review, index) in photo.reviews"
-            :key="review.index"
+            :key="index"
             class="photo-detail__commentItem"
         >
             <p class="photo-detail__commentBody">
