@@ -1,6 +1,6 @@
 <template>
   <div v-if="photo" class="photo-detail container" :class="{ 'photo-detail--column': fullWidth }">
-    <figure class="photo-detail__pane photo-detail__image image" @click="fullWidth = ! fullWidth">
+    <figure class="photo-detail__pane photo-detail__image image" @click="active = ! active">
       <img :src="photo.url" alt />
       <figcaption>Posted by {{ photo.owner.name }}</figcaption>
     </figure>
@@ -15,20 +15,12 @@
         <i class="icon ion-md-chatboxes"></i>Reviews
       </h2>
       <ul v-if="photo.reviews.length > 0" class="photo-detail__reviews">
-        <li
-            v-for="review in photo.reviews"
-            :key="review.content"
-            class="photo-detail__commentItem"
-        >
-            <p class="photo-detail__commentBody">
-            {{ review.content }}
-            </p>
-            <p class="photo-detail__commentInfo">
-            {{ review.author.name }}
-            </p>
+        <li v-for="review in photo.reviews" :key="review.content" class="photo-detail__commentItem">
+          <p class="photo-detail__commentBody">{{ review.content }}</p>
+          <p class="photo-detail__commentInfo">{{ review.author.name }}</p>
         </li>
-        </ul>
-        <p v-else>No reviews yet.</p>
+      </ul>
+      <p v-else>No reviews yet.</p>
       <form @submit.prevent="addReview" class="form" v-if="isLogin">
         <div v-if="reviewErrors" class="errors">
           <ul v-if="reviewErrors.content">
@@ -40,6 +32,15 @@
           <button type="submit" class="button button--inverse">レビューを投稿する</button>
         </div>
       </form>
+    </div>
+    <div class="modal" :class="{ 'is-active': active }">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <p class="image is-4by3">
+          <img :src="photo.url" alt />
+        </p>
+      </div>
+      <button class="modal-close is-large" aria-label="close" @click="active = false"></button>
     </div>
   </div>
 </template>
@@ -61,7 +62,8 @@ export default {
       photo: null,
       fullWidth: false,
       reviewContent: "",
-      reviewErrors: null
+      reviewErrors: null,
+      active: false
     };
   },
   computed: {
@@ -73,7 +75,7 @@ export default {
     async fetchPhoto() {
       const response = await axios.get(`/api/photos/${this.id}`);
 
-    //   console.log(response);
+      //   console.log(response);
       if (response.status !== OK) {
         this.$store.commit("error/setCode", response.status);
         return false;

@@ -65,6 +65,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -82,7 +83,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       photo: null,
       fullWidth: false,
       reviewContent: "",
-      reviewErrors: null
+      reviewErrors: null,
+      active: false
     };
   },
   computed: {
@@ -249,7 +251,7 @@ var render = function() {
               staticClass: "photo-detail__pane photo-detail__image image",
               on: {
                 click: function($event) {
-                  _vm.fullWidth = !_vm.fullWidth
+                  _vm.active = !_vm.active
                 }
               }
             },
@@ -306,19 +308,11 @@ var render = function() {
                       },
                       [
                         _c("p", { staticClass: "photo-detail__commentBody" }, [
-                          _vm._v(
-                            "\n          " +
-                              _vm._s(review.content) +
-                              "\n          "
-                          )
+                          _vm._v(_vm._s(review.content))
                         ]),
                         _vm._v(" "),
                         _c("p", { staticClass: "photo-detail__commentInfo" }, [
-                          _vm._v(
-                            "\n          " +
-                              _vm._s(review.author.name) +
-                              "\n          "
-                          )
+                          _vm._v(_vm._s(review.author.name))
                         ])
                       ]
                     )
@@ -381,7 +375,31 @@ var render = function() {
                   ]
                 )
               : _vm._e()
-          ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "modal", class: { "is-active": _vm.active } },
+            [
+              _c("div", { staticClass: "modal-background" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-content" }, [
+                _c("p", { staticClass: "image is-4by3" }, [
+                  _c("img", { attrs: { src: _vm.photo.url, alt: "" } })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("button", {
+                staticClass: "modal-close is-large",
+                attrs: { "aria-label": "close" },
+                on: {
+                  click: function($event) {
+                    _vm.active = false
+                  }
+                }
+              })
+            ]
+          )
         ]
       )
     : _vm._e()
