@@ -297,11 +297,11 @@ var render = function() {
               ? _c(
                   "ul",
                   { staticClass: "photo-detail__reviews" },
-                  _vm._l(_vm.photo.reviews, function(review) {
+                  _vm._l(_vm.photo.reviews, function(review, index) {
                     return _c(
                       "li",
                       {
-                        key: review.content,
+                        key: review.index,
                         staticClass: "photo-detail__commentItem"
                       },
                       [
