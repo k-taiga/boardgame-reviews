@@ -17,14 +17,15 @@ class Photo extends Model
     /** IDの桁数 */
     const ID_LENGTH = 12;
 
-    /** JSONに含める属性 */
+    /** JSONに含めるアクセサ */
     protected $appends = [
-        'url',
+        'url', 'likes_count', 'liked_by_user',
     ];
 
     /** JSONに含める属性 */
     protected $visible = [
         'id', 'owner', 'url', 'reviews',
+        'likes_count', 'liked_by_user',
     ];
 
     /** JSONに含めない属性 */
@@ -75,6 +76,9 @@ class Photo extends Model
 
         return $id;
     }
+
+    // ここから下はリレーション
+    // withで呼び出す
     /**
      * リレーションシップ - usersテーブル
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -82,15 +86,6 @@ class Photo extends Model
     public function owner()
     {
         return $this->belongsTo('App\User', 'user_id', 'id', 'users');
-    }
-
-    /**
-     * アクセサ - url
-     * @return string
-     */
-    public function getUrlAttribute()
-    {
-        return Storage::cloud()->url($this->attributes['filename']);
     }
 
     /**
@@ -103,7 +98,6 @@ class Photo extends Model
     }
 
     /**
-<<<<<<< HEAD
      * リレーションシップ - usersテーブル
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -112,14 +106,18 @@ class Photo extends Model
         return $this->belongsToMany('App\User', 'likes')->withTimestamps();
     }
 
+    // ここから下はアクセサ　get~Attributeという形式
+    // このアクセサを利用するには、getとAttributeを取り除いたスネークケースになる
     /**
-     * アクセサ - likes_count
-     * @return int
+     * アクセサ - url
+     * @return string
      */
-    public function getLikesCountAttribute()
+    public function getUrlAttribute()
     {
-        return $this->likes->count();
-=======
+        return Storage::cloud()->url($this->attributes['filename']);
+    }
+
+    /**
      * アクセサ - likes_count
      * @return int
      */
@@ -141,6 +139,5 @@ class Photo extends Model
         return $this->likes->contains(function ($user) {
             return $user->id === Auth::user()->id;
         });
->>>>>>> dev/PhotoSubmit
     }
 }

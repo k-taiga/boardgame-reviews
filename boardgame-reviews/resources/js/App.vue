@@ -29,7 +29,8 @@ export default {
     // storeのステートを算出プロパティで参照しwatchで監視する
     computed: {
         errorCode() {
-            return this.$store.state.error.code;
+            const response = this.$store.state.error.code;
+            console.log(response);
         },
         apiStatus() {
             return this.$store.state.auth.apiStatus;

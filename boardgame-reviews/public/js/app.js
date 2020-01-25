@@ -2009,7 +2009,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   // storeのステートを算出プロパティで参照しwatchで監視する
   computed: {
     errorCode: function errorCode() {
-      return this.$store.state.error.code;
+      var response = this.$store.state.error.code;
+      console.log(response);
     },
     apiStatus: function apiStatus() {
       return this.$store.state.auth.apiStatus;

@@ -28,7 +28,7 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        $photos = Photo::with(['owner'])->orderBy(Photo::CREATED_AT, 'desc')->paginate();
+        $photos = Photo::with(['owner', 'likes'])->orderBy(Photo::CREATED_AT, 'desc')->paginate();
 
         return $photos;
     }
@@ -79,7 +79,7 @@ class PhotoController extends Controller
      */
     public function show(string $id)
     {
-        $photo = Photo::where('id', $id)->with(['owner', 'reviews.author'])->first();
+        $photo = Photo::where('id', $id)->with(['owner', 'reviews.author', 'likes'])->first();
 
         return $photo ?? abort(404);
     }
@@ -112,7 +112,7 @@ class PhotoController extends Controller
     {
         $photo = Photo::where('id', $id)->with('likes')->first();
 
-        if (! $photo) {
+        if (!$photo) {
             abort(404);
         }
 
@@ -132,7 +132,7 @@ class PhotoController extends Controller
     {
         $photo = Photo::where('id', $id)->with('likes')->first();
 
-        if (! $photo) {
+        if (!$photo) {
             abort(404);
         }
 
