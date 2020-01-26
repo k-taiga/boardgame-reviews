@@ -30,19 +30,19 @@ export default {
         };
     },
     // storeのステートを算出プロパティで参照しwatchで監視する
-    // computed: {
-    //     errorCode() {
-    //         const response = this.$store.state.error.code;
+    computed: {
+        //     errorCode() {
+        //         const response = this.$store.state.error.code;
 
-    //         // this.$router.push("/error", this.$store.state.error.code);
-    //         // if (response === INTERNAL_SERVER_ERROR) {
-    //         //     this.$router.push("/500");
-    //         // }
-    //     },
-    //     apiStatus() {
-    //         return this.$store.state.auth.apiStatus;
-    //     }
-    // },
+        //         // this.$router.push("/error", this.$store.state.error.code);
+        //         // if (response === INTERNAL_SERVER_ERROR) {
+        //         //     this.$router.push("/500");
+        //         // }
+        //     },
+        apiStatus() {
+            return this.$store.state.auth.apiStatus;
+        }
+    },
     watch: {
         //     errorCode: {
         //         async handler(val) {
@@ -81,6 +81,7 @@ export default {
     methods: {
         async signOut() {
             await this.$store.dispatch("auth/logout");
+
             if (this.apiStatus) {
                 this.$router.push("/sign_in");
             }
