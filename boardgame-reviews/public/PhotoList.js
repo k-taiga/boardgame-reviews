@@ -312,7 +312,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 this.photos = this.photos.map(function (photo) {
                   if (photo.id === response.data.photo_id) {
                     photo.likes_count -= 1;
-                    photo.liked_by_user = true;
+                    photo.liked_by_user = false;
                   }
 
                   return photo;

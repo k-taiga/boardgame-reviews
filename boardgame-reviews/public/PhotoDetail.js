@@ -276,7 +276,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.next = 2;
-                return axios["delete"]("/api/photos/".concat(this.id, "/like"));
+                return axios["delete"]("/api/photos/".concat(this.id, "/unlike"));
 
               case 2:
                 response = _context4.sent;

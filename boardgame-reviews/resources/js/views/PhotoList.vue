@@ -92,7 +92,7 @@ export default {
             this.photos = this.photos.map(photo => {
                 if (photo.id === response.data.photo_id) {
                     photo.likes_count -= 1;
-                    photo.liked_by_user = true;
+                    photo.liked_by_user = false;
                 }
 
                 return photo;

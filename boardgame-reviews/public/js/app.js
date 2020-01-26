@@ -4247,8 +4247,6 @@ var render = function() {
       _c(
         "main",
         [
-          _c("message"),
-          _vm._v(" "),
           _c(
             "transition",
             { attrs: { name: "fade", mode: "out-in" } },

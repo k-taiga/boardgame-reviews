@@ -159,7 +159,9 @@ export default {
             this.photo.liked_by_user = true;
         },
         async unlike() {
-            const response = await axios.delete(`/api/photos/${this.id}/like`);
+            const response = await axios.delete(
+                `/api/photos/${this.id}/unlike`
+            );
 
             if (response.status !== OK) {
                 this.$store.commit("error/setCode", response.status);
