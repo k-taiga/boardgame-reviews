@@ -2013,18 +2013,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   // storeのステートを算出プロパティで参照しwatchで監視する
-  // computed: {
-  //     errorCode() {
-  //         const response = this.$store.state.error.code;
-  //         // this.$router.push("/error", this.$store.state.error.code);
-  //         // if (response === INTERNAL_SERVER_ERROR) {
-  //         //     this.$router.push("/500");
-  //         // }
-  //     },
-  //     apiStatus() {
-  //         return this.$store.state.auth.apiStatus;
-  //     }
-  // },
+  computed: {
+    //     errorCode() {
+    //         const response = this.$store.state.error.code;
+    //         // this.$router.push("/error", this.$store.state.error.code);
+    //         // if (response === INTERNAL_SERVER_ERROR) {
+    //         //     this.$router.push("/500");
+    //         // }
+    //     },
+    apiStatus: function apiStatus() {
+      return this.$store.state.auth.apiStatus;
+    }
+  },
   watch: {
     //     errorCode: {
     //         async handler(val) {
