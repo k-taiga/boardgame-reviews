@@ -13,12 +13,18 @@ const SignUp = () =>
     import(/* webpackChunkName:"SignUp" */ "./views/SignUp.vue");
 const SignIn = () =>
     import(/* webpackChunkName:"SignIn" */ "./views/SignIn.vue");
-const SystemError = () =>
-    import(/* webpackChunkName:"Error" */ "./views/errors/System.vue");
 const PhotoList = () =>
     import(/* webpackChunkName:"PhotoList" */ "./views/PhotoList.vue");
 const PhotoDetail = () =>
-import(/* webpackChunkName:"PhotoDetail" */ "./views/PhotoDetail.vue");
+    import(/* webpackChunkName:"PhotoDetail" */ "./views/PhotoDetail.vue");
+const SystemError = () =>
+    import(/* webpackChunkName:"SystemError" */ "./views/errors/System.vue");
+const NotFoundError = () =>
+    import(
+        /* webpackChunkName:"NotFoundError" */ "./views/errors/NotFound.vue"
+    );
+const ErrorModal = () =>
+    import(/* webpackChunkName:"ErrorModal" */ "./views/errors/ErrorModal.vue");
 
 // vuex
 import store from "./store";
@@ -31,8 +37,8 @@ Vue.use(VueRouter);
 // app.jsでインポートするため
 const router = new VueRouter({
     mode: "history",
-    scrollBehavior () {
-        return { x: 0, y: 0 }
+    scrollBehavior() {
+        return { x: 0, y: 0 };
     },
     routes: [
         {
@@ -47,7 +53,7 @@ const router = new VueRouter({
             }
         },
         {
-            path: '/photos/:id',
+            path: "/photos/:id",
             component: PhotoDetail,
             props: true
         },
@@ -72,6 +78,16 @@ const router = new VueRouter({
             path: "/500",
             name: "system_error",
             component: SystemError
+        },
+        // *にしてるのでルート定義以外は全部NotFoundに行く
+        {
+            path: "*",
+            component: NotFoundError
+        },
+        // *にしてるのでルート定義以外は全部NotFoundに行く
+        {
+            path: "/error",
+            component: ErrorModal
         }
     ]
 });

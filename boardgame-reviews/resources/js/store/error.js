@@ -2,9 +2,13 @@ const state = {
     code: null
 };
 
+const getters = {
+    code: state => state.code
+};
+
 const mutations = {
     setCode(state, code) {
-        state.code;
+        state.code = code;
     }
 };
 
