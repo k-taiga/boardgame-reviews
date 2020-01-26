@@ -11,13 +11,13 @@
             <p class="title is-4">JELLY JELLY CAFE 新宿店</p>
             <p class="subtitle is-6">@東京</p>
         </div>
-    <div class="content">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-      <a href="#">#css</a> <a href="#">#responsive</a>
-      <br>
-      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-    </div>
+        <div class="content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+            nec iaculis mauris. <a>@bulmaio</a>. <a href="#">#css</a>
+            <a href="#">#responsive</a>
+            <br />
+            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+        </div>
         <RouterLink
             class="photo__overlay"
             :to="`/photos/${item.id}`"
@@ -26,14 +26,12 @@
             <div class="photo__controls">
                 <button
                     class="photo__action photo__action--like"
-                    title="Like shop"
+                    :class="{ 'photo__action--liked': item.liked_by_user }"
+                    title="Like photo"
+                    @click.prevent="like"
                 >
-                    <bdIcon name="thumbs-up"></bdIcon>12
-                    <!-- <i class="icon ion-md-heart"></i>12 -->
+                    <bdIcon name="thumbs-up"></bdIcon>{{ item.likes_count }}
                 </button>
-            </div>
-            <div class="photo__username">
-                <!-- {{ item.owner.name }} -->
             </div>
         </RouterLink>
     </div>
@@ -47,6 +45,14 @@ export default {
         item: {
             type: Object,
             required: true
+        }
+    },
+    methods: {
+        like() {
+            this.$emit("like", {
+                id: this.item.id,
+                liked: this.item.liked_by_user
+            });
         }
     }
 };

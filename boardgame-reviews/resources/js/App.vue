@@ -8,6 +8,7 @@
             </transition>
         </main>
         <bdFooter></bdFooter>
+        <errorModal></errorModal>
     </div>
 </template>
 
@@ -15,36 +16,51 @@
 import bdNavbar from "./components/Navbar.vue";
 import bdFooter from "./components/Footer.vue";
 import message from "./components/Message.vue";
+import errorModal from "./views/errors/ErrorModal.vue";
+import store from "./store";
 
-import { INTERNAL_SERVER_ERROR } from "./util";
+import { NOT_FOUND, UNAUTHORIZED, INTERNAL_SERVER_ERROR } from "./util";
 
 export default {
     name: "app",
-    components: { bdNavbar, bdFooter, message },
+    components: { bdNavbar, bdFooter, message, errorModal },
     data() {
         return {
             user: null
         };
     },
     // storeのステートを算出プロパティで参照しwatchで監視する
-    computed: {
-        errorCode() {
-            const response = this.$store.state.error.code;
-            console.log(response);
-        },
-        apiStatus() {
-            return this.$store.state.auth.apiStatus;
-        }
-    },
+    // computed: {
+    //     errorCode() {
+    //         const response = this.$store.state.error.code;
+
+    //         // this.$router.push("/error", this.$store.state.error.code);
+    //         // if (response === INTERNAL_SERVER_ERROR) {
+    //         //     this.$router.push("/500");
+    //         // }
+    //     },
+    //     apiStatus() {
+    //         return this.$store.state.auth.apiStatus;
+    //     }
+    // },
     watch: {
-        errorCode: {
-            handler(val) {
-                if (val === INTERNAL_SERVER_ERROR) {
-                    this.$router.push("/500");
-                }
-            },
-            immediate: true
-        },
+        //     errorCode: {
+        //         async handler(val) {
+        //             if (val === INTERNAL_SERVER_ERROR) {
+        //                 this.$router.push("/500");
+        //             } else if (val === UNAUTHORIZED) {
+        //                 // トークンをリフレッシュ
+        //                 await axios.get("/api/refresh-token");
+        //                 // ストアのuserをクリア
+        //                 this.$store.commit("auth/setUser", null);
+        //                 // ログイン画面へ
+        //                 this.$router.push("/login");
+        //             } else if (val === NOT_FOUND) {
+        //                 this.$router.push("/not-found");
+        //             }
+        //         },
+        //         immediate: true
+        //     },
         $route(to, from) {
             this.$store.commit("error/setCode", null);
             if (to.path == "/sign_in" || to.path == "/sign_up") {
