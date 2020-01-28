@@ -42,17 +42,18 @@ class Scraping extends Command
         echo 'スクリプトを実行します。' . PHP_EOL;
 
         $crawler = Goutte::request('GET', 'https://bodoge.hoobby.net/spaces');
+
         $crawler->filter('#result-spaces > li')->each(function ($li) {
             echo 'タイトル：' . $li->filter('div > div.main > div.title > a')->text()."\n";
         });
-#result-spaces > li:nth-child(1)
-        #result-spaces > li:nth-child(1) > div > div.main > div.title > a
+
+        // 住所のselector
+        #result-spaces > li > div > div.main > div.title > div.address
+
+        // 一個だけ取得したい場合
         // $title = $crawler->filter('#result-spaces > li:nth-child(1) > div > div.main > div.title > a')->text();
 
         // dump($title);
-        #result-spaces > div.hide
-        #result-spaces > li:nth-child(15) > div > div.main > div.title > a
-        #result-spaces > li:nth-child(15) > div > div.main > div.title > div.address
         echo 'スクリプトを終了します。' . PHP_EOL;
     }
 }
