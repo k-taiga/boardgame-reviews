@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Goutte;
 
 class Scraping extends Command
 {
@@ -38,6 +39,20 @@ class Scraping extends Command
     public function handle()
     {
         //
-        echo 'スクリプトを実行しました。' . PHP_EOL;
+        echo 'スクリプトを実行します。' . PHP_EOL;
+
+        $crawler = Goutte::request('GET', 'https://bodoge.hoobby.net/spaces');
+        $crawler->filter('#result-spaces > li')->each(function ($li) {
+            echo 'タイトル：' . $li->filter('div > div.main > div.title > a')->text()."\n";
+        });
+#result-spaces > li:nth-child(1)
+        #result-spaces > li:nth-child(1) > div > div.main > div.title > a
+        // $title = $crawler->filter('#result-spaces > li:nth-child(1) > div > div.main > div.title > a')->text();
+
+        // dump($title);
+        #result-spaces > div.hide
+        #result-spaces > li:nth-child(15) > div > div.main > div.title > a
+        #result-spaces > li:nth-child(15) > div > div.main > div.title > div.address
+        echo 'スクリプトを終了します。' . PHP_EOL;
     }
 }
