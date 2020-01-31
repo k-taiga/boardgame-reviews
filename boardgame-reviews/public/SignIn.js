@@ -261,7 +261,11 @@ var render = function() {
       [
         _c("input", {
           staticClass: "input",
-          attrs: { type: _vm.type, placeholder: _vm.placeholder },
+          attrs: {
+            type: _vm.type,
+            placeholder: _vm.placeholder,
+            name: _vm.type
+          },
           domProps: { value: _vm.value },
           on: { input: _vm.input }
         }),
