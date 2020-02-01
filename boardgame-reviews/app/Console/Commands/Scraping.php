@@ -41,10 +41,10 @@ class Scraping extends Command
         //
         echo 'スクリプトを実行します。' . PHP_EOL;
 
-        $crawler = Goutte::request('GET', 'https://bodoge.hoobby.net/spaces');
+        $crawler = Goutte::request('GET', 'https://bodoge.hoobby.net/spaces/prefecture/13');
 
         $crawler->filter('#result-spaces > li')->each(function ($li) {
-            echo 'タイトル：' . $li->filter('div > div.main > div.title > a')->text()."\n";
+            echo 'タイトル：' . $li->filter('div > div.main > div.title > a')->text() . "\n";
         });
 
         // 住所のselector
