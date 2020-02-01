@@ -38,8 +38,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "photoForm",
@@ -111,35 +109,36 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 4:
                 response = _context.sent;
+                console.log(response);
 
                 if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_1__["UNPROCESSABLE_ENTITY"])) {
-                  _context.next = 8;
+                  _context.next = 9;
                   break;
                 }
 
                 this.errors = response.data.errors;
                 return _context.abrupt("return", false);
 
-              case 8:
+              case 9:
                 this.reset();
                 this.$emit("showForm");
 
                 if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["CREATED"])) {
-                  _context.next = 13;
+                  _context.next = 14;
                   break;
                 }
 
                 this.$store.commit("error/setCode", response.status);
                 return _context.abrupt("return", false);
 
-              case 13:
+              case 14:
                 this.$store.commit("message/setContent", {
                   content: "写真が投稿されました！",
                   timeout: 6000
                 });
                 this.$router.push("/");
 
-              case 15:
+              case 16:
               case "end":
                 return _context.stop();
             }
@@ -288,7 +287,7 @@ var staticRenderFns = [
       _c(
         "button",
         { staticClass: "button button--inverse", attrs: { type: "submit" } },
-        [_vm._v("\n                submit\n            ")]
+        [_vm._v("submit")]
       )
     ])
   }

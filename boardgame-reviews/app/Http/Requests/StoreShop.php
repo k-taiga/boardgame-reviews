@@ -24,6 +24,7 @@ class StoreShop extends FormRequest
     public function rules()
     {
         return [
+            'photo' => 'required|file|mimes:jpg,jpeg,png,gif',
             'shop_name' => 'required|max:255',
             'address' => 'required|max:255',
             'bussiness_hours' => 'required|max:255',

@@ -19,6 +19,7 @@ Route::post('/photos', 'PhotoController@create')->name('photo.create');
 
 // 店舗一覧
 Route::get('/photos', 'PhotoController@index')->name('photo.index');
+// Route::get('/shops', 'ShopController@index')->name('shop.index');
 
 // 店舗詳細
 Route::get('/photos/{id}', 'PhotoController@show')->name('photo.show');
