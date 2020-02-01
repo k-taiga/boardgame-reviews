@@ -19,7 +19,7 @@ class Photo extends Model
 
     /** JSONに含めるアクセサ */
     protected $appends = [
-        'id', 'url', 'likes_count', 'liked_by_user',
+        'url', 'likes_count', 'liked_by_user',
     ];
 
     /** JSONに含める属性 */
@@ -83,13 +83,9 @@ class Photo extends Model
      * リレーションシップ - usersテーブル
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    // public function owner()
-    // {
-    //     return $this->belongsTo('App\Shop', 'shop_id', 'id', 'shops');
-    // }
     public function owner()
     {
-        return $this->belongsTo('App\User', 'user_id', 'id', 'user');
+        return $this->belongsTo('App\User', 'user_id', 'id', 'users');
     }
 
     /**
@@ -102,7 +98,7 @@ class Photo extends Model
     }
 
     /**
-     * リレーションシップ - likesテーブル
+     * リレーションシップ - usersテーブル
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function likes()
@@ -143,14 +139,5 @@ class Photo extends Model
         return $this->likes->contains(function ($user) {
             return $user->id === Auth::user()->id;
         });
-    }
-
-    /**
-     * アクセサ - url
-     * @return string
-     */
-    public function getIdAttribute()
-    {
-        return $this->attributes['id'] = $this->getRandomId();
     }
 }

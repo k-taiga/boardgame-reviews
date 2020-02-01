@@ -40,6 +40,7 @@ class PhotoController extends Controller
      */
     public function create(StorePhoto $request)
     {
+
         // 写真の拡張子を取得
         $extension = $request->photo->extension();
 
