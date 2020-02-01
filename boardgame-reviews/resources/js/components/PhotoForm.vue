@@ -1,6 +1,6 @@
 <template>
   <div v-show="value" class="photo-form">
-    <h2 class="title">Submit a photo</h2>
+    <h2 class="title">Submit a shop</h2>
     <form class="form" @submit.prevent="submit">
       <div class="errors" v-if="errors">
         <ul v-if="errors.photo">
@@ -11,6 +11,8 @@
       <output class="form__output" v-if="preview">
         <img :src="preview" alt />
       </output>
+      <bdTextField placeholder="店舗名" v-model="shopname"></bdTextField>
+      <bdTextField placeholder="住所" v-model="address"></bdTextField>
       <div class="form__button">
         <button type="submit" class="button button--inverse">submit</button>
       </div>
@@ -20,13 +22,17 @@
 
 <script>
 import { CREATED, UNPROCESSABLE_ENTITY } from "../util";
+import bdTextField from "./TextField";
 export default {
   name: "photoForm",
+  components: { bdTextField },
   data() {
     return {
       preview: null,
       photo: null,
-      errors: null
+      errors: null,
+      shopname: null,
+      address: null
     };
   },
   props: {
@@ -76,9 +82,9 @@ export default {
     async submit() {
       const formData = new FormData();
       formData.append("photo", this.photo);
+      formData.append("photo", this.shopname);
+      formData.append("photo", this.address);
       const response = await axios.post("/api/photos", formData);
-
-      console.log(response);
 
       if (response.status === UNPROCESSABLE_ENTITY) {
         this.errors = response.data.errors;
