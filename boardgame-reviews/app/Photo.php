@@ -14,7 +14,7 @@ class Photo extends Model
     /** プライマリキーの型 */
     protected $keyType = 'string';
 
-    /** IDのみ代入され内容にする*/
+    /** IDのみ代入されないようにする*/
     protected $guarded = ['id'];
 
     /** IDの桁数 */
@@ -43,9 +43,9 @@ class Photo extends Model
     {
         parent::__construct($attributes);
 
-        if (!Arr::get($this->attributes, 'id')) {
-            $this->setId();
-        }
+        // if (!Arr::get($this->attributes, 'id')) {
+        //     $this->setId();
+        // }
     }
 
     /**
