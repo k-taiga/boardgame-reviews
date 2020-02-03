@@ -14,6 +14,9 @@ class Photo extends Model
     /** プライマリキーの型 */
     protected $keyType = 'string';
 
+    /** IDのみ代入され内容にする*/
+    protected $guarded = ['id'];
+
     /** IDの桁数 */
     const ID_LENGTH = 12;
 
