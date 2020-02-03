@@ -43,6 +43,13 @@ class PhotoController extends Controller
         // 写真の拡張子を取得
         $extension = $request->photo->extension();
 
+<<<<<<< HEAD
+=======
+        $photo = new Photo();
+        Debugbar::info($photo);
+
+        // clock($photo);
+>>>>>>> 82ffb36b85b679adbb6b030c8dc24cd07db89dfc
 
         $photo = new Photo();
         clock()->info("request {$photo} logged in!");
