@@ -50,10 +50,19 @@ class ShopController extends Controller
 
         // clock($request);
         // clock()->info("{$shop}が logに出ています！");
-        $shop = $request->all();
+        $photo = Photo::where(
+            'id',
+            '4KtCDo-ulGOL'
+        )->first();
+        clock($photo);
+        // $shop->photo_id = $request->photo;
+        $shop->shop_name = $request->shop_name;
+        $shop->address = $request->address;
+        $shop->photo_id = $photo->id;
         // clock()->info("{$shop}が logに出ています！");
         clock($shop);
-        $shop->photos()->save();
+        $shop->save();
+        $shop->photos()->save($photo);
 
         // Shop::new()->photos()->createMany([$request->all()]);
 

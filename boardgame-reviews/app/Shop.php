@@ -22,6 +22,13 @@ class Shop extends Model
 
     protected $perPage = 20;
 
+    const HOUR = 10;
+
+    protected $attributes = [
+        // 定数を設定
+        'bussiness_hours' => self::HOUR,
+    ];
+
     // ここから下はリレーション
     // withで呼び出す
     /**

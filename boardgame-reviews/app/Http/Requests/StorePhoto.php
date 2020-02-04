@@ -25,8 +25,6 @@ class StorePhoto extends FormRequest
     {
         return [
             'photo' => 'required|file|mimes:jpg,jpeg,png,gif',
-            'shopname' => 'required|max:255',
-            'address' => 'required|max:255',
         ];
     }
 }
