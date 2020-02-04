@@ -43,9 +43,9 @@ class Photo extends Model
     {
         parent::__construct($attributes);
 
-        // if (!Arr::get($this->attributes, 'id')) {
-        //     $this->setId();
-        // }
+        if (!Arr::get($this->attributes, 'id')) {
+            $this->setId();
+        }
     }
 
     /**

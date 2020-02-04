@@ -42,13 +42,18 @@ class ShopController extends Controller
     public function create(StoreShop $request)
     {
         // 写真の拡張子を取得
-        $extension = $request->photo->extension();
+        // $extension = $request->photo->extension();
 
         // $photo = new Photo();
 
         $shop = new Shop();
 
-        $shop->photos()->save($request->all());
+        // clock($request);
+        // clock()->info("{$shop}が logに出ています！");
+        $shop = $request->all();
+        // clock()->info("{$shop}が logに出ています！");
+        clock($shop);
+        $shop->photos()->save();
 
         // Shop::new()->photos()->createMany([$request->all()]);
 

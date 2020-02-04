@@ -11,12 +11,12 @@ class Shop extends Model
 {
     /** JSONに含めるアクセサ */
     protected $appends = [
-        'url', 'likes_count', 'liked_by_user',
+        'likes_count', 'liked_by_user',
     ];
 
     /** JSONに含める属性 */
     protected $visible = [
-        'id', 'owner', 'url', 'reviews',
+        'id', 'owner', 'reviews',
         'likes_count', 'liked_by_user',
     ];
 
