@@ -3,8 +3,11 @@
     <h2 class="title">Submit a shop</h2>
     <form class="form" @submit.prevent="submit">
       <div class="errors" v-if="errors">
-        <ul v-if="errors.photo">
-          <li v-for="msg in errors.photo" :key="msg">{{ msg }}</li>
+        <ul v-if="errors.shop_name">
+          <li v-for="msg in errors.shop_name" :key="msg">{{ msg }}</li>
+        </ul>
+        <ul v-if="errors.address">
+          <li v-for="msg in errors.address" :key="msg">{{ msg }}</li>
         </ul>
       </div>
       <input class="form__item" type="file" @change="onFileChange" />
@@ -82,9 +85,10 @@ export default {
     async submit() {
       const formData = new FormData();
       formData.append("photo", this.photo);
-      formData.append("photo", this.shopname);
-      formData.append("photo", this.address);
-      const response = await axios.post("/api/photos", formData);
+      formData.append("shop_name", this.shopname);
+      formData.append("address", this.address);
+    //   const response = await axios.post("/api/photos", formData);
+      const response = await axios.post("/api/shops", formData);
 
       if (response.status === UNPROCESSABLE_ENTITY) {
         this.errors = response.data.errors;
