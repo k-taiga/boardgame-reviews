@@ -42,20 +42,20 @@ class ShopController extends Controller
     public function create(StoreShop $request)
     {
         // 写真の拡張子を取得
-        // $extension = $request->photo->extension();
-
-        // $photo = new Photo();
+        $extension = $request->photo->extension();
+        $photo = new Photo();
+        $photo->filename = $photo->id . '.' . $extension;
+        // $photo = Photo::where(
+        //     'id',
+        //     '4KtCDo-ulGOL'
+        // )->first();
+        $photo->save();
+        // S3にファイルを保存する publicで公開
+        Storage::cloud()
+            ->putFileAs('', $request->photo, $photo->filename, 'public');
 
         $shop = new Shop();
-
-        // clock($request);
-        // clock()->info("{$shop}が logに出ています！");
-        $photo = Photo::where(
-            'id',
-            '4KtCDo-ulGOL'
-        )->first();
         clock($photo);
-        // $shop->photo_id = $request->photo;
         $shop->shop_name = $request->shop_name;
         $shop->address = $request->address;
         $shop->photo_id = $photo->id;
@@ -64,14 +64,8 @@ class ShopController extends Controller
         $shop->save();
         $shop->photos()->save($photo);
 
-        // Shop::new()->photos()->createMany([$request->all()]);
-
         // インスタンス生成時に割り振られたランダムなID値と本来の拡張子を組み合わせてファイル名とする
-        // $photo->filename = $photo->id . '.' . $extension;
 
-        // // S3にファイルを保存する publicで公開
-        // Storage::cloud()
-        //     ->putFileAs('', $request->photo, $photo->filename, 'public');
 
         // // データベースエラー時にファイル削除を行うため
         // // トランザクションを利用する
