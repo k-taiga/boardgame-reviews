@@ -3,6 +3,9 @@
     <h2 class="title">Submit a shop</h2>
     <form class="form" @submit.prevent="submit">
       <div class="errors" v-if="errors">
+        <ul v-if="errors.photo">
+          <li v-for="msg in errors.photo" :key="msg">{{ msg }}</li>
+        </ul>
         <ul v-if="errors.shop_name">
           <li v-for="msg in errors.shop_name" :key="msg">{{ msg }}</li>
         </ul>
