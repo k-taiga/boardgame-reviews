@@ -53,27 +53,27 @@ class ShopController extends Controller
         // Shop::new()->photos()->createMany([$request->all()]);
 
         // インスタンス生成時に割り振られたランダムなID値と本来の拡張子を組み合わせてファイル名とする
-        $photo->filename = $photo->id . '.' . $extension;
+        // $photo->filename = $photo->id . '.' . $extension;
 
-        // S3にファイルを保存する publicで公開
-        Storage::cloud()
-            ->putFileAs('', $request->photo, $photo->filename, 'public');
+        // // S3にファイルを保存する publicで公開
+        // Storage::cloud()
+        //     ->putFileAs('', $request->photo, $photo->filename, 'public');
 
-        // データベースエラー時にファイル削除を行うため
-        // トランザクションを利用する
-        DB::beginTransaction();
+        // // データベースエラー時にファイル削除を行うため
+        // // トランザクションを利用する
+        // DB::beginTransaction();
 
-        try {
-            // Auth::user()->photos()->save($photo);
-            $shop = new Shop();
-            $shop->photos()->save($photo);
-            DB::commit();
-        } catch (\Exception $exception) {
-            DB::rollBack();
-            // DBとの不整合を避けるためアップロードしたファイルを削除
-            Storage::cloud()->delete($photo->filename);
-            throw $exception;
-        }
+        // try {
+        //     // Auth::user()->photos()->save($photo);
+        //     $shop = new Shop();
+        //     $shop->photos()->save($photo);
+        //     DB::commit();
+        // } catch (\Exception $exception) {
+        //     DB::rollBack();
+        //     // DBとの不整合を避けるためアップロードしたファイルを削除
+        //     Storage::cloud()->delete($photo->filename);
+        //     throw $exception;
+        // }
 
         // リソースの新規作成なので
         // レスポンスコードは201(CREATED)を返却する

@@ -41,6 +41,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -113,10 +116,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 formData = new FormData();
                 formData.append("photo", this.photo);
-                formData.append("photo", this.shopname);
-                formData.append("photo", this.address);
+                formData.append("shop_name", this.shopname);
+                formData.append("address", this.address); //   const response = await axios.post("/api/photos", formData);
+
                 _context.next = 6;
-                return axios.post("/api/photos", formData);
+                return axios.post("/api/shops", formData);
 
               case 6:
                 response = _context.sent;
@@ -311,10 +315,20 @@ var render = function() {
         [
           _vm.errors
             ? _c("div", { staticClass: "errors" }, [
-                _vm.errors.photo
+                _vm.errors.shop_name
                   ? _c(
                       "ul",
-                      _vm._l(_vm.errors.photo, function(msg) {
+                      _vm._l(_vm.errors.shop_name, function(msg) {
+                        return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
+                      }),
+                      0
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.errors.address
+                  ? _c(
+                      "ul",
+                      _vm._l(_vm.errors.address, function(msg) {
                         return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
                       }),
                       0
