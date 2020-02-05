@@ -89,7 +89,7 @@ class Photo extends Model
     public function owner()
     {
         // return $this->belongsTo('App\User', 'user_id', 'id', 'users');
-        return $this->belongsTo('App\Shop', 'shop_id', 'id', 'users');
+        return $this->belongsTo('App\Shop', 'shop_id', 'id', 'shops');
     }
 
     /**
