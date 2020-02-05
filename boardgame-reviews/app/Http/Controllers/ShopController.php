@@ -50,22 +50,21 @@ class ShopController extends Controller
         //     'id',
         //     '4KtCDo-ulGOL'
         // )->first();
-        $photo->save();
         // S3にファイルを保存する publicで公開
-        Storage::cloud()
-            ->putFileAs('', $request->photo, $photo->filename, 'public');
+        // Storage::cloud()
+        //     ->putFileAs('', $request->photo, $photo->filename, 'public');
+        // $photo->save();
 
         $shop = new Shop();
-        clock($photo);
+        // clock($photo);
         $shop->shop_name = $request->shop_name;
         $shop->address = $request->address;
-        $shop->photo_id = $photo->id;
+        // $shop->photo_id = $photo->id;
         // clock()->info("{$shop}が logに出ています！");
-        clock($shop);
-        // $shop->save();
+        $shop->save();
+        // clock($shop);
+        $photo->shop_id = $shop->id;
         $shop->photos()->save($photo);
-
-
 
         // // データベースエラー時にファイル削除を行うため
         // // トランザクションを利用する
