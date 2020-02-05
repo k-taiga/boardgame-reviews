@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DropColumnShopIdColumn extends Migration
+class ChangePhotosTableColumnShopId extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,9 @@ class DropColumnShopIdColumn extends Migration
     public function up()
     {
         Schema::table('photos', function (Blueprint $table) {
-            // 外部キー制約を持ったカラムのカラム名のみ2020_02_01_034703_change_photos_table_column_user_idで修正したしまったためここでdrop
             $table->dropForeign(['user_id']);
-            $table->dropColumn('shop_id');
+            // shopsテーブルのidと外部制約
+            $table->foreign('shop_id')->references('id')->on('shops');
         });
     }
 
@@ -28,7 +28,8 @@ class DropColumnShopIdColumn extends Migration
     public function down()
     {
         Schema::table('photos', function (Blueprint $table) {
-            $table->unsignedInteger('shop_id');
+            // usersテーブルのidと外部制約
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 }
