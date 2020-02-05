@@ -40,7 +40,8 @@ export default {
   methods: {
     async fetchPhotos() {
       const response = await axios.get(
-        `/api/photos/?page=${this.$route.query.page}`
+        // `/api/photos/?page=${this.$route.query.page}`
+        `/api/shops/?page=${this.$route.query.page}`
       );
 
       if (response.status !== OK) {
