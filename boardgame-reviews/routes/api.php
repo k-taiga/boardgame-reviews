@@ -19,8 +19,8 @@ Route::post('/photos', 'PhotoController@create')->name('photo.create');
 Route::post('/shops', 'ShopController@create')->name('shop.create');
 
 // 店舗一覧
-Route::get('/photos', 'PhotoController@index')->name('photo.index');
-// Route::get('/shops', 'ShopController@index')->name('shop.index');
+// Route::get('/photos', 'PhotoController@index')->name('photo.index');
+Route::get('/shops', 'ShopController@index')->name('shop.index');
 
 // 店舗詳細
 Route::get('/photos/{id}', 'PhotoController@show')->name('photo.show');
