@@ -92,6 +92,7 @@ export default {
       formData.append("address", this.address);
     //   const response = await axios.post("/api/photos", formData);
       const response = await axios.post("/api/shops", formData);
+      console.log(response);
 
       if (response.status === UNPROCESSABLE_ENTITY) {
         this.errors = response.data.errors;
@@ -111,7 +112,7 @@ export default {
         timeout: 6000
       });
 
-      this.$router.push(`/`);
+    //   this.$router.push(`/`);
     }
   }
 };

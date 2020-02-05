@@ -127,33 +127,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 6:
                 response = _context.sent;
+                console.log(response);
 
                 if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_1__["UNPROCESSABLE_ENTITY"])) {
-                  _context.next = 10;
+                  _context.next = 11;
                   break;
                 }
 
                 this.errors = response.data.errors;
                 return _context.abrupt("return", false);
 
-              case 10:
+              case 11:
                 this.reset();
                 this.$emit("showForm");
 
                 if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["CREATED"])) {
-                  _context.next = 15;
+                  _context.next = 16;
                   break;
                 }
 
                 this.$store.commit("error/setCode", response.status);
                 return _context.abrupt("return", false);
 
-              case 15:
+              case 16:
                 this.$store.commit("message/setContent", {
                   content: "写真が投稿されました！",
                   timeout: 6000
-                });
-                this.$router.push("/");
+                }); //   this.$router.push(`/`);
 
               case 17:
               case "end":

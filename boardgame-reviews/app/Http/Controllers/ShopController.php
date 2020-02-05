@@ -46,41 +46,45 @@ class ShopController extends Controller
         $photo = new Photo();
         // インスタンス生成時に割り振られたランダムなID値と本来の拡張子を組み合わせてファイル名とする
         $photo->filename = $photo->id . '.' . $extension;
+
         // $photo = Photo::where(
         //     'id',
         //     '4KtCDo-ulGOL'
         // )->first();
+
         // S3にファイルを保存する publicで公開
-        // Storage::cloud()
-        //     ->putFileAs('', $request->photo, $photo->filename, 'public');
-        // $photo->save();
+        Storage::cloud()
+        ->putFileAs('', $request->photo, $photo->filename, 'public');
 
-        $shop = new Shop();
+        // $shop = new Shop();
         // clock($photo);
-        $shop->shop_name = $request->shop_name;
-        $shop->address = $request->address;
-        // $shop->photo_id = $photo->id;
+        // $shop->shop_name = $request->shop_name;
+        // $shop->address = $request->address;
         // clock()->info("{$shop}が logに出ています！");
-        $shop->save();
         // clock($shop);
-        $photo->shop_id = $shop->id;
-        $shop->photos()->save($photo);
+        // $photo->shop_id = $shop->id;
+        // $shop->photos()->save($photo);
 
-        // // データベースエラー時にファイル削除を行うため
-        // // トランザクションを利用する
-        // DB::beginTransaction();
+        // データベースエラー時にファイル削除を行うため
+        // トランザクションを利用する
+        DB::beginTransaction();
 
-        // try {
-        //     // Auth::user()->photos()->save($photo);
-        //     $shop = new Shop();
-        //     $shop->photos()->save($photo);
-        //     DB::commit();
-        // } catch (\Exception $exception) {
-        //     DB::rollBack();
-        //     // DBとの不整合を避けるためアップロードしたファイルを削除
-        //     Storage::cloud()->delete($photo->filename);
-        //     throw $exception;
-        // }
+        try {
+            // Auth::user()->photos()->save($photo);
+            $shop = new Shop();
+            $shop->shop_name = $request->shop_name;
+            $shop->address = $request->address;
+            // shopに登録後、紐づくphotoをsave
+            $shop->save();
+            $photo->shop_id = $shop->id;
+            $shop->photos()->save($photo);
+            DB::commit();
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            // DBとの不整合を避けるためアップロードしたファイルを削除
+            Storage::cloud()->delete($photo->filename);
+            throw $exception;
+        }
 
         // リソースの新規作成なので
         // レスポンスコードは201(CREATED)を返却する
