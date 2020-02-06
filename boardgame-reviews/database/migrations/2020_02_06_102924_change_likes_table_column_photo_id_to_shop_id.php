@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeLikesTableColumnPhotoId extends Migration
+class ChangeLikesTableColumnPhotoIdToShopId extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,9 @@ class ChangeLikesTableColumnPhotoId extends Migration
     public function up()
     {
         Schema::table('likes', function (Blueprint $table) {
-            $table->dropForeign(['photo_id']);
+            $table->dropColumn('photo_id');
+            $table->unsignedInteger('shop_id');
+            $table->foreign('shop_id')->references('id')->on('shops');
         });
     }
 
@@ -26,8 +28,8 @@ class ChangeLikesTableColumnPhotoId extends Migration
     public function down()
     {
         Schema::table('likes', function (Blueprint $table) {
-            // photosテーブルのidと外部制約
-            $table->foreign('photo_id')->references('id')->on('photos');
+            $table->dropColumn('shop_id');
+            $table->string('photo_id');
         });
     }
 }
