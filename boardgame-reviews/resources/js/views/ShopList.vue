@@ -3,9 +3,9 @@
     <div class="grid">
       <shop
         class="grid__item"
-        v-for="photo in shops"
-        :key="photo.id"
-        :item="photo"
+        v-for="shop in shops"
+        :key="shop.id"
+        :item="shop"
         @like="onLikeClick"
       />
     </div>
