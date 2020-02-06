@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"Home":"Home","NotFoundError":"NotFoundError","PhotoDetail":"PhotoDetail","PhotoList":"PhotoList","SignIn":"SignIn","SignUp":"SignUp","SystemError":"SystemError"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"Home":"Home","NotFoundError":"NotFoundError","PhotoDetail":"PhotoDetail","ShopList":"ShopList","SignIn":"SignIn","SignUp":"SignUp","SystemError":"SystemError"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -21118,8 +21118,8 @@ var SignIn = function SignIn() {
   return __webpack_require__.e(/*! import() | SignIn */ "SignIn").then(__webpack_require__.bind(null, /*! ./views/SignIn.vue */ "./resources/js/views/SignIn.vue"));
 };
 
-var PhotoList = function PhotoList() {
-  return __webpack_require__.e(/*! import() | PhotoList */ "PhotoList").then(__webpack_require__.bind(null, /*! ./views/PhotoList.vue */ "./resources/js/views/PhotoList.vue"));
+var ShopList = function ShopList() {
+  return __webpack_require__.e(/*! import() | ShopList */ "ShopList").then(__webpack_require__.bind(null, /*! ./views/ShopList.vue */ "./resources/js/views/ShopList.vue"));
 };
 
 var PhotoDetail = function PhotoDetail() {
@@ -21156,7 +21156,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: [{
     path: "/",
     name: "index",
-    component: PhotoList,
+    component: ShopList,
     props: function props(route) {
       // URL のクエリパラメータ page をページコンポーネントで取得しPhotoListのコンポーネントに返す
       // routeからpageを取得し正規表現でチェック

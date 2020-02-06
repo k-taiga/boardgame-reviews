@@ -13,8 +13,8 @@ const SignUp = () =>
     import(/* webpackChunkName:"SignUp" */ "./views/SignUp.vue");
 const SignIn = () =>
     import(/* webpackChunkName:"SignIn" */ "./views/SignIn.vue");
-const PhotoList = () =>
-    import(/* webpackChunkName:"PhotoList" */ "./views/PhotoList.vue");
+const ShopList = () =>
+    import(/* webpackChunkName:"ShopList" */ "./views/ShopList.vue");
 const PhotoDetail = () =>
     import(/* webpackChunkName:"PhotoDetail" */ "./views/PhotoDetail.vue");
 const SystemError = () =>
@@ -44,7 +44,7 @@ const router = new VueRouter({
         {
             path: "/",
             name: "index",
-            component: PhotoList,
+            component: ShopList,
             props: route => {
                 // URL のクエリパラメータ page をページコンポーネントで取得しPhotoListのコンポーネントに返す
                 // routeからpageを取得し正規表現でチェック
