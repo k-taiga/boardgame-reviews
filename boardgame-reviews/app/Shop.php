@@ -16,7 +16,7 @@ class Shop extends Model
 
     /** JSONに含める属性 */
     protected $visible = [
-        'id', 'owner', 'reviews',
+        'id', 'photos', 'reviews',
         'likes_count', 'liked_by_user',
     ];
 
