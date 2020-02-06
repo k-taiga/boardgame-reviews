@@ -22,13 +22,12 @@ class Photo extends Model
 
     /** JSONに含めるアクセサ */
     protected $appends = [
-        'url', 'likes_count', 'liked_by_user',
+        'url'
     ];
 
     /** JSONに含める属性 */
     protected $visible = [
-        'id', 'owner', 'url', 'reviews',
-        'likes_count', 'liked_by_user',
+        'id', 'owner', 'url'
     ];
 
     /** JSONに含めない属性 */
@@ -96,19 +95,19 @@ class Photo extends Model
      * リレーションシップ - reviewsテーブル
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function reviews()
-    {
-        return $this->hasMany('App\Review')->orderBy('id', 'desc');
-    }
+    // public function reviews()
+    // {
+    //     return $this->hasMany('App\Review')->orderBy('id', 'desc');
+    // }
 
     /**
      * リレーションシップ - usersテーブル
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function likes()
-    {
-        return $this->belongsToMany('App\User', 'likes')->withTimestamps();
-    }
+    // public function likes()
+    // {
+    //     return $this->belongsToMany('App\User', 'likes')->withTimestamps();
+    // }
 
     // ここから下はアクセサ　get~Attributeという形式
     // このアクセサを利用するには、getとAttributeを取り除いたスネークケースになる
@@ -125,23 +124,23 @@ class Photo extends Model
      * アクセサ - likes_count
      * @return int
      */
-    public function getLikesCountAttribute()
-    {
-        return $this->likes->count();
-    }
+    // public function getLikesCountAttribute()
+    // {
+    //     return $this->likes->count();
+    // }
 
     /**
      * アクセサ - liked_by_user
      * @return boolean
      */
-    public function getLikedByUserAttribute()
-    {
-        if (Auth::guest()) {
-            return false;
-        }
+    // public function getLikedByUserAttribute()
+    // {
+    //     if (Auth::guest()) {
+    //         return false;
+    //     }
 
-        return $this->likes->contains(function ($user) {
-            return $user->id === Auth::user()->id;
-        });
-    }
+    //     return $this->likes->contains(function ($user) {
+    //         return $user->id === Auth::user()->id;
+    //     });
+    // }
 }

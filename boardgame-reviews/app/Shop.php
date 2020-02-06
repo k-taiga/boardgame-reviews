@@ -16,8 +16,8 @@ class Shop extends Model
 
     /** JSONに含める属性 */
     protected $visible = [
-        'id', 'photos', 'reviews',
-        'likes_count', 'liked_by_user',
+        'id', 'shop_name', 'address', 'bussiness_hours',
+        'photos', 'reviews', 'likes_count', 'liked_by_user',
     ];
 
     protected $perPage = 20;

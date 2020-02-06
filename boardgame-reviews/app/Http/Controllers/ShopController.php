@@ -54,7 +54,7 @@ class ShopController extends Controller
 
         // S3にファイルを保存する publicで公開
         Storage::cloud()
-        ->putFileAs('', $request->photo, $photo->filename, 'public');
+            ->putFileAs('', $request->photo, $photo->filename, 'public');
 
         // $shop = new Shop();
         // clock($photo);
