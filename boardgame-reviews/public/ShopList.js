@@ -454,7 +454,7 @@ var render = function() {
           staticClass: "photo__overlay",
           attrs: {
             to: "/shops/" + _vm.item.id,
-            title: "View the photo by " + _vm.item.shop_name
+            title: "View " + _vm.item.shop_name
           }
         },
         [
@@ -464,7 +464,7 @@ var render = function() {
               {
                 staticClass: "photo__action photo__action--like",
                 class: { "photo__action--liked": _vm.item.liked_by_user },
-                attrs: { title: "Like photo" },
+                attrs: { title: "Like shop" },
                 on: {
                   click: function($event) {
                     $event.preventDefault()
