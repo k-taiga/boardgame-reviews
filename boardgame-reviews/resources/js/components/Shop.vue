@@ -18,13 +18,13 @@
     <RouterLink
       class="photo__overlay"
       :to="`/shops/${item.id}`"
-      :title="`View the photo by ${item.shop_name}`"
+      :title="`View ${item.shop_name}`"
     >
       <div class="photo__controls">
         <button
           class="photo__action photo__action--like"
           :class="{ 'photo__action--liked': item.liked_by_user }"
-          title="Like photo"
+          title="Like shop"
           @click.prevent="like"
         >
           <bdIcon name="thumbs-up"></bdIcon>
