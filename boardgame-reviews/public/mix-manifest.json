@@ -1,11 +1,13 @@
 {
-    "/js/app.js": "/js/app.js?id=99c7837165ccef84661e",
-    "/css/app.css": "/css/app.css?id=e79d11a50465d7aa4268",
+    "/js/app.js": "/js/app.js?id=61ba355f46602dd5d727",
+    "/css/app.css": "/css/app.css?id=cdbf34476f4b001dcf41",
     "/Home.js": "/Home.js?id=e9c9ea724db71f2d21c8",
     "/NotFoundError.js": "/NotFoundError.js?id=d9351a6d3687c5a1674f",
     "/PhotoDetail.js": "/PhotoDetail.js?id=51bab140573b2c723a0a",
-    "/ShopList.js": "/ShopList.js?id=f7eb0aba5f6652a228c7",
+    "/PhotoList.js": "/PhotoList.js?id=1323483896ae636760c2",
     "/SignIn.js": "/SignIn.js?id=fb68dad91c3896e4492e",
     "/SignUp.js": "/SignUp.js?id=acde1160a87f622370dc",
-    "/SystemError.js": "/SystemError.js?id=47ffbfee321632e6ca64"
+    "/SystemError.js": "/SystemError.js?id=47ffbfee321632e6ca64",
+    "/ShopList.js": "/ShopList.js?id=f7eb0aba5f6652a228c7",
+    "/ShopDetail.js": "/ShopDetail.js?id=c6819434eb35015183e4"
 }

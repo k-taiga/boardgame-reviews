@@ -23,7 +23,8 @@ Route::post('/shops', 'ShopController@create')->name('shop.create');
 Route::get('/shops', 'ShopController@index')->name('shop.index');
 
 // 店舗詳細
-Route::get('/photos/{id}', 'PhotoController@show')->name('photo.show');
+// Route::get('/photos/{id}', 'PhotoController@show')->name('photo.show');
+Route::get('/shops/{id}', 'ShopController@show')->name('shop.show');
 
 // レビュー
 Route::post('/photos/{photo}/reviews', 'PhotoController@addReview')->name('photo.review');

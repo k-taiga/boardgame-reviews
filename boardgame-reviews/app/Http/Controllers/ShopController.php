@@ -91,4 +91,16 @@ class ShopController extends Controller
         // vueでキャッチする
         return response($shop, 201);
     }
+
+    /**
+     * 店舗詳細
+     * @param string $id
+     * @return Shop
+     */
+    public function show(string $id)
+    {
+        $shop = Shop::where('id', $id)->with(['reviews.author', 'likes'])->first();
+
+        return $shop ?? abort(404);
+    }
 }

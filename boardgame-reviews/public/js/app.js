@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"Home":"Home","NotFoundError":"NotFoundError","PhotoDetail":"PhotoDetail","ShopList":"ShopList","SignIn":"SignIn","SignUp":"SignUp","SystemError":"SystemError"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"Home":"Home","NotFoundError":"NotFoundError","ShopDetail":"ShopDetail","ShopList":"ShopList","SignIn":"SignIn","SignUp":"SignUp","SystemError":"SystemError"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -2360,7 +2360,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\n.fade-enter[data-v-f348271a],\r\n.fade-leave-to[data-v-f348271a] {\r\n    opacity: 0;\n}\n.fade-enter-to[data-v-f348271a],\r\n.fade-leave[data-v-f348271a] {\r\n    opacity: 1;\n}\n.fade-enter-active[data-v-f348271a],\r\n.fade-leave-active[data-v-f348271a] {\r\n    -webkit-transition: opacity 0.3s;\r\n    transition: opacity 0.3s;\n}\r\n", ""]);
+exports.push([module.i, "\n.fade-enter[data-v-f348271a],\n.fade-leave-to[data-v-f348271a] {\n    opacity: 0;\n}\n.fade-enter-to[data-v-f348271a],\n.fade-leave[data-v-f348271a] {\n    opacity: 1;\n}\n.fade-enter-active[data-v-f348271a],\n.fade-leave-active[data-v-f348271a] {\n    -webkit-transition: opacity 0.3s;\n    transition: opacity 0.3s;\n}\n", ""]);
 
 // exports
 
@@ -21122,8 +21122,8 @@ var ShopList = function ShopList() {
   return __webpack_require__.e(/*! import() | ShopList */ "ShopList").then(__webpack_require__.bind(null, /*! ./views/ShopList.vue */ "./resources/js/views/ShopList.vue"));
 };
 
-var PhotoDetail = function PhotoDetail() {
-  return __webpack_require__.e(/*! import() | PhotoDetail */ "PhotoDetail").then(__webpack_require__.bind(null, /*! ./views/PhotoDetail.vue */ "./resources/js/views/PhotoDetail.vue"));
+var ShopDetail = function ShopDetail() {
+  return __webpack_require__.e(/*! import() | ShopDetail */ "ShopDetail").then(__webpack_require__.bind(null, /*! ./views/ShopDetail.vue */ "./resources/js/views/ShopDetail.vue"));
 };
 
 var SystemError = function SystemError() {
@@ -21166,8 +21166,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       };
     }
   }, {
-    path: "/photos/:id",
-    component: PhotoDetail,
+    path: "/shops/:id",
+    component: ShopDetail,
     props: true
   }, {
     path: "/home",
