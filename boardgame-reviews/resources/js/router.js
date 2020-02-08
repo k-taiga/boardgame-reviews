@@ -15,8 +15,8 @@ const SignIn = () =>
     import(/* webpackChunkName:"SignIn" */ "./views/SignIn.vue");
 const ShopList = () =>
     import(/* webpackChunkName:"ShopList" */ "./views/ShopList.vue");
-const PhotoDetail = () =>
-    import(/* webpackChunkName:"PhotoDetail" */ "./views/PhotoDetail.vue");
+const ShopDetail = () =>
+    import(/* webpackChunkName:"ShopDetail" */ "./views/ShopDetail.vue");
 const SystemError = () =>
     import(/* webpackChunkName:"SystemError" */ "./views/errors/System.vue");
 const NotFoundError = () =>
@@ -53,8 +53,8 @@ const router = new VueRouter({
             }
         },
         {
-            path: "/photos/:id",
-            component: PhotoDetail,
+            path: "/shops/:id",
+            component: ShopDetail,
             props: true
         },
         {
