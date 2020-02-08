@@ -47,6 +47,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -60,7 +63,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       photo: null,
       errors: null,
       shopname: null,
-      address: null
+      address: null,
+      bussiness_hours: null,
+      boardgame_num: null,
+      content: null
     };
   },
   props: {
@@ -381,6 +387,39 @@ var render = function() {
                 _vm.address = $$v
               },
               expression: "address"
+            }
+          }),
+          _vm._v(" "),
+          _c("bdTextField", {
+            attrs: { placeholder: "営業時間" },
+            model: {
+              value: _vm.bussiness_hours,
+              callback: function($$v) {
+                _vm.bussiness_hours = $$v
+              },
+              expression: "bussiness_hours"
+            }
+          }),
+          _vm._v(" "),
+          _c("bdTextField", {
+            attrs: { placeholder: "ボードゲームの数" },
+            model: {
+              value: _vm.boardgame_num,
+              callback: function($$v) {
+                _vm.boardgame_num = $$v
+              },
+              expression: "boardgame_num"
+            }
+          }),
+          _vm._v(" "),
+          _c("bdTextField", {
+            attrs: { placeholder: "説明文" },
+            model: {
+              value: _vm.content,
+              callback: function($$v) {
+                _vm.content = $$v
+              },
+              expression: "content"
             }
           }),
           _vm._v(" "),
