@@ -70,6 +70,56 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -84,7 +134,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
-      photo: null,
+      shop: null,
       fullWidth: false,
       reviewContent: "",
       reviewErrors: null,
@@ -97,8 +147,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   methods: {
-    fetchPhoto: function () {
-      var _fetchPhoto = _asyncToGenerator(
+    fetchShop: function () {
+      var _fetchShop = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var response;
@@ -107,23 +157,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios.get("/api/photos/".concat(this.id));
+                return axios.get("/api/shops/".concat(this.id));
 
               case 2:
                 response = _context.sent;
+                console.log(response);
 
                 if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
-                  _context.next = 6;
+                  _context.next = 7;
                   break;
                 }
 
                 this.$store.commit("error/setCode", response.status);
                 return _context.abrupt("return", false);
 
-              case 6:
-                this.photo = response.data;
-
               case 7:
+                this.shop = response.data;
+
+              case 8:
               case "end":
                 return _context.stop();
             }
@@ -131,11 +182,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee, this);
       }));
 
-      function fetchPhoto() {
-        return _fetchPhoto.apply(this, arguments);
+      function fetchShop() {
+        return _fetchShop.apply(this, arguments);
       }
 
-      return fetchPhoto;
+      return fetchShop;
     }(),
     addReview: function () {
       var _addReview = _asyncToGenerator(
@@ -147,7 +198,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return axios.post("/api/photos/".concat(this.id, "/reviews"), {
+                return axios.post("/api/shops/".concat(this.id, "/reviews"), {
                   content: this.reviewContent
                 });
 
@@ -175,7 +226,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context2.abrupt("return", false);
 
               case 11:
-                this.fetchPhoto();
+                this.fetchShop();
 
               case 12:
               case "end":
@@ -197,7 +248,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return false;
       }
 
-      if (this.photo.liked_by_user) {
+      if (this.shop.liked_by_user) {
         this.unlike();
       } else {
         this.like();
@@ -213,7 +264,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.next = 2;
-                return axios.put("/api/photos/".concat(this.id, "/like"));
+                return axios.put("/api/shops/".concat(this.id, "/like"));
 
               case 2:
                 response = _context3.sent;
@@ -227,8 +278,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context3.abrupt("return", false);
 
               case 6:
-                this.photo.likes_count = this.photo.likes_count + 1;
-                this.photo.liked_by_user = true;
+                this.shop.likes_count = this.shop.likes_count + 1;
+                this.shop.liked_by_user = true;
 
               case 8:
               case "end":
@@ -254,7 +305,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.next = 2;
-                return axios["delete"]("/api/photos/".concat(this.id, "/unlike"));
+                return axios["delete"]("/api/shops/".concat(this.id, "/unlike"));
 
               case 2:
                 response = _context4.sent;
@@ -268,8 +319,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context4.abrupt("return", false);
 
               case 6:
-                this.photo.likes_count = this.photo.likes_count - 1;
-                this.photo.liked_by_user = false;
+                this.shop.likes_count = this.shop.likes_count - 1;
+                this.shop.liked_by_user = false;
 
               case 8:
               case "end":
@@ -297,7 +348,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               switch (_context5.prev = _context5.next) {
                 case 0:
                   _context5.next = 2;
-                  return this.fetchPhoto();
+                  return this.fetchShop();
 
                 case 2:
                 case "end":
@@ -335,7 +386,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.photo
+  return _vm.shop
     ? _c(
         "div",
         {
@@ -353,110 +404,132 @@ var render = function() {
                 }
               }
             },
-            [
-              _c("img", { attrs: { src: _vm.photo.url, alt: "" } }),
-              _vm._v(" "),
-              _c("figcaption", [
-                _vm._v("Posted by " + _vm._s(_vm.photo.owner.name))
-              ])
-            ]
+            [_c("img", { attrs: { src: _vm.shop.photos.url, alt: "" } })]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "photo-detail__pane" }, [
-            _c(
-              "button",
-              {
-                staticClass: "button button--like",
-                class: { "photo__action--liked": _vm.photo.liked_by_user },
-                attrs: { title: "Like photo" },
-                on: { click: _vm.onLikeClick }
-              },
-              [
-                _c("bdIcon", { attrs: { name: "thumbs-up" } }),
-                _vm._v("\n      " + _vm._s(_vm.photo.likes_count) + "\n    ")
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _vm._m(0),
-            _vm._v(" "),
-            _vm.photo.reviews.length > 0
-              ? _c(
-                  "ul",
-                  { staticClass: "photo-detail__reviews" },
-                  _vm._l(_vm.photo.reviews, function(review, index) {
-                    return _c(
-                      "li",
-                      { key: index, staticClass: "photo-detail__commentItem" },
-                      [
-                        _c("p", { staticClass: "photo-detail__commentBody" }, [
-                          _vm._v(_vm._s(review.content))
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "photo-detail__commentInfo" }, [
-                          _vm._v(_vm._s(review.author.name))
-                        ])
-                      ]
+          _c("div", { staticClass: "tile is-vertical is-6" }, [
+            _c("div", { staticClass: "tile" }, [
+              _c("div", { staticClass: "tile is-parent is-vertical" }, [
+                _c("article", { staticClass: "tile is-child box" }, [
+                  _c("p", { staticClass: "title" }, [
+                    _vm._v(_vm._s(_vm.shop.shop_name))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "subtitle" }, [
+                    _vm._v(_vm._s(_vm.shop.address))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "content" }, [
+                    _vm._v(
+                      "\n            当店「DEAR SPIELE（ディアシュピール）」は、JR東中野駅東口より徒歩1分！\n            世界の「ボードゲーム」を1,200種類以上取り揃えたプレイ＆イベントスペースです。\n            リーズナブルなお値段でご案内しておりますので是非お立ち寄りくださいませ。\n            また、ボードゲームは店内で販売もしております。\n            他店と少し違ったラインナップのものもありますので、こちらも覗いてみてください。\n          "
                     )
-                  }),
-                  0
-                )
-              : _c("p", [_vm._v("No reviews yet.")]),
-            _vm._v(" "),
-            _vm.isLogin
-              ? _c(
-                  "form",
-                  {
-                    staticClass: "form",
-                    on: {
-                      submit: function($event) {
-                        $event.preventDefault()
-                        return _vm.addReview($event)
-                      }
-                    }
-                  },
-                  [
-                    _vm.reviewErrors
-                      ? _c("div", { staticClass: "errors" }, [
-                          _vm.reviewErrors.content
-                            ? _c(
-                                "ul",
-                                _vm._l(_vm.reviewErrors.content, function(msg) {
-                                  return _c("li", { key: msg }, [
-                                    _vm._v(_vm._s(msg))
-                                  ])
-                                }),
-                                0
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _vm.shop.reviews.length > 0
+                    ? _c(
+                        "ul",
+                        { staticClass: "photo-detail__reviews" },
+                        _vm._l(_vm.shop.reviews, function(review, index) {
+                          return _c(
+                            "li",
+                            {
+                              key: index,
+                              staticClass: "photo-detail__commentItem"
+                            },
+                            [
+                              _c(
+                                "p",
+                                { staticClass: "photo-detail__commentBody" },
+                                [_vm._v(_vm._s(review.content))]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "p",
+                                { staticClass: "photo-detail__commentInfo" },
+                                [_vm._v(_vm._s(review.author.name))]
                               )
-                            : _vm._e()
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c("textarea", {
-                      directives: [
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    : _c("p", [_vm._v("まだレビューがありません！")]),
+                  _vm._v(" "),
+                  _vm.isLogin
+                    ? _c(
+                        "form",
                         {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.reviewContent,
-                          expression: "reviewContent"
-                        }
-                      ],
-                      staticClass: "form__item",
-                      domProps: { value: _vm.reviewContent },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                          staticClass: "form",
+                          on: {
+                            submit: function($event) {
+                              $event.preventDefault()
+                              return _vm.addReview($event)
+                            }
                           }
-                          _vm.reviewContent = $event.target.value
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm._m(1)
-                  ]
-                )
-              : _vm._e()
+                        },
+                        [
+                          _vm.reviewErrors
+                            ? _c("div", { staticClass: "errors" }, [
+                                _vm.reviewErrors.content
+                                  ? _c(
+                                      "ul",
+                                      _vm._l(_vm.reviewErrors.content, function(
+                                        msg
+                                      ) {
+                                        return _c("li", { key: msg }, [
+                                          _vm._v(_vm._s(msg))
+                                        ])
+                                      }),
+                                      0
+                                    )
+                                  : _vm._e()
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("article", { staticClass: "media" }, [
+                            _vm._m(1),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "media-content" }, [
+                              _c("div", { staticClass: "field" }, [
+                                _c("p", { staticClass: "control" }, [
+                                  _c("textarea", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.reviewContent,
+                                        expression: "reviewContent"
+                                      }
+                                    ],
+                                    staticClass: "textarea",
+                                    attrs: {
+                                      placeholder:
+                                        "レビューを投稿してください！"
+                                    },
+                                    domProps: { value: _vm.reviewContent },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.reviewContent = $event.target.value
+                                      }
+                                    }
+                                  })
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(2)
+                            ])
+                          ])
+                        ]
+                      )
+                    : _vm._e()
+                ])
+              ])
+            ])
           ]),
           _vm._v(" "),
           _c(
@@ -467,7 +540,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "modal-content" }, [
                 _c("p", { staticClass: "image is-4by3" }, [
-                  _c("img", { attrs: { src: _vm.photo.url, alt: "" } })
+                  _c("img", { attrs: { src: _vm.shop.photos.url, alt: "" } })
                 ])
               ]),
               _vm._v(" "),
@@ -493,19 +566,43 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("h2", { staticClass: "photo-detail__title" }, [
       _c("i", { staticClass: "icon ion-md-chatboxes" }),
-      _vm._v("Reviews\n    ")
+      _vm._v("Review\n          ")
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form__button" }, [
-      _c(
-        "button",
-        { staticClass: "button button--inverse", attrs: { type: "submit" } },
-        [_vm._v("レビューを投稿する")]
-      )
+    return _c("figure", { staticClass: "media-left" }, [
+      _c("p", { staticClass: "image is-64x64" }, [
+        _c("img", {
+          attrs: {
+            src:
+              "https://gravatar.com/avatar/7c838f7ca2f3ccff7a160d3a9698afc2?s=400&d=robohash&r=x"
+          }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("nav", { staticClass: "level" }, [
+      _c("div", { staticClass: "level-right" }, [
+        _c("div", { staticClass: "level-item" }, [
+          _c("div", { staticClass: "form__button" }, [
+            _c(
+              "button",
+              {
+                staticClass: "button button--inverse",
+                attrs: { type: "submit" }
+              },
+              [_vm._v("レビューを投稿する")]
+            )
+          ])
+        ])
+      ])
     ])
   }
 ]
