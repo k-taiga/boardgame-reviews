@@ -99,8 +99,27 @@ class ShopController extends Controller
      */
     public function show(string $id)
     {
-        $shop = Shop::where('id', $id)->with(['reviews.author', 'likes'])->first();
+        $shop = Shop::where('id', $id)->with(['photos', 'reviews.author', 'likes'])->first();
 
         return $shop ?? abort(404);
+    }
+
+    /**
+     * レビュー投稿
+     * @param Shop $photo
+     * @param StoreReview $request
+     * @return \Illuminate\Http\Response
+     */
+    public function addReview(Shop $shop, StoreReview $request)
+    {
+        $review = new Review();
+        $review->content = $request->get('content');
+        $review->user_id = Auth::user()->id;
+        $shop->reviews()->save($review);
+
+        // authorリレーションをロードするためにコメントを取得しなおす
+        $new_review = Review::where('id', $review->id)->with('author')->first();
+
+        return response($new_review, 201);
     }
 }

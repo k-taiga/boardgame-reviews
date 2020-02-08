@@ -1,47 +1,97 @@
 <template>
-  <div v-if="photo" class="photo-detail container" :class="{ 'photo-detail--column': fullWidth }">
+  <div v-if="shop" class="photo-detail container" :class="{ 'photo-detail--column': fullWidth }">
     <figure class="photo-detail__pane photo-detail__image image" @click="active = !active">
-      <img :src="photo.url" alt />
-      <figcaption>Posted by {{ photo.owner.name }}</figcaption>
+      <img :src="shop.photos.url" alt />
+      <!-- <figcaption>Posted by {{ photo.owner.name }}</figcaption> -->
     </figure>
-    <div class="photo-detail__pane">
-      <!-- photoのliked_by_userがtrueになればクラスが変わる -->
-      <button
-        class="button button--like"
-        :class="{ 'photo__action--liked': photo.liked_by_user }"
-        title="Like photo"
-        @click="onLikeClick"
-      >
-        <bdIcon name="thumbs-up"></bdIcon>
-        {{ photo.likes_count }}
-      </button>
-      <h2 class="photo-detail__title">
-        <i class="icon ion-md-chatboxes"></i>Reviews
-      </h2>
-      <ul v-if="photo.reviews.length > 0" class="photo-detail__reviews">
-        <li v-for="(review, index) in photo.reviews" :key="index" class="photo-detail__commentItem">
-          <p class="photo-detail__commentBody">{{ review.content }}</p>
-          <p class="photo-detail__commentInfo">{{ review.author.name }}</p>
-        </li>
-      </ul>
-      <p v-else>No reviews yet.</p>
-      <form @submit.prevent="addReview" class="form" v-if="isLogin">
-        <div v-if="reviewErrors" class="errors">
-          <ul v-if="reviewErrors.content">
-            <li v-for="msg in reviewErrors.content" :key="msg">{{ msg }}</li>
-          </ul>
+    <div class="tile is-vertical is-6">
+      <div class="tile">
+        <div class="tile is-parent is-vertical">
+          <article class="tile is-child box">
+            <p class="title">{{shop.shop_name}}</p>
+            <p class="subtitle">{{shop.address}}</p>
+            <p class="content">
+              当店「DEAR SPIELE（ディアシュピール）」は、JR東中野駅東口より徒歩1分！
+              世界の「ボードゲーム」を1,200種類以上取り揃えたプレイ＆イベントスペースです。
+              リーズナブルなお値段でご案内しておりますので是非お立ち寄りくださいませ。
+              また、ボードゲームは店内で販売もしております。
+              他店と少し違ったラインナップのものもありますので、こちらも覗いてみてください。
+            </p>
+            <!-- Put any content you want -->
+            <!-- <div class="photo-detail__pane"> -->
+            <!-- photoのliked_by_userがtrueになればクラスが変わる -->
+            <!-- <button
+              class="button button--like"
+              :class="{ 'photo__action--liked': shop.liked_by_user }"
+              title="Like shop"
+              @click="onLikeClick"
+            >
+              <bdIcon name="thumbs-up"></bdIcon>
+              {{ shop.likes_count }}
+            </button>-->
+            <h2 class="photo-detail__title">
+              <i class="icon ion-md-chatboxes"></i>Review
+            </h2>
+            <ul v-if="shop.reviews.length > 0" class="photo-detail__reviews">
+              <li
+                v-for="(review, index) in shop.reviews"
+                :key="index"
+                class="photo-detail__commentItem"
+              >
+                <p class="photo-detail__commentBody">{{ review.content }}</p>
+                <p class="photo-detail__commentInfo">{{ review.author.name }}</p>
+              </li>
+            </ul>
+            <p v-else>まだレビューがありません！</p>
+            <form @submit.prevent="addReview" class="form" v-if="isLogin">
+              <div v-if="reviewErrors" class="errors">
+                <ul v-if="reviewErrors.content">
+                  <li v-for="msg in reviewErrors.content" :key="msg">{{ msg }}</li>
+                </ul>
+              </div>
+              <article class="media">
+                <figure class="media-left">
+                  <p class="image is-64x64">
+                    <img
+                      src="https://gravatar.com/avatar/7c838f7ca2f3ccff7a160d3a9698afc2?s=400&d=robohash&r=x"
+                    />
+                  </p>
+                </figure>
+                <div class="media-content">
+                  <div class="field">
+                    <p class="control">
+                      <textarea
+                        class="textarea"
+                        placeholder="レビューを投稿してください！"
+                        v-model="reviewContent"
+                      ></textarea>
+                    </p>
+                  </div>
+                  <nav class="level">
+                    <div class="level-right">
+                      <div class="level-item">
+                        <!-- <a class="button is-info">Submit</a> -->
+                        <!-- <textarea class="form__item"></textarea> -->
+                        <div class="form__button">
+                          <button type="submit" class="button button--inverse">レビューを投稿する</button>
+                        </div>
+                      </div>
+                    </div>
+                  </nav>
+                </div>
+              </article>
+            </form>
+            <!-- </div> -->
+          </article>
         </div>
-        <textarea class="form__item" v-model="reviewContent"></textarea>
-        <div class="form__button">
-          <button type="submit" class="button button--inverse">レビューを投稿する</button>
-        </div>
-      </form>
+      </div>
     </div>
+
     <div class="modal" :class="{ 'is-active': active }">
       <div class="modal-background"></div>
       <div class="modal-content">
         <p class="image is-4by3">
-          <img :src="photo.url" alt />
+          <img :src="shop.photos.url" alt />
         </p>
       </div>
       <button class="modal-close is-large" aria-label="close" @click="active = false"></button>
@@ -63,7 +113,7 @@ export default {
   },
   data() {
     return {
-      photo: null,
+      shop: null,
       fullWidth: false,
       reviewContent: "",
       reviewErrors: null,
@@ -76,19 +126,19 @@ export default {
     }
   },
   methods: {
-    async fetchPhoto() {
-      const response = await axios.get(`/api/photos/${this.id}`);
+    async fetchShop() {
+      const response = await axios.get(`/api/shops/${this.id}`);
 
-      //   console.log(response);
+      console.log(response);
       if (response.status !== OK) {
         this.$store.commit("error/setCode", response.status);
         return false;
       }
 
-      this.photo = response.data;
+      this.shop = response.data;
     },
     async addReview() {
-      const response = await axios.post(`/api/photos/${this.id}/reviews`, {
+      const response = await axios.post(`/api/shops/${this.id}/reviews`, {
         content: this.reviewContent
       });
 
@@ -108,7 +158,7 @@ export default {
         return false;
       }
 
-      this.fetchPhoto();
+      this.fetchShop();
     },
     onLikeClick() {
       if (!this.isLogin) {
@@ -116,39 +166,39 @@ export default {
         return false;
       }
 
-      if (this.photo.liked_by_user) {
+      if (this.shop.liked_by_user) {
         this.unlike();
       } else {
         this.like();
       }
     },
     async like() {
-      const response = await axios.put(`/api/photos/${this.id}/like`);
+      const response = await axios.put(`/api/shops/${this.id}/like`);
 
       if (response.status !== OK) {
         this.$store.commit("error/setCode", response.status);
         return false;
       }
 
-      this.photo.likes_count = this.photo.likes_count + 1;
-      this.photo.liked_by_user = true;
+      this.shop.likes_count = this.shop.likes_count + 1;
+      this.shop.liked_by_user = true;
     },
     async unlike() {
-      const response = await axios.delete(`/api/photos/${this.id}/unlike`);
+      const response = await axios.delete(`/api/shops/${this.id}/unlike`);
 
       if (response.status !== OK) {
         this.$store.commit("error/setCode", response.status);
         return false;
       }
 
-      this.photo.likes_count = this.photo.likes_count - 1;
-      this.photo.liked_by_user = false;
+      this.shop.likes_count = this.shop.likes_count - 1;
+      this.shop.liked_by_user = false;
     }
   },
   watch: {
     $route: {
       async handler() {
-        await this.fetchPhoto();
+        await this.fetchShop();
       },
       immediate: true
     }
