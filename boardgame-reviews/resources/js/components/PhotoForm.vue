@@ -19,6 +19,9 @@
       </output>
       <bdTextField placeholder="店舗名" v-model="shopname"></bdTextField>
       <bdTextField placeholder="住所" v-model="address"></bdTextField>
+      <bdTextField placeholder="営業時間" v-model="bussiness_hours"></bdTextField>
+      <bdTextField placeholder="ボードゲームの数" v-model="boardgame_num"></bdTextField>
+      <bdTextField placeholder="説明文" v-model="content"></bdTextField>
       <div class="form__button">
         <button type="submit" class="button button--inverse">submit</button>
       </div>
@@ -38,7 +41,10 @@ export default {
       photo: null,
       errors: null,
       shopname: null,
-      address: null
+      address: null,
+      bussiness_hours: null,
+      boardgame_num: null,
+      content: null
     };
   },
   props: {
@@ -90,7 +96,7 @@ export default {
       formData.append("photo", this.photo);
       formData.append("shop_name", this.shopname);
       formData.append("address", this.address);
-    //   const response = await axios.post("/api/photos", formData);
+      //   const response = await axios.post("/api/photos", formData);
       const response = await axios.post("/api/shops", formData);
       console.log(response);
 
@@ -112,7 +118,7 @@ export default {
         timeout: 6000
       });
 
-    //   this.$router.push(`/`);
+      //   this.$router.push(`/`);
     }
   }
 };

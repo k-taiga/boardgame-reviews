@@ -27,7 +27,8 @@ Route::get('/shops', 'ShopController@index')->name('shop.index');
 Route::get('/shops/{id}', 'ShopController@show')->name('shop.show');
 
 // レビュー
-Route::post('/photos/{photo}/reviews', 'PhotoController@addReview')->name('photo.review');
+// Route::post('/photos/{photo}/reviews', 'PhotoController@addReview')->name('photo.review');
+Route::post('/shops/{shop}/reviews', 'ShopController@addReview')->name('shop.review');
 
 // いいね
 Route::put('/photos/{id}/like', 'PhotoController@like')->name('photo.like');

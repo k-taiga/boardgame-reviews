@@ -120,6 +120,58 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -404,28 +456,50 @@ var render = function() {
                 }
               }
             },
-            [_c("img", { attrs: { src: _vm.shop.photos.url, alt: "" } })]
+            [
+              _c("div", { staticClass: "level-left" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "level-item" }, [
+                  _c("p", { staticClass: "heading" }, [_vm._v("Followers")]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "title" }, [
+                    _vm._v(_vm._s(_vm.shop.likes_count))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "level-item" }, [
+                  _c("p", { staticClass: "heading" }, [_vm._v("Reviews")]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "title" }, [
+                    _vm._v(_vm._s(_vm.shop.reviews.length))
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("img", { attrs: { src: _vm.shop.photos.url, alt: "" } })
+            ]
           ),
           _vm._v(" "),
           _c("div", { staticClass: "tile is-vertical is-6" }, [
             _c("div", { staticClass: "tile" }, [
               _c("div", { staticClass: "tile is-parent is-vertical" }, [
                 _c("article", { staticClass: "tile is-child box" }, [
-                  _c("p", { staticClass: "title" }, [
+                  _c("p", { staticClass: "title has-text-centered" }, [
                     _vm._v(_vm._s(_vm.shop.shop_name))
                   ]),
                   _vm._v(" "),
-                  _c("p", { staticClass: "subtitle" }, [
+                  _c("p", { staticClass: "subtitle has-text-centered" }, [
                     _vm._v(_vm._s(_vm.shop.address))
                   ]),
                   _vm._v(" "),
-                  _c("p", { staticClass: "content" }, [
+                  _c("p", { staticClass: "content has-text-centered" }, [
                     _vm._v(
                       "\n            当店「DEAR SPIELE（ディアシュピール）」は、JR東中野駅東口より徒歩1分！\n            世界の「ボードゲーム」を1,200種類以上取り揃えたプレイ＆イベントスペースです。\n            リーズナブルなお値段でご案内しておりますので是非お立ち寄りくださいませ。\n            また、ボードゲームは店内で販売もしております。\n            他店と少し違ったラインナップのものもありますので、こちらも覗いてみてください。\n          "
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(0),
+                  _vm._m(1),
                   _vm._v(" "),
                   _vm.shop.reviews.length > 0
                     ? _c(
@@ -439,23 +513,38 @@ var render = function() {
                               staticClass: "photo-detail__commentItem"
                             },
                             [
-                              _c(
-                                "p",
-                                { staticClass: "photo-detail__commentBody" },
-                                [_vm._v(_vm._s(review.content))]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "p",
-                                { staticClass: "photo-detail__commentInfo" },
-                                [_vm._v(_vm._s(review.author.name))]
-                              )
+                              _c("article", { staticClass: "media" }, [
+                                _vm._m(2, true),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "media-content" }, [
+                                  _c("div", { staticClass: "content" }, [
+                                    _c("p", [
+                                      _c("strong", [
+                                        _vm._v(_vm._s(review.author.name))
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("small", [
+                                        _vm._v("@レビューの投稿時間を入れる")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("br"),
+                                      _vm._v(
+                                        "\n                      " +
+                                          _vm._s(review.content) +
+                                          "\n                    "
+                                      )
+                                    ])
+                                  ])
+                                ])
+                              ])
                             ]
                           )
                         }),
                         0
                       )
-                    : _c("p", [_vm._v("まだレビューがありません！")]),
+                    : _c("p", { staticClass: "has-text-centered" }, [
+                        _c("strong", [_vm._v("まだレビューがありません！")])
+                      ]),
                   _vm._v(" "),
                   _vm.isLogin
                     ? _c(
@@ -489,7 +578,7 @@ var render = function() {
                             : _vm._e(),
                           _vm._v(" "),
                           _c("article", { staticClass: "media" }, [
-                            _vm._m(1),
+                            _vm._m(3),
                             _vm._v(" "),
                             _c("div", { staticClass: "media-content" }, [
                               _c("div", { staticClass: "field" }, [
@@ -521,12 +610,14 @@ var render = function() {
                                 ])
                               ]),
                               _vm._v(" "),
-                              _vm._m(2)
+                              _vm._m(4)
                             ])
                           ])
                         ]
                       )
-                    : _vm._e()
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm._m(5)
                 ])
               ])
             ])
@@ -564,9 +655,34 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "level-item" }, [
+      _c("p", { staticClass: "heading" }, [_vm._v("Boardgames")]),
+      _vm._v(" "),
+      _c("p", { staticClass: "title" }, [_vm._v("123")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("h2", { staticClass: "photo-detail__title" }, [
       _c("i", { staticClass: "icon ion-md-chatboxes" }),
       _vm._v("Review\n          ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("figure", { staticClass: "media-left" }, [
+      _c("p", { staticClass: "image is-64x64" }, [
+        _c("img", {
+          attrs: {
+            src:
+              "https://api.adorable.io/avatars/400/8bf1db8d0c62c2a6ea1db881f0f34402.png"
+          }
+        })
+      ])
     ])
   },
   function() {
@@ -604,6 +720,40 @@ var staticRenderFns = [
         ])
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("footer", { staticClass: "card-footer" }, [
+      _c("div", { staticClass: "card-footer-item" }, [
+        _c("span", { staticClass: "icon is-small" }, [
+          _c("i", {
+            staticClass: "fas fa-globe",
+            attrs: { "aria-hidden": "true" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("span", [
+          _vm._v("\n                View on\n                "),
+          _c("a", { attrs: { href: "#" } }, [_vm._v("Official")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-footer-item", attrs: { href: "#" } }, [
+        _c("span", { staticClass: "icon is-small" }, [
+          _c("i", {
+            staticClass: "fab fa-twitter-square",
+            attrs: { "aria-hidden": "true" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("span", [
+          _vm._v("\n                Share on\n                "),
+          _c("a", { attrs: { href: "#" } }, [_vm._v("Twitter")])
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -616,14 +766,15 @@ render._withStripped = true
 /*!*******************************************!*\
   !*** ./resources/js/views/ShopDetail.vue ***!
   \*******************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ShopDetail_vue_vue_type_template_id_350841c6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ShopDetail.vue?vue&type=template&id=350841c6& */ "./resources/js/views/ShopDetail.vue?vue&type=template&id=350841c6&");
 /* harmony import */ var _ShopDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ShopDetail.vue?vue&type=script&lang=js& */ "./resources/js/views/ShopDetail.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _ShopDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _ShopDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -653,7 +804,7 @@ component.options.__file = "resources/js/views/ShopDetail.vue"
 /*!********************************************************************!*\
   !*** ./resources/js/views/ShopDetail.vue?vue&type=script&lang=js& ***!
   \********************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

@@ -15,11 +15,7 @@
       <br />
       <!-- <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time> -->
     </div>
-    <RouterLink
-      class="photo__overlay"
-      :to="`/shops/${item.id}`"
-      :title="`View ${item.shop_name}`"
-    >
+    <RouterLink class="photo__overlay" :to="`/shops/${item.id}`" :title="`View ${item.shop_name}`">
       <div class="photo__controls">
         <button
           class="photo__action photo__action--like"

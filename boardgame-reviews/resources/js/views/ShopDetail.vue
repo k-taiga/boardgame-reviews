@@ -1,16 +1,30 @@
 <template>
   <div v-if="shop" class="photo-detail container" :class="{ 'photo-detail--column': fullWidth }">
     <figure class="photo-detail__pane photo-detail__image image" @click="active = !active">
-      <img :src="shop.photos.url" alt />
+      <div class="level-left">
+        <div class="level-item">
+          <p class="heading">Boardgames</p>
+          <p class="title">123</p>
+        </div>
+        <div class="level-item">
+          <p class="heading">Followers</p>
+          <p class="title">{{ shop.likes_count }}</p>
+        </div>
+        <div class="level-item">
+          <p class="heading">Reviews</p>
+          <p class="title">{{ shop.reviews.length }}</p>
+        </div>
+      </div>
       <!-- <figcaption>Posted by {{ photo.owner.name }}</figcaption> -->
+      <img :src="shop.photos.url" alt />
     </figure>
     <div class="tile is-vertical is-6">
       <div class="tile">
         <div class="tile is-parent is-vertical">
           <article class="tile is-child box">
-            <p class="title">{{shop.shop_name}}</p>
-            <p class="subtitle">{{shop.address}}</p>
-            <p class="content">
+            <p class="title has-text-centered">{{shop.shop_name}}</p>
+            <p class="subtitle has-text-centered">{{shop.address}}</p>
+            <p class="content has-text-centered">
               当店「DEAR SPIELE（ディアシュピール）」は、JR東中野駅東口より徒歩1分！
               世界の「ボードゲーム」を1,200種類以上取り揃えたプレイ＆イベントスペースです。
               リーズナブルなお値段でご案内しておりますので是非お立ち寄りくださいませ。
@@ -38,11 +52,30 @@
                 :key="index"
                 class="photo-detail__commentItem"
               >
-                <p class="photo-detail__commentBody">{{ review.content }}</p>
-                <p class="photo-detail__commentInfo">{{ review.author.name }}</p>
+                <article class="media">
+                  <figure class="media-left">
+                    <p class="image is-64x64">
+                      <img
+                        src="https://api.adorable.io/avatars/400/8bf1db8d0c62c2a6ea1db881f0f34402.png"
+                      />
+                    </p>
+                  </figure>
+                  <div class="media-content">
+                    <div class="content">
+                      <p>
+                        <strong>{{ review.author.name }}</strong>
+                        <small>@レビューの投稿時間を入れる</small>
+                        <br />
+                        {{ review.content }}
+                      </p>
+                    </div>
+                  </div>
+                </article>
               </li>
             </ul>
-            <p v-else>まだレビューがありません！</p>
+            <p v-else class="has-text-centered">
+              <strong>まだレビューがありません！</strong>
+            </p>
             <form @submit.prevent="addReview" class="form" v-if="isLogin">
               <div v-if="reviewErrors" class="errors">
                 <ul v-if="reviewErrors.content">
@@ -81,7 +114,26 @@
                 </div>
               </article>
             </form>
-            <!-- </div> -->
+            <footer class="card-footer">
+              <div class="card-footer-item">
+                <span class="icon is-small">
+                  <i class="fas fa-globe" aria-hidden="true"></i>
+                </span>
+                <span>
+                  View on
+                  <a href="#">Official</a>
+                </span>
+              </div>
+              <div href="#" class="card-footer-item">
+                <span class="icon is-small">
+                  <i class="fab fa-twitter-square" aria-hidden="true"></i>
+                </span>
+                <span>
+                  Share on
+                  <a href="#">Twitter</a>
+                </span>
+              </div>
+            </footer>
           </article>
         </div>
       </div>
@@ -205,3 +257,4 @@ export default {
   }
 };
 </script>
+
