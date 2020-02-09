@@ -58,7 +58,7 @@
                     <div class="content">
                       <p>
                         <strong>{{ review.author.name }}</strong>
-                        <small>@レビューの投稿時間を入れる</small>
+                        <small>{{ review.date }}</small>
                         <br />
                         {{ review.content }}
                       </p>

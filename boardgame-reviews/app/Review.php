@@ -8,7 +8,12 @@ class Review extends Model
 {
     /** JSONに含める属性 */
     protected $visible = [
-        'author', 'content',
+        'author', 'content', 'date'
+    ];
+
+    /** JSONに含めるアクセサ */
+    protected $appends = [
+        'date'
     ];
 
     /**
@@ -27,5 +32,15 @@ class Review extends Model
     public function shop_review()
     {
         return $this->belongsTo('App\Shop', 'shop_id', 'id', 'shops');
+    }
+
+    /**
+     * アクセサ - liked_by_user
+     * @return boolean
+     */
+    public function getDateAttribute()
+    {
+
+        return $this->created_at->format('Y/m/d');
     }
 }
