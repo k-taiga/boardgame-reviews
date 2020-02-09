@@ -1,5 +1,5 @@
 {
-    "/js/app.js": "/js/app.js?id=61ba355f46602dd5d727",
+    "/js/app.js": "/js/app.js?id=b04788f3f237034b5abf",
     "/css/app.css": "/css/app.css?id=cdbf34476f4b001dcf41",
     "/Home.js": "/Home.js?id=50c894ca1a3fa1912e6f",
     "/NotFoundError.js": "/NotFoundError.js?id=d9351a6d3687c5a1674f",
@@ -7,5 +7,6 @@
     "/ShopList.js": "/ShopList.js?id=712f0b6cb3a0a8d0a9e5",
     "/SignIn.js": "/SignIn.js?id=fb68dad91c3896e4492e",
     "/SignUp.js": "/SignUp.js?id=997dab2496e3ca6a02ad",
-    "/SystemError.js": "/SystemError.js?id=47ffbfee321632e6ca64"
+    "/SystemError.js": "/SystemError.js?id=47ffbfee321632e6ca64",
+    "/Profile.js": "/Profile.js?id=467e2291062f411b4505"
 }

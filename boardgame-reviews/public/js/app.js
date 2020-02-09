@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"Home":"Home","NotFoundError":"NotFoundError","ShopDetail":"ShopDetail","ShopList":"ShopList","SignIn":"SignIn","SignUp":"SignUp","SystemError":"SystemError"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"Home":"Home","NotFoundError":"NotFoundError","Profile":"Profile","ShopDetail":"ShopDetail","ShopList":"ShopList","SignIn":"SignIn","SignUp":"SignUp","SystemError":"SystemError"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -21126,6 +21126,10 @@ var ShopDetail = function ShopDetail() {
   return __webpack_require__.e(/*! import() | ShopDetail */ "ShopDetail").then(__webpack_require__.bind(null, /*! ./views/ShopDetail.vue */ "./resources/js/views/ShopDetail.vue"));
 };
 
+var Profile = function Profile() {
+  return __webpack_require__.e(/*! import() | Profile */ "Profile").then(__webpack_require__.bind(null, /*! ./views/Profile.vue */ "./resources/js/views/Profile.vue"));
+};
+
 var SystemError = function SystemError() {
   return __webpack_require__.e(/*! import() | SystemError */ "SystemError").then(__webpack_require__.bind(null, /*! ./views/errors/System.vue */ "./resources/js/views/errors/System.vue"));
 };
@@ -21184,6 +21188,13 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: "/sign_in",
     name: "sign_in",
     component: SignIn,
+    meta: {
+      login: true
+    }
+  }, {
+    path: "/profile",
+    name: "profile",
+    component: Profile,
     meta: {
       login: true
     }
