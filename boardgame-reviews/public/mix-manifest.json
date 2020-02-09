@@ -1,11 +1,13 @@
 {
-    "/js/app.js": "/js/app.js?id=15c0334f3562215dbd46",
-    "/css/app.css": "/css/app.css?id=cdbf34476f4b001dcf41",
-    "/Home.js": "/Home.js?id=2dbd7e55d704ca44a5df",
-    "/NotFoundError.js": "/NotFoundError.js?id=d9351a6d3687c5a1674f",
-    "/PhotoDetail.js": "/PhotoDetail.js?id=51bab140573b2c723a0a",
-    "/PhotoList.js": "/PhotoList.js?id=88c22ae32ab7ca997908",
-    "/SignIn.js": "/SignIn.js?id=66daebd991398e8d4a68",
-    "/SignUp.js": "/SignUp.js?id=06fb8b0468774a80ee19",
-    "/SystemError.js": "/SystemError.js?id=47ffbfee321632e6ca64"
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/Home.js": "/Home.js",
+    "/NotFoundError.js": "/NotFoundError.js",
+    "/ShopDetail.js": "/ShopDetail.js?id=204d49524abde658b851",
+    "/ShopList.js": "/ShopList.js?id=47f0a1a08100bb6337af",
+    "/SignIn.js": "/SignIn.js",
+    "/SignUp.js": "/SignUp.js",
+    "/SystemError.js": "/SystemError.js",
+    "/PhotoDetail.js": "/PhotoDetail.js",
+    "/PhotoList.js": "/PhotoList.js"
 }
