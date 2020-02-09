@@ -31,10 +31,12 @@ Route::get('/shops/{id}', 'ShopController@show')->name('shop.show');
 Route::post('/shops/{shop}/reviews', 'ShopController@addReview')->name('shop.review');
 
 // いいね
-Route::put('/photos/{id}/like', 'PhotoController@like')->name('photo.like');
+// Route::put('/photos/{id}/like', 'PhotoController@like')->name('photo.like');
+Route::put('/shops/{id}/like', 'ShopController@like')->name('shop.like');
 
 // いいね解除
-Route::delete('/photos/{id}/unlike', 'PhotoController@unlike');
+// Route::delete('/photos/{id}/unlike', 'PhotoController@unlike');
+Route::delete('/shops/{id}/unlike', 'ShopController@unlike');
 
 // トークンリフレッシュ
 Route::get('/reflesh-token', function (Illuminate\Http\Request $request) {

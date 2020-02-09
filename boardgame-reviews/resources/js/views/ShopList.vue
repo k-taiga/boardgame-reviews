@@ -40,7 +40,6 @@ export default {
   methods: {
     async fetchShops() {
       const response = await axios.get(
-        // `/api/photos/?page=${this.$route.query.page}`
         `/api/shops/?page=${this.$route.query.page}`
       );
 
@@ -64,42 +63,42 @@ export default {
       } else {
         this.like(id);
       }
+    },
+    async like(id) {
+      const response = await axios.put(`/api/shops/${id}/like`);
+
+      if (response.status !== OK) {
+        this.$store.commit("error/setCode", response.status);
+        return false;
+      }
+      console.log(response);
+
+      this.shops = this.shops.map(shop => {
+        if (shop.id === response.data.shop_id) {
+          shop.likes_count += 1;
+          shop.liked_by_user = true;
+        }
+        return shop;
+      });
+      console.log(this.shops);
+    },
+    async unlike(id) {
+      const response = await axios.delete(`/api/shops/${id}/unlike`);
+
+      if (response.status !== OK) {
+        this.$store.commit("error/setCode", response.status);
+        return false;
+      }
+
+      this.shops = this.shops.map(shop => {
+        if (shop.id === response.data.shop_id) {
+          shop.likes_count -= 1;
+          shop.liked_by_user = false;
+        }
+
+        return shop;
+      });
     }
-    // ,
-    // async like(id) {
-    //   const response = await axios.put(`/api/photos/${id}/like`);
-
-    //   if (response.status !== OK) {
-    //     this.$store.commit("error/setCode", response.status);
-    //     return false;
-    //   }
-
-    //   this.photos = this.photos.map(photo => {
-    //     if (photo.id === response.data.photo_id) {
-    //       photo.likes_count += 1;
-    //       photo.liked_by_user = true;
-    //     }
-
-    //     return photo;
-    //   });
-    // },
-    // async unlike(id) {
-    //   const response = await axios.delete(`/api/photos/${id}/unlike`);
-
-    //   if (response.status !== OK) {
-    //     this.$store.commit("error/setCode", response.status);
-    //     return false;
-    //   }
-
-    //   this.photos = this.photos.map(photo => {
-    //     if (photo.id === response.data.photo_id) {
-    //       photo.likes_count -= 1;
-    //       photo.liked_by_user = false;
-    //     }
-
-    //     return photo;
-    //   });
-    // }
   },
   watch: {
     $route: {
@@ -107,6 +106,9 @@ export default {
         await this.fetchShops();
       },
       immediate: true
+    },
+    shops: function(newValue, oldValue) {
+      console.log(oldValue + "=>" + newValue);
     }
   }
 };
