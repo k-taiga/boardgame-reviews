@@ -4,7 +4,7 @@
       <div class="level-left">
         <div class="level-item">
           <p class="heading">Boardgames</p>
-          <p class="title">123</p>
+          <p class="title">{{ shop.boardgame_num }}</p>
         </div>
         <div class="level-item">
           <p class="heading">Followers</p>
@@ -24,13 +24,7 @@
           <article class="tile is-child box">
             <p class="title has-text-centered">{{shop.shop_name}}</p>
             <p class="subtitle has-text-centered">{{shop.address}}</p>
-            <p class="content has-text-centered">
-              当店「DEAR SPIELE（ディアシュピール）」は、JR東中野駅東口より徒歩1分！
-              世界の「ボードゲーム」を1,200種類以上取り揃えたプレイ＆イベントスペースです。
-              リーズナブルなお値段でご案内しておりますので是非お立ち寄りくださいませ。
-              また、ボードゲームは店内で販売もしております。
-              他店と少し違ったラインナップのものもありますので、こちらも覗いてみてください。
-            </p>
+            <p class="content has-text-centered">{{ shop.content }}</p>
             <!-- Put any content you want -->
             <!-- <div class="photo-detail__pane"> -->
             <!-- photoのliked_by_userがtrueになればクラスが変わる -->

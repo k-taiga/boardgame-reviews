@@ -166,12 +166,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -458,7 +452,13 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "level-left" }, [
-                _vm._m(0),
+                _c("div", { staticClass: "level-item" }, [
+                  _c("p", { staticClass: "heading" }, [_vm._v("Boardgames")]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "title" }, [
+                    _vm._v(_vm._s(_vm.shop.boardgame_num))
+                  ])
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "level-item" }, [
                   _c("p", { staticClass: "heading" }, [_vm._v("Followers")]),
@@ -494,12 +494,10 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "content has-text-centered" }, [
-                    _vm._v(
-                      "\n            当店「DEAR SPIELE（ディアシュピール）」は、JR東中野駅東口より徒歩1分！\n            世界の「ボードゲーム」を1,200種類以上取り揃えたプレイ＆イベントスペースです。\n            リーズナブルなお値段でご案内しておりますので是非お立ち寄りくださいませ。\n            また、ボードゲームは店内で販売もしております。\n            他店と少し違ったラインナップのものもありますので、こちらも覗いてみてください。\n          "
-                    )
+                    _vm._v(_vm._s(_vm.shop.content))
                   ]),
                   _vm._v(" "),
-                  _vm._m(1),
+                  _vm._m(0),
                   _vm._v(" "),
                   _vm.shop.reviews.length > 0
                     ? _c(
@@ -514,7 +512,7 @@ var render = function() {
                             },
                             [
                               _c("article", { staticClass: "media" }, [
-                                _vm._m(2, true),
+                                _vm._m(1, true),
                                 _vm._v(" "),
                                 _c("div", { staticClass: "media-content" }, [
                                   _c("div", { staticClass: "content" }, [
@@ -578,7 +576,7 @@ var render = function() {
                             : _vm._e(),
                           _vm._v(" "),
                           _c("article", { staticClass: "media" }, [
-                            _vm._m(3),
+                            _vm._m(2),
                             _vm._v(" "),
                             _c("div", { staticClass: "media-content" }, [
                               _c("div", { staticClass: "field" }, [
@@ -610,14 +608,14 @@ var render = function() {
                                 ])
                               ]),
                               _vm._v(" "),
-                              _vm._m(4)
+                              _vm._m(3)
                             ])
                           ])
                         ]
                       )
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm._m(5)
+                  _vm._m(4)
                 ])
               ])
             ])
@@ -651,16 +649,6 @@ var render = function() {
     : _vm._e()
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "level-item" }, [
-      _c("p", { staticClass: "heading" }, [_vm._v("Boardgames")]),
-      _vm._v(" "),
-      _c("p", { staticClass: "title" }, [_vm._v("123")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

@@ -72,8 +72,9 @@ class ShopController extends Controller
             $shop = new Shop();
             // $shop->shop_name = $request->shop_name;
             // $shop->address = $request->address;
-            $shop->fill($request->all())->save();
             clock()->info("{$shop}が logに出ています！");
+            clock()->info("{$request}が logに出ています！");
+            $shop->fill($request->all())->save();
             // shopに登録後、紐づくphotoをsave
             // $shop->save();
             $photo->shop_id = $shop->id;
