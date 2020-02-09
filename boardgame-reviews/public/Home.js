@@ -50,6 +50,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -60,13 +61,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       preview: null,
-      photo: null,
       errors: null,
-      shopname: null,
-      address: null,
-      bussiness_hours: null,
-      boardgame_num: null,
-      content: null
+      shop_form: {
+        photo: null,
+        shopname: null,
+        address: null,
+        // bussiness_hours: null,
+        boardgame_num: null,
+        content: null,
+        home_url: null
+      }
     };
   },
   props: {
@@ -106,7 +110,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
       reader.readAsDataURL(event.target.files[0]);
-      this.photo = event.target.files[0];
+      this.shop_form.photo = event.target.files[0];
     },
     reset: function reset() {
       this.preview = "";
@@ -124,44 +128,47 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 formData = new FormData();
-                formData.append("photo", this.photo);
-                formData.append("shop_name", this.shopname);
-                formData.append("address", this.address); //   const response = await axios.post("/api/photos", formData);
-
-                _context.next = 6;
+                formData.append("photo", this.shop_form.photo);
+                formData.append("shop_name", this.shop_form.shopname);
+                formData.append("address", this.shop_form.address);
+                formData.append("boardgame_num", this.shop_form.boardgame_num);
+                formData.append("content", this.shop_form.content);
+                formData.append("home_url", this.shop_form.home_url);
+                console.log(formData);
+                _context.next = 10;
                 return axios.post("/api/shops", formData);
 
-              case 6:
+              case 10:
                 response = _context.sent;
                 console.log(response);
 
                 if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_1__["UNPROCESSABLE_ENTITY"])) {
-                  _context.next = 11;
+                  _context.next = 15;
                   break;
                 }
 
                 this.errors = response.data.errors;
                 return _context.abrupt("return", false);
 
-              case 11:
+              case 15:
                 this.reset();
                 this.$emit("showForm");
 
                 if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["CREATED"])) {
-                  _context.next = 16;
+                  _context.next = 20;
                   break;
                 }
 
                 this.$store.commit("error/setCode", response.status);
                 return _context.abrupt("return", false);
 
-              case 16:
+              case 20:
                 this.$store.commit("message/setContent", {
                   content: "写真が投稿されました！",
                   timeout: 6000
                 }); //   this.$router.push(`/`);
 
-              case 17:
+              case 21:
               case "end":
                 return _context.stop();
             }
@@ -371,55 +378,55 @@ var render = function() {
           _c("bdTextField", {
             attrs: { placeholder: "店舗名" },
             model: {
-              value: _vm.shopname,
+              value: _vm.shop_form.shopname,
               callback: function($$v) {
-                _vm.shopname = $$v
+                _vm.$set(_vm.shop_form, "shopname", $$v)
               },
-              expression: "shopname"
+              expression: "shop_form.shopname"
             }
           }),
           _vm._v(" "),
           _c("bdTextField", {
             attrs: { placeholder: "住所" },
             model: {
-              value: _vm.address,
+              value: _vm.shop_form.address,
               callback: function($$v) {
-                _vm.address = $$v
+                _vm.$set(_vm.shop_form, "address", $$v)
               },
-              expression: "address"
-            }
-          }),
-          _vm._v(" "),
-          _c("bdTextField", {
-            attrs: { placeholder: "営業時間" },
-            model: {
-              value: _vm.bussiness_hours,
-              callback: function($$v) {
-                _vm.bussiness_hours = $$v
-              },
-              expression: "bussiness_hours"
+              expression: "shop_form.address"
             }
           }),
           _vm._v(" "),
           _c("bdTextField", {
             attrs: { placeholder: "ボードゲームの数" },
             model: {
-              value: _vm.boardgame_num,
+              value: _vm.shop_form.boardgame_num,
               callback: function($$v) {
-                _vm.boardgame_num = $$v
+                _vm.$set(_vm.shop_form, "boardgame_num", $$v)
               },
-              expression: "boardgame_num"
+              expression: "shop_form.boardgame_num"
             }
           }),
           _vm._v(" "),
           _c("bdTextField", {
             attrs: { placeholder: "説明文" },
             model: {
-              value: _vm.content,
+              value: _vm.shop_form.content,
               callback: function($$v) {
-                _vm.content = $$v
+                _vm.$set(_vm.shop_form, "content", $$v)
               },
-              expression: "content"
+              expression: "shop_form.content"
+            }
+          }),
+          _vm._v(" "),
+          _c("bdTextField", {
+            attrs: { placeholder: "ホームページ" },
+            model: {
+              value: _vm.shop_form.home_url,
+              callback: function($$v) {
+                _vm.$set(_vm.shop_form, "home_url", $$v)
+              },
+              expression: "shop_form.home_url"
             }
           }),
           _vm._v(" "),

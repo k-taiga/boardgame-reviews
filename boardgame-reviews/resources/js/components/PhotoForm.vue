@@ -17,11 +17,12 @@
       <output class="form__output" v-if="preview">
         <img :src="preview" alt />
       </output>
-      <bdTextField placeholder="店舗名" v-model="shopname"></bdTextField>
-      <bdTextField placeholder="住所" v-model="address"></bdTextField>
-      <bdTextField placeholder="営業時間" v-model="bussiness_hours"></bdTextField>
-      <bdTextField placeholder="ボードゲームの数" v-model="boardgame_num"></bdTextField>
-      <bdTextField placeholder="説明文" v-model="content"></bdTextField>
+      <bdTextField placeholder="店舗名" v-model="shop_form.shopname"></bdTextField>
+      <bdTextField placeholder="住所" v-model="shop_form.address"></bdTextField>
+      <!-- <bdTextField placeholder="営業時間" v-model="shop_form.bussiness_hours"></bdTextField> -->
+      <bdTextField placeholder="ボードゲームの数" v-model="shop_form.boardgame_num"></bdTextField>
+      <bdTextField placeholder="説明文" v-model="shop_form.content"></bdTextField>
+      <bdTextField placeholder="ホームページ" v-model="shop_form.home_url"></bdTextField>
       <div class="form__button">
         <button type="submit" class="button button--inverse">submit</button>
       </div>
@@ -38,13 +39,16 @@ export default {
   data() {
     return {
       preview: null,
-      photo: null,
       errors: null,
-      shopname: null,
-      address: null,
-      bussiness_hours: null,
-      boardgame_num: null,
-      content: null
+      shop_form: {
+        photo: null,
+        shopname: null,
+        address: null,
+        // bussiness_hours: null,
+        boardgame_num: null,
+        content: null,
+        home_url: null
+      }
     };
   },
   props: {
@@ -83,7 +87,7 @@ export default {
       // ファイルを読み込む
       // 読み込まれたファイルはデータURL形式で受け取れる
       reader.readAsDataURL(event.target.files[0]);
-      this.photo = event.target.files[0];
+      this.shop_form.photo = event.target.files[0];
     },
     reset() {
       this.preview = "";
@@ -93,10 +97,14 @@ export default {
     },
     async submit() {
       const formData = new FormData();
-      formData.append("photo", this.photo);
-      formData.append("shop_name", this.shopname);
-      formData.append("address", this.address);
-      //   const response = await axios.post("/api/photos", formData);
+      formData.append("photo", this.shop_form.photo);
+      formData.append("shop_name", this.shop_form.shopname);
+      formData.append("address", this.shop_form.address);
+      formData.append("boardgame_num", this.shop_form.boardgame_num);
+      formData.append("content", this.shop_form.content);
+      formData.append("home_url", this.shop_form.home_url);
+
+      console.log(formData);
       const response = await axios.post("/api/shops", formData);
       console.log(response);
 

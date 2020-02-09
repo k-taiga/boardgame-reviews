@@ -16,18 +16,18 @@ class Shop extends Model
 
     /** JSONに含める属性 */
     protected $visible = [
-        'id', 'shop_name', 'address', 'bussiness_hours',
+        'id', 'shop_name', 'address',
         'photos', 'reviews', 'likes_count', 'liked_by_user',
     ];
 
     protected $perPage = 20;
 
-    const HOUR = 10;
+    // const HOUR = 10;
 
-    protected $attributes = [
-        // 定数を設定
-        'bussiness_hours' => self::HOUR,
-    ];
+    // protected $attributes = [
+    //     // 定数を設定
+    //     'bussiness_hours' => self::HOUR,
+    // ];
 
     // ここから下はリレーション
     // withで呼び出す
