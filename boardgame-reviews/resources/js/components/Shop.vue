@@ -7,13 +7,6 @@
       <p class="title is-5">{{item.shop_name}}</p>
       <p class="subtitle is-6">@{{item.address}}</p>
     </div>
-    <!-- <div class="content"> -->
-    <!-- <a>@bulmaio</a>.
-      <a href="#">#css</a>
-    <a href="#">#responsive</a>-->
-    <!-- <br /> -->
-    <!-- <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time> -->
-    <!-- </div> -->
     <RouterLink class="photo__overlay" :to="`/shops/${item.id}`" :title="`View ${item.shop_name}`">
       <div class="photo__controls">
         <button
