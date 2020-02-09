@@ -28,6 +28,9 @@ class StoreShop extends FormRequest
             'shop_name' => 'required|max:255',
             'address' => 'required|max:255',
             // 'bussiness_hours' => 'required|max:255',
+            'boardgame_num' => 'integer|max:255',
+            'content' => 'string|max:255',
+            'home_url' => 'string|max:255',
         ];
     }
 }

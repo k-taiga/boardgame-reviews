@@ -60,8 +60,6 @@ class ShopController extends Controller
         // clock($photo);
         // $shop->shop_name = $request->shop_name;
         // $shop->address = $request->address;
-        // clock()->info("{$shop}が logに出ています！");
-        // clock($shop);
         // $photo->shop_id = $shop->id;
         // $shop->photos()->save($photo);
 
@@ -72,10 +70,12 @@ class ShopController extends Controller
         try {
             // Auth::user()->photos()->save($photo);
             $shop = new Shop();
-            $shop->shop_name = $request->shop_name;
-            $shop->address = $request->address;
+            // $shop->shop_name = $request->shop_name;
+            // $shop->address = $request->address;
+            $shop->fill($request->all())->save();
+            clock()->info("{$shop}が logに出ています！");
             // shopに登録後、紐づくphotoをsave
-            $shop->save();
+            // $shop->save();
             $photo->shop_id = $shop->id;
             $shop->photos()->save($photo);
             DB::commit();
