@@ -522,7 +522,7 @@ var render = function() {
                                       ]),
                                       _vm._v(" "),
                                       _c("small", [
-                                        _vm._v("@レビューの投稿時間を入れる")
+                                        _vm._v(_vm._s(review.date))
                                       ]),
                                       _vm._v(" "),
                                       _c("br"),
