@@ -74,7 +74,8 @@ export default {
       console.log(response);
 
       this.shops = this.shops.map(shop => {
-        if (shop.id === response.data.shop_id) {
+        console.log(shop);
+        if (shop.id == response.data.shop_id) {
           shop.likes_count += 1;
           shop.liked_by_user = true;
         }
@@ -91,7 +92,7 @@ export default {
       }
 
       this.shops = this.shops.map(shop => {
-        if (shop.id === response.data.shop_id) {
+        if (shop.id == response.data.shop_id) {
           shop.likes_count -= 1;
           shop.liked_by_user = false;
         }
@@ -106,9 +107,6 @@ export default {
         await this.fetchShops();
       },
       immediate: true
-    },
-    shops: function(newValue, oldValue) {
-      console.log(oldValue + "=>" + newValue);
     }
   }
 };
