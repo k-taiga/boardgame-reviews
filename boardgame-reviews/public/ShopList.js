@@ -92,7 +92,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -427,21 +426,13 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "media-content" }, [
-        _c("p", { staticClass: "title is-4" }, [
+        _c("p", { staticClass: "title is-5" }, [
           _vm._v(_vm._s(_vm.item.shop_name))
         ]),
         _vm._v(" "),
         _c("p", { staticClass: "subtitle is-6" }, [
           _vm._v("@" + _vm._s(_vm.item.address))
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v(
-          "\n    営業時間:" + _vm._s(_vm.item.bussiness_hours) + "時~\n    "
-        ),
-        _vm._v(" "),
-        _c("br")
       ]),
       _vm._v(" "),
       _c(
