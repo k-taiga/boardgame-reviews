@@ -13,10 +13,10 @@ const SignUp = () =>
     import(/* webpackChunkName:"SignUp" */ "./views/SignUp.vue");
 const SignIn = () =>
     import(/* webpackChunkName:"SignIn" */ "./views/SignIn.vue");
-const PhotoList = () =>
-    import(/* webpackChunkName:"PhotoList" */ "./views/PhotoList.vue");
-const PhotoDetail = () =>
-    import(/* webpackChunkName:"PhotoDetail" */ "./views/PhotoDetail.vue");
+const ShopList = () =>
+    import(/* webpackChunkName:"ShopList" */ "./views/ShopList.vue");
+const ShopDetail = () =>
+    import(/* webpackChunkName:"ShopDetail" */ "./views/ShopDetail.vue");
 const SystemError = () =>
     import(/* webpackChunkName:"SystemError" */ "./views/errors/System.vue");
 const NotFoundError = () =>
@@ -44,7 +44,7 @@ const router = new VueRouter({
         {
             path: "/",
             name: "index",
-            component: PhotoList,
+            component: ShopList,
             props: route => {
                 // URL のクエリパラメータ page をページコンポーネントで取得しPhotoListのコンポーネントに返す
                 // routeからpageを取得し正規表現でチェック
@@ -53,8 +53,8 @@ const router = new VueRouter({
             }
         },
         {
-            path: "/photos/:id",
-            component: PhotoDetail,
+            path: "/shops/:id",
+            component: ShopDetail,
             props: true
         },
         {

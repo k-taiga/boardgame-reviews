@@ -4,7 +4,7 @@
     <!-- <label class="label" v-if="label">{{ label }}</label> -->
     <!-- icon が指定されたときだけ必要なクラスを設定します -->
     <div class="control" :class="{ 'has-icons-left': icon }">
-      <input class="input" :type="type" :placeholder="placeholder" :value="value" @input="input" />
+      <input class="input" :type="type" :placeholder="placeholder" :value="value" @input="input" :name="type"/>
       <!-- アイコンが指定されたときだけ表示します -->
       <bdIcon v-if="icon" class="is-small is-left" :name="icon"></bdIcon>
     </div>

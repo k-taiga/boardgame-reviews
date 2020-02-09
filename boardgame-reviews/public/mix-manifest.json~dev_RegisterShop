@@ -1,0 +1,11 @@
+{
+    "/js/app.js": "/js/app.js?id=61ba355f46602dd5d727",
+    "/css/app.css": "/css/app.css?id=cdbf34476f4b001dcf41",
+    "/Home.js": "/Home.js?id=50c894ca1a3fa1912e6f",
+    "/NotFoundError.js": "/NotFoundError.js?id=d9351a6d3687c5a1674f",
+    "/ShopDetail.js": "/ShopDetail.js?id=204d49524abde658b851",
+    "/ShopList.js": "/ShopList.js?id=47f0a1a08100bb6337af",
+    "/SignIn.js": "/SignIn.js?id=fb68dad91c3896e4492e",
+    "/SignUp.js": "/SignUp.js?id=997dab2496e3ca6a02ad",
+    "/SystemError.js": "/SystemError.js?id=47ffbfee321632e6ca64"
+}
