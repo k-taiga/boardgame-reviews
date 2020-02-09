@@ -123,4 +123,42 @@ class ShopController extends Controller
 
         return response($new_review, 201);
     }
+
+    /**
+     * いいね
+     * @param string $id
+     * @return array
+     */
+    public function like(string $id)
+    {
+        $shop = Shop::where('id', $id)->with('likes')->first();
+
+        if (!$shop) {
+            abort(404);
+        }
+
+        // 一度detachしてからattachすることでユーザーにつき一個しかいいねが付かない
+        $shop->likes()->detach(Auth::user()->id);
+        $shop->likes()->attach(Auth::user()->id);
+
+        return ["shop_id" => $id];
+    }
+
+    /**
+     * いいね解除
+     * @param string $id
+     * @return array
+     */
+    public function unlike(string $id)
+    {
+        $shop = Shop::where('id', $id)->with('likes')->first();
+
+        if (!$shop) {
+            abort(404);
+        }
+
+        $shop->likes()->detach(Auth::user()->id);
+
+        return ["shop_id" => $id];
+    }
 }

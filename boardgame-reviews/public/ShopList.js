@@ -176,8 +176,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios.get( // `/api/photos/?page=${this.$route.query.page}`
-                "/api/shops/?page=".concat(this.$route.query.page));
+                return axios.get("/api/shops/?page=".concat(this.$route.query.page));
 
               case 2:
                 response = _context.sent;
@@ -224,56 +223,123 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       } else {
         this.like(id);
       }
-    } // ,
-    // async like(id) {
-    //   const response = await axios.put(`/api/photos/${id}/like`);
-    //   if (response.status !== OK) {
-    //     this.$store.commit("error/setCode", response.status);
-    //     return false;
-    //   }
-    //   this.photos = this.photos.map(photo => {
-    //     if (photo.id === response.data.photo_id) {
-    //       photo.likes_count += 1;
-    //       photo.liked_by_user = true;
-    //     }
-    //     return photo;
-    //   });
-    // },
-    // async unlike(id) {
-    //   const response = await axios.delete(`/api/photos/${id}/unlike`);
-    //   if (response.status !== OK) {
-    //     this.$store.commit("error/setCode", response.status);
-    //     return false;
-    //   }
-    //   this.photos = this.photos.map(photo => {
-    //     if (photo.id === response.data.photo_id) {
-    //       photo.likes_count -= 1;
-    //       photo.liked_by_user = false;
-    //     }
-    //     return photo;
-    //   });
-    // }
+    },
+    like: function () {
+      var _like = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(id) {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return axios.put("/api/shops/".concat(id, "/like"));
 
+              case 2:
+                response = _context2.sent;
+
+                if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
+                  _context2.next = 6;
+                  break;
+                }
+
+                this.$store.commit("error/setCode", response.status);
+                return _context2.abrupt("return", false);
+
+              case 6:
+                console.log(response);
+                this.shops = this.shops.map(function (shop) {
+                  if (shop.id === response.data.shop_id) {
+                    shop.likes_count += 1;
+                    shop.liked_by_user = true;
+                  }
+
+                  return shop;
+                });
+                console.log(this.shops);
+
+              case 9:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function like(_x) {
+        return _like.apply(this, arguments);
+      }
+
+      return like;
+    }(),
+    unlike: function () {
+      var _unlike = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(id) {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return axios["delete"]("/api/shops/".concat(id, "/unlike"));
+
+              case 2:
+                response = _context3.sent;
+
+                if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
+                  _context3.next = 6;
+                  break;
+                }
+
+                this.$store.commit("error/setCode", response.status);
+                return _context3.abrupt("return", false);
+
+              case 6:
+                this.shops = this.shops.map(function (shop) {
+                  if (shop.id === response.data.shop_id) {
+                    shop.likes_count -= 1;
+                    shop.liked_by_user = false;
+                  }
+
+                  return shop;
+                });
+
+              case 7:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function unlike(_x2) {
+        return _unlike.apply(this, arguments);
+      }
+
+      return unlike;
+    }()
   },
   watch: {
     $route: {
       handler: function () {
         var _handler = _asyncToGenerator(
         /*#__PURE__*/
-        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
             while (1) {
-              switch (_context2.prev = _context2.next) {
+              switch (_context4.prev = _context4.next) {
                 case 0:
-                  _context2.next = 2;
+                  _context4.next = 2;
                   return this.fetchShops();
 
                 case 2:
                 case "end":
-                  return _context2.stop();
+                  return _context4.stop();
               }
             }
-          }, _callee2, this);
+          }, _callee4, this);
         }));
 
         function handler() {
@@ -283,6 +349,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return handler;
       }(),
       immediate: true
+    },
+    shops: function shops(newValue, oldValue) {
+      console.log(oldValue + "=>" + newValue);
     }
   }
 });
