@@ -49,7 +49,6 @@
 
 <script>
 import bdTextField from "../components/TextField";
-import { mapState } from "vuex";
 
 export default {
   name: "sign_in",
