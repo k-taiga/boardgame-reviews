@@ -250,7 +250,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 6:
                 console.log(response);
                 this.shops = this.shops.map(function (shop) {
-                  if (shop.id === response.data.shop_id) {
+                  console.log(shop);
+
+                  if (shop.id == response.data.shop_id) {
                     shop.likes_count += 1;
                     shop.liked_by_user = true;
                   }
@@ -298,7 +300,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 6:
                 this.shops = this.shops.map(function (shop) {
-                  if (shop.id === response.data.shop_id) {
+                  if (shop.id == response.data.shop_id) {
                     shop.likes_count -= 1;
                     shop.liked_by_user = false;
                   }
@@ -349,9 +351,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return handler;
       }(),
       immediate: true
-    },
-    shops: function shops(newValue, oldValue) {
-      console.log(oldValue + "=>" + newValue);
     }
   }
 });
