@@ -21478,12 +21478,13 @@ var actions = {
 
             case 2:
               response = _context4.sent;
-              // ログインしていなければnull
+              console.log(response); // ログインしていなければnull
+
               user = response.data || null;
               context.commit("setUser", user);
 
               if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_2__["OK"])) {
-                _context4.next = 9;
+                _context4.next = 10;
                 break;
               }
 
@@ -21491,13 +21492,13 @@ var actions = {
               context.commit("setUser", user);
               return _context4.abrupt("return", false);
 
-            case 9:
+            case 10:
               context.commit("setApiStatus", false);
               context.commit("error/setCode", response.status, {
                 root: true
               });
 
-            case 11:
+            case 12:
             case "end":
               return _context4.stop();
           }

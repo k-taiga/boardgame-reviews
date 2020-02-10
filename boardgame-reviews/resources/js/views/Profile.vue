@@ -39,7 +39,7 @@ export default {
     return {
       user: null,
       profile: null,
-      bookmarks: []
+      like_shops: []
     };
   }
   //   ,

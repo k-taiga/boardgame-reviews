@@ -48,7 +48,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       user: null,
       profile: null,
-      bookmarks: []
+      like_shops: []
     };
   } //   ,
   //   async created() {
