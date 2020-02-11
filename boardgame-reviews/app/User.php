@@ -20,7 +20,7 @@ class User extends Authenticatable
     ];
 
     protected $visible = [
-        'name',
+        'name', 'likes'
     ];
 
     /**
@@ -33,11 +33,11 @@ class User extends Authenticatable
     ];
 
     /**
-     * リレーションシップ - photosテーブル
+     * リレーションシップ - shopsテーブル
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function photos()
+    public function likes()
     {
-        return $this->hasMany('App\Photo');
+        return $this->hasMany('App\Shop', 'likes')->withTimestamps();
     }
 }
