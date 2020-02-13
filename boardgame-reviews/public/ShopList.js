@@ -122,6 +122,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util */ "./resources/js/util.js");
 /* harmony import */ var _components_Shop_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Shop.vue */ "./resources/js/components/Shop.vue");
 /* harmony import */ var _components_Pagination_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Pagination.vue */ "./resources/js/components/Pagination.vue");
+/* harmony import */ var _components_Carousel_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Carousel.vue */ "./resources/js/components/Carousel.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -143,13 +144,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     shop: _components_Shop_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    pagination: _components_Pagination_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    pagination: _components_Pagination_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    bdCarousel: _components_Carousel_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   data: function data() {
     return {
@@ -559,6 +563,8 @@ var render = function() {
     "div",
     { staticClass: "shop-list container" },
     [
+      _c("bdCarousel"),
+      _vm._v(" "),
       _c(
         "div",
         { staticClass: "grid" },

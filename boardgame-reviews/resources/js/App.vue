@@ -1,7 +1,6 @@
 <template>
     <div id="app">
         <bdNavbar :user="user" @sign-out-clicked="signOut"></bdNavbar>
-        <bdCarousel></bdCarousel>
         <main>
             <!-- <message /> -->
             <transition name="fade" mode="out-in">

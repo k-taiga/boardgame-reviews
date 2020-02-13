@@ -26,6 +26,10 @@ export default {
 </script>
 
 <style>
+.el-carousel {
+    margin-bottom: 3rem;
+}
+
 .el-carousel__item {
     color: #475669;
     font-size: 18px;
@@ -34,6 +38,7 @@ export default {
     margin: 0;
     height: 250px;
     text-align: center;
+    background-color: darkcyan;
 }
 
 .el-carousel__item div {

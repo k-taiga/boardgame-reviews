@@ -3622,7 +3622,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 
@@ -5889,7 +5888,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.el-carousel__item {\n    color: #475669;\n    font-size: 18px;\n    opacity: 0.75;\n    line-height: 300px;\n    margin: 0;\n    height: 250px;\n    text-align: center;\n}\n.el-carousel__item div {\n    margin: 10px;\n}\n\n/* .el-carousel__item:nth-child(2n) {\n    background-color: #99a9bf;\n}\n\n.el-carousel__item:nth-child(2n + 1) {\n    background-color: #d3dce6;\n} */\n", ""]);
+exports.push([module.i, "\n.el-carousel {\n    margin-bottom: 3rem;\n}\n.el-carousel__item {\n    color: #475669;\n    font-size: 18px;\n    opacity: 0.75;\n    line-height: 300px;\n    margin: 0;\n    height: 250px;\n    text-align: center;\n    background-color: darkcyan;\n}\n.el-carousel__item div {\n    margin: 10px;\n}\n\n/* .el-carousel__item:nth-child(2n) {\n    background-color: #99a9bf;\n}\n\n.el-carousel__item:nth-child(2n + 1) {\n    background-color: #d3dce6;\n} */\n", ""]);
 
 // exports
 
@@ -66219,8 +66218,6 @@ var render = function() {
         attrs: { user: _vm.user },
         on: { "sign-out-clicked": _vm.signOut }
       }),
-      _vm._v(" "),
-      _c("bdCarousel"),
       _vm._v(" "),
       _c(
         "main",
