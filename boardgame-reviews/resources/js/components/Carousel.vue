@@ -11,6 +11,13 @@
             <div>
                 <h3>Boardgame Reviews</h3>
                 <p>ようこそ！！！！！！</p>
+                <img />
+            </div>
+        </el-carousel-item>
+        <el-carousel-item>
+            <div>
+                <h3>Boardgame Reviews</h3>
+                <p>ようこそ！！！！！！</p>
                 <img
                     src="https://boardgame-reviews.s3-ap-northeast-1.amazonaws.com/rkHCC5OlJnO2.jpeg"
                 />

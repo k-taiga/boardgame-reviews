@@ -3787,6 +3787,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Carousel"
 });
@@ -66265,6 +66272,16 @@ var render = function() {
     "el-carousel",
     { attrs: { interval: 5000, arrow: "hover" } },
     [
+      _c("el-carousel-item", [
+        _c("div", [
+          _c("h3", [_vm._v("Boardgame Reviews")]),
+          _vm._v(" "),
+          _c("p", [_vm._v("ようこそ！！！！！！")]),
+          _vm._v(" "),
+          _c("img")
+        ])
+      ]),
+      _vm._v(" "),
       _c("el-carousel-item", [
         _c("div", [
           _c("h3", [_vm._v("Boardgame Reviews")]),
