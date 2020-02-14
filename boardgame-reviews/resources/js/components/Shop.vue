@@ -1,7 +1,8 @@
 <template>
   <div class="photo card">
     <figure class="photo__wrapper image is-4by3">
-      <img class="photo__image" :src="item.photos.url" :alt="`Photo by ${item.shop_name}`" />
+      <el-image class="photo__image" :src="item.photos.url" :alt="`${item.shop_name}`" lazy></el-image>
+      <!-- <img class="photo__image" :src="item.photos.url" :alt="`${item.shop_name}`" /> -->
     </figure>
     <div class="media-content">
       <p class="title is-5">{{item.shop_name}}</p>
