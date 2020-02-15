@@ -85,6 +85,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -480,15 +481,21 @@ var render = function() {
     "div",
     { staticClass: "photo card" },
     [
-      _c("figure", { staticClass: "photo__wrapper image is-4by3" }, [
-        _c("img", {
-          staticClass: "photo__image",
-          attrs: {
-            src: _vm.item.photos.url,
-            alt: "Photo by " + _vm.item.shop_name
-          }
-        })
-      ]),
+      _c(
+        "figure",
+        { staticClass: "photo__wrapper image is-4by3" },
+        [
+          _c("el-image", {
+            staticClass: "photo__image",
+            attrs: {
+              src: _vm.item.photos.url,
+              alt: "" + _vm.item.shop_name,
+              lazy: ""
+            }
+          })
+        ],
+        1
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "media-content" }, [
         _c("p", { staticClass: "title is-5" }, [

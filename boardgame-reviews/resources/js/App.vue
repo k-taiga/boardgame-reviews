@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <bdNavbar :user="user" @sign-out-clicked="signOut"></bdNavbar>
-        <main>
+        <main class="container">
             <!-- <message /> -->
             <transition name="fade" mode="out-in">
                 <router-view />
@@ -109,5 +109,8 @@ export default {
 .fade-enter-active,
 .fade-leave-active {
     transition: opacity 0.3s;
+}
+.container {
+    min-height: 100vh;
 }
 </style>
