@@ -166,6 +166,48 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -486,15 +528,27 @@ var render = function() {
               _c("div", { staticClass: "tile is-parent is-vertical" }, [
                 _c("article", { staticClass: "tile is-child box" }, [
                   _c("p", { staticClass: "title has-text-centered" }, [
-                    _vm._v(_vm._s(_vm.shop.shop_name))
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.shop.shop_name) +
+                        "\n                    "
+                    )
                   ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "subtitle has-text-centered" }, [
-                    _vm._v(_vm._s(_vm.shop.address))
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.shop.address) +
+                        "\n                    "
+                    )
                   ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "content has-text-centered" }, [
-                    _vm._v(_vm._s(_vm.shop.content))
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.shop.content) +
+                        "\n                    "
+                    )
                   ]),
                   _vm._v(" "),
                   _vm._m(0),
@@ -527,9 +581,9 @@ var render = function() {
                                       _vm._v(" "),
                                       _c("br"),
                                       _vm._v(
-                                        "\n                      " +
+                                        "\n                                            " +
                                           _vm._s(review.content) +
-                                          "\n                    "
+                                          "\n                                        "
                                       )
                                     ])
                                   ])
@@ -566,7 +620,11 @@ var render = function() {
                                         msg
                                       ) {
                                         return _c("li", { key: msg }, [
-                                          _vm._v(_vm._s(msg))
+                                          _vm._v(
+                                            "\n                                    " +
+                                              _vm._s(msg) +
+                                              "\n                                "
+                                          )
                                         ])
                                       }),
                                       0
@@ -655,7 +713,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("h2", { staticClass: "photo-detail__title" }, [
       _c("i", { staticClass: "icon ion-md-chatboxes" }),
-      _vm._v("Review\n          ")
+      _vm._v("Review\n                    ")
     ])
   },
   function() {
@@ -702,7 +760,11 @@ var staticRenderFns = [
                 staticClass: "button button--inverse",
                 attrs: { type: "submit" }
               },
-              [_vm._v("レビューを投稿する")]
+              [
+                _vm._v(
+                  "\n                                                    レビューを投稿する\n                                                "
+                )
+              ]
             )
           ])
         ])
@@ -723,7 +785,9 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("span", [
-          _vm._v("\n                View on\n                "),
+          _vm._v(
+            "\n                                View on\n                                "
+          ),
           _c("a", { attrs: { href: "#" } }, [_vm._v("Official")])
         ])
       ]),
@@ -737,7 +801,9 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("span", [
-          _vm._v("\n                Share on\n                "),
+          _vm._v(
+            "\n                                Share on\n                                "
+          ),
           _c("a", { attrs: { href: "#" } }, [_vm._v("Twitter")])
         ])
       ])
