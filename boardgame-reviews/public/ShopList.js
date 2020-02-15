@@ -86,6 +86,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -374,7 +387,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.title[data-v-e1ea323e],\n.subtitle[data-v-e1ea323e],\n.content[data-v-e1ea323e] {\n  font-family: Merriweather;\n}\n", ""]);
+exports.push([module.i, "\n.title[data-v-e1ea323e],\n.subtitle[data-v-e1ea323e],\n.content[data-v-e1ea323e] {\n    font-family: Merriweather;\n}\n", ""]);
 
 // exports
 
@@ -481,21 +494,12 @@ var render = function() {
     "div",
     { staticClass: "photo card" },
     [
-      _c(
-        "figure",
-        { staticClass: "photo__wrapper image is-4by3" },
-        [
-          _c("el-image", {
-            staticClass: "photo__image",
-            attrs: {
-              src: _vm.item.photos.url,
-              alt: "" + _vm.item.shop_name,
-              lazy: ""
-            }
-          })
-        ],
-        1
-      ),
+      _c("figure", { staticClass: "photo__wrapper image is-4by3" }, [
+        _c("img", {
+          staticClass: "photo__image",
+          attrs: { src: _vm.item.photos.url, alt: "" + _vm.item.shop_name }
+        })
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "media-content" }, [
         _c("p", { staticClass: "title is-5" }, [
@@ -533,7 +537,11 @@ var render = function() {
               },
               [
                 _c("bdIcon", { attrs: { name: "thumbs-up" } }),
-                _vm._v("\n        " + _vm._s(_vm.item.likes_count) + "\n      ")
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.item.likes_count) +
+                    "\n            "
+                )
               ],
               1
             )
