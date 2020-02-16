@@ -84,6 +84,6 @@ workflows:
       - build_image:
           requires:
             - build
-        filters:
-          branches:
-            only: master
+          filters:
+            branches:
+              only: master
