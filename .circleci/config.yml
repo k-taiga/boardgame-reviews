@@ -5,11 +5,13 @@ jobs:
       - image: circleci/php:7.4.1-fpm
       - image: circleci/mysql:5.7
         command: mysqld --default-authentication-plugin=mysql_native_password
-        envirionment:
-          - APP_DEBUG: true
-          - APP_ENV: circle
-          - DB_CONNECTION: circle_test
-          - MYSQL_ALLOW_EMPTY_PASSWORD: true
+        environment:
+          MYSQL_DATABASE: boardgame-reviews
+          MYSQL_USER: user
+          MYSQL_PASSWORD: password
+          MYSQL_ROOT_PASSWORD: password
+      environment:
+        - DB_HOST: 127.0.0.1
 
     working_directory: ~/repo
 
