@@ -43,7 +43,7 @@ jobs:
 
       - run:
           name: migration
-          command: php ./boardgame-reviews/artisan migrate
+          command: php ./boardgame-reviews/artisan migrate --force
 
       - run:
           name: env_copy
