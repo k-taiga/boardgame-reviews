@@ -33,17 +33,17 @@ jobs:
       - run: ls
       - run:
           name: composer install
-          command: composer install -n --prefer-dist --working-dir=./boardgame-reviews
+          command: composer install -n --prefer-dist --no-dev --working-dir=./boardgame-reviews
 
       - save_cache:
           paths:
             - ./vendor
-          key: v1-dependencies-{{ checksum "composer.json" }}
+          key: v1-dependencies-{{ checksum "./boardgame-reviews/composer.json" }}
 
       - run:
           name: migration
-          command: php artisan migrate --env=circle
+          command: php ./boardgame-reviews/artisan migrate --env=circle
 
       - run:
           name: env_copy
-          command: rm .env.testing && ln -s .env.circle .env.testing
+          command: rm ./boardgame-reviews/.env.testing && ln -s .env.circle .env.testing
