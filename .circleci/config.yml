@@ -25,14 +25,10 @@ jobs:
             && sudo docker-php-ext-install pdo_mysql pdo_pgsql \
             && sudo docker-php-ext-install zip
 
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "composer.json" }}
-            - v1-dependencies-
-
       - run:
           name: composer install
-          command: cd /usr/bin && curl -s http://getcomposer.org/installer | php && ln -s /usr/bin/composer.phar /usr/bin/composer
+          command: cd /usr/bin && curl -s http://getcomposer.org/installer |
+            sudo php && ln -s /usr/bin/composer.phar /usr/bin/composer
 
       - save_cache:
           paths:
