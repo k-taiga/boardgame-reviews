@@ -25,7 +25,7 @@ jobs:
             && sudo docker-php-ext-install pdo_mysql pdo_pgsql \
             && sudo docker-php-ext-install zip
 
-      - run: cd boargame-reviews
+      - run: cd boardgame-reviews
       - run:
           name: composer install
           command: composer install -n --prefer-dist
