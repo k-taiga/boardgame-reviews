@@ -67,6 +67,7 @@ jobs:
           name: aws configure list
           command: |
             aws configure list
+            ls
       - run:
           name: login ecr
           command: |
