@@ -25,10 +25,15 @@ jobs:
             && sudo docker-php-ext-install pdo_mysql pdo_pgsql \
             && sudo docker-php-ext-install zip
 
-      - run: cd boardgame-reviews
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "./boardgame-reviews/composer.json" }}
+            - v1-dependencies-
+
+      - run: ls
       - run:
           name: composer install
-          command: composer install -n --prefer-dist
+          command: composer install -n --prefer-dist --working-dir=./boardgame-reviews
 
       - save_cache:
           paths:
