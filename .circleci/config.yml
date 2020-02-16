@@ -32,7 +32,7 @@ jobs:
 
       - run:
           name: composer install
-          command: composer install -n --prefer-dist
+          command: cd /usr/bin && curl -s http://getcomposer.org/installer | php && ln -s /usr/bin/composer.phar /usr/bin/composer
 
       - save_cache:
           paths:
