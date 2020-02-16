@@ -5,7 +5,7 @@ jobs:
       - image: circleci/php:7.4.1-fpm
       - image: circleci/mysql:5.7
         command: mysqld --default-authentication-plugin=mysql_native_password
-        envirionment: # MySQLの初期設定
+        envirionment:
           - APP_DEBUG: true
           - APP_ENV: circle
           - DB_CONNECTION: circle_test
@@ -17,13 +17,13 @@ jobs:
       - checkout
 
       - run:
-        name: test_setup # テストを行うために必要なライブラリなどのインストール
-        command: |
-          sudo apt-get update && sudo apt-get install -y libpng-dev libjpeg-dev |
-          sudo docker-php-ext-configure gd --with-png-dir=/usr/include --with-jpeg-dir=/usr/include |
-          sudo docker-php-ext-install pdo_mysql gd
+          name: test_setup
+          command: |
+            sudo apt-get update && sudo apt-get install -y libpng-dev libjpeg-dev |
+            sudo docker-php-ext-configure gd --with-png-dir=/usr/include --with-jpeg-dir=/usr/include |
+            sudo docker-php-ext-install pdo_mysql gd
 
-      - restore_cache: # composer.jsonのキャッシュがあれば利用
+      - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "composer.json" }}
             - v1-dependencies-
@@ -32,7 +32,7 @@ jobs:
           name: composer install
           command: composer install -n --prefer-dist
 
-      - save_cache: # composer.jsonをキャッシュ
+      - save_cache:
           paths:
             - ./vendor
           key: v1-dependencies-{{ checksum "composer.json" }}
@@ -41,6 +41,6 @@ jobs:
           name: migration
           command: php artisan migrate --env=circle
 
-      - run: # envファイルをcircleci用のものに変更
+      - run:
           name: env_copy
           command: rm .env.testing && ln -s .env.circle .env.testing
