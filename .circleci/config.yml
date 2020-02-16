@@ -73,11 +73,11 @@ jobs:
           command: |
             $(aws ecr get-login --no-include-email --region ap-northeast-1)
       - run:
-        name: Docker Compose をインストール
-        command: |
-          curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
-          chmod +x ~/docker-compose
-          sudo mv ~/docker-compose /usr/local/bin/docker-compose
+          name: Docker Compose install
+          command: |
+            curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+            chmod +x ~/docker-compose
+            sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - run:
           name: build image
           command: |
