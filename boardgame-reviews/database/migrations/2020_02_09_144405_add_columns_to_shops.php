@@ -15,7 +15,6 @@ class AddColumnsToShops extends Migration
     {
         Schema::table('shops', function (Blueprint $table) {
             $table->dropColumn('bussiness_hours');
-            $table->dropColumn('photo_id');
             $table->string('boardgame_num');
             $table->string('content');
             $table->string('home_url');
@@ -31,7 +30,6 @@ class AddColumnsToShops extends Migration
     {
         Schema::table('shops', function (Blueprint $table) {
             $table->string('bussiness_hours');
-            $table->string('photo_id');
             $table->dropColumn('boardgame_num');
             $table->dropColumn('content');
             $table->dropColumn('home_url');
