@@ -27,9 +27,7 @@ jobs:
 
       - run:
           name: composer install
-          command: cd /usr/bin && curl -s http://getcomposer.org/installer |
-            sudo php && ln -s /usr/bin/composer.phar /usr/bin/composer
-
+          command: composer install -n --prefer-dist
       - save_cache:
           paths:
             - ./vendor
