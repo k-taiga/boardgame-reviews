@@ -20,10 +20,10 @@ jobs:
           name: test_setup
           command: |
             sudo apt-get update \
-            && apt-get install -y libpq-dev \
-            && apt-get install -y libpq-dev libzip-dev \
-            && docker-php-ext-install pdo_mysql pdo_pgsql \
-            && docker-php-ext-install zip
+            && sudo apt-get install -y libpq-dev \
+            && sudo apt-get install -y libpq-dev libzip-dev \
+            && sudo docker-php-ext-install pdo_mysql pdo_pgsql \
+            && sudo docker-php-ext-install zip
 
       - restore_cache:
           keys:
