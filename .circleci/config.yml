@@ -27,12 +27,13 @@ jobs:
           command: |
             set -x
             docker-compose up -d
-
+            
       - run:
-          name: docker-compose exec app bash
+          name: docker-compose exec app bash & cd
           command: |
             set -x
             docker-compose exec app bash
+            cd boardgame-reviews
 
       - restore_cache:
           keys:
