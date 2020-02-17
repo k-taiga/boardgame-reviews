@@ -36,7 +36,9 @@ jobs:
       - run: ls
       - run:
           name: composer install
-          command: composer install -n --prefer-dist --no-dev --working-dir=./boardgame-reviews
+          command: 
+            docker-compose exec app bash
+            composer install -n --prefer-dist --no-dev --working-dir=./boardgame-reviews
 
       - save_cache:
           paths:
@@ -45,7 +47,9 @@ jobs:
 
       - run:
           name: migration
-          command: php ./boardgame-reviews/artisan migrate --force
+          command: 
+            docker-compose exec app bash
+            php ./boardgame-reviews/artisan migrate --force
 
       - run:
           name: env_copy
