@@ -29,22 +29,12 @@ jobs:
             docker-compose up -d
             
       - run:
-          name: docker-compose exec app bash & cd
+          name: docker-compose exec app bash & composer-install
           command: |
             set -x
             docker-compose exec app bash
             cd boardgame-reviews
-            ls
-
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "./boardgame-reviews/composer.json" }}
-            - v1-dependencies-
-
-      - run:
-          name: composer install
-          command: 
-            composer install -n --prefer-dist --no-dev --working-dir=./boardgame-reviews
+            composer install -n --prefer-dist --no-dev
 
       - save_cache:
           paths:
