@@ -13,28 +13,11 @@ jobs:
             chmod +x ~/docker-compose
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - run:
-          name: docker-compose up
+          name: Setup docker
           command: |
-            set -x
-            docker-compose up --build -d
-      - run:
-          name: docker-compose stop
-          command: |
-            set -x
-            docker-compose stop
-      - run:
-          name: docker-compose up
-          command: |
-            set -x
+            docker-compose build
             docker-compose up -d
-            
-      - run:
-          name: docker-compose exec app bash & composer-install
-          command: |
-            set -x
-            docker-compose exec app bash \
-            cd boardgame-reviews \
-            composer install -n --prefer-dist --no-dev
+            docker-compose run app composer install
 
       - save_cache:
           paths:
