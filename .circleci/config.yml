@@ -34,13 +34,13 @@ jobs:
             set -x
             docker-compose exec app bash
             cd boardgame-reviews
+            ls
 
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "./boardgame-reviews/composer.json" }}
             - v1-dependencies-
 
-      - run: ls
       - run:
           name: composer install
           command: 
