@@ -17,7 +17,7 @@ jobs:
           command: |
             docker-compose build
             docker-compose up -d
-            docker-compose run app composer install --working-dir=./boardgame-reviews
+            docker-compose run app composer install -n --prefer-dist --no-dev --working-dir=./boardgame-reviews
 
       - save_cache:
           paths:
