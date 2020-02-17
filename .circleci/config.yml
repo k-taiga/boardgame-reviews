@@ -26,9 +26,11 @@ jobs:
 
       - run:
           name: SetUp laravel & migration
-          command: cp .env.circleci .env
+          command: |
+            cp .env.circleci .env
             docker-compose run app php ./boardgame-reviews/artisan key:generate
             docker-compose run app php ./boardgame-reviews/artisan migrate --force
+
 #   build_image:
 #     docker:
 #       - image: docker:18.09.0
