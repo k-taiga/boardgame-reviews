@@ -27,6 +27,11 @@ jobs:
           command: |
             set -x
             docker-compose up -d
+
+      - run:
+          name: docker-compose exec app bash
+          command: |
+            set -x
             docker-compose exec app bash
 
       - restore_cache:
