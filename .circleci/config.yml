@@ -30,6 +30,7 @@ jobs:
             cp ./boardgame-reviews/.env.circleci ./boardgame-reviews/.env
             docker-compose run app php ./boardgame-reviews/artisan key:generate
             docker-compose run app php ./boardgame-reviews/artisan migrate --force
+            docker images
 
 #   build_image:
 #     docker:
@@ -54,7 +55,7 @@ jobs:
 #       - run:
 #           name: build image
 #           command: |
-#             docker-compose build -t ${ECR_DOMAIN}:$CIRCLE_SHA1 -t ${ECR_DOMAIN}:latest .
+#             docker build -t ${ECR_DOMAIN}:$CIRCLE_SHA1 -t ${ECR_DOMAIN}:latest .
 #       - run:
 #           name: Push docker image
 #           command: |
