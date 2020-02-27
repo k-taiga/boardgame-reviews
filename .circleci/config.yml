@@ -60,9 +60,8 @@ jobs:
       - run:
           name: Push docker image
           command: |
-            docker push ${ECR_DOMAIN}:$CIRCLE_SHA1
-            docker push ${ECR_DOMAIN}/php:latest
-            docker push ${ECR_DOMAIN}/nginx:latest
+            docker push ${ECR_DOMAIN}php:latest
+            docker push ${ECR_DOMAIN}nginx:latest
 workflows:
   version: 2
   test:
