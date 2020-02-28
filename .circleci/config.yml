@@ -55,14 +55,12 @@ jobs:
       - run:
           name: build image
           command: |
-            docker build -t ${ECR_DOMAIN}:$CIRCLE_SHA1 -t ${ECR_DOMAIN}:php ./docker/php/
-            docker build -t ${ECR_DOMAIN}:$CIRCLE_SHA1 -t ${ECR_DOMAIN}:nginx ./docker/nginx/
+            docker build -t ${ECR_DOMAIN}:$CIRCLE_SHA1 -t ${ECR_DOMAIN}:latest ./docker/php/
       - run:
           name: Push docker image
           command: |
             docker push ${ECR_DOMAIN}:$CIRCLE_SHA1
-            docker push ${ECR_DOMAIN}:php
-            docker push ${ECR_DOMAIN}:nginx
+            docker push ${ECR_DOMAIN}:latest
 workflows:
   version: 2
   test:
