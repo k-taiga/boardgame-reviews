@@ -59,7 +59,6 @@ jobs:
       - run:
           name: Push docker image
           command: |
-            docker push ${ECR_DOMAIN}:$CIRCLE_SHA1
             docker push ${ECR_DOMAIN}:latest
 workflows:
   version: 2
