@@ -64,11 +64,11 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Install awsebcli
-        command: pip install awsebcli --upgrade
+          name: Install awsebcli
+          command: pip install awsebcli --upgrade
       - run:
-        name: eb deploy
-        command:  eb deploy
+          name: eb deploy
+          command:  eb deploy
 workflows:
   version: 2
   test:
