@@ -60,6 +60,15 @@ jobs:
           name: Push docker image
           command: |
             docker push ${ECR_DOMAIN}:latest
+  deploy:
+    steps:
+      - checkout
+      - run:
+        name: Install awsebcli
+        command: pip install awsebcli --upgrade
+      - run:
+        name: eb deploy
+        command:  eb deploy
 workflows:
   version: 2
   test:
@@ -70,4 +79,4 @@ workflows:
             - build
           filters:
             branches:
-              only: master
+              only: deploy
