@@ -3933,6 +3933,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Navbar",
@@ -62297,83 +62301,6 @@ var isEqual = exports.isEqual = function isEqual(value1, value2) {
   return looseEqual(value1, value2);
 };
 
-<<<<<<< HEAD
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Icon_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Icon.vue */ "./resources/js/components/Icon.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-=======
 var isEmpty = exports.isEmpty = function isEmpty(val) {
   // null or undefined
   if (val == null) return true;
@@ -62406,7 +62333,6 @@ var isEmpty = exports.isEmpty = function isEmpty(val) {
 
   return false;
 };
->>>>>>> deploy
 
 function rafThrottle(fn) {
   var locked = false;
