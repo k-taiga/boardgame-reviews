@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <bdNavbar :user="user" @sign-out-clicked="signOut"></bdNavbar>
-        <main>
+        <main class="container">
             <!-- <message /> -->
             <transition name="fade" mode="out-in">
                 <router-view />
@@ -17,13 +17,15 @@ import bdNavbar from "./components/Navbar.vue";
 import bdFooter from "./components/Footer.vue";
 import message from "./components/Message.vue";
 import errorModal from "./views/errors/ErrorModal.vue";
+import bdCarousel from "./components/Carousel.vue";
+
 import store from "./store";
 
 import { NOT_FOUND, UNAUTHORIZED, INTERNAL_SERVER_ERROR } from "./util";
 
 export default {
     name: "app",
-    components: { bdNavbar, bdFooter, message, errorModal },
+    components: { bdNavbar, bdFooter, message, errorModal, bdCarousel },
     data() {
         return {
             user: null
@@ -107,5 +109,8 @@ export default {
 .fade-enter-active,
 .fade-leave-active {
     transition: opacity 0.3s;
+}
+.container {
+    min-height: 100vh;
 }
 </style>

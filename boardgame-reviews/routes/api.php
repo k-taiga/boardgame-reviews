@@ -11,8 +11,16 @@ Route::post('/login', "Auth\LoginController@login")->name('login');
 // ログアウト
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
+<<<<<<< HEAD
 // ログインチェック
 Route::get('/user', fn () => Auth::user())->name('user');
+=======
+// ログインユーザー
+// Route::get('/user', fn () => Auth::user())->name('user');
+Route::get('/user', function () {
+    return Auth::user();
+})->name('user');
+>>>>>>> deploy
 
 
 // 店舗登録
