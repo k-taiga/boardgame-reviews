@@ -62,7 +62,9 @@ jobs:
             docker push ${ECR_DOMAIN}:latest
       - run:
           name: Install awsebcli
-          command: pip install awsebcli --upgrade
+          command: |
+            pip install awsebcli --upgrade --user
+            eb --version
       - run:
           name: eb deploy
           command: |
