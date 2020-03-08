@@ -1,32 +1,51 @@
 <template>
   <div class="container">
-    <!-- <div class="columns" v-if="profile"> -->
     <div class="columns">
       <div class="column is-one-fifth">
-        <p class="image is-128x128">
-          <img :src="profile.avatarUrl || profile.gravatarUrl" />
-        </p>
-        <p>name: {{ profile.name }}</p>
+        <!-- <div class="tile is-parent"> -->
+        <!-- <article class="tile is-child box">
+            <p class="title">Middle box</p>
+        <p class="subtitle">With an image</p>-->
+        <figure class="image is-256x256">
+          <img
+            src="https://gravatar.com/avatar/7c838f7ca2f3ccff7a160d3a9698afc2?s=400&d=robohash&r=x"
+          />
+        </figure>
+        <el-tooltip content="編集" placement="bottom">
+          <el-button>編集</el-button>
+        </el-tooltip>
+        <el-tooltip content="削除" placement="bottom" effect="light">
+          <el-button>削除</el-button>
+        </el-tooltip>
+        <!-- </article> -->
+        <!-- </div> -->
       </div>
       <div class="column is-for-fifths">
-        <div class="card" v-for="shop in shops" :key="shop.id">
+        <div class="card" v-for="b in bookmarks" :key="b.id">
           <div class="card-content">
             <div class="content">
               <div>
-                <a :href="shop.home_url">{{ shop.shop_name }}</a>
+                <a :href="b.url">{{ b.title }}</a>
               </div>
-              <div>{{ shop.likes_count }}</div>
+              <div>{{ b.comment }}</div>
               <div>
-                <!-- <time
+                <time
                   class="is-size-7"
-                  :datetime="formatTime(shop.created_at)"
-                >{{ formatTime(shop.created_at) }}</time>-->
+                  :datatime="formatTime(b.bookmarkedAt)"
+                >{{ formatTime(b.bookmarkedAt) }}</time>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <pm-profile-edit-modal
+      v-if="profile"
+      v-model="editProfileModalActive"
+      :name="profile.name"
+      @update="updateProfile"
+    ></pm-profile-edit-modal>
+    <pm-retire-modal v-if="profile" v-model="retireModalActive" @retire="retire"></pm-retire-modal>
   </div>
 </template>
 

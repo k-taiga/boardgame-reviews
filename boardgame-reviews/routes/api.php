@@ -12,7 +12,6 @@ Route::post('/login', "Auth\LoginController@login")->name('login');
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
 // ログインチェック
-Route::get('/user', fn () => Auth::user())->name('user');
 // ログインユーザー
 // Route::get('/user', fn () => Auth::user())->name('user');
 Route::get('/user', function () {

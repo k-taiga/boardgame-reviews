@@ -170,44 +170,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -528,27 +490,15 @@ var render = function() {
               _c("div", { staticClass: "tile is-parent is-vertical" }, [
                 _c("article", { staticClass: "tile is-child box" }, [
                   _c("p", { staticClass: "title has-text-centered" }, [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(_vm.shop.shop_name) +
-                        "\n                    "
-                    )
+                    _vm._v(_vm._s(_vm.shop.shop_name))
                   ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "subtitle has-text-centered" }, [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(_vm.shop.address) +
-                        "\n                    "
-                    )
+                    _vm._v(_vm._s(_vm.shop.address))
                   ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "content has-text-centered" }, [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(_vm.shop.content) +
-                        "\n                    "
-                    )
+                    _vm._v(_vm._s(_vm.shop.content))
                   ]),
                   _vm._v(" "),
                   _vm._m(0),
@@ -572,7 +522,11 @@ var render = function() {
                                   _c("div", { staticClass: "content" }, [
                                     _c("p", [
                                       _c("strong", [
-                                        _vm._v(_vm._s(review.author.name))
+                                        _vm._v(
+                                          "\n                        " +
+                                            _vm._s(review.author.name) +
+                                            "\n                      "
+                                        )
                                       ]),
                                       _vm._v(" "),
                                       _c("small", [
@@ -581,9 +535,9 @@ var render = function() {
                                       _vm._v(" "),
                                       _c("br"),
                                       _vm._v(
-                                        "\n                                            " +
+                                        "\n                      " +
                                           _vm._s(review.content) +
-                                          "\n                                        "
+                                          "\n                    "
                                       )
                                     ])
                                   ])
@@ -620,11 +574,7 @@ var render = function() {
                                         msg
                                       ) {
                                         return _c("li", { key: msg }, [
-                                          _vm._v(
-                                            "\n                                    " +
-                                              _vm._s(msg) +
-                                              "\n                                "
-                                          )
+                                          _vm._v(_vm._s(msg))
                                         ])
                                       }),
                                       0
@@ -673,7 +623,20 @@ var render = function() {
                       )
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm._m(4)
+                  _c("footer", { staticClass: "card-footer" }, [
+                    _c("div", { staticClass: "card-footer-item" }, [
+                      _vm._m(4),
+                      _vm._v(" "),
+                      _c("span", [
+                        _vm._v("\n                View on\n                "),
+                        _c("a", { attrs: { href: _vm.shop.home_url } }, [
+                          _vm._v("Official")
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(5)
+                  ])
                 ])
               ])
             ])
@@ -713,7 +676,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("h2", { staticClass: "photo-detail__title" }, [
       _c("i", { staticClass: "icon ion-md-chatboxes" }),
-      _vm._v("Review\n                    ")
+      _vm._v("Review\n          ")
     ])
   },
   function() {
@@ -760,11 +723,7 @@ var staticRenderFns = [
                 staticClass: "button button--inverse",
                 attrs: { type: "submit" }
               },
-              [
-                _vm._v(
-                  "\n                                                    レビューを投稿する\n                                                "
-                )
-              ]
+              [_vm._v("レビューを投稿する")]
             )
           ])
         ])
@@ -775,24 +734,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("footer", { staticClass: "card-footer" }, [
-      _c("div", { staticClass: "card-footer-item" }, [
-        _c("span", { staticClass: "icon is-small" }, [
-          _c("i", {
-            staticClass: "fas fa-globe",
-            attrs: { "aria-hidden": "true" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("span", [
-          _vm._v(
-            "\n                                View on\n                                "
-          ),
-          _c("a", { attrs: { href: "#" } }, [_vm._v("Official")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-footer-item", attrs: { href: "#" } }, [
+    return _c("span", { staticClass: "icon is-small" }, [
+      _c("i", { staticClass: "fas fa-globe", attrs: { "aria-hidden": "true" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "card-footer-item", attrs: { href: "#" } },
+      [
         _c("span", { staticClass: "icon is-small" }, [
           _c("i", {
             staticClass: "fab fa-twitter-square",
@@ -801,13 +754,11 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("span", [
-          _vm._v(
-            "\n                                Share on\n                                "
-          ),
+          _vm._v("\n                Share on\n                "),
           _c("a", { attrs: { href: "#" } }, [_vm._v("Twitter")])
         ])
-      ])
-    ])
+      ]
+    )
   }
 ]
 render._withStripped = true

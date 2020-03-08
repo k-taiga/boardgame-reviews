@@ -5880,7 +5880,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\n.fade-enter[data-v-f348271a],\n.fade-leave-to[data-v-f348271a] {\n    opacity: 0;\n}\n.fade-enter-to[data-v-f348271a],\n.fade-leave[data-v-f348271a] {\n    opacity: 1;\n}\n.fade-enter-active[data-v-f348271a],\n.fade-leave-active[data-v-f348271a] {\n    -webkit-transition: opacity 0.3s;\n    transition: opacity 0.3s;\n}\n.container[data-v-f348271a] {\n    min-height: 100vh;\n}\n", ""]);
+exports.push([module.i, "\n.fade-enter[data-v-f348271a],\n.fade-leave-to[data-v-f348271a] {\n  opacity: 0;\n}\n.fade-enter-to[data-v-f348271a],\n.fade-leave[data-v-f348271a] {\n  opacity: 1;\n}\n.fade-enter-active[data-v-f348271a],\n.fade-leave-active[data-v-f348271a] {\n  -webkit-transition: opacity 0.3s;\n  transition: opacity 0.3s;\n}\n.container[data-v-f348271a] {\n  min-height: 100vh;\n}\n", ""]);
 
 // exports
 
