@@ -170,6 +170,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -188,12 +202,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       fullWidth: false,
       reviewContent: "",
       reviewErrors: null,
-      active: false
+      active: false,
+      count: 0,
+      loading: false
     };
   },
   computed: {
     isLogin: function isLogin() {
       return this.$store.getters["auth/check"];
+    },
+    noMore: function noMore() {
+      return this.count == this.shop.reviews.length;
+    },
+    disabled: function disabled() {
+      return this.loading || this.noMore;
     }
   },
   methods: {
@@ -385,7 +407,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return unlike;
-    }()
+    }(),
+    load: function load() {
+      var _this = this;
+
+      this.loading = true;
+      setTimeout(function () {
+        if (_this.shop.reviews.length >= _this.count) {
+          _this.count += 1;
+        }
+
+        _this.loading = false;
+      }, 1000);
+    }
   },
   watch: {
     $route: {
@@ -503,54 +537,87 @@ var render = function() {
                   _vm._v(" "),
                   _vm._m(0),
                   _vm._v(" "),
-                  _vm.shop.reviews.length > 0
-                    ? _c(
-                        "ul",
-                        { staticClass: "photo-detail__reviews" },
-                        _vm._l(_vm.shop.reviews, function(review, index) {
-                          return _c(
-                            "li",
+                  _c(
+                    "div",
+                    {
+                      staticClass: "infinite-list-wrapper",
+                      staticStyle: { height: "400px", "overflow-y": "scroll" }
+                    },
+                    [
+                      _vm.count >= 0
+                        ? _c(
+                            "ul",
                             {
-                              key: index,
-                              staticClass: "photo-detail__commentItem"
+                              directives: [
+                                {
+                                  name: "infinite-scroll",
+                                  rawName: "v-infinite-scroll",
+                                  value: _vm.load,
+                                  expression: "load"
+                                }
+                              ],
+                              staticClass: "photo-detail__reviews list",
+                              attrs: { "infinite-scroll-disabled": "disabled" }
                             },
-                            [
-                              _c("article", { staticClass: "media" }, [
-                                _vm._m(1, true),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "media-content" }, [
-                                  _c("div", { staticClass: "content" }, [
-                                    _c("p", [
-                                      _c("strong", [
-                                        _vm._v(
-                                          "\n                        " +
-                                            _vm._s(review.author.name) +
-                                            "\n                      "
-                                        )
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("small", [
-                                        _vm._v(_vm._s(review.date))
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("br"),
-                                      _vm._v(
-                                        "\n                      " +
-                                          _vm._s(review.content) +
-                                          "\n                    "
-                                      )
-                                    ])
+                            _vm._l(_vm.shop.reviews, function(review, index) {
+                              return _c(
+                                "li",
+                                {
+                                  key: index,
+                                  staticClass:
+                                    "photo-detail__commentItem list-item"
+                                },
+                                [
+                                  _c("article", { staticClass: "media" }, [
+                                    _vm._m(1, true),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "media-content" },
+                                      [
+                                        _c("div", { staticClass: "content" }, [
+                                          _c("p", [
+                                            _c("strong", [
+                                              _vm._v(
+                                                "\n                          " +
+                                                  _vm._s(review.author.name) +
+                                                  "\n                        "
+                                              )
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("small", [
+                                              _vm._v(_vm._s(review.date))
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("br"),
+                                            _vm._v(
+                                              "\n                        " +
+                                                _vm._s(review.content) +
+                                                "\n                      "
+                                            )
+                                          ])
+                                        ])
+                                      ]
+                                    )
                                   ])
-                                ])
-                              ])
-                            ]
+                                ]
+                              )
+                            }),
+                            0
                           )
-                        }),
-                        0
-                      )
-                    : _c("p", { staticClass: "has-text-centered" }, [
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.loading ? _c("p", [_vm._v("Loading...")]) : _vm._e(),
+                      _vm._v(" "),
+                      _vm.noMore ? _c("p", [_vm._v("No more")]) : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.shop.reviews.length == 0
+                    ? _c("p", { staticClass: "has-text-centered" }, [
                         _c("strong", [_vm._v("まだレビューがありません！")])
-                      ]),
+                      ])
+                    : _vm._e(),
                   _vm._v(" "),
                   _vm.isLogin
                     ? _c(

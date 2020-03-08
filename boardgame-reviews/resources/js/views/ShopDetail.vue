@@ -40,38 +40,52 @@
             <h2 class="photo-detail__title">
               <i class="icon ion-md-chatboxes"></i>Review
             </h2>
-            <ul v-if="shop.reviews.length > 0" class="photo-detail__reviews">
-              <li
-                v-for="(review, index) in shop.reviews"
-                :key="index"
-                class="photo-detail__commentItem"
+            <div
+              class="infinite-list-wrapper"
+              style="
+                height: 400px;
+                overflow-y: scroll;"
+            >
+              <ul
+                v-if="count >= 0"
+                class="photo-detail__reviews list"
+                v-infinite-scroll="load"
+                infinite-scroll-disabled="disabled"
               >
-                <article class="media">
-                  <figure class="media-left">
-                    <p class="image is-64x64">
-                      <img
-                        src="https://api.adorable.io/avatars/400/8bf1db8d0c62c2a6ea1db881f0f34402.png"
-                      />
-                    </p>
-                  </figure>
-                  <div class="media-content">
-                    <div class="content">
-                      <p>
-                        <strong>
-                          {{
-                          review.author.name
-                          }}
-                        </strong>
-                        <small>{{ review.date }}</small>
-                        <br />
-                        {{ review.content }}
+                <li
+                  v-for="(review, index) in shop.reviews"
+                  :key="index"
+                  class="photo-detail__commentItem list-item"
+                >
+                  <article class="media">
+                    <figure class="media-left">
+                      <p class="image is-64x64">
+                        <img
+                          src="https://api.adorable.io/avatars/400/8bf1db8d0c62c2a6ea1db881f0f34402.png"
+                        />
                       </p>
+                    </figure>
+                    <div class="media-content">
+                      <div class="content">
+                        <p>
+                          <strong>
+                            {{
+                            review.author.name
+                            }}
+                          </strong>
+                          <small>{{ review.date }}</small>
+                          <br />
+                          {{ review.content }}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </article>
-              </li>
-            </ul>
-            <p v-else class="has-text-centered">
+                  </article>
+                </li>
+              </ul>
+              <p v-if="loading">Loading...</p>
+              <p v-if="noMore">No more</p>
+            </div>
+            <p v-if="shop.reviews.length == 0" class="has-text-centered">
               <strong>まだレビューがありません！</strong>
             </p>
             <form @submit.prevent="addReview" class="form" v-if="isLogin">
@@ -167,12 +181,20 @@ export default {
       fullWidth: false,
       reviewContent: "",
       reviewErrors: null,
-      active: false
+      active: false,
+      count: 0,
+      loading: false
     };
   },
   computed: {
     isLogin() {
       return this.$store.getters["auth/check"];
+    },
+    noMore() {
+      return this.count == this.shop.reviews.length;
+    },
+    disabled() {
+      return this.loading || this.noMore;
     }
   },
   methods: {
@@ -243,6 +265,15 @@ export default {
 
       this.shop.likes_count = this.shop.likes_count - 1;
       this.shop.liked_by_user = false;
+    },
+    load() {
+      this.loading = true;
+      setTimeout(() => {
+        if (this.shop.reviews.length >= this.count) {
+          this.count += 1;
+        }
+        this.loading = false;
+      }, 1000);
     }
   },
   watch: {
