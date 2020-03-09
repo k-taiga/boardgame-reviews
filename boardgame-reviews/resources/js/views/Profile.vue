@@ -54,6 +54,7 @@
 </template>
 
 <script>
+import { OK, CREATED, UNPROCESSABLE_ENTITY } from "../util";
 // import dayjs from "dayjs";
 
 export default {
@@ -64,19 +65,29 @@ export default {
       profile: null,
       like_shops: []
     };
+  },
+  methods: {
+    async fetchUser() {
+      const response = await axios.get(`/api/profile/`);
+
+      console.log(response);
+      if (response.status !== OK) {
+        this.$store.commit("error/setCode", response.status);
+        return false;
+      }
+
+      this.user = response.data;
+    }
+  },
+  watch: {
+    $route: {
+      async handler() {
+        await this.fetchUser();
+      },
+      immediate: true
+    }
   }
-  //   ,
-  //   async created() {
-  //     authService.onStateChanged(async user => {
-  //       this.user = user;
-  //       // サインインしていなければ不要な処理なので if の中に閉じ込めておきます
-  //       if (user) {
-  //         this.profile = await userService.getCurrentUser();
-  //         this.bookmarks = await userBookmarkService.getBookmarks(this.profile);
-  //       }
-  //     });
-  //   },
-  //   methods: {
+ //   methods: {
   //     formatTime(dateTime) {
   //       return dayjs(dateTime).format("YYYY-MM-DD HH:mm");
   //     }
