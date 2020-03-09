@@ -25,22 +25,18 @@
         <!-- </div> -->
       </div>
       <div class="column is-for-fifths">
-        <!-- <div class="card" v-for="b in bookmarks" :key="b.id">
-          <div class="card-content">
-            <div class="content">
-              <div>
-                <a :href="b.url">{{ b.title }}</a>
-              </div>
-              <div>{{ b.comment }}</div>
-              <div>
-                <time
-                  class="is-size-7"
-                  :datatime="formatTime(b.bookmarkedAt)"
-                >{{ formatTime(b.bookmarkedAt) }}</time>
+        <div class="favorite_shops">
+          <div class="level">
+            <div class="level-left">
+              <div class="level-item">
+                <h2 class="title is-6 has-text-left">Favorite Shops</h2>
               </div>
             </div>
           </div>
-        </div>-->
+          <div class="columns is-multiline">
+            <shop v-for="shop in user.like_shops" :key="shop.id" :item="shop" @like="onLikeClick" />
+          </div>
+        </div>
       </div>
     </div>
     <pm-profile-edit-modal
@@ -56,6 +52,7 @@
 <script>
 import { OK, CREATED, UNPROCESSABLE_ENTITY } from "../util";
 // import dayjs from "dayjs";
+import shop from "../components/FavoriteShop.vue";
 
 export default {
   name: "profile",
@@ -87,10 +84,22 @@ export default {
       immediate: true
     }
   }
- //   methods: {
+  //   methods: {
   //     formatTime(dateTime) {
   //       return dayjs(dateTime).format("YYYY-MM-DD HH:mm");
   //     }
   //   }
 };
 </script>
+
+<style scoped>
+.favorite_shops {
+  background-color: whitesmoke;
+  margin-bottom: 4em;
+  padding: 2em;
+  border-radius: 0.5em;
+}
+.is-slightly-rounded {
+  border-radius: 2%;
+}
+</style>
