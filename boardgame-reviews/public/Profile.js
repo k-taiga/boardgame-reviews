@@ -60,6 +60,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 // import dayjs from "dayjs";
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "profile",
@@ -109,64 +113,7 @@ var render = function() {
     "div",
     { staticClass: "container" },
     [
-      _c("div", { staticClass: "columns" }, [
-        _c(
-          "div",
-          { staticClass: "column is-one-fifth" },
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "el-tooltip",
-              { attrs: { content: "編集", placement: "bottom" } },
-              [_c("el-button", [_vm._v("編集")])],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "el-tooltip",
-              {
-                attrs: { content: "削除", placement: "bottom", effect: "light" }
-              },
-              [_c("el-button", [_vm._v("削除")])],
-              1
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "column is-for-fifths" },
-          _vm._l(_vm.bookmarks, function(b) {
-            return _c("div", { key: b.id, staticClass: "card" }, [
-              _c("div", { staticClass: "card-content" }, [
-                _c("div", { staticClass: "content" }, [
-                  _c("div", [
-                    _c("a", { attrs: { href: b.url } }, [
-                      _vm._v(_vm._s(b.title))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [_vm._v(_vm._s(b.comment))]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c(
-                      "time",
-                      {
-                        staticClass: "is-size-7",
-                        attrs: { datatime: _vm.formatTime(b.bookmarkedAt) }
-                      },
-                      [_vm._v(_vm._s(_vm.formatTime(b.bookmarkedAt)))]
-                    )
-                  ])
-                ])
-              ])
-            ])
-          }),
-          0
-        )
-      ]),
+      _vm._m(0),
       _vm._v(" "),
       _vm.profile
         ? _c("pm-profile-edit-modal", {
@@ -203,13 +150,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("figure", { staticClass: "image is-256x256" }, [
-      _c("img", {
-        attrs: {
-          src:
-            "https://gravatar.com/avatar/7c838f7ca2f3ccff7a160d3a9698afc2?s=400&d=robohash&r=x"
-        }
-      })
+    return _c("div", { staticClass: "columns" }, [
+      _c("div", { staticClass: "column is-one-fifth" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-content" }, [
+            _c("figure", { staticClass: "image is-256x256" }, [
+              _c("img", {
+                attrs: {
+                  src:
+                    "https://gravatar.com/avatar/7c838f7ca2f3ccff7a160d3a9698afc2?s=400&d=robohash&r=x"
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "subtitle" }, [_vm._v("name:")])
+          ]),
+          _vm._v(" "),
+          _c("footer", { staticClass: "card-footer" }, [
+            _c("p", { staticClass: "card-footer-item" }, [
+              _c("span", [_vm._v("編集")])
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-footer-item" }, [
+              _c("span", [_vm._v("退会")])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "column is-for-fifths" })
     ])
   }
 ]

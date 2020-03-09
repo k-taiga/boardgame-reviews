@@ -1,5 +1,29 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["ShopDetail"],{
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Back.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Back.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    goBack: function goBack() {
+      console.log("go back");
+      this.$router.push("/");
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/ShopDetail.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/ShopDetail.vue?vue&type=script&lang=js& ***!
@@ -13,6 +37,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util */ "./resources/js/util.js");
 /* harmony import */ var _components_Icon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Icon */ "./resources/js/components/Icon.vue");
+/* harmony import */ var _components_Back__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Back */ "./resources/js/components/Back.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -184,11 +209,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    bdIcon: _components_Icon__WEBPACK_IMPORTED_MODULE_2__["default"]
+    bdIcon: _components_Icon__WEBPACK_IMPORTED_MODULE_2__["default"],
+    bdBack: _components_Back__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   props: {
     id: {
@@ -455,6 +485,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Back.vue?vue&type=template&id=220ab052&":
+/*!*******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Back.vue?vue&type=template&id=220ab052& ***!
+  \*******************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("el-page-header", {
+    attrs: { title: "Back" },
+    on: { back: _vm.goBack }
+  })
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/ShopDetail.vue?vue&type=template&id=350841c6&":
 /*!********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/ShopDetail.vue?vue&type=template&id=350841c6& ***!
@@ -470,271 +527,306 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.shop
-    ? _c(
-        "div",
-        {
-          staticClass: "photo-detail container",
-          class: { "photo-detail--column": _vm.fullWidth }
-        },
-        [
-          _c(
-            "figure",
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("bdBack"),
+      _vm._v(" "),
+      _vm.shop
+        ? _c(
+            "div",
             {
-              staticClass: "photo-detail__pane photo-detail__image image",
-              on: {
-                click: function($event) {
-                  _vm.active = !_vm.active
-                }
-              }
+              staticClass: "photo-detail container",
+              class: { "photo-detail--column": _vm.fullWidth }
             },
             [
-              _c("div", { staticClass: "level-left" }, [
-                _c("div", { staticClass: "level-item" }, [
-                  _c("p", { staticClass: "heading" }, [_vm._v("Boardgames")]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "title" }, [
-                    _vm._v(_vm._s(_vm.shop.boardgame_num))
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "level-item" }, [
-                  _c("p", { staticClass: "heading" }, [_vm._v("Followers")]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "title" }, [
-                    _vm._v(_vm._s(_vm.shop.likes_count))
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "level-item" }, [
-                  _c("p", { staticClass: "heading" }, [_vm._v("Reviews")]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "title" }, [
-                    _vm._v(_vm._s(_vm.shop.reviews.length))
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("img", { attrs: { src: _vm.shop.photos.url, alt: "" } })
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "tile is-vertical is-6" }, [
-            _c("div", { staticClass: "tile" }, [
-              _c("div", { staticClass: "tile is-parent is-vertical" }, [
-                _c("article", { staticClass: "tile is-child box" }, [
-                  _c("p", { staticClass: "title has-text-centered" }, [
-                    _vm._v(_vm._s(_vm.shop.shop_name))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "subtitle has-text-centered" }, [
-                    _vm._v(_vm._s(_vm.shop.address))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "content has-text-centered" }, [
-                    _vm._v(_vm._s(_vm.shop.content))
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "infinite-list-wrapper",
-                      staticStyle: { height: "400px", "overflow-y": "scroll" }
-                    },
-                    [
-                      _vm.count >= 0
-                        ? _c(
-                            "ul",
-                            {
-                              directives: [
-                                {
-                                  name: "infinite-scroll",
-                                  rawName: "v-infinite-scroll",
-                                  value: _vm.load,
-                                  expression: "load"
-                                }
-                              ],
-                              staticClass: "photo-detail__reviews list",
-                              attrs: { "infinite-scroll-disabled": "disabled" }
-                            },
-                            _vm._l(_vm.shop.reviews, function(review, index) {
-                              return _c(
-                                "li",
-                                {
-                                  key: index,
-                                  staticClass:
-                                    "photo-detail__commentItem list-item"
-                                },
-                                [
-                                  _c("article", { staticClass: "media" }, [
-                                    _vm._m(1, true),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      { staticClass: "media-content" },
-                                      [
-                                        _c("div", { staticClass: "content" }, [
-                                          _c("p", [
-                                            _c("strong", [
-                                              _vm._v(
-                                                "\n                          " +
-                                                  _vm._s(review.author.name) +
-                                                  "\n                        "
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("small", [
-                                              _vm._v(_vm._s(review.date))
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("br"),
-                                            _vm._v(
-                                              "\n                        " +
-                                                _vm._s(review.content) +
-                                                "\n                      "
-                                            )
-                                          ])
-                                        ])
-                                      ]
-                                    )
-                                  ])
-                                ]
-                              )
-                            }),
-                            0
-                          )
-                        : _vm._e(),
+              _c(
+                "figure",
+                {
+                  staticClass: "photo-detail__pane photo-detail__image image",
+                  on: {
+                    click: function($event) {
+                      _vm.active = !_vm.active
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "level-left" }, [
+                    _c("div", { staticClass: "level-item" }, [
+                      _c("p", { staticClass: "heading" }, [
+                        _vm._v("Boardgames")
+                      ]),
                       _vm._v(" "),
-                      _vm.loading ? _c("p", [_vm._v("Loading...")]) : _vm._e(),
-                      _vm._v(" "),
-                      _vm.noMore ? _c("p", [_vm._v("No more")]) : _vm._e()
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _vm.shop.reviews.length == 0
-                    ? _c("p", { staticClass: "has-text-centered" }, [
-                        _c("strong", [_vm._v("まだレビューがありません！")])
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.isLogin
-                    ? _c(
-                        "form",
-                        {
-                          staticClass: "form",
-                          on: {
-                            submit: function($event) {
-                              $event.preventDefault()
-                              return _vm.addReview($event)
-                            }
-                          }
-                        },
-                        [
-                          _vm.reviewErrors
-                            ? _c("div", { staticClass: "errors" }, [
-                                _vm.reviewErrors.content
-                                  ? _c(
-                                      "ul",
-                                      _vm._l(_vm.reviewErrors.content, function(
-                                        msg
-                                      ) {
-                                        return _c("li", { key: msg }, [
-                                          _vm._v(_vm._s(msg))
-                                        ])
-                                      }),
-                                      0
-                                    )
-                                  : _vm._e()
-                              ])
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _c("article", { staticClass: "media" }, [
-                            _vm._m(2),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "media-content" }, [
-                              _c("div", { staticClass: "field" }, [
-                                _c("p", { staticClass: "control" }, [
-                                  _c("textarea", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.reviewContent,
-                                        expression: "reviewContent"
-                                      }
-                                    ],
-                                    staticClass: "textarea",
-                                    attrs: {
-                                      placeholder:
-                                        "レビューを投稿してください！"
-                                    },
-                                    domProps: { value: _vm.reviewContent },
-                                    on: {
-                                      input: function($event) {
-                                        if ($event.target.composing) {
-                                          return
-                                        }
-                                        _vm.reviewContent = $event.target.value
-                                      }
-                                    }
-                                  })
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(3)
-                            ])
-                          ])
-                        ]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("footer", { staticClass: "card-footer" }, [
-                    _c("div", { staticClass: "card-footer-item" }, [
-                      _vm._m(4),
-                      _vm._v(" "),
-                      _c("span", [
-                        _vm._v("\n                View on\n                "),
-                        _c("a", { attrs: { href: _vm.shop.home_url } }, [
-                          _vm._v("Official")
-                        ])
+                      _c("p", { staticClass: "title" }, [
+                        _vm._v(_vm._s(_vm.shop.boardgame_num))
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(5)
-                  ])
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "modal", class: { "is-active": _vm.active } },
-            [
-              _c("div", { staticClass: "modal-background" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-content" }, [
-                _c("p", { staticClass: "image is-4by3" }, [
+                    _c("div", { staticClass: "level-item" }, [
+                      _c("p", { staticClass: "heading" }, [
+                        _vm._v("Followers")
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "title" }, [
+                        _vm._v(_vm._s(_vm.shop.likes_count))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "level-item" }, [
+                      _c("p", { staticClass: "heading" }, [_vm._v("Reviews")]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "title" }, [
+                        _vm._v(_vm._s(_vm.shop.reviews.length))
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
                   _c("img", { attrs: { src: _vm.shop.photos.url, alt: "" } })
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "tile is-vertical is-6" }, [
+                _c("div", { staticClass: "tile" }, [
+                  _c("div", { staticClass: "tile is-parent is-vertical" }, [
+                    _c("article", { staticClass: "tile is-child box" }, [
+                      _c("p", { staticClass: "title has-text-centered" }, [
+                        _vm._v(_vm._s(_vm.shop.shop_name))
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "subtitle has-text-centered" }, [
+                        _vm._v(_vm._s(_vm.shop.address))
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "content has-text-centered" }, [
+                        _vm._v(_vm._s(_vm.shop.content))
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "infinite-list-wrapper",
+                          staticStyle: {
+                            height: "400px",
+                            "overflow-y": "scroll"
+                          }
+                        },
+                        [
+                          _vm.count >= 0
+                            ? _c(
+                                "ul",
+                                {
+                                  directives: [
+                                    {
+                                      name: "infinite-scroll",
+                                      rawName: "v-infinite-scroll",
+                                      value: _vm.load,
+                                      expression: "load"
+                                    }
+                                  ],
+                                  staticClass: "photo-detail__reviews list",
+                                  attrs: {
+                                    "infinite-scroll-disabled": "disabled"
+                                  }
+                                },
+                                _vm._l(_vm.shop.reviews, function(
+                                  review,
+                                  index
+                                ) {
+                                  return _c(
+                                    "li",
+                                    {
+                                      key: index,
+                                      staticClass:
+                                        "photo-detail__commentItem list-item"
+                                    },
+                                    [
+                                      _c("article", { staticClass: "media" }, [
+                                        _vm._m(1, true),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          { staticClass: "media-content" },
+                                          [
+                                            _c(
+                                              "div",
+                                              { staticClass: "content" },
+                                              [
+                                                _c("p", [
+                                                  _c("strong", [
+                                                    _vm._v(
+                                                      "\n                            " +
+                                                        _vm._s(
+                                                          review.author.name
+                                                        ) +
+                                                        "\n                          "
+                                                    )
+                                                  ]),
+                                                  _vm._v(" "),
+                                                  _c("small", [
+                                                    _vm._v(_vm._s(review.date))
+                                                  ]),
+                                                  _vm._v(" "),
+                                                  _c("br"),
+                                                  _vm._v(
+                                                    "\n                          " +
+                                                      _vm._s(review.content) +
+                                                      "\n                        "
+                                                  )
+                                                ])
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      ])
+                                    ]
+                                  )
+                                }),
+                                0
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.loading
+                            ? _c("p", [_vm._v("Loading...")])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.noMore ? _c("p", [_vm._v("No more")]) : _vm._e()
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.shop.reviews.length == 0
+                        ? _c("p", { staticClass: "has-text-centered" }, [
+                            _c("strong", [_vm._v("まだレビューがありません！")])
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.isLogin
+                        ? _c(
+                            "form",
+                            {
+                              staticClass: "form",
+                              on: {
+                                submit: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.addReview($event)
+                                }
+                              }
+                            },
+                            [
+                              _vm.reviewErrors
+                                ? _c("div", { staticClass: "errors" }, [
+                                    _vm.reviewErrors.content
+                                      ? _c(
+                                          "ul",
+                                          _vm._l(
+                                            _vm.reviewErrors.content,
+                                            function(msg) {
+                                              return _c("li", { key: msg }, [
+                                                _vm._v(_vm._s(msg))
+                                              ])
+                                            }
+                                          ),
+                                          0
+                                        )
+                                      : _vm._e()
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _c("article", { staticClass: "media" }, [
+                                _vm._m(2),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "media-content" }, [
+                                  _c("div", { staticClass: "field" }, [
+                                    _c("p", { staticClass: "control" }, [
+                                      _c("textarea", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.reviewContent,
+                                            expression: "reviewContent"
+                                          }
+                                        ],
+                                        staticClass: "textarea",
+                                        attrs: {
+                                          placeholder:
+                                            "レビューを投稿してください！"
+                                        },
+                                        domProps: { value: _vm.reviewContent },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.reviewContent =
+                                              $event.target.value
+                                          }
+                                        }
+                                      })
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(3)
+                                ])
+                              ])
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c("footer", { staticClass: "card-footer" }, [
+                        _c("div", { staticClass: "card-footer-item" }, [
+                          _vm._m(4),
+                          _vm._v(" "),
+                          _c("span", [
+                            _vm._v(
+                              "\n                  View on\n                  "
+                            ),
+                            _c("a", { attrs: { href: _vm.shop.home_url } }, [
+                              _vm._v("Official")
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(5)
+                      ])
+                    ])
+                  ])
                 ])
               ]),
               _vm._v(" "),
-              _c("button", {
-                staticClass: "modal-close is-large",
-                attrs: { "aria-label": "close" },
-                on: {
-                  click: function($event) {
-                    _vm.active = false
-                  }
-                }
-              })
+              _c(
+                "div",
+                { staticClass: "modal", class: { "is-active": _vm.active } },
+                [
+                  _c("div", { staticClass: "modal-background" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-content" }, [
+                    _c("p", { staticClass: "image is-4by3" }, [
+                      _c("img", {
+                        attrs: { src: _vm.shop.photos.url, alt: "" }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("button", {
+                    staticClass: "modal-close is-large",
+                    attrs: { "aria-label": "close" },
+                    on: {
+                      click: function($event) {
+                        _vm.active = false
+                      }
+                    }
+                  })
+                ]
+              )
             ]
           )
-        ]
-      )
-    : _vm._e()
+        : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -743,7 +835,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("h2", { staticClass: "photo-detail__title" }, [
       _c("i", { staticClass: "icon ion-md-chatboxes" }),
-      _vm._v("Review\n          ")
+      _vm._v("Review\n            ")
     ])
   },
   function() {
@@ -821,7 +913,7 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("span", [
-          _vm._v("\n                Share on\n                "),
+          _vm._v("\n                  Share on\n                  "),
           _c("a", { attrs: { href: "#" } }, [_vm._v("Twitter")])
         ])
       ]
@@ -829,6 +921,75 @@ var staticRenderFns = [
   }
 ]
 render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Back.vue":
+/*!******************************************!*\
+  !*** ./resources/js/components/Back.vue ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Back_vue_vue_type_template_id_220ab052___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Back.vue?vue&type=template&id=220ab052& */ "./resources/js/components/Back.vue?vue&type=template&id=220ab052&");
+/* harmony import */ var _Back_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Back.vue?vue&type=script&lang=js& */ "./resources/js/components/Back.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Back_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Back_vue_vue_type_template_id_220ab052___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Back_vue_vue_type_template_id_220ab052___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Back.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Back.vue?vue&type=script&lang=js&":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/Back.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Back_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Back.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Back.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Back_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Back.vue?vue&type=template&id=220ab052&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/Back.vue?vue&type=template&id=220ab052& ***!
+  \*************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Back_vue_vue_type_template_id_220ab052___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Back.vue?vue&type=template&id=220ab052& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Back.vue?vue&type=template&id=220ab052&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Back_vue_vue_type_template_id_220ab052___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Back_vue_vue_type_template_id_220ab052___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

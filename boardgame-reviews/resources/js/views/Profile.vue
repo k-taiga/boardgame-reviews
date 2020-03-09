@@ -2,26 +2,30 @@
   <div class="container">
     <div class="columns">
       <div class="column is-one-fifth">
-        <!-- <div class="tile is-parent"> -->
-        <!-- <article class="tile is-child box">
-            <p class="title">Middle box</p>
-        <p class="subtitle">With an image</p>-->
-        <figure class="image is-256x256">
-          <img
-            src="https://gravatar.com/avatar/7c838f7ca2f3ccff7a160d3a9698afc2?s=400&d=robohash&r=x"
-          />
-        </figure>
-        <el-tooltip content="編集" placement="bottom">
-          <el-button>編集</el-button>
-        </el-tooltip>
-        <el-tooltip content="削除" placement="bottom" effect="light">
-          <el-button>削除</el-button>
-        </el-tooltip>
+        <div class="card">
+          <div class="card-content">
+            <figure class="image is-256x256">
+              <img
+                src="https://gravatar.com/avatar/7c838f7ca2f3ccff7a160d3a9698afc2?s=400&d=robohash&r=x"
+              />
+            </figure>
+            <p class="subtitle">name:</p>
+          </div>
+          <footer class="card-footer">
+            <p class="card-footer-item">
+              <span>編集</span>
+            </p>
+            <p class="card-footer-item">
+              <span>退会</span>
+            </p>
+          </footer>
+        </div>
+
         <!-- </article> -->
         <!-- </div> -->
       </div>
       <div class="column is-for-fifths">
-        <div class="card" v-for="b in bookmarks" :key="b.id">
+        <!-- <div class="card" v-for="b in bookmarks" :key="b.id">
           <div class="card-content">
             <div class="content">
               <div>
@@ -36,7 +40,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
       </div>
     </div>
     <pm-profile-edit-modal
