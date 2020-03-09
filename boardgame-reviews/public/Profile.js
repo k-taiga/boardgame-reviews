@@ -185,7 +185,27 @@ var render = function() {
     "div",
     { staticClass: "container" },
     [
-      _vm._m(0),
+      _c("div", { staticClass: "columns" }, [
+        _c("div", { staticClass: "column is-one-fifth" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _vm.user
+                ? _c(
+                    "p",
+                    { staticClass: "subtitle has-text-centered has-text-dark" },
+                    [_vm._v("name: " + _vm._s(_vm.user.name))]
+                  )
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _vm._m(1)
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column is-for-fifths" })
+      ]),
       _vm._v(" "),
       _vm.profile
         ? _c("pm-profile-edit-modal", {
@@ -222,35 +242,27 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "columns" }, [
-      _c("div", { staticClass: "column is-one-fifth" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-content" }, [
-            _c("figure", { staticClass: "image is-256x256" }, [
-              _c("img", {
-                attrs: {
-                  src:
-                    "https://gravatar.com/avatar/7c838f7ca2f3ccff7a160d3a9698afc2?s=400&d=robohash&r=x"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "subtitle" }, [_vm._v("name:")])
-          ]),
-          _vm._v(" "),
-          _c("footer", { staticClass: "card-footer" }, [
-            _c("p", { staticClass: "card-footer-item" }, [
-              _c("span", [_vm._v("編集")])
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "card-footer-item" }, [
-              _c("span", [_vm._v("退会")])
-            ])
-          ])
-        ])
+    return _c("figure", { staticClass: "image is-256x256" }, [
+      _c("img", {
+        attrs: {
+          src:
+            "https://gravatar.com/avatar/7c838f7ca2f3ccff7a160d3a9698afc2?s=400&d=robohash&r=x"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("footer", { staticClass: "card-footer" }, [
+      _c("p", { staticClass: "card-footer-item" }, [
+        _c("span", [_vm._v("編集")])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "column is-for-fifths" })
+      _c("p", { staticClass: "card-footer-item" }, [
+        _c("span", [_vm._v("退会")])
+      ])
     ])
   }
 ]

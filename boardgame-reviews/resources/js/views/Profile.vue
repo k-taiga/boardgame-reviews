@@ -9,7 +9,7 @@
                 src="https://gravatar.com/avatar/7c838f7ca2f3ccff7a160d3a9698afc2?s=400&d=robohash&r=x"
               />
             </figure>
-            <p class="subtitle">name:</p>
+            <p v-if="user" class="subtitle has-text-centered has-text-dark">name:&emsp;{{user.name}}</p>
           </div>
           <footer class="card-footer">
             <p class="card-footer-item">

@@ -20,7 +20,7 @@ class User extends Authenticatable
     ];
 
     protected $visible = [
-        'name', 'likes','email'
+        'id','name', 'likes','email'
     ];
 
     /**
