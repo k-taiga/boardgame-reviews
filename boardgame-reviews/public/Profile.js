@@ -33,10 +33,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -79,6 +75,11 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
 //
 //
 //
@@ -239,7 +240,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.title[data-v-7c8db59d],\n.subtitle[data-v-7c8db59d],\n.content[data-v-7c8db59d] {\n  font-family: Merriweather;\n}\n.is-slightly-rounded[data-v-7c8db59d] {\n  border-radius: 2%;\n}\n", ""]);
+exports.push([module.i, "\n.card[data-v-7c8db59d] {\n  width: 30%;\n}\n.is-slightly-rounded[data-v-7c8db59d] {\n  border-radius: 2%;\n}\n", ""]);
 
 // exports
 
@@ -340,55 +341,55 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card is-shadowless is-slightly-rounded" },
-      [
-        _c("div", { staticClass: "card-image" }, [
-          _c("figure", { staticClass: "image is-4by3" }, [
-            _c("a", { attrs: { href: "#" } }, [
-              _c("img", {
-                staticClass: "is-slightly-rounded",
-                attrs: {
-                  src:
-                    "https://s3-ap-northeast-1.amazonaws.com/boardgame-reviews/rkHCC5OlJnO2.jpeg",
-                  alt: "test shop"
-                }
-              })
+  return _c(
+    "div",
+    { staticClass: "card is-shadowless is-slightly-rounded" },
+    [
+      _c(
+        "RouterLink",
+        {
+          attrs: {
+            to: "/shops/" + _vm.item.id,
+            title: "View " + _vm.item.shop_name
+          }
+        },
+        [
+          _c("div", { staticClass: "card-image" }, [
+            _c("figure", { staticClass: "image is-4by3" }, [
+              _c("a", { attrs: { href: "#" } }, [
+                _c("img", {
+                  staticClass: "photo__image",
+                  attrs: {
+                    src: _vm.item.photos.url,
+                    alt: "" + _vm.item.shop_name
+                  }
+                })
+              ])
             ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-content" }, [
-          _c("div", { staticClass: "content" }, [
-            _c("p", [
-              _c("span", { staticClass: "title is-4 is-capitalized" }, [
-                _c(
-                  "a",
-                  { staticClass: "has-text-black", attrs: { href: "" } },
-                  [_vm._v("BrighterDaze Farm")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("span", { staticClass: "m-t-tiny block" }, [
-                _vm._v("Newark, IL")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "media-content" }, [
+            _c("div", { staticClass: "content" }, [
+              _c("p", [
+                _c("span", { staticClass: "title is-6 is-capitalized" }, [
+                  _vm._v(_vm._s(_vm.item.shop_name))
+                ]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "title is-7" }, [
+                  _vm._v(_vm._s(_vm.item.address))
+                ])
               ])
             ])
           ])
-        ])
-      ]
-    )
-  }
-]
+        ]
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -440,7 +441,7 @@ var render = function() {
             _c(
               "div",
               { staticClass: "columns is-multiline" },
-              _vm._l(_vm.user.favorites, function(shop) {
+              _vm._l(_vm.user.favorite_shops, function(shop) {
                 return _c("shop", {
                   key: shop.id,
                   staticClass: "favorite_shop",

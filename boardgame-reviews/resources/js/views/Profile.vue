@@ -34,7 +34,12 @@
             </div>
           </div>
           <div class="columns is-multiline">
-            <shop v-for="shop in user.favorites" :key="shop.id" :item="shop" class="favorite_shop" />
+            <shop
+              v-for="shop in user.favorite_shops"
+              :key="shop.id"
+              :item="shop"
+              class="favorite_shop"
+            />
           </div>
         </div>
       </div>

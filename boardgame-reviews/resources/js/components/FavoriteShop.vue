@@ -1,27 +1,23 @@
 <template>
   <div class="card is-shadowless is-slightly-rounded">
-    <div class="card-image">
-      <figure class="image is-4by3">
-        <a href="#">
-          <img
-            src="https://s3-ap-northeast-1.amazonaws.com/boardgame-reviews/rkHCC5OlJnO2.jpeg"
-            alt="test shop"
-            class="is-slightly-rounded"
-          />
-        </a>
-      </figure>
-    </div>
-    <div class="card-content">
-      <div class="content">
-        <p>
-          <span class="title is-4 is-capitalized">
-            <a href class="has-text-black">BrighterDaze Farm</a>
-          </span>
-          <br />
-          <span class="m-t-tiny block">Newark, IL</span>
-        </p>
+    <RouterLink :to="`/shops/${item.id}`" :title="`View ${item.shop_name}`">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <a href="#">
+            <img :src="item.photos.url" :alt="`${item.shop_name}`" class="photo__image" />
+          </a>
+        </figure>
       </div>
-    </div>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <span class="title is-6 is-capitalized">{{item.shop_name}}</span>
+            <br />
+            <span class="title is-7">{{item.address}}</span>
+          </p>
+        </div>
+      </div>
+    </RouterLink>
   </div>
 </template>
 
@@ -46,12 +42,9 @@ export default {
 };
 </script>
 <style scoped>
-.title,
-.subtitle,
-.content {
-  font-family: Merriweather;
+.card {
+  width: 30%;
 }
-
 .is-slightly-rounded {
   border-radius: 2%;
 }
