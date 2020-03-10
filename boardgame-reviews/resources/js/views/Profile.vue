@@ -34,7 +34,7 @@
             </div>
           </div>
           <div class="columns is-multiline">
-            <shop v-for="shop in user.like_shops" :key="shop.id" :item="shop" @like="onLikeClick" />
+            <shop v-for="shop in user.favorites" :key="shop.id" :item="shop" class="favorite_shop" />
           </div>
         </div>
       </div>
@@ -55,6 +55,9 @@ import { OK, CREATED, UNPROCESSABLE_ENTITY } from "../util";
 import shop from "../components/FavoriteShop.vue";
 
 export default {
+  components: {
+    shop
+  },
   name: "profile",
   data() {
     return {
@@ -67,13 +70,12 @@ export default {
     async fetchUser() {
       const response = await axios.get(`/api/profile/`);
 
-      console.log(response);
       if (response.status !== OK) {
         this.$store.commit("error/setCode", response.status);
         return false;
       }
-
       this.user = response.data;
+      console.log(this.user);
     }
   },
   watch: {
@@ -99,7 +101,10 @@ export default {
   padding: 2em;
   border-radius: 0.5em;
 }
-.is-slightly-rounded {
-  border-radius: 2%;
+
+.favorite_shop {
+  background-color: white;
+  margin: 0.5em;
+  border-radius: 0.5em;
 }
 </style>

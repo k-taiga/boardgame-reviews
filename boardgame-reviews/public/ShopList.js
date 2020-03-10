@@ -91,14 +91,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -387,7 +379,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.title[data-v-e1ea323e],\n.subtitle[data-v-e1ea323e],\n.content[data-v-e1ea323e] {\n    font-family: Merriweather;\n}\n", ""]);
+exports.push([module.i, "\n.title[data-v-e1ea323e],\n.subtitle[data-v-e1ea323e],\n.content[data-v-e1ea323e] {\n  font-family: Merriweather;\n}\n", ""]);
 
 // exports
 
@@ -537,11 +529,7 @@ var render = function() {
               },
               [
                 _c("bdIcon", { attrs: { name: "thumbs-up" } }),
-                _vm._v(
-                  "\n                " +
-                    _vm._s(_vm.item.likes_count) +
-                    "\n            "
-                )
+                _vm._v("\n        " + _vm._s(_vm.item.likes_count) + "\n      ")
               ],
               1
             )

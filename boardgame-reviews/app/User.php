@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use App\Shop;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -19,9 +21,14 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+    /** JSONに含めるアクセサ */
+    protected $appends = [
+        'favorite_shops'
+    ];
+
     /** JSONに含める属性(実際に返ってくる値) */
     protected $visible = [
-        'id', 'name', 'favorites', 'email'
+        'id', 'name',  'email', 'favorite_shops'
     ];
 
     /**
@@ -40,5 +47,19 @@ class User extends Authenticatable
     public function favorites()
     {
         return $this->belongsToMany('App\Shop', 'likes')->withTimestamps();
+    }
+
+    /**
+     * アクセサ - likes_count
+     * @return string
+     */
+    public function getFavoriteShopsAttribute()
+    {
+        $shop_photo = [];
+        foreach ($this->favorites as $shop) {
+            $shop_photo[] = Shop::where('id', $shop["id"])->with(['photos'])->first();
+        }
+
+        return $shop_photo;
     }
 }

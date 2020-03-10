@@ -134,6 +134,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    shop: _components_FavoriteShop_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
   name: "profile",
   data: function data() {
     return {
@@ -157,18 +160,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 response = _context.sent;
-                console.log(response);
 
                 if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
-                  _context.next = 7;
+                  _context.next = 6;
                   break;
                 }
 
                 this.$store.commit("error/setCode", response.status);
                 return _context.abrupt("return", false);
 
-              case 7:
+              case 6:
                 this.user = response.data;
+                console.log(this.user);
 
               case 8:
               case "end":
@@ -236,7 +239,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.title[data-v-7c8db59d],\n.subtitle[data-v-7c8db59d],\n.content[data-v-7c8db59d] {\n  font-family: Merriweather;\n}\n", ""]);
+exports.push([module.i, "\n.title[data-v-7c8db59d],\n.subtitle[data-v-7c8db59d],\n.content[data-v-7c8db59d] {\n  font-family: Merriweather;\n}\n.is-slightly-rounded[data-v-7c8db59d] {\n  border-radius: 2%;\n}\n", ""]);
 
 // exports
 
@@ -255,7 +258,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.favorite_shops[data-v-25b9215a] {\n  background-color: whitesmoke;\n  margin-bottom: 4em;\n  padding: 2em;\n  border-radius: 0.5em;\n}\n.is-slightly-rounded[data-v-25b9215a] {\n  border-radius: 2%;\n}\n", ""]);
+exports.push([module.i, "\n.favorite_shops[data-v-25b9215a] {\n  background-color: whitesmoke;\n  margin-bottom: 4em;\n  padding: 2em;\n  border-radius: 0.5em;\n}\n.favorite_shop[data-v-25b9215a] {\n  background-color: white;\n  margin: 0.5em;\n  border-radius: 0.5em;\n}\n", ""]);
 
 // exports
 
@@ -437,11 +440,11 @@ var render = function() {
             _c(
               "div",
               { staticClass: "columns is-multiline" },
-              _vm._l(_vm.user.like_shops, function(shop) {
+              _vm._l(_vm.user.favorites, function(shop) {
                 return _c("shop", {
                   key: shop.id,
-                  attrs: { item: shop },
-                  on: { like: _vm.onLikeClick }
+                  staticClass: "favorite_shop",
+                  attrs: { item: shop }
                 })
               }),
               1

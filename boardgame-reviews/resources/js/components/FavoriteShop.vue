@@ -51,4 +51,8 @@ export default {
 .content {
   font-family: Merriweather;
 }
+
+.is-slightly-rounded {
+  border-radius: 2%;
+}
 </style>
