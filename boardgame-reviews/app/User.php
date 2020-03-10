@@ -19,8 +19,9 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+    /** JSONに含める属性(実際に返ってくる値) */
     protected $visible = [
-        'id','name', 'likes','email'
+        'id', 'name', 'likes', 'email'
     ];
 
     /**

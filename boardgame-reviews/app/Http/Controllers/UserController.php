@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
+use App\User;
+
 class UserController extends Controller
 {
     /**
@@ -49,6 +51,8 @@ class UserController extends Controller
     {
         // ログインしているユーザーの情報を取得
         $user = Auth::user();
+
+        $user = User::with(['likes']);
 
         return $user ?? abort(404);
     }
