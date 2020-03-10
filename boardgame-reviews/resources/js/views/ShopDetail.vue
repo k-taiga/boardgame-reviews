@@ -85,7 +85,7 @@
                 <p v-if="loading">Loading...</p>
                 <p v-if="noMore">No more</p>
               </div>
-              <p v-if="shop.reviews.length == 0" class="has-text-centered">
+              <p v-if="shop.reviews.length == 0" class="has-text-left">
                 <strong>まだレビューがありません！</strong>
               </p>
               <form @submit.prevent="addReview" class="form" v-if="isLogin">
@@ -202,13 +202,14 @@ export default {
       return this.loading || this.noMore;
     },
     styleObject: function () {
-        if(this.count !== 0) {
+        if(this.shop.reviews != "") {
             return {
             'height':'400px',
             'overflow-y': 'scroll'
             }
+        }else {
+            return false;
         }
-        return false;
     }
   },
   methods: {

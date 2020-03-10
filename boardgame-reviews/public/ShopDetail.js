@@ -250,14 +250,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return this.loading || this.noMore;
     },
     styleObject: function styleObject() {
-      if (this.count !== 0) {
+      if (this.shop.reviews != "") {
         return {
           'height': '400px',
           'overflow-y': 'scroll'
         };
+      } else {
+        return false;
       }
-
-      return false;
     }
   },
   methods: {
@@ -706,7 +706,7 @@ var render = function() {
                       ),
                       _vm._v(" "),
                       _vm.shop.reviews.length == 0
-                        ? _c("p", { staticClass: "has-text-centered" }, [
+                        ? _c("p", { staticClass: "has-text-left" }, [
                             _c("strong", [_vm._v("まだレビューがありません！")])
                           ])
                         : _vm._e(),
