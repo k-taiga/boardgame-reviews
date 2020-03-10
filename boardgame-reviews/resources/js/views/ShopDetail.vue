@@ -44,9 +44,7 @@
               </h2>
               <div
                 class="infinite-list-wrapper"
-                style="
-                height: 400px;
-                overflow-y: scroll;"
+                :style="styleObject"
               >
                 <ul
                   v-if="count >= 0"
@@ -195,10 +193,22 @@ export default {
       return this.$store.getters["auth/check"];
     },
     noMore() {
-      return this.count == this.shop.reviews.length;
+       if(this.count !== 0) {
+        return this.count == this.shop.reviews.length;
+       }
+       return false;
     },
     disabled() {
       return this.loading || this.noMore;
+    },
+    styleObject: function () {
+        if(this.count !== 0) {
+            return {
+            'height':'400px',
+            'overflow-y': 'scroll'
+            }
+        }
+        return false;
     }
   },
   methods: {

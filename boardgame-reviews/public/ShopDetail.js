@@ -210,8 +210,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 
 
 
@@ -242,10 +240,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return this.$store.getters["auth/check"];
     },
     noMore: function noMore() {
-      return this.count == this.shop.reviews.length;
+      if (this.count !== 0) {
+        return this.count == this.shop.reviews.length;
+      }
+
+      return false;
     },
     disabled: function disabled() {
       return this.loading || this.noMore;
+    },
+    styleObject: function styleObject() {
+      if (this.count !== 0) {
+        return {
+          'height': '400px',
+          'overflow-y': 'scroll'
+        };
+      }
+
+      return false;
     }
   },
   methods: {
@@ -608,10 +620,7 @@ var render = function() {
                         "div",
                         {
                           staticClass: "infinite-list-wrapper",
-                          staticStyle: {
-                            height: "400px",
-                            "overflow-y": "scroll"
-                          }
+                          style: _vm.styleObject
                         },
                         [
                           _vm.count >= 0
@@ -999,14 +1008,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************!*\
   !*** ./resources/js/views/ShopDetail.vue ***!
   \*******************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ShopDetail_vue_vue_type_template_id_350841c6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ShopDetail.vue?vue&type=template&id=350841c6& */ "./resources/js/views/ShopDetail.vue?vue&type=template&id=350841c6&");
 /* harmony import */ var _ShopDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ShopDetail.vue?vue&type=script&lang=js& */ "./resources/js/views/ShopDetail.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _ShopDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _ShopDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -1036,7 +1046,7 @@ component.options.__file = "resources/js/views/ShopDetail.vue"
 /*!********************************************************************!*\
   !*** ./resources/js/views/ShopDetail.vue?vue&type=script&lang=js& ***!
   \********************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

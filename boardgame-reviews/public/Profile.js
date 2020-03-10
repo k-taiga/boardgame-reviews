@@ -236,7 +236,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.title[data-v-7c8db59d],\n.subtitle[data-v-7c8db59d],\n.content[data-v-7c8db59d] {\n  font-family: Merriweather;\n}\n", ""]);
+exports.push([module.i, "\n.title[data-v-7c8db59d],\r\n.subtitle[data-v-7c8db59d],\r\n.content[data-v-7c8db59d] {\r\n  font-family: Merriweather;\n}\r\n", ""]);
 
 // exports
 
@@ -255,7 +255,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.favorite_shops[data-v-25b9215a] {\n  background-color: whitesmoke;\n  margin-bottom: 4em;\n  padding: 2em;\n  border-radius: 0.5em;\n}\n.is-slightly-rounded[data-v-25b9215a] {\n  border-radius: 2%;\n}\n", ""]);
+exports.push([module.i, "\n.favorite_shops[data-v-25b9215a] {\r\n  background-color: whitesmoke;\r\n  margin-bottom: 4em;\r\n  padding: 2em;\r\n  border-radius: 0.5em;\n}\n.is-slightly-rounded[data-v-25b9215a] {\r\n  border-radius: 2%;\n}\r\n", ""]);
 
 // exports
 

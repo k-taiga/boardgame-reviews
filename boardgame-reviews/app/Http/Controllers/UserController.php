@@ -50,9 +50,12 @@ class UserController extends Controller
     public function show()
     {
         // ログインしているユーザーの情報を取得
-        $user = Auth::user();
+        $login_user = Auth::user();
 
-        $user = User::with(['likes']);
+        $user_id = $login_user["id"];
+
+        $user = User::where('id', $user_id)->with(['favorites']);
+        clock($user);
 
         return $user ?? abort(404);
     }

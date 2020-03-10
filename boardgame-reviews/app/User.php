@@ -35,10 +35,10 @@ class User extends Authenticatable
 
     /**
      * リレーションシップ - shopsテーブル
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function likes()
+    public function favorites()
     {
-        return $this->hasMany('App\Shop', 'likes')->withTimestamps();
+        return $this->belongsToMany('App\Shop', 'likes')->withTimestamps();
     }
 }
