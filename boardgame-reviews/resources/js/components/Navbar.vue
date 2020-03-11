@@ -30,6 +30,10 @@
                             <bdIcon name="user"></bdIcon>
                         </a>
                         <div class="navbar-dropdown is-right">
+                            <router-link class="navbar-item" :to="{ name: 'profile' }">
+                                <bdIcon name="address-card"></bdIcon>
+                                <span>プロフィール</span>
+                            </router-link>
                             <a class="navbar-item" @click="signOut">
                                 <bdIcon
                                     name="sign-out-alt has-text-black"

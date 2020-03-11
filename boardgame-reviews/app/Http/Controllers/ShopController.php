@@ -102,6 +102,8 @@ class ShopController extends Controller
     {
         $shop = Shop::where('id', $id)->with(['photos', 'reviews.author', 'likes'])->first();
 
+        clock($shop);
+
         return $shop ?? abort(404);
     }
 

@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"Home":"Home","NotFoundError":"NotFoundError","ShopDetail":"ShopDetail","ShopList":"ShopList","SignIn":"SignIn","SignUp":"SignUp","SystemError":"SystemError"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"Home":"Home","NotFoundError":"NotFoundError","Profile":"Profile","ShopDetail":"ShopDetail","ShopList":"ShopList","SignIn":"SignIn","SignUp":"SignUp","SystemError":"SystemError"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -3933,6 +3933,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Navbar",
@@ -5876,7 +5880,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\n.fade-enter[data-v-f348271a],\r\n.fade-leave-to[data-v-f348271a] {\r\n    opacity: 0;\n}\n.fade-enter-to[data-v-f348271a],\r\n.fade-leave[data-v-f348271a] {\r\n    opacity: 1;\n}\n.fade-enter-active[data-v-f348271a],\r\n.fade-leave-active[data-v-f348271a] {\r\n    -webkit-transition: opacity 0.3s;\r\n    transition: opacity 0.3s;\n}\n.container[data-v-f348271a] {\r\n    min-height: 100vh;\n}\r\n", ""]);
+exports.push([module.i, "\n.fade-enter[data-v-f348271a],\r\n.fade-leave-to[data-v-f348271a] {\r\n  opacity: 0;\n}\n.fade-enter-to[data-v-f348271a],\r\n.fade-leave[data-v-f348271a] {\r\n  opacity: 1;\n}\n.fade-enter-active[data-v-f348271a],\r\n.fade-leave-active[data-v-f348271a] {\r\n  -webkit-transition: opacity 0.3s;\r\n  transition: opacity 0.3s;\n}\n.container[data-v-f348271a] {\r\n  min-height: 100vh;\n}\r\n", ""]);
 
 // exports
 
@@ -66525,25 +66529,44 @@ var render = function() {
                         1
                       ),
                       _vm._v(" "),
-                      _c("div", { staticClass: "navbar-dropdown is-right" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "navbar-item",
-                            on: { click: _vm.signOut }
-                          },
-                          [
-                            _c("bdIcon", {
-                              attrs: { name: "sign-out-alt has-text-black" }
-                            }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "has-text-black" }, [
-                              _vm._v("ログアウト")
-                            ])
-                          ],
-                          1
-                        )
-                      ])
+                      _c(
+                        "div",
+                        { staticClass: "navbar-dropdown is-right" },
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "navbar-item",
+                              attrs: { to: { name: "profile" } }
+                            },
+                            [
+                              _c("bdIcon", { attrs: { name: "address-card" } }),
+                              _vm._v(" "),
+                              _c("span", [_vm._v("プロフィール")])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "navbar-item",
+                              on: { click: _vm.signOut }
+                            },
+                            [
+                              _c("bdIcon", {
+                                attrs: { name: "sign-out-alt has-text-black" }
+                              }),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "has-text-black" }, [
+                                _vm._v("ログアウト")
+                              ])
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
                     ]
                   )
                 ])
@@ -83335,6 +83358,10 @@ var ShopDetail = function ShopDetail() {
   return __webpack_require__.e(/*! import() | ShopDetail */ "ShopDetail").then(__webpack_require__.bind(null, /*! ./views/ShopDetail.vue */ "./resources/js/views/ShopDetail.vue"));
 };
 
+var Profile = function Profile() {
+  return __webpack_require__.e(/*! import() | Profile */ "Profile").then(__webpack_require__.bind(null, /*! ./views/Profile.vue */ "./resources/js/views/Profile.vue"));
+};
+
 var SystemError = function SystemError() {
   return __webpack_require__.e(/*! import() | SystemError */ "SystemError").then(__webpack_require__.bind(null, /*! ./views/errors/System.vue */ "./resources/js/views/errors/System.vue"));
 };
@@ -83393,6 +83420,13 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: "/sign_in",
     name: "sign_in",
     component: SignIn,
+    meta: {
+      login: true
+    }
+  }, {
+    path: "/profile",
+    name: "profile",
+    component: Profile,
     meta: {
       login: true
     }
@@ -83653,12 +83687,13 @@ var actions = {
 
             case 2:
               response = _context4.sent;
-              // ログインしていなければnull
+              console.log(response); // ログインしていなければnull
+
               user = response.data || null;
               context.commit("setUser", user);
 
               if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_2__["OK"])) {
-                _context4.next = 9;
+                _context4.next = 10;
                 break;
               }
 
@@ -83666,13 +83701,13 @@ var actions = {
               context.commit("setUser", user);
               return _context4.abrupt("return", false);
 
-            case 9:
+            case 10:
               context.commit("setApiStatus", false);
               context.commit("error/setCode", response.status, {
                 root: true
               });
 
-            case 11:
+            case 12:
             case "end":
               return _context4.stop();
           }
