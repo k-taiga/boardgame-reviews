@@ -12,12 +12,18 @@
             <p v-if="user" class="subtitle has-text-centered has-text-dark">name:&emsp;{{user.name}}</p>
           </div>
           <footer class="card-footer">
-            <p class="card-footer-item">
-              <span>編集</span>
-            </p>
-            <p class="card-footer-item">
-              <span>退会</span>
-            </p>
+            <button
+              class="button is-small is-primary is-outlined is-fullwidth"
+              @click="showProfileEditModal"
+            >
+              編集
+            </button>
+            <button
+              class="button is-small is-primary is-outlined is-fullwidth"
+              @click="showRetireModal"
+            >
+              退会
+            </button>
           </footer>
         </div>
 
@@ -47,13 +53,13 @@
         </div>
       </div>
     </div>
-    <pm-profile-edit-modal
-      v-if="profile"
+     <bdProfileEditModal
+      v-if="user"
       v-model="editProfileModalActive"
-      :name="profile.name"
+      :name="user.name"
       @update="updateProfile"
-    ></pm-profile-edit-modal>
-    <pm-retire-modal v-if="profile" v-model="retireModalActive" @retire="retire"></pm-retire-modal>
+    ></bdProfileEditModal>
+    <bdRetireModal v-if="user" v-model="retireModalActive" @retire="retire"></bdRetireModal>
   </div>
 </template>
 
@@ -61,17 +67,19 @@
 import { OK, CREATED, UNPROCESSABLE_ENTITY } from "../util";
 // import dayjs from "dayjs";
 import shop from "../components/FavoriteShop.vue";
+import bdProfileEditModal from "../components/ProfileEditModal";
+import bdRetireModal from "../components/RetireModal";
 
 export default {
   components: {
-    shop
+    shop, bdProfileEditModal, bdRetireModal
   },
   name: "profile",
   data() {
     return {
       user: null,
-      profile: null,
-      like_shops: []
+      editProfileModalActive: false,
+      retireModalActive: false
     };
   },
   methods: {
@@ -84,7 +92,14 @@ export default {
       }
       this.user = response.data;
       console.log(this.user);
-    }
+    },
+    // プロファイル編集ダイアログ表示・非表示の切り替え処理
+    showProfileEditModal() {
+      this.editProfileModalActive = true;
+    },
+    showRetireModal() {
+      this.retireModalActive = true;
+    },
   },
   watch: {
     $route: {
