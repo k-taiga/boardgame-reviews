@@ -1,10 +1,10 @@
 <template>
-  <!-- Bulma のモーダルダイアログは is-active クラスをつけると表示されます -->
+  <!-- Bulma のモーダルダイアログは is-active クラスをつけると表示 -->
   <div class="modal" :class="{ 'is-active': active }">
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">プロファイル取得</p>
+        <p class="modal-card-title">プロフィール編集</p>
         <!-- 右上の x ボタンにモーダルダイアログを閉じるイベントを指定します -->
         <button class="delete" aria-label="close" @click="cancel"></button>
       </header>
@@ -22,12 +22,7 @@
             <div class="file has-name">
               <label class="file-label">
                 <!-- type=file な input タグは readonly なため v-model は使用できない。change イベントで値を処理 -->
-                <input
-                  class="file-input"
-                  type="file"
-                  name="resume"
-                  @change.prevent="selectFile"
-                />
+                <input class="file-input" type="file" name="resume" @change.prevent="selectFile" />
                 <span class="file-cta">
                   <span class="file-icon">
                     <i class="fas fa-upload"></i>
@@ -35,9 +30,7 @@
                   <span class="file-label">Choose a file...</span>
                 </span>
                 <!-- ファイルが選択された時だけファイル名を表示 -->
-                <span class="file-name">
-                  {{ avatarFile ? avatarFile.name : "" }}
-                </span>
+                <span class="file-name">{{ avatarFile ? avatarFile.name : "" }}</span>
               </label>
             </div>
           </div>

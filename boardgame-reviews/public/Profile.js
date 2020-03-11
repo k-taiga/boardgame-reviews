@@ -113,13 +113,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "pm-profile-edit-modal",
@@ -541,7 +534,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card[data-v-7c8db59d] {\r\n  width: 30%;\n}\n.is-slightly-rounded[data-v-7c8db59d] {\r\n  border-radius: 2%;\n}\r\n", ""]);
+exports.push([module.i, "\n.card[data-v-7c8db59d] {\n  width: 30%;\n}\n.is-slightly-rounded[data-v-7c8db59d] {\n  border-radius: 2%;\n}\n", ""]);
 
 // exports
 
@@ -560,7 +553,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.user_icon[data-v-25b9215a] {\r\n    fill: skyblue;\n}\n.favorite_shops[data-v-25b9215a] {\r\n  background-color: whitesmoke;\r\n  margin-bottom: 4em;\r\n  padding: 2em;\r\n  border-radius: 0.5em;\n}\n.favorite_shop[data-v-25b9215a] {\r\n  background-color: white;\r\n  margin: 0.5em;\r\n  border-radius: 0.5em;\n}\r\n", ""]);
+exports.push([module.i, "\n.user_icon[data-v-25b9215a] {\n    fill: skyblue;\n}\n.favorite_shops[data-v-25b9215a] {\n  background-color: whitesmoke;\n  margin-bottom: 4em;\n  padding: 2em;\n  border-radius: 0.5em;\n}\n.favorite_shop[data-v-25b9215a] {\n  background-color: white;\n  margin: 0.5em;\n  border-radius: 0.5em;\n}\n", ""]);
 
 // exports
 
@@ -723,7 +716,7 @@ var render = function() {
       _c("div", { staticClass: "modal-card" }, [
         _c("header", { staticClass: "modal-card-head" }, [
           _c("p", { staticClass: "modal-card-title" }, [
-            _vm._v("プロファイル取得")
+            _vm._v("プロフィール編集")
           ]),
           _vm._v(" "),
           _c("button", {
@@ -773,11 +766,7 @@ var render = function() {
                     _vm._m(0),
                     _vm._v(" "),
                     _c("span", { staticClass: "file-name" }, [
-                      _vm._v(
-                        "\n                " +
-                          _vm._s(_vm.avatarFile ? _vm.avatarFile.name : "") +
-                          "\n              "
-                      )
+                      _vm._v(_vm._s(_vm.avatarFile ? _vm.avatarFile.name : ""))
                     ])
                   ])
                 ])
