@@ -3,15 +3,10 @@
     "/css/app.css": "/css/app.css?id=6e9de092ec157e914fe2",
     "/Home.js": "/Home.js?id=50c894ca1a3fa1912e6f",
     "/NotFoundError.js": "/NotFoundError.js?id=d9351a6d3687c5a1674f",
-    "/Profile.js": "/Profile.js?id=901a1173c4d57e5a0a37",
+    "/Profile.js": "/Profile.js?id=ecabceca1651be9e3277",
     "/ShopDetail.js": "/ShopDetail.js?id=846402f747b833410202",
     "/ShopList.js": "/ShopList.js?id=5eea485df4cae773c9ee",
-<<<<<<< HEAD
     "/SignIn.js": "/SignIn.js?id=271d2b835767ed89e0f9",
     "/SignUp.js": "/SignUp.js?id=acde1160a87f622370dc",
-=======
-    "/SignIn.js": "/SignIn.js?id=38a7aa58d6bf49f15716",
-    "/SignUp.js": "/SignUp.js?id=2a9f0fe78afdf528b680",
->>>>>>> 2ec8c5ef685c6847ee107e7b56289db24ac332b4
     "/SystemError.js": "/SystemError.js?id=47ffbfee321632e6ca64"
 }
