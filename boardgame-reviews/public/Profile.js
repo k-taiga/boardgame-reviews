@@ -418,6 +418,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
  // import dayjs from "dayjs";
 
 
@@ -557,7 +560,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.favorite_shops[data-v-25b9215a] {\n  background-color: whitesmoke;\n  margin-bottom: 4em;\n  padding: 2em;\n  border-radius: 0.5em;\n}\n.favorite_shop[data-v-25b9215a] {\n  background-color: white;\n  margin: 0.5em;\n  border-radius: 0.5em;\n}\n", ""]);
+exports.push([module.i, "\n.user_icon[data-v-25b9215a] {\n    fill: skyblue;\n}\n.favorite_shops[data-v-25b9215a] {\n  background-color: whitesmoke;\n  margin-bottom: 4em;\n  padding: 2em;\n  border-radius: 0.5em;\n}\n.favorite_shop[data-v-25b9215a] {\n  background-color: white;\n  margin: 0.5em;\n  border-radius: 0.5em;\n}\n", ""]);
 
 // exports
 
@@ -977,7 +980,29 @@ var render = function() {
         _c("div", { staticClass: "column is-one-fifth" }, [
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-content" }, [
-              _vm._m(0),
+              _c(
+                "svg",
+                {
+                  staticClass: "user_icon",
+                  attrs: {
+                    "aria-hidden": "true",
+                    focusable: "false",
+                    "data-prefix": "fas",
+                    "data-icon": "user-circle",
+                    role: "img",
+                    xmlns: "http://www.w3.org/2000/svg",
+                    viewBox: "0 0 496 512"
+                  }
+                },
+                [
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"
+                    }
+                  })
+                ]
+              ),
               _vm._v(" "),
               _vm.user
                 ? _c(
@@ -1014,7 +1039,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "column is-for-fifths" }, [
           _c("div", { staticClass: "favorite_shops" }, [
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
             _vm.user.favorite_shops.length > 0
               ? _c(
@@ -1071,19 +1096,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("figure", { staticClass: "image is-256x256" }, [
-      _c("img", {
-        attrs: {
-          src:
-            "https://gravatar.com/avatar/7c838f7ca2f3ccff7a160d3a9698afc2?s=400&d=robohash&r=x"
-        }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
