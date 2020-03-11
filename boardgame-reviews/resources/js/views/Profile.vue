@@ -33,7 +33,7 @@
               </div>
             </div>
           </div>
-          <div class="columns is-multiline">
+          <div class="columns is-multiline" v-if="user.favorite_shops.length > 0">
             <shop
               v-for="shop in user.favorite_shops"
               :key="shop.id"
@@ -41,6 +41,9 @@
               class="favorite_shop"
             />
           </div>
+            <p v-if="user.favorite_shops.length === 0" class="has-text-left">
+                <strong>まだお気に入りはありません。</strong>
+            </p>
         </div>
       </div>
     </div>

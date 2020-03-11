@@ -1,5 +1,5 @@
 <template>
-  <div class="card is-shadowless is-slightly-rounded">
+  <div v-if="item" class="card is-shadowless is-slightly-rounded">
     <RouterLink :to="`/shops/${item.id}`" :title="`View ${item.shop_name}`">
       <div class="card-image">
         <figure class="image is-4by3">

@@ -5880,7 +5880,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\n.fade-enter[data-v-f348271a],\n.fade-leave-to[data-v-f348271a] {\n  opacity: 0;\n}\n.fade-enter-to[data-v-f348271a],\n.fade-leave[data-v-f348271a] {\n  opacity: 1;\n}\n.fade-enter-active[data-v-f348271a],\n.fade-leave-active[data-v-f348271a] {\n  -webkit-transition: opacity 0.3s;\n  transition: opacity 0.3s;\n}\n.container[data-v-f348271a] {\n  min-height: 100vh;\n}\n", ""]);
+exports.push([module.i, "\n.fade-enter[data-v-f348271a],\r\n.fade-leave-to[data-v-f348271a] {\r\n  opacity: 0;\n}\n.fade-enter-to[data-v-f348271a],\r\n.fade-leave[data-v-f348271a] {\r\n  opacity: 1;\n}\n.fade-enter-active[data-v-f348271a],\r\n.fade-leave-active[data-v-f348271a] {\r\n  -webkit-transition: opacity 0.3s;\r\n  transition: opacity 0.3s;\n}\n.container[data-v-f348271a] {\r\n  min-height: 100vh;\n}\r\n", ""]);
 
 // exports
 
@@ -5899,7 +5899,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.el-carousel {\n    margin-bottom: 3rem;\n}\n.el-carousel__item {\n    color: #475669;\n    font-size: 18px;\n    opacity: 0.75;\n    line-height: 300px;\n    margin: 0;\n    height: 250px;\n    text-align: center;\n    background-color: darkcyan;\n}\n.el-carousel__item div {\n    margin: 10px;\n}\n\n/* .el-carousel__item:nth-child(2n) {\n    background-color: #99a9bf;\n}\n\n.el-carousel__item:nth-child(2n + 1) {\n    background-color: #d3dce6;\n} */\n", ""]);
+exports.push([module.i, "\n.el-carousel {\r\n    margin-bottom: 3rem;\n}\n.el-carousel__item {\r\n    color: #475669;\r\n    font-size: 18px;\r\n    opacity: 0.75;\r\n    line-height: 300px;\r\n    margin: 0;\r\n    height: 250px;\r\n    text-align: center;\r\n    background-color: darkcyan;\n}\n.el-carousel__item div {\r\n    margin: 10px;\n}\r\n\r\n/* .el-carousel__item:nth-child(2n) {\r\n    background-color: #99a9bf;\r\n}\r\n\r\n.el-carousel__item:nth-child(2n + 1) {\r\n    background-color: #d3dce6;\r\n} */\r\n", ""]);
 
 // exports
 
@@ -5918,7 +5918,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n/* .footer {\n    flex: 1;\n} */\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\r\n/* .footer {\r\n    flex: 1;\r\n} */\r\n", ""]);
 
 // exports
 

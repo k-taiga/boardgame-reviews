@@ -131,6 +131,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
  // import dayjs from "dayjs";
 
 
@@ -341,53 +344,55 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "card is-shadowless is-slightly-rounded" },
-    [
-      _c(
-        "RouterLink",
-        {
-          attrs: {
-            to: "/shops/" + _vm.item.id,
-            title: "View " + _vm.item.shop_name
-          }
-        },
+  return _vm.item
+    ? _c(
+        "div",
+        { staticClass: "card is-shadowless is-slightly-rounded" },
         [
-          _c("div", { staticClass: "card-image" }, [
-            _c("figure", { staticClass: "image is-4by3" }, [
-              _c("a", { attrs: { href: "#" } }, [
-                _c("img", {
-                  staticClass: "photo__image",
-                  attrs: {
-                    src: _vm.item.photos.url,
-                    alt: "" + _vm.item.shop_name
-                  }
-                })
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "media-content" }, [
-            _c("div", { staticClass: "content" }, [
-              _c("p", [
-                _c("span", { staticClass: "title is-6 is-capitalized" }, [
-                  _vm._v(_vm._s(_vm.item.shop_name))
-                ]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "title is-7" }, [
-                  _vm._v(_vm._s(_vm.item.address))
+          _c(
+            "RouterLink",
+            {
+              attrs: {
+                to: "/shops/" + _vm.item.id,
+                title: "View " + _vm.item.shop_name
+              }
+            },
+            [
+              _c("div", { staticClass: "card-image" }, [
+                _c("figure", { staticClass: "image is-4by3" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("img", {
+                      staticClass: "photo__image",
+                      attrs: {
+                        src: _vm.item.photos.url,
+                        alt: "" + _vm.item.shop_name
+                      }
+                    })
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "media-content" }, [
+                _c("div", { staticClass: "content" }, [
+                  _c("p", [
+                    _c("span", { staticClass: "title is-6 is-capitalized" }, [
+                      _vm._v(_vm._s(_vm.item.shop_name))
+                    ]),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "title is-7" }, [
+                      _vm._v(_vm._s(_vm.item.address))
+                    ])
+                  ])
                 ])
               ])
-            ])
-          ])
-        ]
+            ]
+          )
+        ],
+        1
       )
-    ],
-    1
-  )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -438,18 +443,26 @@ var render = function() {
           _c("div", { staticClass: "favorite_shops" }, [
             _vm._m(2),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "columns is-multiline" },
-              _vm._l(_vm.user.favorite_shops, function(shop) {
-                return _c("shop", {
-                  key: shop.id,
-                  staticClass: "favorite_shop",
-                  attrs: { item: shop }
-                })
-              }),
-              1
-            )
+            _vm.user.favorite_shops.length > 0
+              ? _c(
+                  "div",
+                  { staticClass: "columns is-multiline" },
+                  _vm._l(_vm.user.favorite_shops, function(shop) {
+                    return _c("shop", {
+                      key: shop.id,
+                      staticClass: "favorite_shop",
+                      attrs: { item: shop }
+                    })
+                  }),
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.user.favorite_shops.length === 0
+              ? _c("p", { staticClass: "has-text-left" }, [
+                  _c("strong", [_vm._v("まだお気に入りはありません。")])
+                ])
+              : _vm._e()
           ])
         ])
       ]),
