@@ -792,9 +792,17 @@ var render = function() {
                             _vm._v(
                               "\n                  View on\n                  "
                             ),
-                            _c("a", { attrs: { href: _vm.shop.home_url } }, [
-                              _vm._v("Official")
-                            ])
+                            _c(
+                              "a",
+                              {
+                                attrs: {
+                                  href: _vm.shop.home_url,
+                                  target: "_blank",
+                                  rel: "noopener noreferrer"
+                                }
+                              },
+                              [_vm._v("Official")]
+                            )
                           ])
                         ]),
                         _vm._v(" "),

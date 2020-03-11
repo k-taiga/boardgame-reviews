@@ -133,7 +133,7 @@
                   </span>
                   <span>
                     View on
-                    <a :href="shop.home_url">Official</a>
+                    <a :href="shop.home_url" target="_blank" rel="noopener noreferrer">Official</a>
                   </span>
                 </div>
                 <div href="#" class="card-footer-item">
