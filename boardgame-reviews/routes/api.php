@@ -11,35 +11,34 @@ Route::post('/login', "Auth\LoginController@login")->name('login');
 // ログアウト
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
+// ログインチェック
 // ログインユーザー
 // Route::get('/user', fn () => Auth::user())->name('user');
-// Route::get('/user', fnction(){
-//     return Auth::user();
-// })->name('user');
+Route::get('/user', function () {
+    return Auth::user();
+})->name('user');
 
-// 写真投稿
-Route::post('/photos', 'PhotoController@create')->name('photo.create');
+
+// 店舗登録
 Route::post('/shops', 'ShopController@create')->name('shop.create');
 
 // 店舗一覧
-// Route::get('/photos', 'PhotoController@index')->name('photo.index');
 Route::get('/shops', 'ShopController@index')->name('shop.index');
 
 // 店舗詳細
-// Route::get('/photos/{id}', 'PhotoController@show')->name('photo.show');
 Route::get('/shops/{id}', 'ShopController@show')->name('shop.show');
 
 // レビュー
-// Route::post('/photos/{photo}/reviews', 'PhotoController@addReview')->name('photo.review');
 Route::post('/shops/{shop}/reviews', 'ShopController@addReview')->name('shop.review');
 
 // いいね
-// Route::put('/photos/{id}/like', 'PhotoController@like')->name('photo.like');
 Route::put('/shops/{id}/like', 'ShopController@like')->name('shop.like');
 
 // いいね解除
-// Route::delete('/photos/{id}/unlike', 'PhotoController@unlike');
 Route::delete('/shops/{id}/unlike', 'ShopController@unlike');
+
+// ユーザー情報取得
+Route::get('/profile', 'UserController@show')->name('profile');
 
 // トークンリフレッシュ
 Route::get('/reflesh-token', function (Illuminate\Http\Request $request) {

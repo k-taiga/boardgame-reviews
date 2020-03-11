@@ -17,6 +17,8 @@ const ShopList = () =>
     import(/* webpackChunkName:"ShopList" */ "./views/ShopList.vue");
 const ShopDetail = () =>
     import(/* webpackChunkName:"ShopDetail" */ "./views/ShopDetail.vue");
+const Profile = () =>
+    import(/* webpackChunkName:"Profile" */ "./views/Profile.vue");
 const SystemError = () =>
     import(/* webpackChunkName:"SystemError" */ "./views/errors/System.vue");
 const NotFoundError = () =>
@@ -72,6 +74,12 @@ const router = new VueRouter({
             path: "/sign_in",
             name: "sign_in",
             component: SignIn,
+            meta: { login: true }
+        },
+        {
+            path: "/profile",
+            name: "profile",
+            component: Profile,
             meta: { login: true }
         },
         {
