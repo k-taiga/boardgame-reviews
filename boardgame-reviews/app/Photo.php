@@ -70,7 +70,7 @@ class Photo extends Model
 
         $length = count($characters);
 
-        $id = "";
+        $id = "shop_";
 
         for ($i = 0; $i < self::ID_LENGTH; $i++) {
             $id .= $characters[random_int(0, $length - 1)];

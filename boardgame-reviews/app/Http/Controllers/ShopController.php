@@ -44,7 +44,7 @@ class ShopController extends Controller
         // 写真の拡張子を取得
         $extension = $request->photo->extension();
         $photo = new Photo();
-        // インスタンス生成時に割り振られたランダムなID値と本来の拡張子を組み合わせてファイル名とする
+        // インスタンス生成時に割り振られたランダムなID値(prefixはshop)と本来の拡張子を組み合わせてファイル名とする
         $photo->filename = $photo->id . '.' . $extension;
 
         // $photo = Photo::where(
