@@ -14,6 +14,13 @@ use App\Http\Requests\StoreUser;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        // 認証に通す
+        // authに通らなくても使えるもの
+        $this->middleware('auth')->except(['show', 'edit']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -71,6 +78,7 @@ class UserController extends Controller
      */
     public function edit(StoreUser $request)
     {
+        clock($request);
         // ユーザーの写真を保存する処理
 
         // 写真の拡張子を取得

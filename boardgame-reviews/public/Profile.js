@@ -116,11 +116,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "pm-profile-edit-modal",
+  name: "bd-profile-edit-modal",
   components: {
-    pmTextField: _TextField__WEBPACK_IMPORTED_MODULE_0__["default"]
+    bdTextField: _TextField__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
     name: String,
@@ -128,12 +130,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      // 初期表示を親コンポーネントから渡されたユーザー名にするために this.name で初期化
-      userName: this.name,
-      userNameError: null,
-      avatarFile: null,
       preview: null,
-      errors: null
+      errors: null,
+      user_form: {
+        // 初期表示を親コンポーネントから渡されたユーザー名にするために this.name で初期化
+        name: this.name,
+        photo: null
+      }
     };
   },
   computed: {
@@ -180,43 +183,40 @@ __webpack_require__.r(__webpack_exports__);
 
 
       reader.readAsDataURL(event.target.files[0]);
-      this.shop_form.photo = event.target.files[0];
-    },
-    reset: function reset() {
-      this.preview = "";
-      this.photo = null; // $elはDOMそのものを指す
-
-      this.$el.querySelector('input[type="file"]').value = null;
+      this.user_form.photo = event.target.files[0];
     },
     update: function update() {
       var _this2 = this;
 
-      if (!this.userName) {
-        this.userNameError = "ユーザー名は必須です";
+      if (!this.user_form.name) {
+        this.errors.name = "ユーザー名は必須です";
         return;
       } // updateイベントを発行
 
 
       this.$emit("update", {
-        name: this.userName,
-        file: this.avatarFile,
+        name: this.user_form.name,
+        file: this.user_form.photo,
         // 正常終了後の後処理を teardown として渡し
         // 名前だけ更新後のものにしてモーダルダイアログを非表示する
         teardown: function teardown() {
-          _this2.userNameError = null;
-          _this2.avatarFile = null;
+          _this2.user_form.name = null;
+          _this2.user_form.photo = null;
           _this2.active = false;
         }
       });
     },
     cancel: function cancel() {
       // 再表示されたときに現在のデータを表示しないように初期状態に戻す
-      this.userName = this.name;
-      this.userNameError = null;
-      this.avatarFile = null; // 閉じるためには active プロパティを false にする
+      this.user_form.name = this.name;
+      this.user_form.photo = null;
+      this.errors = null;
+      this.preview = ""; // 閉じるためには active プロパティを false にする
       // active プロパティの set が呼び出され親コンポーネントに波及
 
-      this.active = false;
+      this.active = false; // $elはDOMそのものを指す
+
+      this.$el.querySelector('input[type="file"]').value = null;
     },
     selectFile: function selectFile(e) {
       // ファイルを保持する
@@ -457,6 +457,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
  // import dayjs from "dayjs";
 
 
@@ -524,27 +533,98 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     showRetireModal: function showRetireModal() {
       this.retireModalActive = true;
-    }
+    },
+    // プロファイル更新処理
+    updateProfile: function () {
+      var _updateProfile = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(val) {
+        var formData, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                console.log(val);
+                formData = new FormData();
+                formData.append("photo", val.file);
+                formData.append("shop_name", val.name);
+                console.log(formData);
+                _context2.next = 7;
+                return axios.post("/api/profile", formData);
+
+              case 7:
+                response = _context2.sent;
+                console.log(response);
+
+                if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_1__["UNPROCESSABLE_ENTITY"])) {
+                  _context2.next = 12;
+                  break;
+                }
+
+                this.errors = response.data.errors;
+                return _context2.abrupt("return", false);
+
+              case 12:
+                _context2.next = 14;
+                return userService.updateUser(this.profile.id, data);
+
+              case 14:
+                _context2.next = 16;
+                return axios.get("/api/profile/");
+
+              case 16:
+                this.response = _context2.sent;
+
+                if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
+                  _context2.next = 20;
+                  break;
+                }
+
+                this.$store.commit("error/setCode", response.status);
+                return _context2.abrupt("return", false);
+
+              case 20:
+                this.user = response.data;
+                console.log(this.user); // 更新が終了したので終了処理を行う
+
+                if (val.teardown) {
+                  val.teardown();
+                }
+
+              case 23:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function updateProfile(_x) {
+        return _updateProfile.apply(this, arguments);
+      }
+
+      return updateProfile;
+    }()
   },
   watch: {
     $route: {
       handler: function () {
         var _handler = _asyncToGenerator(
         /*#__PURE__*/
-        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
             while (1) {
-              switch (_context2.prev = _context2.next) {
+              switch (_context3.prev = _context3.next) {
                 case 0:
-                  _context2.next = 2;
+                  _context3.next = 2;
                   return this.fetchUser();
 
                 case 2:
                 case "end":
-                  return _context2.stop();
+                  return _context3.stop();
               }
             }
-          }, _callee2, this);
+          }, _callee3, this);
         }));
 
         function handler() {
@@ -596,7 +676,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.user_icon[data-v-25b9215a] {\n    fill: skyblue;\n}\n.favorite_shops[data-v-25b9215a] {\n  background-color: whitesmoke;\n  margin-bottom: 4em;\n  padding: 2em;\n  border-radius: 0.5em;\n}\n.favorite_shop[data-v-25b9215a] {\n  background-color: white;\n  margin: 0.5em;\n  border-radius: 0.5em;\n}\n", ""]);
+exports.push([module.i, "\n.user_icon[data-v-25b9215a] {\n  fill: skyblue;\n}\n.favorite_shops[data-v-25b9215a] {\n  background-color: whitesmoke;\n  margin-bottom: 4em;\n  padding: 2em;\n  border-radius: 0.5em;\n}\n.favorite_shop[data-v-25b9215a] {\n  background-color: white;\n  margin: 0.5em;\n  border-radius: 0.5em;\n}\n", ""]);
 
 // exports
 
@@ -773,19 +853,42 @@ var render = function() {
           "section",
           { staticClass: "modal-card-body" },
           [
-            _c("pm-text-field", {
+            _vm.errors
+              ? _c("div", { staticClass: "errors" }, [
+                  _vm.errors.photo
+                    ? _c(
+                        "ul",
+                        _vm._l(_vm.errors.photo, function(msg) {
+                          return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
+                        }),
+                        0
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.errors.name
+                    ? _c(
+                        "ul",
+                        _vm._l(_vm.errors.name, function(msg) {
+                          return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
+                        }),
+                        0
+                      )
+                    : _vm._e()
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("bd-text-field", {
               attrs: {
                 type: "text",
                 label: "ユーザー名",
-                placeholder: "ユーザー名",
-                error: _vm.userNameError
+                placeholder: "ユーザー名"
               },
               model: {
-                value: _vm.userName,
+                value: _vm.user_form.name,
                 callback: function($$v) {
-                  _vm.userName = $$v
+                  _vm.$set(_vm.user_form, "name", $$v)
                 },
-                expression: "userName"
+                expression: "user_form.name"
               }
             }),
             _vm._v(" "),
@@ -810,7 +913,11 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("span", { staticClass: "file-name" }, [
-                      _vm._v(_vm._s(_vm.avatarFile ? _vm.avatarFile.name : ""))
+                      _vm._v(
+                        _vm._s(
+                          _vm.user_form.photo ? _vm.user_form.photo.name : ""
+                        )
+                      )
                     ])
                   ])
                 ])
@@ -1056,7 +1163,7 @@ var render = function() {
                     "button is-small is-primary is-outlined is-fullwidth",
                   on: { click: _vm.showProfileEditModal }
                 },
-                [_vm._v("\n            編集\n          ")]
+                [_vm._v("編集")]
               ),
               _vm._v(" "),
               _c(
@@ -1066,7 +1173,7 @@ var render = function() {
                     "button is-small is-primary is-outlined is-fullwidth",
                   on: { click: _vm.showRetireModal }
                 },
-                [_vm._v("\n            退会\n          ")]
+                [_vm._v("退会")]
               )
             ])
           ])

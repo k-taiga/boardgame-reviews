@@ -8,8 +8,8 @@ use App\Http\Requests\StoreShop;
 use App\Shop;
 use App\Photo;
 
-use App\Review;
 use App\Http\Requests\StoreReview;
+use App\Review;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;

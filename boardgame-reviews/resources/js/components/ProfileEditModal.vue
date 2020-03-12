@@ -9,13 +9,15 @@
         <button class="delete" aria-label="close" @click="cancel"></button>
       </header>
       <section class="modal-card-body">
-        <pm-text-field
-          type="text"
-          label="ユーザー名"
-          placeholder="ユーザー名"
-          :error="userNameError"
-          v-model="userName"
-        />
+        <div class="errors" v-if="errors">
+          <ul v-if="errors.photo">
+            <li v-for="msg in errors.photo" :key="msg">{{ msg }}</li>
+          </ul>
+          <ul v-if="errors.name">
+            <li v-for="msg in errors.name" :key="msg">{{ msg }}</li>
+          </ul>
+        </div>
+        <bd-text-field type="text" label="ユーザー名" placeholder="ユーザー名" v-model="user_form.name" />
         <div class="field">
           <label class="label">アバター画像</label>
           <div class="control">
@@ -30,7 +32,7 @@
                   <input class="file-input" type="file" name="resume" @change="onFileChange" />
                 </span>
                 <!-- ファイルが選択された時だけファイル名を表示 -->
-                <span class="file-name">{{ avatarFile ? avatarFile.name : "" }}</span>
+                <span class="file-name">{{ user_form.photo ? user_form.photo.name : "" }}</span>
               </label>
             </div>
           </div>
@@ -49,22 +51,23 @@
 </template>
 
 <script>
-import pmTextField from "./TextField";
+import bdTextField from "./TextField";
 export default {
-  name: "pm-profile-edit-modal",
-  components: { pmTextField },
+  name: "bd-profile-edit-modal",
+  components: { bdTextField },
   props: {
     name: String,
     value: Boolean
   },
   data() {
     return {
-      // 初期表示を親コンポーネントから渡されたユーザー名にするために this.name で初期化
-      userName: this.name,
-      userNameError: null,
-      avatarFile: null,
       preview: null,
-      errors: null
+      errors: null,
+      user_form: {
+        // 初期表示を親コンポーネントから渡されたユーザー名にするために this.name で初期化
+        name: this.name,
+        photo: null
+      }
     };
   },
   computed: {
@@ -110,40 +113,37 @@ export default {
       // ファイルを読み込む
       // 読み込まれたファイルはデータURL形式で受け取れる
       reader.readAsDataURL(event.target.files[0]);
-      this.shop_form.photo = event.target.files[0];
-    },
-    reset() {
-      this.preview = "";
-      this.photo = null;
-      // $elはDOMそのものを指す
-      this.$el.querySelector('input[type="file"]').value = null;
+      this.user_form.photo = event.target.files[0];
     },
     update() {
-      if (!this.userName) {
-        this.userNameError = "ユーザー名は必須です";
+      if (!this.user_form.name) {
+        this.errors.name = "ユーザー名は必須です";
         return;
       }
       // updateイベントを発行
       this.$emit("update", {
-        name: this.userName,
-        file: this.avatarFile,
+        name: this.user_form.name,
+        file: this.user_form.photo,
         // 正常終了後の後処理を teardown として渡し
         // 名前だけ更新後のものにしてモーダルダイアログを非表示する
         teardown: () => {
-          this.userNameError = null;
-          this.avatarFile = null;
+          this.user_form.name = null;
+          this.user_form.photo = null;
           this.active = false;
         }
       });
     },
     cancel() {
       // 再表示されたときに現在のデータを表示しないように初期状態に戻す
-      this.userName = this.name;
-      this.userNameError = null;
-      this.avatarFile = null;
+      this.user_form.name = this.name;
+      this.user_form.photo = null;
+      this.errors = null;
+      this.preview = "";
       // 閉じるためには active プロパティを false にする
       // active プロパティの set が呼び出され親コンポーネントに波及
       this.active = false;
+      // $elはDOMそのものを指す
+      this.$el.querySelector('input[type="file"]').value = null;
     },
     selectFile(e) {
       // ファイルを保持する
