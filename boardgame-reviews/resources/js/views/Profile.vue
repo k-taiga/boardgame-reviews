@@ -69,6 +69,7 @@
       v-if="user"
       v-model="editProfileModalActive"
       :name="user.name"
+      :errors="errors"
       @update="updateProfile"
     ></bdProfileEditModal>
     <bdRetireModal v-if="user" v-model="retireModalActive" @retire="retire"></bdRetireModal>
@@ -92,6 +93,7 @@ export default {
   data() {
     return {
       user: null,
+      errors: null,
       editProfileModalActive: false,
       retireModalActive: false
     };
@@ -116,14 +118,14 @@ export default {
     },
     // プロファイル更新処理
     async updateProfile(val) {
-      console.log(val);
+      console.log(val.teardown);
       const formData = new FormData();
 
+      formData.append("name", val.name);
       formData.append("photo", val.file);
-      formData.append("shop_name", val.name);
       console.log(formData);
 
-      const response = await axios.put("/api/profile", formData);
+      const response = await axios.post("/api/profile", formData);
       console.log(response);
 
       if (response.status === UNPROCESSABLE_ENTITY) {
@@ -131,15 +133,13 @@ export default {
         return false;
       }
 
-      // プロファイルの更新を行う
-      await userService.updateUser(this.profile.id, data);
       // 更新後のユーザー情報を取得
       this.response = await axios.get(`/api/profile/`);
 
-      if (response.status !== OK) {
-        this.$store.commit("error/setCode", response.status);
-        return false;
-      }
+    //   if (response.status !== OK) {
+    //     this.$store.commit("error/setCode", response.status);
+    //     return false;
+    //   }
       this.user = response.data;
       console.log(this.user);
       // 更新が終了したので終了処理を行う

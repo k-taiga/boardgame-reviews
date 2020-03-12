@@ -126,7 +126,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     name: String,
-    value: Boolean
+    value: Boolean,
+    errors: String
   },
   data: function data() {
     return {
@@ -202,6 +203,7 @@ __webpack_require__.r(__webpack_exports__);
         teardown: function teardown() {
           _this2.user_form.name = null;
           _this2.user_form.photo = null;
+          _this2.errors = null;
           _this2.active = false;
         }
       });
@@ -466,6 +468,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
  // import dayjs from "dayjs";
 
 
@@ -481,6 +484,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       user: null,
+      errors: null,
       editProfileModalActive: false,
       retireModalActive: false
     };
@@ -544,10 +548,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                console.log(val);
+                console.log(val.teardown);
                 formData = new FormData();
+                formData.append("name", val.name);
                 formData.append("photo", val.file);
-                formData.append("shop_name", val.name);
                 console.log(formData);
                 _context2.next = 7;
                 return axios.post("/api/profile", formData);
@@ -566,24 +570,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 12:
                 _context2.next = 14;
-                return userService.updateUser(this.profile.id, data);
-
-              case 14:
-                _context2.next = 16;
                 return axios.get("/api/profile/");
 
-              case 16:
+              case 14:
                 this.response = _context2.sent;
-
-                if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
-                  _context2.next = 20;
-                  break;
-                }
-
-                this.$store.commit("error/setCode", response.status);
-                return _context2.abrupt("return", false);
-
-              case 20:
+                //   if (response.status !== OK) {
+                //     this.$store.commit("error/setCode", response.status);
+                //     return false;
+                //   }
                 this.user = response.data;
                 console.log(this.user); // 更新が終了したので終了処理を行う
 
@@ -591,7 +585,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   val.teardown();
                 }
 
-              case 23:
+              case 18:
               case "end":
                 return _context2.stop();
             }
@@ -1209,7 +1203,7 @@ var render = function() {
       _vm._v(" "),
       _vm.user
         ? _c("bdProfileEditModal", {
-            attrs: { name: _vm.user.name },
+            attrs: { name: _vm.user.name, errors: _vm.errors },
             on: { update: _vm.updateProfile },
             model: {
               value: _vm.editProfileModalActive,

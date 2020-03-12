@@ -57,7 +57,8 @@ export default {
   components: { bdTextField },
   props: {
     name: String,
-    value: Boolean
+    value: Boolean,
+    errors: String
   },
   data() {
     return {
@@ -129,6 +130,7 @@ export default {
         teardown: () => {
           this.user_form.name = null;
           this.user_form.photo = null;
+          this.errors = null;
           this.active = false;
         }
       });

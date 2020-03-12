@@ -25,7 +25,7 @@ class StoreUser extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'photo' => 'required|file|mimes:jpg,jpeg,png,gif',
+            'photo' => 'file|mimes:jpg,jpeg,png,gif',
         ];
     }
 }
