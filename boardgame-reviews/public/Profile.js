@@ -113,6 +113,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "pm-profile-edit-modal",
@@ -128,7 +131,9 @@ __webpack_require__.r(__webpack_exports__);
       // 初期表示を親コンポーネントから渡されたユーザー名にするために this.name で初期化
       userName: this.name,
       userNameError: null,
-      avatarFile: null
+      avatarFile: null,
+      preview: null,
+      errors: null
     };
   },
   computed: {
@@ -145,8 +150,46 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    update: function update() {
+    // formでファイルを選択したら実行
+    onFileChange: function onFileChange(event) {
       var _this = this;
+
+      // 何も選択されていなかったら処理中断
+      if (event.target.files.length === 0) {
+        this.reset();
+        return false;
+      } // ファイルが画像でなくても処理を中断
+
+
+      if (!event.target.files[0].type.match("image.*")) {
+        this.reset();
+        return false;
+      } // FileReaderクラスのインスタンスを取得
+
+
+      var reader = new FileReader(); // ファイルを読み込み終わったタイミングで実行する処理
+
+      reader.onload = function (e) {
+        // previewに読み込み結果（データURL）を代入する
+        // previewに値が入ると<output>につけたv-ifがtrueと判定される
+        // また<output>内部の<img>のsrc属性はpreviewの値を参照しているので
+        // 結果として画像が表示される
+        _this.preview = e.target.result;
+      }; // ファイルを読み込む
+      // 読み込まれたファイルはデータURL形式で受け取れる
+
+
+      reader.readAsDataURL(event.target.files[0]);
+      this.shop_form.photo = event.target.files[0];
+    },
+    reset: function reset() {
+      this.preview = "";
+      this.photo = null; // $elはDOMそのものを指す
+
+      this.$el.querySelector('input[type="file"]').value = null;
+    },
+    update: function update() {
+      var _this2 = this;
 
       if (!this.userName) {
         this.userNameError = "ユーザー名は必須です";
@@ -160,9 +203,9 @@ __webpack_require__.r(__webpack_exports__);
         // 正常終了後の後処理を teardown として渡し
         // 名前だけ更新後のものにしてモーダルダイアログを非表示する
         teardown: function teardown() {
-          _this.userNameError = null;
-          _this.avatarFile = null;
-          _this.active = false;
+          _this2.userNameError = null;
+          _this2.avatarFile = null;
+          _this2.active = false;
         }
       });
     },
@@ -752,18 +795,19 @@ var render = function() {
               _c("div", { staticClass: "control" }, [
                 _c("div", { staticClass: "file has-name" }, [
                   _c("label", { staticClass: "file-label" }, [
-                    _c("input", {
-                      staticClass: "file-input",
-                      attrs: { type: "file", name: "resume" },
-                      on: {
-                        change: function($event) {
-                          $event.preventDefault()
-                          return _vm.selectFile($event)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm._m(0),
+                    _c("span", { staticClass: "file-cta" }, [
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "file-label" }, [
+                        _vm._v("Choose a file...")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "file-input",
+                        attrs: { type: "file", name: "resume" },
+                        on: { change: _vm.onFileChange }
+                      })
+                    ]),
                     _vm._v(" "),
                     _c("span", { staticClass: "file-name" }, [
                       _vm._v(_vm._s(_vm.avatarFile ? _vm.avatarFile.name : ""))
@@ -771,7 +815,13 @@ var render = function() {
                   ])
                 ])
               ])
-            ])
+            ]),
+            _vm._v(" "),
+            _vm.preview
+              ? _c("output", { staticClass: "form__output" }, [
+                  _c("img", { attrs: { src: _vm.preview, alt: "" } })
+                ])
+              : _vm._e()
           ],
           1
         ),
@@ -796,12 +846,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "file-cta" }, [
-      _c("span", { staticClass: "file-icon" }, [
-        _c("i", { staticClass: "fas fa-upload" })
-      ]),
-      _vm._v(" "),
-      _c("span", { staticClass: "file-label" }, [_vm._v("Choose a file...")])
+    return _c("span", { staticClass: "file-icon" }, [
+      _c("i", { staticClass: "fas fa-upload" })
     ])
   }
 ]

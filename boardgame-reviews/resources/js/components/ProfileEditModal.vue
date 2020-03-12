@@ -22,12 +22,12 @@
             <div class="file has-name">
               <label class="file-label">
                 <!-- type=file な input タグは readonly なため v-model は使用できない。change イベントで値を処理 -->
-                <input class="file-input" type="file" name="resume" @change.prevent="selectFile" />
                 <span class="file-cta">
                   <span class="file-icon">
                     <i class="fas fa-upload"></i>
                   </span>
                   <span class="file-label">Choose a file...</span>
+                  <input class="file-input" type="file" name="resume" @change="onFileChange" />
                 </span>
                 <!-- ファイルが選択された時だけファイル名を表示 -->
                 <span class="file-name">{{ avatarFile ? avatarFile.name : "" }}</span>
@@ -35,6 +35,9 @@
             </div>
           </div>
         </div>
+        <output class="form__output" v-if="preview">
+          <img :src="preview" alt />
+        </output>
       </section>
       <footer class="modal-card-foot">
         <!-- 更新ボタンのclickイベント発行 -->
@@ -59,7 +62,9 @@ export default {
       // 初期表示を親コンポーネントから渡されたユーザー名にするために this.name で初期化
       userName: this.name,
       userNameError: null,
-      avatarFile: null
+      avatarFile: null,
+      preview: null,
+      errors: null
     };
   },
   computed: {
@@ -76,6 +81,43 @@ export default {
     }
   },
   methods: {
+    // formでファイルを選択したら実行
+    onFileChange(event) {
+      // 何も選択されていなかったら処理中断
+      if (event.target.files.length === 0) {
+        this.reset();
+        return false;
+      }
+
+      // ファイルが画像でなくても処理を中断
+      if (!event.target.files[0].type.match("image.*")) {
+        this.reset();
+        return false;
+      }
+
+      // FileReaderクラスのインスタンスを取得
+      const reader = new FileReader();
+
+      // ファイルを読み込み終わったタイミングで実行する処理
+      reader.onload = e => {
+        // previewに読み込み結果（データURL）を代入する
+        // previewに値が入ると<output>につけたv-ifがtrueと判定される
+        // また<output>内部の<img>のsrc属性はpreviewの値を参照しているので
+        // 結果として画像が表示される
+        this.preview = e.target.result;
+      };
+
+      // ファイルを読み込む
+      // 読み込まれたファイルはデータURL形式で受け取れる
+      reader.readAsDataURL(event.target.files[0]);
+      this.shop_form.photo = event.target.files[0];
+    },
+    reset() {
+      this.preview = "";
+      this.photo = null;
+      // $elはDOMそのものを指す
+      this.$el.querySelector('input[type="file"]').value = null;
+    },
     update() {
       if (!this.userName) {
         this.userNameError = "ユーザー名は必須です";

@@ -98,6 +98,10 @@ class UserController extends Controller
             Storage::cloud()->delete($photo->filename);
             throw $exception;
         }
+        // リソースの新規作成なので
+        // レスポンスコードは201(CREATED)を返却する
+        // vueでキャッチする
+        return response($photo, 201);
     }
 
     /**
