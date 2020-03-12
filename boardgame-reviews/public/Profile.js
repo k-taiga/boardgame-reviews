@@ -127,7 +127,7 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     name: String,
     value: Boolean,
-    errors: String
+    errors: Object
   },
   data: function data() {
     return {
@@ -213,6 +213,7 @@ __webpack_require__.r(__webpack_exports__);
       this.user_form.name = this.name;
       this.user_form.photo = null;
       this.errors = null;
+      this.$emit("cancel", this.errors);
       this.preview = ""; // 閉じるためには active プロパティを false にする
       // active プロパティの set が呼び出され親コンポーネントに波及
 
@@ -469,6 +470,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
  // import dayjs from "dayjs";
 
 
@@ -598,7 +600,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return updateProfile;
-    }()
+    }(),
+    cancel: function cancel(val) {
+      this.errors = val;
+    }
   },
   watch: {
     $route: {
@@ -1204,7 +1209,7 @@ var render = function() {
       _vm.user
         ? _c("bdProfileEditModal", {
             attrs: { name: _vm.user.name, errors: _vm.errors },
-            on: { update: _vm.updateProfile },
+            on: { update: _vm.updateProfile, cancel: _vm.cancel },
             model: {
               value: _vm.editProfileModalActive,
               callback: function($$v) {

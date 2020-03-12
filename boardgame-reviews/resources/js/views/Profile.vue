@@ -71,6 +71,7 @@
       :name="user.name"
       :errors="errors"
       @update="updateProfile"
+      @cancel="cancel"
     ></bdProfileEditModal>
     <bdRetireModal v-if="user" v-model="retireModalActive" @retire="retire"></bdRetireModal>
   </div>
@@ -136,16 +137,19 @@ export default {
       // 更新後のユーザー情報を取得
       this.response = await axios.get(`/api/profile/`);
 
-    //   if (response.status !== OK) {
-    //     this.$store.commit("error/setCode", response.status);
-    //     return false;
-    //   }
+      //   if (response.status !== OK) {
+      //     this.$store.commit("error/setCode", response.status);
+      //     return false;
+      //   }
       this.user = response.data;
       console.log(this.user);
       // 更新が終了したので終了処理を行う
       if (val.teardown) {
         val.teardown();
       }
+    },
+    cancel(val) {
+      this.errors = val;
     }
   },
   watch: {

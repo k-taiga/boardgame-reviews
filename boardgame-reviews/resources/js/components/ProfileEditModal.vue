@@ -58,7 +58,7 @@ export default {
   props: {
     name: String,
     value: Boolean,
-    errors: String
+    errors: Object
   },
   data() {
     return {
@@ -140,6 +140,8 @@ export default {
       this.user_form.name = this.name;
       this.user_form.photo = null;
       this.errors = null;
+      this.$emit("cancel", this.errors);
+
       this.preview = "";
       // 閉じるためには active プロパティを false にする
       // active プロパティの set が呼び出され親コンポーネントに波及
