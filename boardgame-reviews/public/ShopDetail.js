@@ -331,8 +331,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 6:
                 this.shop = response.data;
+                console.log(this.shop);
 
-              case 7:
+              case 8:
               case "end":
                 return _context.stop();
             }
@@ -531,9 +532,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 6:
                 this.user = response.data;
-                console.log(this.user);
 
-              case 8:
+              case 7:
               case "end":
                 return _context5.stop();
             }
@@ -840,7 +840,7 @@ var render = function() {
                                         "article",
                                         { staticClass: "media" },
                                         [
-                                          _vm.user.photos
+                                          review.author.photos
                                             ? _c(
                                                 "figure",
                                                 { staticClass: "media-left" },
@@ -855,7 +855,8 @@ var render = function() {
                                                       _c("img", {
                                                         attrs: {
                                                           src:
-                                                            _vm.user.photos.url
+                                                            review.author.photos
+                                                              .url
                                                         }
                                                       })
                                                     ]
@@ -864,7 +865,7 @@ var render = function() {
                                               )
                                             : _vm._e(),
                                           _vm._v(" "),
-                                          _vm.user.photos == null
+                                          review.author.photos == null
                                             ? _c("el-avatar", {
                                                 attrs: {
                                                   size: 50,

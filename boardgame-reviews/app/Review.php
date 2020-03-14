@@ -4,16 +4,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\User;
+
 class Review extends Model
 {
     /** JSONに含める属性 */
     protected $visible = [
-        'author', 'content', 'date'
+        'author', 'content', 'date', 'user_photo'
     ];
 
     /** JSONに含めるアクセサ */
     protected $appends = [
-        'date'
+        'date', 'user_photo'
     ];
 
     /**
@@ -42,5 +44,17 @@ class Review extends Model
     {
 
         return $this->created_at->format('Y/m/d');
+    }
+
+    /**
+     * アクセサ - liked_by_user
+     * @return boolean
+     */
+    public function getUserPhotoAttribute()
+    {
+
+        $user_photo = User::where('id', $this->author["id"])->with(['photos'])->first();
+
+        return $user_photo;
     }
 }

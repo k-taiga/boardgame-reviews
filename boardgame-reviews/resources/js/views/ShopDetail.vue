@@ -54,13 +54,13 @@
                     class="photo-detail__commentItem list-item"
                   >
                     <article class="media">
-                      <figure v-if="user.photos" class="media-left">
+                      <figure v-if="review.author.photos" class="media-left">
                         <p class="image is-64x64">
-                          <img :src="user.photos.url" />
+                          <img :src="review.author.photos.url" />
                         </p>
                       </figure>
                       <el-avatar
-                        v-if="user.photos == null"
+                        v-if="review.author.photos == null"
                         :size="50"
                         src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
                       ></el-avatar>
@@ -233,6 +233,7 @@ export default {
       }
 
       this.shop = response.data;
+      console.log(this.shop);
     },
     async addReview() {
       const response = await axios.post(`/api/shops/${this.id}/reviews`, {
@@ -308,7 +309,6 @@ export default {
         return false;
       }
       this.user = response.data;
-      console.log(this.user);
     }
   },
   watch: {
