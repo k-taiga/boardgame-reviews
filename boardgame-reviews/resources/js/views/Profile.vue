@@ -124,15 +124,12 @@ export default {
 
       console.log(this.user);
 
-      //   if (response.status !== OK) {
-      //     this.$store.commit("error/setCode", response.status);
-      //     return false;
-      //   }
-      //   this.user = response.data;
       // 更新が終了したので終了処理を行う
       if (val.teardown) {
         val.teardown();
       }
+
+      this.editProfileModalActive = false;
     },
     // componentのエラ-を消去
     cancel() {

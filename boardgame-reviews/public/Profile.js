@@ -597,18 +597,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 9:
                 // 更新後のユーザー情報を取得
                 this.fetchUser();
-                console.log(this.user); //   if (response.status !== OK) {
-                //     this.$store.commit("error/setCode", response.status);
-                //     return false;
-                //   }
-                //   this.user = response.data;
-                // 更新が終了したので終了処理を行う
+                console.log(this.user); // 更新が終了したので終了処理を行う
 
                 if (val.teardown) {
                   val.teardown();
                 }
 
-              case 12:
+                this.editProfileModalActive = false;
+
+              case 13:
               case "end":
                 return _context2.stop();
             }
