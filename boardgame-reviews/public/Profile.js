@@ -601,14 +601,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 //     this.$store.commit("error/setCode", response.status);
                 //     return false;
                 //   }
-
-                this.user = response.data; // 更新が終了したので終了処理を行う
+                //   this.user = response.data;
+                // 更新が終了したので終了処理を行う
 
                 if (val.teardown) {
                   val.teardown();
                 }
 
-              case 13:
+              case 12:
               case "end":
                 return _context2.stop();
             }
