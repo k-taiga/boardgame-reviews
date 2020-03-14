@@ -54,13 +54,13 @@
                     class="photo-detail__commentItem list-item"
                   >
                     <article class="media">
-                      <figure v-if="review.author.photos" class="media-left">
+                      <figure v-if="review.user_photo.photos" class="media-left">
                         <p class="image is-64x64">
-                          <img :src="review.author.photos.url" />
+                          <img :src="review.user_photo.photos.url" />
                         </p>
                       </figure>
                       <el-avatar
-                        v-if="review.author.photos == null"
+                        v-if="!review.user_photo.photos"
                         :size="50"
                         src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
                       ></el-avatar>

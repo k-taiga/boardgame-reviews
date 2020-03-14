@@ -840,7 +840,7 @@ var render = function() {
                                         "article",
                                         { staticClass: "media" },
                                         [
-                                          review.author.photos
+                                          review.user_photo.photos
                                             ? _c(
                                                 "figure",
                                                 { staticClass: "media-left" },
@@ -855,8 +855,8 @@ var render = function() {
                                                       _c("img", {
                                                         attrs: {
                                                           src:
-                                                            review.author.photos
-                                                              .url
+                                                            review.user_photo
+                                                              .photos.url
                                                         }
                                                       })
                                                     ]
@@ -865,7 +865,7 @@ var render = function() {
                                               )
                                             : _vm._e(),
                                           _vm._v(" "),
-                                          review.author.photos == null
+                                          !review.user_photo.photos
                                             ? _c("el-avatar", {
                                                 attrs: {
                                                   size: 50,
