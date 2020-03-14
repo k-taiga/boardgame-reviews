@@ -17,7 +17,6 @@
             <p class="title">{{ shop.reviews.length }}</p>
           </div>
         </div>
-        <!-- <figcaption>Posted by {{ photo.owner.name }}</figcaption> -->
         <img :src="shop.photos.url" alt />
       </figure>
       <div class="tile is-vertical is-6">
@@ -42,10 +41,7 @@
               <h2 class="photo-detail__title">
                 <i class="icon ion-md-chatboxes"></i>Review
               </h2>
-              <div
-                class="infinite-list-wrapper"
-                :style="styleObject"
-              >
+              <div class="infinite-list-wrapper" :style="styleObject">
                 <ul
                   v-if="count >= 0"
                   class="photo-detail__reviews list"
@@ -58,13 +54,17 @@
                     class="photo-detail__commentItem list-item"
                   >
                     <article class="media">
-                      <figure class="media-left">
+                      <figure v-if="user.photos" class="media-left">
                         <p class="image is-64x64">
-                          <img
-                            src="https://api.adorable.io/avatars/400/8bf1db8d0c62c2a6ea1db881f0f34402.png"
-                          />
+                          <img :src="user.photos.url" />
                         </p>
                       </figure>
+                      <el-avatar
+                        v-if="user.photos == null"
+                        :size="50"
+                        src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
+                      ></el-avatar>
+
                       <div class="media-content">
                         <div class="content">
                           <p>
@@ -96,11 +96,16 @@
                 </div>
                 <article class="media">
                   <figure class="media-left">
-                    <p class="image is-64x64">
-                      <img
-                        src="https://gravatar.com/avatar/7c838f7ca2f3ccff7a160d3a9698afc2?s=400&d=robohash&r=x"
-                      />
-                    </p>
+                    <figure v-if="user.photos" class="media-left">
+                      <p class="image is-64x64">
+                        <img :src="user.photos.url" />
+                      </p>
+                    </figure>
+                    <el-avatar
+                      v-if="user.photos == null"
+                      :size="50"
+                      src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
+                    ></el-avatar>
                   </figure>
                   <div class="media-content">
                     <div class="field">
@@ -133,7 +138,11 @@
                   </span>
                   <span>
                     View on
-                    <a :href="shop.home_url" target="_blank" rel="noopener noreferrer">Official</a>
+                    <a
+                      :href="shop.home_url"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >Official</a>
                   </span>
                 </div>
                 <div href="#" class="card-footer-item">
@@ -168,9 +177,10 @@
 import { OK, CREATED, UNPROCESSABLE_ENTITY } from "../util";
 import bdIcon from "../components/Icon";
 import bdBack from "../components/Back";
+import bdUserIcon from "../components/UserSvg";
 
 export default {
-  components: { bdIcon, bdBack },
+  components: { bdIcon, bdBack, bdUserIcon },
   props: {
     id: {
       type: String,
@@ -185,7 +195,8 @@ export default {
       reviewErrors: null,
       active: false,
       count: 0,
-      loading: false
+      loading: false,
+      user: null
     };
   },
   computed: {
@@ -193,30 +204,29 @@ export default {
       return this.$store.getters["auth/check"];
     },
     noMore() {
-       if(this.count !== 0) {
+      if (this.count !== 0) {
         return this.count == this.shop.reviews.length;
-       }
-       return false;
+      }
+      return false;
     },
     disabled() {
       return this.loading || this.noMore;
     },
-    styleObject: function () {
-        if(this.shop.reviews != "") {
-            return {
-            'height':'400px',
-            'overflow-y': 'scroll'
-            }
-        }else {
-            return false;
-        }
+    styleObject: function() {
+      if (this.shop.reviews != "") {
+        return {
+          height: "400px",
+          "overflow-y": "scroll"
+        };
+      } else {
+        return false;
+      }
     }
   },
   methods: {
     async fetchShop() {
       const response = await axios.get(`/api/shops/${this.id}`);
 
-      console.log(response);
       if (response.status !== OK) {
         this.$store.commit("error/setCode", response.status);
         return false;
@@ -289,12 +299,23 @@ export default {
         }
         this.loading = false;
       }, 1000);
+    },
+    async fetchUser() {
+      const response = await axios.get(`/api/profile/`);
+
+      if (response.status !== OK) {
+        this.$store.commit("error/setCode", response.status);
+        return false;
+      }
+      this.user = response.data;
+      console.log(this.user);
     }
   },
   watch: {
     $route: {
       async handler() {
         await this.fetchShop();
+        await this.fetchUser();
       },
       immediate: true
     }

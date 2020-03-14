@@ -20,3 +20,9 @@ export default {
   name: "bdTextField"
 };
 </script>
+
+<style scoped>
+.user_icon {
+  fill: #c0c4cc;
+}
+</style>

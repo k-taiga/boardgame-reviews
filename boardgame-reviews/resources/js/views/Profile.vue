@@ -9,6 +9,7 @@
               <img :src="user.photos.url" />
             </figure>
             <bdUserIcon v-if="user.photos == null"></bdUserIcon>
+
             <p v-if="user" class="subtitle has-text-centered has-text-dark">name:&emsp;{{user.name}}</p>
           </div>
           <footer class="card-footer">
@@ -155,9 +156,6 @@ export default {
 </script>
 
 <style scoped>
-.user_icon {
-  fill: skyblue;
-}
 .favorite_shops {
   background-color: whitesmoke;
   margin-bottom: 4em;
