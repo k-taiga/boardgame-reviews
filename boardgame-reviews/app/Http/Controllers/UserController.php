@@ -76,7 +76,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function edit(StoreUser $request)
+    public function update(StoreUser $request)
     {
         // ユーザーの写真を保存する処理
         if ($request->photo !== null) {
@@ -120,18 +120,6 @@ class UserController extends Controller
         // レスポンスコードは201(CREATED)を返却する
         // vueでキャッチする
         return response($photo, 201);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
     }
 
     /**
