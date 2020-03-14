@@ -5,12 +5,11 @@
         <div class="card">
           <div class="card-content">
             <!-- userのphotoがあれば以下にする -->
-            <!-- <figure class="image is-256x256">
-                <img
-                :src="user.photo.url"
-                />
-            </figure>-->
+            <figure v-if="user.photos.url" class="image is-4by3">
+              <img :src="user.photos.url" />
+            </figure>
             <svg
+              v-if="!user.photos"
               aria-hidden="true"
               focusable="false"
               data-prefix="fas"
@@ -51,7 +50,7 @@
               </div>
             </div>
           </div>
-          <div class="columns is-multiline" v-if="user.favorite_shops.length > 0">
+          <div class="columns is-multiline" v-if="user.favorite_shops.count !== 0 ">
             <shop
               v-for="shop in user.favorite_shops"
               :key="shop.id"
@@ -66,14 +65,14 @@
       </div>
     </div>
     <bdProfileEditModal
-      v-if="user"
       v-model="editProfileModalActive"
+      :active="editProfileModalActive"
       :name="user.name"
       :errors="errors"
       @update="updateProfile"
       @cancel="cancel"
     ></bdProfileEditModal>
-    <bdRetireModal v-if="user" v-model="retireModalActive" @retire="retire"></bdRetireModal>
+    <bdRetireModal v-model="retireModalActive" @retire="retire"></bdRetireModal>
   </div>
 </template>
 
@@ -114,20 +113,19 @@ export default {
     showProfileEditModal() {
       this.editProfileModalActive = true;
     },
+
+    // プロファイル削除ダイアログ表示・非表示の切り替え処理
     showRetireModal() {
       this.retireModalActive = true;
     },
     // プロファイル更新処理
     async updateProfile(val) {
-      console.log(val.teardown);
       const formData = new FormData();
 
       formData.append("name", val.name);
       formData.append("photo", val.file);
-      console.log(formData);
 
       const response = await axios.post("/api/profile", formData);
-      console.log(response);
 
       if (response.status === UNPROCESSABLE_ENTITY) {
         this.errors = response.data.errors;
@@ -142,14 +140,16 @@ export default {
       //     return false;
       //   }
       this.user = response.data;
-      console.log(this.user);
       // 更新が終了したので終了処理を行う
       if (val.teardown) {
         val.teardown();
       }
     },
-    cancel(val) {
-      this.errors = val;
+    // componentのエラ-を消去
+    cancel() {
+      this.errors = null;
+      this.editProfileModalActive = false;
+      console.log(this.editProfileModalActive);
     }
   },
   watch: {

@@ -57,33 +57,37 @@ export default {
   components: { bdTextField },
   props: {
     name: String,
-    value: Boolean,
-    errors: Object
+    // value: Boolean,
+    errors: Object,
+    active: Boolean
   },
   data() {
     return {
       preview: null,
-      errors: null,
       user_form: {
         // 初期表示を親コンポーネントから渡されたユーザー名にするために this.name で初期化
         name: this.name,
         photo: null
-      }
+      },
+      active: this.active
     };
   },
-  computed: {
-    // v-modelに関するプロパティはactive
-    active: {
-      get() {
-        return this.value;
-      },
-      set(val) {
-        if (this.value !== val) {
-          this.$emit("input", val);
-        }
-      }
-    }
-  },
+  //   computed: {
+  //     // v-modelに関するプロパティはactive
+  //     active: {
+  //       get() {
+  //         return this.value;
+  //       },
+  //       set(val) {
+  //         console.log(this.value);
+  //         console.log(val);
+
+  //         if (this.value !== val) {
+  //           this.$emit("input", val);
+  //         }
+  //       }
+  //     }
+  //   },
   methods: {
     // formでファイルを選択したら実行
     onFileChange(event) {
@@ -128,26 +132,31 @@ export default {
         // 正常終了後の後処理を teardown として渡し
         // 名前だけ更新後のものにしてモーダルダイアログを非表示する
         teardown: () => {
-          this.user_form.name = null;
+          this.user_form.name = this.name;
           this.user_form.photo = null;
-          this.errors = null;
-          this.active = false;
+          // 閉じるためには active プロパティを false にする
+          this.active = !this.active;
+
+          this.preview = "";
+          // $elはDOMそのものを指す
+          this.$el.querySelector('input[type="file"]').value = null;
+          //   this.cancel();
+          console.log(this.active);
         }
       });
     },
     cancel() {
+      console.log("キャンセルしました");
       // 再表示されたときに現在のデータを表示しないように初期状態に戻す
       this.user_form.name = this.name;
       this.user_form.photo = null;
-      this.errors = null;
-      this.$emit("cancel", this.errors);
+      // 閉じるためには active プロパティを false にする
+      this.active = false;
 
       this.preview = "";
-      // 閉じるためには active プロパティを false にする
-      // active プロパティの set が呼び出され親コンポーネントに波及
-      this.active = false;
       // $elはDOMそのものを指す
       this.$el.querySelector('input[type="file"]').value = null;
+      this.$emit("cancel");
     },
     selectFile(e) {
       // ファイルを保持する

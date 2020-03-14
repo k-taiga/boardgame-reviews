@@ -126,33 +126,36 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     name: String,
-    value: Boolean,
-    errors: Object
+    // value: Boolean,
+    errors: Object,
+    active: Boolean
   },
   data: function data() {
     return {
       preview: null,
-      errors: null,
       user_form: {
         // 初期表示を親コンポーネントから渡されたユーザー名にするために this.name で初期化
         name: this.name,
         photo: null
-      }
+      },
+      active: this.active
     };
   },
-  computed: {
-    // v-modelに関するプロパティはactive
-    active: {
-      get: function get() {
-        return this.value;
-      },
-      set: function set(val) {
-        if (this.value !== val) {
-          this.$emit("input", val);
-        }
-      }
-    }
-  },
+  //   computed: {
+  //     // v-modelに関するプロパティはactive
+  //     active: {
+  //       get() {
+  //         return this.value;
+  //       },
+  //       set(val) {
+  //         console.log(this.value);
+  //         console.log(val);
+  //         if (this.value !== val) {
+  //           this.$emit("input", val);
+  //         }
+  //       }
+  //     }
+  //   },
   methods: {
     // formでファイルを選択したら実行
     onFileChange: function onFileChange(event) {
@@ -201,25 +204,29 @@ __webpack_require__.r(__webpack_exports__);
         // 正常終了後の後処理を teardown として渡し
         // 名前だけ更新後のものにしてモーダルダイアログを非表示する
         teardown: function teardown() {
-          _this2.user_form.name = null;
-          _this2.user_form.photo = null;
-          _this2.errors = null;
-          _this2.active = false;
+          _this2.user_form.name = _this2.name;
+          _this2.user_form.photo = null; // 閉じるためには active プロパティを false にする
+
+          _this2.active = !_this2.active;
+          _this2.preview = ""; // $elはDOMそのものを指す
+
+          _this2.$el.querySelector('input[type="file"]').value = null; //   this.cancel();
+
+          console.log(_this2.active);
         }
       });
     },
     cancel: function cancel() {
-      // 再表示されたときに現在のデータを表示しないように初期状態に戻す
-      this.user_form.name = this.name;
-      this.user_form.photo = null;
-      this.errors = null;
-      this.$emit("cancel", this.errors);
-      this.preview = ""; // 閉じるためには active プロパティを false にする
-      // active プロパティの set が呼び出され親コンポーネントに波及
+      console.log("キャンセルしました"); // 再表示されたときに現在のデータを表示しないように初期状態に戻す
 
-      this.active = false; // $elはDOMそのものを指す
+      this.user_form.name = this.name;
+      this.user_form.photo = null; // 閉じるためには active プロパティを false にする
+
+      this.active = false;
+      this.preview = ""; // $elはDOMそのものを指す
 
       this.$el.querySelector('input[type="file"]').value = null;
+      this.$emit("cancel");
     },
     selectFile: function selectFile(e) {
       // ファイルを保持する
@@ -470,7 +477,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
  // import dayjs from "dayjs";
 
 
@@ -537,6 +543,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     showProfileEditModal: function showProfileEditModal() {
       this.editProfileModalActive = true;
     },
+    // プロファイル削除ダイアログ表示・非表示の切り替え処理
     showRetireModal: function showRetireModal() {
       this.retireModalActive = true;
     },
@@ -550,44 +557,40 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                console.log(val.teardown);
                 formData = new FormData();
                 formData.append("name", val.name);
                 formData.append("photo", val.file);
-                console.log(formData);
-                _context2.next = 7;
+                _context2.next = 5;
                 return axios.post("/api/profile", formData);
 
-              case 7:
+              case 5:
                 response = _context2.sent;
-                console.log(response);
 
                 if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_1__["UNPROCESSABLE_ENTITY"])) {
-                  _context2.next = 12;
+                  _context2.next = 9;
                   break;
                 }
 
                 this.errors = response.data.errors;
                 return _context2.abrupt("return", false);
 
-              case 12:
-                _context2.next = 14;
+              case 9:
+                _context2.next = 11;
                 return axios.get("/api/profile/");
 
-              case 14:
+              case 11:
                 this.response = _context2.sent;
                 //   if (response.status !== OK) {
                 //     this.$store.commit("error/setCode", response.status);
                 //     return false;
                 //   }
-                this.user = response.data;
-                console.log(this.user); // 更新が終了したので終了処理を行う
+                this.user = response.data; // 更新が終了したので終了処理を行う
 
                 if (val.teardown) {
                   val.teardown();
                 }
 
-              case 18:
+              case 14:
               case "end":
                 return _context2.stop();
             }
@@ -601,8 +604,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return updateProfile;
     }(),
-    cancel: function cancel(val) {
-      this.errors = val;
+    // componentのエラ-を消去
+    cancel: function cancel() {
+      this.errors = null;
+      this.editProfileModalActive = false;
+      console.log(this.editProfileModalActive);
     }
   },
   watch: {
@@ -1121,29 +1127,37 @@ var render = function() {
         _c("div", { staticClass: "column is-one-fifth" }, [
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-content" }, [
-              _c(
-                "svg",
-                {
-                  staticClass: "user_icon",
-                  attrs: {
-                    "aria-hidden": "true",
-                    focusable: "false",
-                    "data-prefix": "fas",
-                    "data-icon": "user-circle",
-                    role: "img",
-                    xmlns: "http://www.w3.org/2000/svg",
-                    viewBox: "0 0 496 512"
-                  }
-                },
-                [
-                  _c("path", {
-                    attrs: {
-                      d:
-                        "M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"
-                    }
-                  })
-                ]
-              ),
+              _vm.user.photos.url
+                ? _c("figure", { staticClass: "image is-4by3" }, [
+                    _c("img", { attrs: { src: _vm.user.photos.url } })
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              !_vm.user.photos
+                ? _c(
+                    "svg",
+                    {
+                      staticClass: "user_icon",
+                      attrs: {
+                        "aria-hidden": "true",
+                        focusable: "false",
+                        "data-prefix": "fas",
+                        "data-icon": "user-circle",
+                        role: "img",
+                        xmlns: "http://www.w3.org/2000/svg",
+                        viewBox: "0 0 496 512"
+                      }
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
               _vm._v(" "),
               _vm.user
                 ? _c(
@@ -1182,7 +1196,7 @@ var render = function() {
           _c("div", { staticClass: "favorite_shops" }, [
             _vm._m(0),
             _vm._v(" "),
-            _vm.user.favorite_shops.length > 0
+            _vm.user.favorite_shops.count !== 0
               ? _c(
                   "div",
                   { staticClass: "columns is-multiline" },
@@ -1206,32 +1220,32 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm.user
-        ? _c("bdProfileEditModal", {
-            attrs: { name: _vm.user.name, errors: _vm.errors },
-            on: { update: _vm.updateProfile, cancel: _vm.cancel },
-            model: {
-              value: _vm.editProfileModalActive,
-              callback: function($$v) {
-                _vm.editProfileModalActive = $$v
-              },
-              expression: "editProfileModalActive"
-            }
-          })
-        : _vm._e(),
+      _c("bdProfileEditModal", {
+        attrs: {
+          active: _vm.editProfileModalActive,
+          name: _vm.user.name,
+          errors: _vm.errors
+        },
+        on: { update: _vm.updateProfile, cancel: _vm.cancel },
+        model: {
+          value: _vm.editProfileModalActive,
+          callback: function($$v) {
+            _vm.editProfileModalActive = $$v
+          },
+          expression: "editProfileModalActive"
+        }
+      }),
       _vm._v(" "),
-      _vm.user
-        ? _c("bdRetireModal", {
-            on: { retire: _vm.retire },
-            model: {
-              value: _vm.retireModalActive,
-              callback: function($$v) {
-                _vm.retireModalActive = $$v
-              },
-              expression: "retireModalActive"
-            }
-          })
-        : _vm._e()
+      _c("bdRetireModal", {
+        on: { retire: _vm.retire },
+        model: {
+          value: _vm.retireModalActive,
+          callback: function($$v) {
+            _vm.retireModalActive = $$v
+          },
+          expression: "retireModalActive"
+        }
+      })
     ],
     1
   )

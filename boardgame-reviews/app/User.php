@@ -28,7 +28,7 @@ class User extends Authenticatable
 
     /** JSONに含める属性(実際に返ってくる値) */
     protected $visible = [
-        'id', 'name',  'email', 'favorite_shops'
+        'id', 'name',  'email', 'photos', 'favorite_shops'
     ];
 
     /**
@@ -55,7 +55,7 @@ class User extends Authenticatable
      */
     public function photos()
     {
-        return $this->hasMany('App\UserPhoto');
+        return $this->hasOne('App\UserPhoto');
     }
 
     /**

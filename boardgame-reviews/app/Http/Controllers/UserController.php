@@ -64,7 +64,7 @@ class UserController extends Controller
 
         $user_id = $login_user["id"];
 
-        $user = User::where('id', $user_id)->with(['favorites'])->first();
+        $user = User::where('id', $user_id)->with(['favorites', 'photos'])->first();
         clock($user);
 
         return $user ?? abort(404);

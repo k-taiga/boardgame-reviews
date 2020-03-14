@@ -36,7 +36,7 @@ class Shop extends Model
     // withで呼び出す
     /**
      * リレーションシップ - photosテーブル
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function photos()
     {
