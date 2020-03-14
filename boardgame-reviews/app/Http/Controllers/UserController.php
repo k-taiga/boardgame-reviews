@@ -78,27 +78,37 @@ class UserController extends Controller
      */
     public function edit(StoreUser $request)
     {
-        clock($request);
         // ユーザーの写真を保存する処理
+        if ($request->photo !== null) {
+            // 写真の拡張子を取得
+            $extension = $request->photo->extension();
 
-        // 写真の拡張子を取得
-        $extension = $request->photo->extension();
+            $photo = new UserPhoto();
 
-        $photo = new UserPhoto();
+            // インスタンス生成時に割り振られたランダムなID値(prefixはuser)と本来の拡張子を組み合わせてファイル名とする
+            $photo->filename = $photo->id . '.' . $extension;
 
-        // インスタンス生成時に割り振られたランダムなID値(prefixはuser)と本来の拡張子を組み合わせてファイル名とする
-        $photo->filename = $photo->id . '.' . $extension;
+            // S3にファイルを保存する publicで公開
+            Storage::cloud()
+                ->putFileAs('', $request->photo, $photo->filename, 'public');
+            clock($request);
+        }
 
-        // S3にファイルを保存する publicで公開
-        Storage::cloud()
-            ->putFileAs('', $request->photo, $photo->filename, 'public');
 
+        $user = Auth::user();
+        $user->name = $request->get('name');
         // データベースエラー時にファイル削除を行うため
         // トランザクションを利用する
         DB::beginTransaction();
 
         try {
-            Auth::user()->photos()->save($photo);
+            if ($request->photo !== null) {
+                $user->photos()->save($photo);
+                $user->save();
+            } else {
+                $user->save();
+            }
+
             DB::commit();
         } catch (\Exception $exception) {
             DB::rollBack();

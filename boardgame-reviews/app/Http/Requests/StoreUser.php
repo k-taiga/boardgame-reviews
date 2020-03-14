@@ -25,7 +25,14 @@ class StoreUser extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'photo' => 'file|mimes:jpg,jpeg,png,gif',
+            'photo' => 'nullable|file|mimes:jpg,jpeg,png,gif',
         ];
     }
+
+    // public function withValidator(\Illuminate\Contracts\Validation\Validator $validator)
+    // {
+    //     $validator->sometimes('photo', 'nullable|file|mimes:jpg,jpeg,png,gif', function ($input) {
+    //         return $input;
+    //     });
+    // }
 }
