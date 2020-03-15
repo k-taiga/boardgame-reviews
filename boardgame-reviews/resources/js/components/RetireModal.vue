@@ -8,8 +8,8 @@
       </header>
       <section class="modal-card-body">
         <div class="errors" v-if="errors">
-          <ul v-if="errors.password">
-            <li v-for="msg in errors.password" :key="msg">{{ msg }}</li>
+          <ul>
+            <li>{{ errors }}</li>
           </ul>
         </div>
         <div
@@ -37,7 +37,7 @@ export default {
   name: "bd-retire-modal",
   components: { bdTextField },
   props: {
-    errors: Object,
+    errors: String,
     active: Boolean
   },
   data() {
@@ -48,10 +48,6 @@ export default {
   },
   methods: {
     retire() {
-      if (!this.password) {
-        this.errors.password = "パスワードを入力してください";
-        return;
-      }
       this.$emit("retire", {
         password: this.password
         // teardown: this.cancel
@@ -59,7 +55,6 @@ export default {
     },
     cancel() {
       this.password = null;
-      this.passwordError = null;
       this.active = false;
       this.$emit("cancel");
     }

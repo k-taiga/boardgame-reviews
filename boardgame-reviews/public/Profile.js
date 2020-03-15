@@ -118,6 +118,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "bd-profile-edit-modal",
@@ -125,7 +126,11 @@ __webpack_require__.r(__webpack_exports__);
     bdTextField: _TextField__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    name: String,
+    name: {
+      validator: function validator(prop) {
+        return typeof prop === "string" || prop === null;
+      }
+    },
     errors: Object,
     active: Boolean
   },
@@ -176,12 +181,7 @@ __webpack_require__.r(__webpack_exports__);
     update: function update() {
       var _this2 = this;
 
-      if (!this.user_form.name) {
-        this.errors.name = "ユーザー名は必須です";
-        return;
-      } // updateイベントを発行
-
-
+      // updateイベントを発行
       this.$emit("update", {
         name: this.user_form.name,
         file: this.user_form.photo,
@@ -271,7 +271,7 @@ __webpack_require__.r(__webpack_exports__);
     bdTextField: _TextField__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    errors: Object,
+    errors: String,
     active: Boolean
   },
   data: function data() {
@@ -282,11 +282,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     retire: function retire() {
-      if (!this.password) {
-        this.passwordError = "パスワードを入力してください";
-        return;
-      }
-
       this.$emit("retire", {
         password: this.password // teardown: this.cancel
 
@@ -294,7 +289,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     cancel: function cancel() {
       this.password = null;
-      this.passwordError = null;
       this.active = false;
       this.$emit("cancel");
     }
@@ -570,16 +564,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 5:
                 response = _context2.sent;
+                console.log(response);
 
                 if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_1__["UNPROCESSABLE_ENTITY"])) {
-                  _context2.next = 9;
+                  _context2.next = 10;
                   break;
                 }
 
                 this.errors = response.data.errors;
                 return _context2.abrupt("return", false);
 
-              case 9:
+              case 10:
                 // 更新後のユーザー情報を取得
                 this.fetchUser();
                 console.log(this.user); // 更新が終了したので終了処理を行う
@@ -590,7 +585,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 this.editProfileModalActive = false;
 
-              case 13:
+              case 14:
               case "end":
                 return _context2.stop();
             }
@@ -636,7 +631,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   break;
                 }
 
-                this.errors = response.data.errors;
+                this.errors = response.data.message;
                 return _context3.abrupt("return", false);
 
               case 14:
@@ -1114,15 +1109,7 @@ var render = function() {
           [
             _vm.errors
               ? _c("div", { staticClass: "errors" }, [
-                  _vm.errors.passwordError
-                    ? _c(
-                        "ul",
-                        _vm._l(_vm.errors.passwordError, function(msg) {
-                          return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
-                        }),
-                        0
-                      )
-                    : _vm._e()
+                  _c("ul", [_c("li", [_vm._v(_vm._s(_vm.errors))])])
                 ])
               : _vm._e(),
             _vm._v(" "),

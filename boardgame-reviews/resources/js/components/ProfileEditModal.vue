@@ -15,6 +15,7 @@
           </ul>
           <ul v-if="errors.name">
             <li v-for="msg in errors.name" :key="msg">{{ msg }}</li>
+            <!-- <li>{{errors.name}}</li> -->
           </ul>
         </div>
         <bd-text-field type="text" label="ユーザー名" placeholder="ユーザー名" v-model="user_form.name" />
@@ -56,7 +57,9 @@ export default {
   name: "bd-profile-edit-modal",
   components: { bdTextField },
   props: {
-    name: String,
+    name: {
+      validator: prop => typeof prop === "string" || prop === null
+    },
     errors: Object,
     active: Boolean
   },
@@ -104,10 +107,6 @@ export default {
       this.user_form.photo = event.target.files[0];
     },
     update() {
-      if (!this.user_form.name) {
-        this.errors.name = "ユーザー名は必須です";
-        return;
-      }
       // updateイベントを発行
       this.$emit("update", {
         name: this.user_form.name,

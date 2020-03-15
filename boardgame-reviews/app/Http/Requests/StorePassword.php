@@ -27,4 +27,11 @@ class StorePassword extends FormRequest
             'password' => 'required|string|max:255',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'password.required' => 'パスワードの入力は必須項目です。',
+        ];
+    }
 }

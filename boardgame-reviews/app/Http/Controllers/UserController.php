@@ -125,7 +125,7 @@ class UserController extends Controller
     /**
      * ユーザーのお気に入りだけ削除（レビューは退会後も残す)
      *
-     * @param  string  $user_pass
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function destroy(StorePassword $request)
@@ -135,7 +135,8 @@ class UserController extends Controller
         $user_id = $user["id"];
 
         if ($user['password'] !== $user_pass) {
-            abort(403);
+            $errors = 'パスワードが違います。';
+            abort(403, $errors);
         } else {
             DB::table('likes')->where('user_id', $user_id)->delete();
             DB::user('id')->where('id', $user_id)->delete();

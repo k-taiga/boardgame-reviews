@@ -121,6 +121,8 @@ export default {
 
       const response = await axios.post("/api/profile/edit", formData);
 
+      console.log(response);
+
       if (response.status === UNPROCESSABLE_ENTITY) {
         this.errors = response.data.errors;
         return false;
@@ -149,7 +151,7 @@ export default {
         this.errors = response.data.errors;
         return false;
       } else if (response.status === 403) {
-        this.errors = response.data.errors;
+        this.errors = response.data.message;
         return false;
       }
 
