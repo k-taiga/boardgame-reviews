@@ -57,7 +57,6 @@ export default {
   components: { bdTextField },
   props: {
     name: String,
-    // value: Boolean,
     errors: Object,
     active: Boolean
   },
@@ -72,22 +71,6 @@ export default {
       active: this.active
     };
   },
-  //   computed: {
-  //     // v-modelに関するプロパティはactive
-  //     active: {
-  //       get() {
-  //         return this.value;
-  //       },
-  //       set(val) {
-  //         console.log(this.value);
-  //         console.log(val);
-
-  //         if (this.value !== val) {
-  //           this.$emit("input", val);
-  //         }
-  //       }
-  //     }
-  //   },
   methods: {
     // formでファイルを選択したら実行
     onFileChange(event) {

@@ -126,7 +126,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     name: String,
-    // value: Boolean,
     errors: Object,
     active: Boolean
   },
@@ -141,21 +140,6 @@ __webpack_require__.r(__webpack_exports__);
       active: this.active
     };
   },
-  //   computed: {
-  //     // v-modelに関するプロパティはactive
-  //     active: {
-  //       get() {
-  //         return this.value;
-  //       },
-  //       set(val) {
-  //         console.log(this.value);
-  //         console.log(val);
-  //         if (this.value !== val) {
-  //           this.$emit("input", val);
-  //         }
-  //       }
-  //     }
-  //   },
   methods: {
     // formでファイルを選択したら実行
     onFileChange: function onFileChange(event) {
@@ -276,49 +260,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "pm-retire-modal",
+  name: "bd-retire-modal",
   components: {
-    pmTextField: _TextField__WEBPACK_IMPORTED_MODULE_0__["default"]
+    bdTextField: _TextField__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    value: Boolean
+    errors: Object,
+    active: Boolean
   },
   data: function data() {
     return {
       password: null,
-      passwordError: null
+      active: this.active
     };
-  },
-  computed: {
-    active: {
-      get: function get() {
-        return this.value;
-      },
-      set: function set(val) {
-        if (this.value !== val) {
-          this.$emit("input", val);
-        }
-      }
-    }
   },
   methods: {
     retire: function retire() {
       if (!this.password) {
-        this.passwordError = "現在のパスワードは必須です";
+        this.passwordError = "パスワードを入力してください";
         return;
       }
 
       this.$emit("retire", {
-        password: this.password,
-        teardown: this.cancel
+        password: this.password // teardown: this.cancel
+
       });
     },
     cancel: function cancel() {
       this.password = null;
       this.passwordError = null;
       this.active = false;
+      this.$emit("cancel");
     }
   }
 });
@@ -496,6 +474,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
  // import dayjs from "dayjs";
 
 
@@ -582,7 +566,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData.append("name", val.name);
                 formData.append("photo", val.file);
                 _context2.next = 5;
-                return axios.post("/api/profile", formData);
+                return axios.post("/api/profile/edit", formData);
 
               case 5:
                 response = _context2.sent;
@@ -620,11 +604,67 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return updateProfile;
     }(),
+    retire: function () {
+      var _retire = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(val) {
+        var formData, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                formData = new FormData();
+                formData.append("password", val.password);
+                _context3.next = 4;
+                return axios.post("/api/profile/destroy", formData);
+
+              case 4:
+                response = _context3.sent;
+                console.log(response);
+
+                if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_1__["UNPROCESSABLE_ENTITY"])) {
+                  _context3.next = 11;
+                  break;
+                }
+
+                this.errors = response.data.errors;
+                return _context3.abrupt("return", false);
+
+              case 11:
+                if (!(response.status === 403)) {
+                  _context3.next = 14;
+                  break;
+                }
+
+                this.errors = response.data.errors;
+                return _context3.abrupt("return", false);
+
+              case 14:
+                this.$store.commit("message/setContent", {
+                  content: "ご利用ありがとうございました！",
+                  timeout: 6000
+                });
+                this.$router.push("/");
+
+              case 16:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function retire(_x2) {
+        return _retire.apply(this, arguments);
+      }
+
+      return retire;
+    }(),
     // componentのエラ-を消去
     cancel: function cancel() {
       this.errors = null;
       this.editProfileModalActive = false;
-      console.log(this.editProfileModalActive);
+      this.retireModalActive = false;
     }
   },
   watch: {
@@ -632,20 +672,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       handler: function () {
         var _handler = _asyncToGenerator(
         /*#__PURE__*/
-        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
             while (1) {
-              switch (_context3.prev = _context3.next) {
+              switch (_context4.prev = _context4.next) {
                 case 0:
-                  _context3.next = 2;
+                  _context4.next = 2;
                   return this.fetchUser();
 
                 case 2:
                 case "end":
-                  return _context3.stop();
+                  return _context4.stop();
               }
             }
-          }, _callee3, this);
+          }, _callee4, this);
         }));
 
         function handler() {
@@ -1072,19 +1112,32 @@ var render = function() {
           "section",
           { staticClass: "modal-card-body" },
           [
+            _vm.errors
+              ? _c("div", { staticClass: "errors" }, [
+                  _vm.errors.passwordError
+                    ? _c(
+                        "ul",
+                        _vm._l(_vm.errors.passwordError, function(msg) {
+                          return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
+                        }),
+                        0
+                      )
+                    : _vm._e()
+                ])
+              : _vm._e(),
+            _vm._v(" "),
             _c("div", { staticClass: "notification is-danger" }, [
               _vm._v(
-                "\n        退会するには現在のパスワードを入力して「退会する」ボタンをクリックしてください。この処理は元に戻すことはできません。\n      "
+                "退会するには現在のパスワードを入力して「退会する」ボタンをクリックしてください。この処理は元に戻すことはできません。"
               )
             ]),
             _vm._v(" "),
-            _c("pm-text-field", {
+            _c("bd-text-field", {
               attrs: {
                 label: "現在のパスワード（必須）",
                 type: "password",
                 placeholder: "パスワード",
-                icon: "key",
-                error: _vm.passwordError
+                icon: "key"
               },
               model: {
                 value: _vm.password,
@@ -1331,7 +1384,8 @@ var render = function() {
       }),
       _vm._v(" "),
       _c("bdRetireModal", {
-        on: { retire: _vm.retire },
+        attrs: { active: _vm.retireModalActive, errors: _vm.errors },
+        on: { retire: _vm.retire, cancel: _vm.cancel },
         model: {
           value: _vm.retireModalActive,
           callback: function($$v) {

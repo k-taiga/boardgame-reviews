@@ -8,9 +8,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 use App\User;
-
 use App\UserPhoto;
+use App\Review;
 use App\Http\Requests\StoreUser;
+use App\Http\Requests\StorePassword;
 
 class UserController extends Controller
 {
@@ -19,7 +20,7 @@ class UserController extends Controller
     {
         // 認証に通す
         // authに通らなくても使えるもの
-        $this->middleware('auth')->except(['show', 'edit']);
+        $this->middleware('auth')->except(['show']);
     }
     /**
      * Display a listing of the resource.
@@ -94,7 +95,6 @@ class UserController extends Controller
             clock($request);
         }
 
-
         $user = Auth::user();
         $user->name = $request->get('name');
         // データベースエラー時にファイル削除を行うため
@@ -123,13 +123,23 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * ユーザーのお気に入りだけ削除（レビューは退会後も残す)
      *
-     * @param  int  $id
+     * @param  string  $user_pass
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(StorePassword $request)
     {
-        //
+        $user_pass = $request->password;
+        $user = Auth::user();
+        $user_id = $user["id"];
+
+        if ($user['password'] !== $user_pass) {
+            abort(403);
+        } else {
+            DB::table('likes')->where('user_id', $user_id)->delete();
+            DB::user('id')->where('id', $user_id)->delete();
+            return response(200);
+        }
     }
 }

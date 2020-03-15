@@ -41,7 +41,10 @@ Route::delete('/shops/{id}/unlike', 'ShopController@unlike');
 Route::get('/profile', 'UserController@show')->name('profile.show');
 
 // ユーザー情報編集
-Route::post('/profile', 'UserController@update')->name('profile.update');
+Route::post('/profile/edit', 'UserController@update')->name('profile.update');
+
+// ユーザー退会
+Route::post('/profile/destroy', 'UserController@destroy')->name('profile.destroy');
 
 // トークンリフレッシュ
 Route::get('/reflesh-token', function (Illuminate\Http\Request $request) {

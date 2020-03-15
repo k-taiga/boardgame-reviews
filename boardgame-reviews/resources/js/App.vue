@@ -2,7 +2,7 @@
   <div id="app">
     <bdNavbar :user="user" @sign-out-clicked="signOut"></bdNavbar>
     <main class="container">
-      <!-- <message /> -->
+      <message />
       <transition name="fade" mode="out-in">
         <router-view />
       </transition>

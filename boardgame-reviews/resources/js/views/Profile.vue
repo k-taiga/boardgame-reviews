@@ -58,7 +58,13 @@
       @update="updateProfile"
       @cancel="cancel"
     ></bdProfileEditModal>
-    <bdRetireModal v-model="retireModalActive" @retire="retire"></bdRetireModal>
+    <bdRetireModal
+      v-model="retireModalActive"
+      :active="retireModalActive"
+      :errors="errors"
+      @retire="retire"
+      @cancel="cancel"
+    ></bdRetireModal>
   </div>
 </template>
 
@@ -113,7 +119,7 @@ export default {
       formData.append("name", val.name);
       formData.append("photo", val.file);
 
-      const response = await axios.post("/api/profile", formData);
+      const response = await axios.post("/api/profile/edit", formData);
 
       if (response.status === UNPROCESSABLE_ENTITY) {
         this.errors = response.data.errors;
@@ -132,13 +138,36 @@ export default {
 
       this.editProfileModalActive = false;
     },
+    async retire(val) {
+      const formData = new FormData();
+      formData.append("password", val.password);
+      const response = await axios.post("/api/profile/destroy", formData);
+
+      console.log(response);
+
+      if (response.status === UNPROCESSABLE_ENTITY) {
+        this.errors = response.data.errors;
+        return false;
+      } else if (response.status === 403) {
+        this.errors = response.data.errors;
+        return false;
+      }
+
+      this.$store.commit("message/setContent", {
+        content: "ご利用ありがとうございました！",
+        timeout: 6000
+      });
+
+      this.$router.push(`/`);
+    },
     // componentのエラ-を消去
     cancel() {
       this.errors = null;
       this.editProfileModalActive = false;
-      console.log(this.editProfileModalActive);
+      this.retireModalActive = false;
     }
   },
+
   watch: {
     $route: {
       async handler() {

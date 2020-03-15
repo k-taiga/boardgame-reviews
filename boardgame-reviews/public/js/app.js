@@ -66283,6 +66283,8 @@ var render = function() {
         "main",
         { staticClass: "container" },
         [
+          _c("message"),
+          _vm._v(" "),
           _c(
             "transition",
             { attrs: { name: "fade", mode: "out-in" } },
