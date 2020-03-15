@@ -562,10 +562,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   return this.fetchShop();
 
                 case 2:
-                  _context6.next = 4;
+                  this.user = this.$store.getters["auth/check"];
+
+                  if (!(this.user !== false)) {
+                    _context6.next = 6;
+                    break;
+                  }
+
+                  _context6.next = 6;
                   return this.fetchUser();
 
-                case 4:
+                case 6:
                 case "end":
                   return _context6.stop();
               }

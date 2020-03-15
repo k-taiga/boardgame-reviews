@@ -12,7 +12,7 @@ Route::post('/login', "Auth\LoginController@login")->name('login');
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
 // ログインチェック
-// ログインユーザー
+// ↓php7.4以降の書き方
 // Route::get('/user', fn () => Auth::user())->name('user');
 Route::get('/user', function () {
     return Auth::user();

@@ -315,7 +315,10 @@ export default {
     $route: {
       async handler() {
         await this.fetchShop();
-        await this.fetchUser();
+        this.user = this.$store.getters["auth/check"];
+        if (this.user !== false) {
+          await this.fetchUser();
+        }
       },
       immediate: true
     }
