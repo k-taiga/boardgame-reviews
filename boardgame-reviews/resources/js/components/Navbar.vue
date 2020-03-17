@@ -1,14 +1,15 @@
 <template>
     <nav
         id="nav"
-        class="navbar has-shadow is-dark"
+        class="navbar has-shadow"
         role="navigation"
         aria-label="main navigation"
     >
         <div class="container">
             <div class="navbar-brand">
                 <router-link to="/" class="navbar-item">
-                    <bdIcon name="chess-knight"></bdIcon>BoardGameReviews
+                    <bdIcon name="chess-knight has-text-white"></bdIcon>
+                    <span class="has-text-white">BoardGameReviews</span>
                 </router-link>
                 <a
                     role="button"
@@ -27,7 +28,7 @@
                 <div class="navbar-end" v-if="user">
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link">
-                            <bdIcon name="user"></bdIcon>
+                            <bdIcon name="user has-text-white"></bdIcon>
                         </a>
                         <div class="navbar-dropdown is-right">
                             <router-link class="navbar-item" :to="{ name: 'profile' }">
@@ -58,9 +59,7 @@
                             :to="{ name: 'sign_up' }"
                             class="button is-text"
                         >
-                            <span class="bdIcon has-text-white">
-                                <bdIcon name="user-plus"></bdIcon>
-                            </span>
+                            <bdIcon name="user-plus has-text-white"></bdIcon>
                             <span class="has-text-white">ユーザー登録</span>
                         </router-link>
                     </div>
@@ -89,3 +88,13 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+.navbar {
+    background-color: #a6d4cc;
+}
+
+.button.is-text {
+text-decoration: none;
+}
+</style>

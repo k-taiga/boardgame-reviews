@@ -188,14 +188,14 @@ export default {
 
 <style scoped>
 .favorite_shops {
-  background-color: whitesmoke;
+  background-color: white;
   margin-bottom: 4em;
   padding: 2em;
   border-radius: 0.5em;
 }
 
 .favorite_shop {
-  background-color: white;
+  background-color: whitesmoke;
   margin: 0.5em;
   border-radius: 0.5em;
 }

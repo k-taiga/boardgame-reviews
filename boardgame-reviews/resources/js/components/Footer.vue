@@ -6,7 +6,7 @@
     </footer>
 </template>
 <style scoped>
-/* .footer {
-    flex: 1;
-} */
+.footer {
+    background-color: #a6d4cc;
+}
 </style>

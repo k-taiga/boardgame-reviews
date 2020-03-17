@@ -1,6 +1,6 @@
 <template>
     <div class="shop-list container">
-        <bdCarousel></bdCarousel>
+        <!-- <bdCarousel></bdCarousel> -->
         <div class="grid">
             <shop
                 class="grid__item"

@@ -379,7 +379,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.title[data-v-e1ea323e],\n.subtitle[data-v-e1ea323e],\n.content[data-v-e1ea323e] {\n  font-family: Merriweather;\n}\n", ""]);
+exports.push([module.i, "\n.title[data-v-e1ea323e],\r\n.subtitle[data-v-e1ea323e],\r\n.content[data-v-e1ea323e] {\r\n  font-family: Merriweather;\n}\r\n", ""]);
 
 // exports
 
@@ -566,8 +566,6 @@ var render = function() {
     "div",
     { staticClass: "shop-list container" },
     [
-      _c("bdCarousel"),
-      _vm._v(" "),
       _c(
         "div",
         { staticClass: "grid" },

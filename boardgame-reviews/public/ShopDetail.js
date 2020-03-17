@@ -605,7 +605,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.user_icon[data-v-581af77e] {\n  fill: #c0c4cc;\n}\n", ""]);
+exports.push([module.i, "\n.user_icon[data-v-581af77e] {\r\n  fill: #c0c4cc;\n}\r\n", ""]);
 
 // exports
 
@@ -1070,9 +1070,7 @@ var render = function() {
                               [_vm._v("Official")]
                             )
                           ])
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(3)
+                        ])
                       ])
                     ])
                   ])
@@ -1149,28 +1147,6 @@ var staticRenderFns = [
     return _c("span", { staticClass: "icon is-small" }, [
       _c("i", { staticClass: "fas fa-globe", attrs: { "aria-hidden": "true" } })
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card-footer-item", attrs: { href: "#" } },
-      [
-        _c("span", { staticClass: "icon is-small" }, [
-          _c("i", {
-            staticClass: "fab fa-twitter-square",
-            attrs: { "aria-hidden": "true" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("span", [
-          _vm._v("\n                  Share on\n                  "),
-          _c("a", { attrs: { href: "#" } }, [_vm._v("Twitter")])
-        ])
-      ]
-    )
   }
 ]
 render._withStripped = true
