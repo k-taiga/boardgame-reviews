@@ -100,6 +100,22 @@ class ShopController extends Controller
      */
     public function show(string $id)
     {
+
+        $shops = Shop::with(['photos', 'likes'])->orderBy(Shop::CREATED_AT, 'desc')->paginate();
+        $shop = Shop::where('id', $id)->with(['photos', 'reviews.author', 'likes'])->first();
+
+        clock($shop);
+
+        return $shop ?? abort(404);
+    }
+
+    /**
+     * 店舗検索
+     * @param string $keyword
+     * @return Shop
+     */
+    public function search(string $keyword)
+    {
         $shop = Shop::where('id', $id)->with(['photos', 'reviews.author', 'likes'])->first();
 
         clock($shop);
