@@ -20,7 +20,7 @@ class PhotosTableSeeder extends Seeder
             1 => 'gorakuya.jpg',
             // ディアシュピール
             2 => 'rkHCC5OlJnO2.jpeg',
-            3 => '',
+            3 => 'pineapple_games.jpg',
             4 => '',
             5 => '',
             6 => '',
