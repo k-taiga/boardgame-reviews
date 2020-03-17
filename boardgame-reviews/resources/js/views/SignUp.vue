@@ -30,7 +30,6 @@
                 icon="envelope"
                 v-model="registerForm.email"
               ></bdTextField>
-              <!-- パスワードの入力欄としてテキストフィールドコンポーネントを使用 -->
               <bdTextField
                 type="password"
                 placeholder="パスワード"
@@ -43,10 +42,6 @@
                 icon="lock"
                 v-model="registerForm.password_confirmation"
               ></bdTextField>
-              <div class="field">
-                <input type="checkbox" />
-                ログインしたままにする
-              </div>
               <button
                 class="button is-block is-info is-large is-fullwidth"
                 type="submit"
@@ -54,10 +49,10 @@
               >登録する</button>
             </div>
           </div>
+         <p class="has-text-grey">
+           <a href="..">パスワードを忘れた方はこちら</a>
+         </p>
         </form>
-        <p class="has-text-grey">
-          <a href="..">パスワードを忘れた方はこちら</a>
-        </p>
       </div>
     </div>
   </div>
