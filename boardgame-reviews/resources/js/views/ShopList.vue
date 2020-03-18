@@ -1,7 +1,7 @@
 <template>
   <div class="shop-list container">
     <!-- <bdCarousel></bdCarousel> -->
-    <bd-search-box></bd-search-box>
+    <bd-search-box @search="search"></bd-search-box>
     <div class="grid">
       <shop
         class="grid__item"
@@ -77,17 +77,14 @@ export default {
         this.$store.commit("error/setCode", response.status);
         return false;
       }
-      console.log(response);
 
       this.shops = this.shops.map(shop => {
-        console.log(shop);
         if (shop.id == response.data.shop_id) {
           shop.likes_count += 1;
           shop.liked_by_user = true;
         }
         return shop;
       });
-      console.log(this.shops);
     },
     async unlike(id) {
       const response = await axios.delete(`/api/shops/${id}/unlike`);
@@ -105,6 +102,19 @@ export default {
 
         return shop;
       });
+    },
+    async search(keyword) {
+      console.log(keyword);
+
+      const response = await axios.post(`/api/shops/${keyword}`);
+
+      if (response.status !== OK) {
+        this.$store.commit("error/setCode", response.status);
+        return false;
+      }
+
+      this.shops = response.data;
+      console.log(this.shops);
     }
   },
   watch: {

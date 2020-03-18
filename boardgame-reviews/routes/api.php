@@ -28,6 +28,9 @@ Route::get('/shops', 'ShopController@index')->name('shop.index');
 // 店舗詳細
 Route::get('/shops/{id}', 'ShopController@show')->name('shop.show');
 
+// 店舗検索
+Route::post('/shops/{search}', 'ShopController@search')->name('shop.show');
+
 // レビュー
 Route::post('/shops/{shop}/reviews', 'ShopController@addReview')->name('shop.review');
 

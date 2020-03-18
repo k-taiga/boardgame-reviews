@@ -145,15 +145,6 @@
                     >Official</a>
                   </span>
                 </div>
-                <!-- <div href="#" class="card-footer-item">
-                  <span class="icon is-small">
-                    <i class="fab fa-twitter-square" aria-hidden="true"></i>
-                  </span>
-                  <span>
-                    Share on
-                    <a href="#">Twitter</a>
-                  </span>
-                </div> -->
               </footer>
             </article>
           </div>

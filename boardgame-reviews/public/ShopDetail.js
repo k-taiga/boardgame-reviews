@@ -243,15 +243,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -605,7 +596,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.user_icon[data-v-581af77e] {\n  fill: #c0c4cc;\n}\n", ""]);
+exports.push([module.i, "\n.user_icon[data-v-581af77e] {\r\n  fill: #c0c4cc;\n}\r\n", ""]);
 
 // exports
 

@@ -101,7 +101,6 @@ class ShopController extends Controller
     public function show(string $id)
     {
 
-        $shops = Shop::with(['photos', 'likes'])->orderBy(Shop::CREATED_AT, 'desc')->paginate();
         $shop = Shop::where('id', $id)->with(['photos', 'reviews.author', 'likes'])->first();
 
         clock($shop);
@@ -116,11 +115,14 @@ class ShopController extends Controller
      */
     public function search(string $keyword)
     {
-        $shop = Shop::where('id', $id)->with(['photos', 'reviews.author', 'likes'])->first();
 
-        clock($shop);
+        clock($keyword);
 
-        return $shop ?? abort(404);
+        $shops = Shop::where('shop_name', 'LIKE', '%' . $keyword . '%')->with(['photos', 'likes'])->get();
+
+        clock($shops);
+
+        return $shops;
     }
 
     /**

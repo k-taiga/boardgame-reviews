@@ -88,15 +88,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     bdIcon: _Icon__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      keyword: null
+    };
+  },
+  methods: {
+    submit: function submit() {
+      this.$emit("search", this.keyword);
+    }
   }
 });
 
@@ -314,10 +319,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context2.abrupt("return", false);
 
               case 6:
-                console.log(response);
                 this.shops = this.shops.map(function (shop) {
-                  console.log(shop);
-
                   if (shop.id == response.data.shop_id) {
                     shop.likes_count += 1;
                     shop.liked_by_user = true;
@@ -325,9 +327,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                   return shop;
                 });
-                console.log(this.shops);
 
-              case 9:
+              case 7:
               case "end":
                 return _context2.stop();
             }
@@ -387,6 +388,48 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return unlike;
+    }(),
+    search: function () {
+      var _search = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(keyword) {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                console.log(keyword);
+                _context4.next = 3;
+                return axios.post("/api/shops/".concat(keyword));
+
+              case 3:
+                response = _context4.sent;
+
+                if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
+                  _context4.next = 7;
+                  break;
+                }
+
+                this.$store.commit("error/setCode", response.status);
+                return _context4.abrupt("return", false);
+
+              case 7:
+                this.shops = response.data;
+                console.log(this.shops);
+
+              case 9:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this);
+      }));
+
+      function search(_x3) {
+        return _search.apply(this, arguments);
+      }
+
+      return search;
     }()
   },
   watch: {
@@ -394,20 +437,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       handler: function () {
         var _handler = _asyncToGenerator(
         /*#__PURE__*/
-        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
-          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
             while (1) {
-              switch (_context4.prev = _context4.next) {
+              switch (_context5.prev = _context5.next) {
                 case 0:
-                  _context4.next = 2;
+                  _context5.next = 2;
                   return this.fetchShops();
 
                 case 2:
                 case "end":
-                  return _context4.stop();
+                  return _context5.stop();
               }
             }
-          }, _callee4, this);
+          }, _callee5, this);
         }));
 
         function handler() {
@@ -454,7 +497,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.title[data-v-e1ea323e],\n.subtitle[data-v-e1ea323e],\n.content[data-v-e1ea323e] {\n  font-family: Merriweather;\n}\n", ""]);
+exports.push([module.i, "\n.title[data-v-e1ea323e],\r\n.subtitle[data-v-e1ea323e],\r\n.content[data-v-e1ea323e] {\r\n  font-family: Merriweather;\n}\r\n", ""]);
 
 // exports
 
@@ -598,45 +641,74 @@ var render = function() {
         _vm._v("お気に入りのボードゲームカフェを探そう！")
       ]),
       _vm._v(" "),
-      _c("form", { attrs: { action: "/search" } }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "field is-grouped-centered is-grouped-multiline is-grouped"
-          },
-          [
-            _c("div", { staticClass: "autocomplete control" }, [
-              _c(
-                "div",
-                { staticClass: "control has-icons-left is-medium is-clearfix" },
-                [
-                  _c("input", {
-                    staticClass: "input is-medium",
-                    attrs: {
-                      type: "text",
-                      autocomplete: "off",
-                      name: "location",
-                      placeholder: "JELLY JELLY CAFE新宿"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    { staticClass: "icon is-left" },
-                    [_c("bdIcon", { attrs: { name: "search" } })],
-                    1
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _vm._m(0)
-          ]
-        ),
-        _vm._v(" "),
-        _c("p")
-      ])
+      _c(
+        "form",
+        {
+          attrs: { id: "searchform" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.submit($event)
+            }
+          }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "field is-grouped-centered is-grouped-multiline is-grouped"
+            },
+            [
+              _c("div", { staticClass: "autocomplete control" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "control has-icons-left is-medium is-clearfix"
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.keyword,
+                          expression: "keyword"
+                        }
+                      ],
+                      staticClass: "input is-medium",
+                      attrs: {
+                        type: "text",
+                        autocomplete: "off",
+                        name: "keyword",
+                        placeholder: "JELLY JELLY CAFE新宿"
+                      },
+                      domProps: { value: _vm.keyword },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.keyword = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      { staticClass: "icon is-left" },
+                      [_c("bdIcon", { attrs: { name: "search" } })],
+                      1
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _vm._m(0)
+            ]
+          )
+        ]
+      )
     ]
   )
 }
@@ -646,9 +718,14 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "control" }, [
-      _c("button", { staticClass: "button is-medium has-text-white" }, [
-        _vm._v("Search")
-      ])
+      _c(
+        "button",
+        {
+          staticClass: "button is-medium has-text-white",
+          attrs: { type: "submit" }
+        },
+        [_vm._v("Search")]
+      )
     ])
   }
 ]
@@ -757,7 +834,7 @@ var render = function() {
     "div",
     { staticClass: "shop-list container" },
     [
-      _c("bd-search-box"),
+      _c("bd-search-box", { on: { search: _vm.search } }),
       _vm._v(" "),
       _c(
         "div",
