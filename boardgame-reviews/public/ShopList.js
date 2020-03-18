@@ -206,20 +206,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1077,57 +1063,11 @@ var staticRenderFns = [
                 [_vm._v("ボードゲームの数")]
               ),
               _vm._v(" "),
-              _c("option", { attrs: { value: "Albertville" } }, [
-                _vm._v("Albertville")
-              ]),
+              _c("option", { attrs: { value: "1" } }, [_vm._v("0~100")]),
               _vm._v(" "),
-              _c("option", { attrs: { value: "Auburn" } }, [_vm._v("Auburn")]),
+              _c("option", { attrs: { value: "2" } }, [_vm._v("100~300")]),
               _vm._v(" "),
-              _c("option", { attrs: { value: "Birmingham" } }, [
-                _vm._v("Birmingham")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "Boaz" } }, [_vm._v("Boaz")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "Fairhope" } }, [
-                _vm._v("Fairhope")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "Gadsden" } }, [
-                _vm._v("Gadsden")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "Gulf Shores" } }, [
-                _vm._v("Gulf Shores")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "Oneonta" } }, [
-                _vm._v("Oneonta")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "Orange Beach" } }, [
-                _vm._v("Orange Beach")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "Pell City" } }, [
-                _vm._v("Pell City")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "Roanoke" } }, [
-                _vm._v("Roanoke")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "Seale" } }, [_vm._v("Seale")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "Sheffield" } }, [
-                _vm._v("Sheffield")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "Talladega" } }, [
-                _vm._v("Talladega")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "Valley" } }, [_vm._v("Valley")])
+              _c("option", { attrs: { value: "3" } }, [_vm._v("300個以上")])
             ])
           ]),
           _vm._v(" "),
@@ -1159,15 +1099,11 @@ var staticRenderFns = [
                 [_vm._v("予算")]
               ),
               _vm._v(" "),
-              _c("option", { attrs: { value: "2000" } }, [_vm._v("$2,000")]),
+              _c("option", { attrs: { value: "1000" } }, [_vm._v("1,000")]),
               _vm._v(" "),
-              _c("option", { attrs: { value: "5000" } }, [_vm._v("$5,000")]),
+              _c("option", { attrs: { value: "2000" } }, [_vm._v("2,000")]),
               _vm._v(" "),
-              _c("option", { attrs: { value: "10000" } }, [_vm._v("$10,000")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "15000" } }, [_vm._v("$15,000")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "20000" } }, [_vm._v("$20,000")])
+              _c("option", { attrs: { value: "3000" } }, [_vm._v("3,000以上")])
             ])
           ]),
           _vm._v(" "),

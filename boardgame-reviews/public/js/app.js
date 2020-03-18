@@ -5931,7 +5931,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.ul.states-mega[data-v-89adc34a] {\n  max-height: 160px;\n  z-index: 99;\n  width: 60%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  flex-direction: column;\n  flex-wrap: wrap;\n  -webkit-box-pack: center;\n  justify-content: center;\n}\nul.states-mega li[data-v-89adc34a] {\n  font-size: 1.1rem;\n  padding-left: 1rem;\n  margin: 0 1rem 0.25rem 0;\n}\n", ""]);
+exports.push([module.i, "\na[data-v-89adc34a] {\n  color: #a6d4cc;\n}\n.navbar-dropdown[data-v-89adc34a] {\n  background-color: #fff;\n  border-bottom-left-radius: 6px;\n  border-bottom-right-radius: 6px;\n  border-top: 2px solid #dbdbdb;\n  box-shadow: 0 8px 8px hsla(0, 0%, 4%, 0.1);\n  display: none;\n  font-size: 0.875rem;\n  left: 0;\n  min-width: 100%;\n  position: absolute;\n  top: 100%;\n  z-index: 20;\n}\nul.wards[data-v-89adc34a] {\n  max-height: 150px;\n  z-index: 99;\n  width: 100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  flex-direction: column;\n  flex-wrap: wrap;\n  -webkit-box-pack: center;\n  justify-content: center;\n}\nul.wards li[data-v-89adc34a] {\n  font-size: 1.1rem;\n  padding-left: 1rem;\n  margin: 0 1rem 0.25rem 0;\n}\n", ""]);
 
 // exports
 
@@ -66520,21 +66520,63 @@ var staticRenderFns = [
           "div",
           {
             staticClass: "navbar-dropdown is-size-6",
-            staticStyle: { width: "18rem" }
+            staticStyle: { width: "50rem" }
           },
           [
-            _c("ul", { staticClass: "states-mega" }, [
+            _c("ul", { staticClass: "wards" }, [
+              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("足立区")])]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("荒川区")])]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("板橋区")])]),
+              _vm._v(" "),
               _c("li", [
-                _c(
-                  "a",
-                  {
-                    attrs: {
-                      href: "https://www.receptionhalls.com/banquet-halls/AL"
-                    }
-                  },
-                  [_vm._v("Alabama")]
-                )
-              ])
+                _c("a", { attrs: { href: "/" } }, [_vm._v("江戸川区")])
+              ]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("大田区")])]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("葛飾区")])]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("北 区")])]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("江東区")])]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("品川区")])]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("渋谷区")])]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("新宿区")])]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("杉並区")])]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("墨田区")])]),
+              _vm._v(" "),
+              _c("li", [
+                _c("a", { attrs: { href: "/" } }, [_vm._v("世田谷区")])
+              ]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("台東区")])]),
+              _vm._v(" "),
+              _c("li", [
+                _c("a", { attrs: { href: "/" } }, [_vm._v("千代田区")])
+              ]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("中央区")])]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("豊島区")])]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("中野区")])]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("練馬区")])]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("文京区")])]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("港 区")])]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("目黒区")])]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("23区外")])])
             ])
           ]
         )

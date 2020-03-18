@@ -32,21 +32,9 @@
             <span class="select is-empty">
               <select>
                 <option disabled="disabled" hidden="hidden" selected>ボードゲームの数</option>
-                <option value="Albertville">Albertville</option>
-                <option value="Auburn">Auburn</option>
-                <option value="Birmingham">Birmingham</option>
-                <option value="Boaz">Boaz</option>
-                <option value="Fairhope">Fairhope</option>
-                <option value="Gadsden">Gadsden</option>
-                <option value="Gulf Shores">Gulf Shores</option>
-                <option value="Oneonta">Oneonta</option>
-                <option value="Orange Beach">Orange Beach</option>
-                <option value="Pell City">Pell City</option>
-                <option value="Roanoke">Roanoke</option>
-                <option value="Seale">Seale</option>
-                <option value="Sheffield">Sheffield</option>
-                <option value="Talladega">Talladega</option>
-                <option value="Valley">Valley</option>
+                <option value="1">0~100</option>
+                <option value="2">100~300</option>
+                <option value="3">300個以上</option>
               </select>
             </span>
             <span class="icon is-left">
@@ -61,11 +49,9 @@
             <span class="select is-empty">
               <select>
                 <option disabled="disabled" hidden="hidden" selected>予算</option>
-                <option value="2000">$2,000</option>
-                <option value="5000">$5,000</option>
-                <option value="10000">$10,000</option>
-                <option value="15000">$15,000</option>
-                <option value="20000">$20,000</option>
+                <option value="1000">1,000</option>
+                <option value="2000">2,000</option>
+                <option value="3000">3,000以上</option>
               </select>
             </span>
             <span class="icon is-left">
