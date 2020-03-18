@@ -21,7 +21,7 @@ class ShopController extends Controller
     {
         // 認証に通す
         // authに通らなくても使えるもの
-        $this->middleware('auth')->except(['index', 'show', 'create']);
+        $this->middleware('auth')->except(['index', 'show', 'create', 'search']);
     }
 
     /**

@@ -685,7 +685,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card[data-v-7c8db59d] {\r\n  width: 30%;\n}\n.is-slightly-rounded[data-v-7c8db59d] {\r\n  border-radius: 2%;\n}\r\n", ""]);
+exports.push([module.i, "\n.card[data-v-7c8db59d] {\n  width: 30%;\n}\n.is-slightly-rounded[data-v-7c8db59d] {\n  border-radius: 2%;\n}\n", ""]);
 
 // exports
 
