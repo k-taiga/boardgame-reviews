@@ -31,6 +31,12 @@ Route::get('/shops/{id}', 'ShopController@show')->name('shop.show');
 // 店舗検索
 Route::post('/shops/{search}', 'ShopController@search')->name('shop.show');
 
+// 23区一覧
+Route::get('/wards', 'WardController@index')->name('ward.index');
+
+// 23区詳細
+Route::get('/wards/{id}', 'WardController@show')->name('ward.show');
+
 // レビュー
 Route::post('/shops/{shop}/reviews', 'ShopController@addReview')->name('shop.review');
 
