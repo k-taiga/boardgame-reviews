@@ -18,6 +18,7 @@
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
+        <bd23wards></bd23wards>
       </div>
       <div id="navbar-links" class="navbar-menu">
         <div class="navbar-end" v-if="user">
@@ -61,10 +62,11 @@
 <script>
 import bdIcon from "./Icon.vue";
 import bdTweet from "./Tweet.vue";
+import bd23wards from "./23wards.vue";
 
 export default {
   name: "Navbar",
-  components: { bdIcon, bdTweet },
+  components: { bdIcon, bdTweet, bd23wards },
   props: {
     user: null
   },

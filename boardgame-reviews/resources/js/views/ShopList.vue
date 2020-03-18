@@ -2,6 +2,7 @@
   <div class="shop-list container">
     <!-- <bdCarousel></bdCarousel> -->
     <bd-search-box @search="search"></bd-search-box>
+    <bd-search-options></bd-search-options>
     <div class="grid">
       <shop
         class="grid__item"
@@ -21,13 +22,15 @@ import shop from "../components/Shop.vue";
 import pagination from "../components/Pagination.vue";
 import bdCarousel from "../components/Carousel.vue";
 import bdSearchBox from "../components/SearchBox.vue";
+import bdSearchOptions from "../components/SearchOptions.vue";
 
 export default {
   components: {
     shop,
     pagination,
     bdCarousel,
-    bdSearchBox
+    bdSearchBox,
+    bdSearchOptions
   },
   data() {
     return {
