@@ -15,6 +15,10 @@ const SignIn = () =>
     import(/* webpackChunkName:"SignIn" */ "./views/SignIn.vue");
 const ShopList = () =>
     import(/* webpackChunkName:"ShopList" */ "./views/ShopList.vue");
+const ShopListByWards = () =>
+    import(
+        /* webpackChunkName:"ShopListByWards" */ "./views/ShopListByWards.vue"
+    );
 const ShopDetail = () =>
     import(/* webpackChunkName:"ShopDetail" */ "./views/ShopDetail.vue");
 const Profile = () =>
@@ -53,6 +57,11 @@ const router = new VueRouter({
                 const page = route.query.page;
                 return { page: /^[1-9][0-9]*$/.test(page) ? page * 1 : 1 };
             }
+        },
+        {
+            path: "/wards",
+            component: ShopListByWards,
+            props: true
         },
         {
             path: "/shops/:id",

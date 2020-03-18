@@ -5,7 +5,7 @@
       <div class="navbar-dropdown is-size-6" style="width: 50rem;">
         <ul class="wards">
           <li>
-            <a href="/">足立区</a>
+            <RouterLink :to="`/wards`">足立区</RouterLink>
           </li>
           <li>
             <a href="/">荒川区</a>

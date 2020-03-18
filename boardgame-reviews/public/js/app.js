@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"Home":"Home","NotFoundError":"NotFoundError","Profile~ShopDetail":"Profile~ShopDetail","Profile":"Profile","ShopDetail":"ShopDetail","ShopList":"ShopList","SignIn":"SignIn","SignUp":"SignUp","SystemError":"SystemError"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"Home":"Home","NotFoundError":"NotFoundError","Profile~ShopDetail":"Profile~ShopDetail","Profile":"Profile","ShopDetail":"ShopDetail","ShopList~ShopListByWards":"ShopList~ShopListByWards","ShopList":"ShopList","ShopListByWards":"ShopListByWards","SignIn":"SignIn","SignUp":"SignUp","SystemError":"SystemError"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -66503,85 +66503,219 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "navbar-start" }, [
+    _c("div", { staticClass: "navbar-item has-dropdown is-hoverable" }, [
+      _c("a", { staticClass: "navbar-link has-text-white" }, [
+        _vm._v("BodogeCafe by 23区")
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "navbar-dropdown is-size-6",
+          staticStyle: { width: "50rem" }
+        },
+        [
+          _c("ul", { staticClass: "wards" }, [
+            _c(
+              "li",
+              [
+                _c("RouterLink", { attrs: { to: "/wards" } }, [
+                  _vm._v("足立区")
+                ])
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
+            _vm._m(3),
+            _vm._v(" "),
+            _vm._m(4),
+            _vm._v(" "),
+            _vm._m(5),
+            _vm._v(" "),
+            _vm._m(6),
+            _vm._v(" "),
+            _vm._m(7),
+            _vm._v(" "),
+            _vm._m(8),
+            _vm._v(" "),
+            _vm._m(9),
+            _vm._v(" "),
+            _vm._m(10),
+            _vm._v(" "),
+            _vm._m(11),
+            _vm._v(" "),
+            _vm._m(12),
+            _vm._v(" "),
+            _vm._m(13),
+            _vm._v(" "),
+            _vm._m(14),
+            _vm._v(" "),
+            _vm._m(15),
+            _vm._v(" "),
+            _vm._m(16),
+            _vm._v(" "),
+            _vm._m(17),
+            _vm._v(" "),
+            _vm._m(18),
+            _vm._v(" "),
+            _vm._m(19),
+            _vm._v(" "),
+            _vm._m(20),
+            _vm._v(" "),
+            _vm._m(21),
+            _vm._v(" "),
+            _vm._m(22)
+          ])
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "navbar-start" }, [
-      _c("div", { staticClass: "navbar-item has-dropdown is-hoverable" }, [
-        _c("a", { staticClass: "navbar-link has-text-white" }, [
-          _vm._v("BodogeCafe by 23区")
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "navbar-dropdown is-size-6",
-            staticStyle: { width: "50rem" }
-          },
-          [
-            _c("ul", { staticClass: "wards" }, [
-              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("足立区")])]),
-              _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("荒川区")])]),
-              _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("板橋区")])]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { attrs: { href: "/" } }, [_vm._v("江戸川区")])
-              ]),
-              _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("大田区")])]),
-              _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("葛飾区")])]),
-              _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("北 区")])]),
-              _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("江東区")])]),
-              _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("品川区")])]),
-              _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("渋谷区")])]),
-              _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("新宿区")])]),
-              _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("杉並区")])]),
-              _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("墨田区")])]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { attrs: { href: "/" } }, [_vm._v("世田谷区")])
-              ]),
-              _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("台東区")])]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { attrs: { href: "/" } }, [_vm._v("千代田区")])
-              ]),
-              _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("中央区")])]),
-              _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("豊島区")])]),
-              _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("中野区")])]),
-              _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("練馬区")])]),
-              _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("文京区")])]),
-              _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("港 区")])]),
-              _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("目黒区")])]),
-              _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("23区外")])])
-            ])
-          ]
-        )
-      ])
-    ])
+    return _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("荒川区")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("板橋区")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("江戸川区")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("大田区")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("葛飾区")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("北 区")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("江東区")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("品川区")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("渋谷区")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("新宿区")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("杉並区")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("墨田区")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("世田谷区")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("台東区")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("千代田区")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("中央区")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("豊島区")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("中野区")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("練馬区")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("文京区")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("港 区")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("目黒区")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("23区外")])])
   }
 ]
 render._withStripped = true
@@ -83892,7 +84026,11 @@ var SignIn = function SignIn() {
 };
 
 var ShopList = function ShopList() {
-  return __webpack_require__.e(/*! import() | ShopList */ "ShopList").then(__webpack_require__.bind(null, /*! ./views/ShopList.vue */ "./resources/js/views/ShopList.vue"));
+  return Promise.all(/*! import() | ShopList */[__webpack_require__.e("ShopList~ShopListByWards"), __webpack_require__.e("ShopList")]).then(__webpack_require__.bind(null, /*! ./views/ShopList.vue */ "./resources/js/views/ShopList.vue"));
+};
+
+var ShopListByWards = function ShopListByWards() {
+  return Promise.all(/*! import() | ShopListByWards */[__webpack_require__.e("ShopList~ShopListByWards"), __webpack_require__.e("ShopListByWards")]).then(__webpack_require__.bind(null, /*! ./views/ShopListByWards.vue */ "./resources/js/views/ShopListByWards.vue"));
 };
 
 var ShopDetail = function ShopDetail() {
@@ -83942,6 +84080,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
         page: /^[1-9][0-9]*$/.test(page) ? page * 1 : 1
       };
     }
+  }, {
+    path: "/wards",
+    component: ShopListByWards,
+    props: true
   }, {
     path: "/shops/:id",
     component: ShopDetail,

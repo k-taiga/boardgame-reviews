@@ -25,8 +25,8 @@
 <script>
 export default {
   props: {
-    wards: Object,
     shop: Object,
+    wards: String,
     profile: Object
   },
   data() {
