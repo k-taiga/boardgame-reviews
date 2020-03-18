@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <bdBread :profile="user"></bdBread>
     <div class="columns">
       <div class="column is-one-fifth">
         <div class="card">
@@ -75,13 +76,15 @@ import shop from "../components/FavoriteShop.vue";
 import bdProfileEditModal from "../components/ProfileEditModal";
 import bdRetireModal from "../components/RetireModal";
 import bdUserIcon from "../components/UserSvg";
+import bdBread from "../components/Breadcrumb";
 
 export default {
   components: {
     shop,
     bdProfileEditModal,
     bdRetireModal,
-    bdUserIcon
+    bdUserIcon,
+    bdBread
   },
   name: "profile",
   data() {

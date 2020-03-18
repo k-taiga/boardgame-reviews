@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <bdBack></bdBack>
+    <!-- <bdBack></bdBack> -->
+    <bdBread :shop="shop"></bdBread>
     <div v-if="shop" class="photo-detail container" :class="{ 'photo-detail--column': fullWidth }">
       <figure class="photo-detail__pane photo-detail__image image" @click="active = !active">
         <div class="level-left">
@@ -26,18 +27,6 @@
               <p class="title has-text-centered">{{ shop.shop_name }}</p>
               <p class="subtitle has-text-centered">{{ shop.address }}</p>
               <p class="content has-text-centered">{{ shop.content }}</p>
-              <!-- Put any content you want -->
-              <!-- <div class="photo-detail__pane"> -->
-              <!-- photoのliked_by_userがtrueになればクラスが変わる -->
-              <!-- <button
-              class="button button--like"
-              :class="{ 'photo__action--liked': shop.liked_by_user }"
-              title="Like shop"
-              @click="onLikeClick"
-            >
-              <bdIcon name="thumbs-up"></bdIcon>
-              {{ shop.likes_count }}
-              </button>-->
               <h2 class="photo-detail__title">
                 <i class="icon ion-md-chatboxes"></i>Review
               </h2>
@@ -120,8 +109,6 @@
                     <nav class="level">
                       <div class="level-right">
                         <div class="level-item">
-                          <!-- <a class="button is-info">Submit</a> -->
-                          <!-- <textarea class="form__item"></textarea> -->
                           <div class="form__button">
                             <button type="submit" class="button button--inverse">レビューを投稿する</button>
                           </div>
@@ -169,9 +156,10 @@ import { OK, CREATED, UNPROCESSABLE_ENTITY } from "../util";
 import bdIcon from "../components/Icon";
 import bdBack from "../components/Back";
 import bdUserIcon from "../components/UserSvg";
+import bdBread from "../components/Breadcrumb";
 
 export default {
-  components: { bdIcon, bdBack, bdUserIcon },
+  components: { bdIcon, bdBack, bdUserIcon, bdBread },
   props: {
     id: {
       type: String,
@@ -224,7 +212,6 @@ export default {
       }
 
       this.shop = response.data;
-      console.log(this.shop);
     },
     async addReview() {
       const response = await axios.post(`/api/shops/${this.id}/reviews`, {

@@ -1,12 +1,13 @@
 {
-    "/js/app.js": "/js/app.js?id=905bd96a29f8a1dce87a",
+    "/js/app.js": "/js/app.js?id=8073b724a76a327fd20d",
     "/css/app.css": "/css/app.css?id=be157a0f3e740ec31082",
     "/Home.js": "/Home.js?id=50c894ca1a3fa1912e6f",
     "/NotFoundError.js": "/NotFoundError.js?id=d9351a6d3687c5a1674f",
-    "/Profile.js": "/Profile.js?id=66a630438be8ddbe4284",
-    "/ShopDetail.js": "/ShopDetail.js?id=acfc5f7baf436420fa67",
+    "/Profile.js": "/Profile.js?id=c232e819320f0456d7d4",
+    "/ShopDetail.js": "/ShopDetail.js?id=952a419dd78796b07383",
     "/ShopList.js": "/ShopList.js?id=ab53064e3bd43ef62e8d",
     "/SignIn.js": "/SignIn.js?id=02acdbe09138c203df4f",
     "/SignUp.js": "/SignUp.js?id=c604e77ce32009795d35",
-    "/SystemError.js": "/SystemError.js?id=47ffbfee321632e6ca64"
+    "/SystemError.js": "/SystemError.js?id=47ffbfee321632e6ca64",
+    "/Profile~ShopDetail.js": "/Profile~ShopDetail.js?id=30e5f2a877e597d09978"
 }

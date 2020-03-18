@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"Home":"Home","NotFoundError":"NotFoundError","Profile":"Profile","ShopDetail":"ShopDetail","ShopList":"ShopList","SignIn":"SignIn","SignUp":"SignUp","SystemError":"SystemError"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"Home":"Home","NotFoundError":"NotFoundError","Profile~ShopDetail":"Profile~ShopDetail","Profile":"Profile","ShopDetail":"ShopDetail","ShopList":"ShopList","SignIn":"SignIn","SignUp":"SignUp","SystemError":"SystemError"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -83896,11 +83896,11 @@ var ShopList = function ShopList() {
 };
 
 var ShopDetail = function ShopDetail() {
-  return __webpack_require__.e(/*! import() | ShopDetail */ "ShopDetail").then(__webpack_require__.bind(null, /*! ./views/ShopDetail.vue */ "./resources/js/views/ShopDetail.vue"));
+  return Promise.all(/*! import() | ShopDetail */[__webpack_require__.e("Profile~ShopDetail"), __webpack_require__.e("ShopDetail")]).then(__webpack_require__.bind(null, /*! ./views/ShopDetail.vue */ "./resources/js/views/ShopDetail.vue"));
 };
 
 var Profile = function Profile() {
-  return __webpack_require__.e(/*! import() | Profile */ "Profile").then(__webpack_require__.bind(null, /*! ./views/Profile.vue */ "./resources/js/views/Profile.vue"));
+  return Promise.all(/*! import() | Profile */[__webpack_require__.e("Profile~ShopDetail"), __webpack_require__.e("Profile")]).then(__webpack_require__.bind(null, /*! ./views/Profile.vue */ "./resources/js/views/Profile.vue"));
 };
 
 var SystemError = function SystemError() {
@@ -83935,7 +83935,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: "index",
     component: ShopList,
     props: function props(route) {
-      // URL のクエリパラメータ page をページコンポーネントで取得しPhotoListのコンポーネントに返す
+      // URL のクエリパラメータ page をページコンポーネントで取得しShopListのコンポーネントに返す
       // routeからpageを取得し正規表現でチェック
       var page = route.query.page;
       return {

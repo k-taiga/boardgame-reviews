@@ -48,7 +48,7 @@ const router = new VueRouter({
             name: "index",
             component: ShopList,
             props: route => {
-                // URL のクエリパラメータ page をページコンポーネントで取得しPhotoListのコンポーネントに返す
+                // URL のクエリパラメータ page をページコンポーネントで取得しShopListのコンポーネントに返す
                 // routeからpageを取得し正規表現でチェック
                 const page = route.query.page;
                 return { page: /^[1-9][0-9]*$/.test(page) ? page * 1 : 1 };
