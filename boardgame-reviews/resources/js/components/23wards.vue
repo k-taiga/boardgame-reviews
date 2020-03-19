@@ -4,83 +4,41 @@
       <a class="navbar-link has-text-white">BodogeCafe by 23区</a>
       <div class="navbar-dropdown is-size-6" style="width: 50rem;">
         <ul class="wards">
-          <li>
-            <RouterLink :to="`/wards`">足立区</RouterLink>
-          </li>
-          <li>
-            <a href="/">荒川区</a>
-          </li>
-          <li>
-            <a href="/">板橋区</a>
-          </li>
-          <li>
-            <a href="/">江戸川区</a>
-          </li>
-          <li>
-            <a href="/">大田区</a>
-          </li>
-          <li>
-            <a href="/">葛飾区</a>
-          </li>
-          <li>
-            <a href="/">北 区</a>
-          </li>
-          <li>
-            <a href="/">江東区</a>
-          </li>
-          <li>
-            <a href="/">品川区</a>
-          </li>
-          <li>
-            <a href="/">渋谷区</a>
-          </li>
-          <li>
-            <a href="/">新宿区</a>
-          </li>
-          <li>
-            <a href="/">杉並区</a>
-          </li>
-          <li>
-            <a href="/">墨田区</a>
-          </li>
-          <li>
-            <a href="/">世田谷区</a>
-          </li>
-          <li>
-            <a href="/">台東区</a>
-          </li>
-          <li>
-            <a href="/">千代田区</a>
-          </li>
-          <li>
-            <a href="/">中央区</a>
-          </li>
-          <li>
-            <a href="/">豊島区</a>
-          </li>
-          <li>
-            <a href="/">中野区</a>
-          </li>
-          <li>
-            <a href="/">練馬区</a>
-          </li>
-          <li>
-            <a href="/">文京区</a>
-          </li>
-          <li>
-            <a href="/">港 区</a>
-          </li>
-          <li>
-            <a href="/">目黒区</a>
-          </li>
-          <li>
-            <a href="/">23区外</a>
+          <li v-for="ward in wards" :key="ward.id">
+            <RouterLink :to="`/wards/${ward.id}`">{{ward.name}}</RouterLink>
           </li>
         </ul>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import { OK } from "../util";
+export default {
+  data() {
+    return {
+      wards: []
+    };
+  },
+  methods: {
+    async fetchWards() {
+      const response = await axios.get(`/api/wards/`);
+
+      if (response.status !== OK) {
+        this.$store.commit("error/setCode", response.status);
+        return false;
+      }
+
+      console.log(response.data);
+      this.wards = response.data;
+    }
+  },
+  created() {
+    this.fetchWards();
+  }
+};
+</script>
 
 <style scoped>
 a {

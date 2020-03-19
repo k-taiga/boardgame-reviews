@@ -37,9 +37,10 @@ class WardsTableSeeder extends Seeder
             21 => '足立区',
             22 => '葛飾区',
             23 => '江戸川区',
+            24 => '23区外',
         ];
 
-        for ($i = 1; $i <= 23; $i++) {
+        for ($i = 1; $i <= 24; $i++) {
             DB::table('mt_wards')->insert([
                 'id'           => $i,
                 'name'      => $wards[$i],
