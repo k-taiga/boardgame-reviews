@@ -198,7 +198,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 
@@ -215,7 +214,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     id: {
       type: String,
       required: true
-    }
+    },
+    ward_id: String
   },
   data: function data() {
     return {

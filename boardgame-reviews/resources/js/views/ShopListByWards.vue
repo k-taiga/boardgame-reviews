@@ -1,6 +1,6 @@
 <template>
   <div class="shop-list container">
-    <bdBread></bdBread>
+    <bdBread :ward_id="wardId"></bdBread>
     <bd-search-options></bd-search-options>
     <div class="grid">
       <shop
@@ -45,6 +45,11 @@ export default {
       type: Number,
       required: false,
       default: 1
+    }
+  },
+  computed: {
+    wardId() {
+      return this.$route.params.id;
     }
   },
   methods: {
@@ -119,12 +124,16 @@ export default {
 
       this.shops = response.data;
       console.log(this.shops);
+    },
+    valuecheck() {
+      console.log(this.wardId);
     }
   },
   watch: {
     $route: {
       async handler() {
         await this.fetchShops();
+        // this.valuecheck();
       },
       immediate: true
     }

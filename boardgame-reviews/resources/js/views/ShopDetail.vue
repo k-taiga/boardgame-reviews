@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <!-- <bdBack></bdBack> -->
     <bdBread :shop="shop"></bdBread>
     <div v-if="shop" class="photo-detail container" :class="{ 'photo-detail--column': fullWidth }">
       <figure class="photo-detail__pane photo-detail__image image" @click="active = !active">
@@ -164,7 +163,8 @@ export default {
     id: {
       type: String,
       required: true
-    }
+    },
+    ward_id: String
   },
   data() {
     return {

@@ -30,7 +30,6 @@ export default {
         return false;
       }
 
-      console.log(response.data);
       this.wards = response.data;
     }
   },

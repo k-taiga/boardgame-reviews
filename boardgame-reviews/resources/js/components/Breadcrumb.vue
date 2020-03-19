@@ -8,11 +8,13 @@
               <li>
                 <RouterLink :to="`/`">Home</RouterLink>
               </li>
+              <li>
+                <template v-for="ward in wards">
+                  <RouterLink v-if="ward.id == ward_id" :to="`/wards/${ward.id}`">{{ward.name}}</RouterLink>
+                </template>
+              </li>
               <li v-if="shop">
                 <RouterLink :to="`/shops/${shop.id}`">{{shop.shop_name}}</RouterLink>
-              </li>
-              <li v-if="ward">
-                <RouterLink :to="`/wards/${wards.id}`">{{shop.shop_name}}</RouterLink>
               </li>
               <li v-if="profile">
                 <RouterLink :to="`/profile`">プロフィール</RouterLink>
@@ -26,18 +28,31 @@
 </template>
 
 <script>
+import { OK } from "../util";
 export default {
   props: {
     shop: Object,
-    wards: Object,
+    ward_id: String,
     profile: Object
   },
   data() {
-    return {};
+    return {
+      wards: []
+    };
   },
   methods: {
     valuecheck() {
-      console.log(this.shop);
+      console.log(this.ward_id);
+    },
+    async fetchWards() {
+      const response = await axios.get(`/api/wards/`);
+
+      if (response.status !== OK) {
+        this.$store.commit("error/setCode", response.status);
+        return false;
+      }
+
+      this.wards = response.data;
     }
   },
   watch: {
@@ -47,6 +62,9 @@ export default {
       },
       immediate: true
     }
+  },
+  created() {
+    this.fetchWards();
   }
 };
 </script>
