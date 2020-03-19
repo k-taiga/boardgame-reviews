@@ -261,7 +261,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return search;
-    }()
+    }(),
+    setId: function setId() {
+      this.$store.commit("ward/setId", null);
+    }
   },
   watch: {
     $route: {
@@ -277,6 +280,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   return this.fetchShops();
 
                 case 2:
+                  this.setId();
+
+                case 3:
                 case "end":
                   return _context5.stop();
               }

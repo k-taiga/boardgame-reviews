@@ -116,12 +116,16 @@ export default {
 
       this.shops = response.data;
       console.log(this.shops);
+    },
+    setId() {
+      this.$store.commit("ward/setId", null);
     }
   },
   watch: {
     $route: {
       async handler() {
         await this.fetchShops();
+        this.setId();
       },
       immediate: true
     }

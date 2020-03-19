@@ -517,23 +517,25 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
-                _c(
-                  "li",
-                  [
-                    _vm._l(_vm.wards, function(ward) {
-                      return [
-                        ward.id == _vm.ward_id
-                          ? _c(
-                              "RouterLink",
-                              { attrs: { to: "/wards/" + ward.id } },
-                              [_vm._v(_vm._s(ward.name))]
-                            )
-                          : _vm._e()
-                      ]
-                    })
-                  ],
-                  2
-                ),
+                _vm.ward_id
+                  ? _c(
+                      "li",
+                      [
+                        _vm._l(_vm.wards, function(ward) {
+                          return [
+                            ward.id == _vm.ward_id
+                              ? _c(
+                                  "RouterLink",
+                                  { attrs: { to: "/wards/" + ward.id } },
+                                  [_vm._v(_vm._s(ward.name))]
+                                )
+                              : _vm._e()
+                          ]
+                        })
+                      ],
+                      2
+                    )
+                  : _vm._e(),
                 _vm._v(" "),
                 _vm.shop
                   ? _c(

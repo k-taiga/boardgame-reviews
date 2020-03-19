@@ -8,7 +8,7 @@
               <li>
                 <RouterLink :to="`/`">Home</RouterLink>
               </li>
-              <li>
+              <li v-if="ward_id">
                 <template v-for="ward in wards">
                   <RouterLink v-if="ward.id == ward_id" :to="`/wards/${ward.id}`">{{ward.name}}</RouterLink>
                 </template>
