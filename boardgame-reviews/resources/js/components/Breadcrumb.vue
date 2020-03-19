@@ -11,6 +11,9 @@
               <li v-if="shop">
                 <RouterLink :to="`/shops/${shop.id}`">{{shop.shop_name}}</RouterLink>
               </li>
+              <li v-if="ward">
+                <RouterLink :to="`/wards/${wards.id}`">{{shop.shop_name}}</RouterLink>
+              </li>
               <li v-if="profile">
                 <RouterLink :to="`/profile`">プロフィール</RouterLink>
               </li>
@@ -26,7 +29,7 @@
 export default {
   props: {
     shop: Object,
-    wards: String,
+    wards: Object,
     profile: Object
   },
   data() {

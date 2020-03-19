@@ -1,6 +1,6 @@
 <template>
   <div class="shop-list container">
-    <bdBread :wards="shop.ward"></bdBread>
+    <bdBread></bdBread>
     <bd-search-options></bd-search-options>
     <div class="grid">
       <shop

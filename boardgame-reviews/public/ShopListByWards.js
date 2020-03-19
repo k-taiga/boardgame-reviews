@@ -33,10 +33,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     shop: Object,
-    wards: String,
+    wards: Object,
     profile: Object
   },
   data: function data() {
@@ -456,6 +459,20 @@ var render = function() {
                     )
                   : _vm._e(),
                 _vm._v(" "),
+                _vm.ward
+                  ? _c(
+                      "li",
+                      [
+                        _c(
+                          "RouterLink",
+                          { attrs: { to: "/wards/" + _vm.wards.id } },
+                          [_vm._v(_vm._s(_vm.shop.shop_name))]
+                        )
+                      ],
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
                 _vm.profile
                   ? _c(
                       "li",
@@ -501,7 +518,7 @@ var render = function() {
     "div",
     { staticClass: "shop-list container" },
     [
-      _c("bdBread", { attrs: { wards: _vm.shop.ward } }),
+      _c("bdBread"),
       _vm._v(" "),
       _c("bd-search-options"),
       _vm._v(" "),

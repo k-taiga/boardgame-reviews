@@ -33,10 +33,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     shop: Object,
-    wards: String,
+    wards: Object,
     profile: Object
   },
   data: function data() {
@@ -229,6 +232,20 @@ var render = function() {
                         _c(
                           "RouterLink",
                           { attrs: { to: "/shops/" + _vm.shop.id } },
+                          [_vm._v(_vm._s(_vm.shop.shop_name))]
+                        )
+                      ],
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.ward
+                  ? _c(
+                      "li",
+                      [
+                        _c(
+                          "RouterLink",
+                          { attrs: { to: "/wards/" + _vm.wards.id } },
                           [_vm._v(_vm._s(_vm.shop.shop_name))]
                         )
                       ],
