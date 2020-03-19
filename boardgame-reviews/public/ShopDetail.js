@@ -214,8 +214,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     id: {
       type: String,
       required: true
-    },
-    ward_id: String
+    }
   },
   data: function data() {
     return {
@@ -226,7 +225,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       active: false,
       count: 0,
       loading: false,
-      user: null
+      user: null,
+      wardId: null
     };
   },
   computed: {
@@ -252,7 +252,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       } else {
         return false;
       }
-    }
+    } // isWard() {
+    //   return this.$store.getters["ward/id"];
+    // }
+
   },
   methods: {
     fetchShop: function () {
@@ -521,6 +524,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   return this.fetchUser();
 
                 case 6:
+                  this.wardId = this.$store.state.ward.id;
+                  console.log(this.wardId);
+
+                case 8:
                 case "end":
                   return _context6.stop();
               }
@@ -587,7 +594,7 @@ var render = function() {
     "div",
     { staticClass: "container" },
     [
-      _c("bdBread", { attrs: { shop: _vm.shop } }),
+      _c("bdBread", { attrs: { ward_id: _vm.wardId, shop: _vm.shop } }),
       _vm._v(" "),
       _vm.shop
         ? _c(

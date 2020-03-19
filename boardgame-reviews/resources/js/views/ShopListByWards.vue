@@ -127,6 +127,9 @@ export default {
     },
     valuecheck() {
       console.log(this.wardId);
+    },
+    setId() {
+      this.$store.commit("ward/setId", this.$route.params.id);
     }
   },
   watch: {
@@ -134,6 +137,7 @@ export default {
       async handler() {
         await this.fetchShops();
         // this.valuecheck();
+        this.setId();
       },
       immediate: true
     }

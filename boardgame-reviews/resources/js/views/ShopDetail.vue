@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <bdBread :shop="shop"></bdBread>
+    <bdBread :ward_id="wardId" :shop="shop"></bdBread>
     <div v-if="shop" class="photo-detail container" :class="{ 'photo-detail--column': fullWidth }">
       <figure class="photo-detail__pane photo-detail__image image" @click="active = !active">
         <div class="level-left">
@@ -163,8 +163,7 @@ export default {
     id: {
       type: String,
       required: true
-    },
-    ward_id: String
+    }
   },
   data() {
     return {
@@ -175,7 +174,8 @@ export default {
       active: false,
       count: 0,
       loading: false,
-      user: null
+      user: null,
+      wardId: null
     };
   },
   computed: {
@@ -201,6 +201,9 @@ export default {
         return false;
       }
     }
+    // isWard() {
+    //   return this.$store.getters["ward/id"];
+    // }
   },
   methods: {
     async fetchShop() {
@@ -297,6 +300,8 @@ export default {
         if (this.user !== false) {
           await this.fetchUser();
         }
+        this.wardId = this.$store.state.ward.id;
+        console.log(this.wardId);
       },
       immediate: true
     }

@@ -84386,6 +84386,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auth */ "./resources/js/store/auth.js");
 /* harmony import */ var _error__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./error */ "./resources/js/store/error.js");
 /* harmony import */ var _message__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./message */ "./resources/js/store/message.js");
+/* harmony import */ var _ward__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ward */ "./resources/js/store/ward.js");
+
 
 
 
@@ -84396,7 +84398,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   modules: {
     auth: _auth__WEBPACK_IMPORTED_MODULE_2__["default"],
     error: _error__WEBPACK_IMPORTED_MODULE_3__["default"],
-    message: _message__WEBPACK_IMPORTED_MODULE_4__["default"]
+    message: _message__WEBPACK_IMPORTED_MODULE_4__["default"],
+    ward: _ward__WEBPACK_IMPORTED_MODULE_5__["default"]
   }
 });
 /* harmony default export */ __webpack_exports__["default"] = (store);
@@ -84429,6 +84432,36 @@ var mutations = {
     setTimeout(function () {
       return state.content = "";
     }, timeout);
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  namespaced: true,
+  state: state,
+  mutations: mutations
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/ward.js":
+/*!************************************!*\
+  !*** ./resources/js/store/ward.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var state = {
+  id: null
+};
+var getters = {
+  id: function id(state) {
+    return state.id;
+  }
+};
+var mutations = {
+  setId: function setId(state, id) {
+    state.id = id;
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = ({

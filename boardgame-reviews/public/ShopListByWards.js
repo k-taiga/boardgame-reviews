@@ -392,6 +392,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }(),
     valuecheck: function valuecheck() {
       console.log(this.wardId);
+    },
+    setId: function setId() {
+      this.$store.commit("ward/setId", this.$route.params.id);
     }
   },
   watch: {
@@ -408,6 +411,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   return this.fetchShops();
 
                 case 2:
+                  // this.valuecheck();
+                  this.setId();
+
+                case 3:
                 case "end":
                   return _context5.stop();
               }
