@@ -39,6 +39,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -57,7 +61,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       shops: [],
       currentPage: 0,
-      lastPage: 0
+      lastPage: 0,
+      hiddenShops: []
     };
   },
   props: {
@@ -65,6 +70,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       type: Number,
       required: false,
       "default": 1
+    }
+  },
+  computed: {
+    simpleSuggestionList: function simpleSuggestionList() {
+      var shop_name = [];
+      this.hiddenShops.forEach(function (value) {
+        shop_name.push(value.shop_name);
+      });
+      return shop_name;
     }
   },
   methods: {
@@ -92,12 +106,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context.abrupt("return", false);
 
               case 6:
-                console.log(response.data);
                 this.shops = response.data.data;
+                this.hiddenShops = response.data.data; // console.log(response.data.data);
+
+                console.log(this.shops);
                 this.currentPage = response.data.current_page;
                 this.lastPage = response.data.last_page;
 
-              case 10:
+              case 11:
               case "end":
                 return _context.stop();
             }
@@ -236,19 +252,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 3:
                 response = _context4.sent;
 
-                if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
-                  _context4.next = 7;
-                  break;
+                if (response.status == 200) {
+                  this.shops = response.data;
+                } else {
+                  this.$store.commit("error/setCode", response.status);
                 }
 
-                this.$store.commit("error/setCode", response.status);
-                return _context4.abrupt("return", false);
-
-              case 7:
-                this.shops = response.data;
-                console.log(this.shops);
-
-              case 9:
+              case 5:
               case "end":
                 return _context4.stop();
             }
@@ -264,6 +274,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }(),
     setId: function setId() {
       this.$store.commit("ward/setId", null);
+    },
+    valuecheck: function valuecheck() {
+      console.log(this.simpleSuggestionList);
     }
   },
   watch: {
@@ -322,7 +335,10 @@ var render = function() {
     "div",
     { staticClass: "shop-list container" },
     [
-      _c("bd-search-box", { on: { search: _vm.search } }),
+      _c("bd-search-box", {
+        attrs: { simpleSuggestionList: _vm.simpleSuggestionList },
+        on: { search: _vm.search, fetchShops: _vm.fetchShops }
+      }),
       _vm._v(" "),
       _c(
         "div",

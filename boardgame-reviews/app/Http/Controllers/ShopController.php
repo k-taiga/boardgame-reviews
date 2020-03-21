@@ -113,7 +113,7 @@ class ShopController extends Controller
      * @param string $keyword
      * @return Shop
      */
-    public function search(string $keyword)
+    public function search($keyword)
     {
 
         clock($keyword);

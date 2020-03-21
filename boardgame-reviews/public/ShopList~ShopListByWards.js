@@ -99,14 +99,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -116,22 +108,22 @@ __webpack_require__.r(__webpack_exports__);
     VueSimpleSuggest: vue_simple_suggest__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   props: {
-    shop: Object
-  },
-  computed: {
-    simpleSuggestionList: function simpleSuggestionList() {
-      return ["JELLY JELLY CAFE"];
-    }
+    // shops: Array,
+    simpleSuggestionList: Array
   },
   data: function data() {
     return {
-      selected: null // simpleSuggestionList: ["ハンバーガー"]
-
+      selected: null,
+      shops: this.shops
     };
   },
   methods: {
     submit: function submit() {
-      this.$emit("search", this.keyword);
+      if (this.selected == "") {
+        this.$emit("fetchShops");
+      } else {
+        this.$emit("search", this.selected);
+      }
     }
   }
 });

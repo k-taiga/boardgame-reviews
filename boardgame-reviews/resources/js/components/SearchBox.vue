@@ -16,14 +16,6 @@
                             type="text"
                         >
                         </vue-simple-suggest>
-                        <!-- <input
-                            type="text"
-                            autocomplete="off"
-                            name="keyword"
-                            v-model="keyword"
-                            placeholder="JELLY JELLY CAFE新宿"
-                            class="input is-medium"
-                        /> -->
                         <span class="icon is-left">
                             <bdIcon name="search"></bdIcon>
                         </span>
@@ -53,22 +45,22 @@ export default {
         VueSimpleSuggest
     },
     props: {
-        shop: Object
-    },
-    computed: {
-        simpleSuggestionList() {
-            return ["JELLY JELLY CAFE"];
-        }
+        // shops: Array,
+        simpleSuggestionList: Array
     },
     data() {
         return {
-            selected: null
-            // simpleSuggestionList: ["ハンバーガー"]
+            selected: null,
+            shops: this.shops
         };
     },
     methods: {
         submit() {
-            this.$emit("search", this.keyword);
+            if (this.selected == "") {
+                this.$emit("fetchShops");
+            } else {
+                this.$emit("search", this.selected);
+            }
         }
     }
 };
