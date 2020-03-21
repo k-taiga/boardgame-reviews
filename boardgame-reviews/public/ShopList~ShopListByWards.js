@@ -60,6 +60,25 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Icon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Icon */ "./resources/js/components/Icon.vue");
+/* harmony import */ var vue_simple_suggest__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-simple-suggest */ "./node_modules/vue-simple-suggest/dist/es6.js");
+/* harmony import */ var vue_simple_suggest_dist_styles_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-simple-suggest/dist/styles.css */ "./node_modules/vue-simple-suggest/dist/styles.css");
+/* harmony import */ var vue_simple_suggest_dist_styles_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_simple_suggest_dist_styles_css__WEBPACK_IMPORTED_MODULE_2__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -89,13 +108,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    bdIcon: _Icon__WEBPACK_IMPORTED_MODULE_0__["default"]
+    bdIcon: _Icon__WEBPACK_IMPORTED_MODULE_0__["default"],
+    VueSimpleSuggest: vue_simple_suggest__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  props: {
+    shop: Object
+  },
+  computed: {
+    simpleSuggestionList: function simpleSuggestionList() {
+      return ["JELLY JELLY CAFE"];
+    }
   },
   data: function data() {
     return {
-      keyword: null
+      selected: null // simpleSuggestionList: ["ハンバーガー"]
+
     };
   },
   methods: {
@@ -286,7 +317,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.button.is-medium[data-v-fefb60b0] {\n  background-color: #5bafc4;\n}\n", ""]);
+exports.push([module.i, "\n.button.is-medium[data-v-fefb60b0] {\n    background-color: #5bafc4;\n}\n", ""]);
 
 // exports
 
@@ -524,30 +555,20 @@ var render = function() {
                     staticClass: "control has-icons-left is-medium is-clearfix"
                   },
                   [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.keyword,
-                          expression: "keyword"
-                        }
-                      ],
+                    _c("vue-simple-suggest", {
                       staticClass: "input is-medium",
                       attrs: {
-                        type: "text",
-                        autocomplete: "off",
-                        name: "keyword",
-                        placeholder: "JELLY JELLY CAFE新宿"
+                        list: _vm.simpleSuggestionList,
+                        "filter-by-query": true,
+                        placeholder: "JELLY JELLY CAFE新宿",
+                        type: "text"
                       },
-                      domProps: { value: _vm.keyword },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.keyword = $event.target.value
-                        }
+                      model: {
+                        value: _vm.selected,
+                        callback: function($$v) {
+                          _vm.selected = $$v
+                        },
+                        expression: "selected"
                       }
                     }),
                     _vm._v(" "),
@@ -557,7 +578,8 @@ var render = function() {
                       [_c("bdIcon", { attrs: { name: "search" } })],
                       1
                     )
-                  ]
+                  ],
+                  1
                 )
               ]),
               _vm._v(" "),
@@ -581,7 +603,7 @@ var staticRenderFns = [
           staticClass: "button is-medium has-text-white",
           attrs: { type: "submit" }
         },
-        [_vm._v("Search")]
+        [_vm._v("\n                    Search\n                ")]
       )
     ])
   }

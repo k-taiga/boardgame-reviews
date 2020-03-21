@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"Home":"Home","NotFoundError":"NotFoundError","Profile~ShopDetail":"Profile~ShopDetail","Profile":"Profile","ShopDetail":"ShopDetail","ShopList~ShopListByWards":"ShopList~ShopListByWards","ShopList":"ShopList","ShopListByWards":"ShopListByWards","SignIn":"SignIn","SignUp":"SignUp","SystemError":"SystemError"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"Home":"Home","NotFoundError":"NotFoundError","Profile~ShopDetail":"Profile~ShopDetail","Profile":"Profile","ShopDetail":"ShopDetail","SignIn":"SignIn","SignUp":"SignUp","SystemError":"SystemError","vendors~ShopList~ShopListByWards":"vendors~ShopList~ShopListByWards","ShopList~ShopListByWards":"ShopList~ShopListByWards","ShopList":"ShopList","ShopListByWards":"ShopListByWards"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -83952,11 +83952,11 @@ var SignIn = function SignIn() {
 };
 
 var ShopList = function ShopList() {
-  return Promise.all(/*! import() | ShopList */[__webpack_require__.e("ShopList~ShopListByWards"), __webpack_require__.e("ShopList")]).then(__webpack_require__.bind(null, /*! ./views/ShopList.vue */ "./resources/js/views/ShopList.vue"));
+  return Promise.all(/*! import() | ShopList */[__webpack_require__.e("vendors~ShopList~ShopListByWards"), __webpack_require__.e("ShopList~ShopListByWards"), __webpack_require__.e("ShopList")]).then(__webpack_require__.bind(null, /*! ./views/ShopList.vue */ "./resources/js/views/ShopList.vue"));
 };
 
 var ShopListByWards = function ShopListByWards() {
-  return Promise.all(/*! import() | ShopListByWards */[__webpack_require__.e("ShopList~ShopListByWards"), __webpack_require__.e("ShopListByWards")]).then(__webpack_require__.bind(null, /*! ./views/ShopListByWards.vue */ "./resources/js/views/ShopListByWards.vue"));
+  return Promise.all(/*! import() | ShopListByWards */[__webpack_require__.e("vendors~ShopList~ShopListByWards"), __webpack_require__.e("ShopList~ShopListByWards"), __webpack_require__.e("ShopListByWards")]).then(__webpack_require__.bind(null, /*! ./views/ShopListByWards.vue */ "./resources/js/views/ShopListByWards.vue"));
 };
 
 var ShopDetail = function ShopDetail() {
