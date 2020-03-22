@@ -107,13 +107,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 6:
                 this.shops = response.data.data;
-                this.hiddenShops = response.data.data; // console.log(response.data.data);
-
-                console.log(this.shops);
+                this.hiddenShops = response.data.data;
                 this.currentPage = response.data.current_page;
                 this.lastPage = response.data.last_page;
 
-              case 11:
+              case 10:
               case "end":
                 return _context.stop();
             }

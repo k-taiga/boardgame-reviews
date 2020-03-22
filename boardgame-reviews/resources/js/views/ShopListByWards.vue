@@ -114,20 +114,14 @@ export default {
             console.log(value);
 
             const sort = value.sort;
-            const filter = value.filter;
+            var filter = [];
+            filter["boardgame"] = value.filter;
+            console.log(filter);
 
-            if (sort != null) {
-                const response = await axios.get(
-                    `/api/wards/${this.wardId}/${sort}`
-                );
-                if (response.status !== OK) {
-                    this.$store.commit("error/setCode", response.status);
-                    return false;
-                }
-                this.shops = response.data.data;
-            } else if (filter != null) {
-                const response = await axios.get(
-                    `/api/wards/${this.wardId}/${filter}`
+            if (sort != "" && filter != "") {
+                const response = await axios.post(
+                    `/api/wards/${this.wardId}/${sort}`,
+                    $filter
                 );
                 if (response.status !== OK) {
                     this.$store.commit("error/setCode", response.status);
@@ -135,6 +129,25 @@ export default {
                 }
                 this.shops = response.data.data;
             }
+            // else if (sort != "") {
+            //     const response = await axios.get(
+            //         `/api/wards/${this.wardId}/${sort}`
+            //     );
+            //     if (response.status !== OK) {
+            //         this.$store.commit("error/setCode", response.status);
+            //         return false;
+            //     }
+            //     this.shops = response.data.data;
+            // } else if (filter != "") {
+            //     const response = await axios.get(
+            //         `/api/wards/${this.wardId}/${filter}`
+            //     );
+            //     if (response.status !== OK) {
+            //         this.$store.commit("error/setCode", response.status);
+            //         return false;
+            //     }
+            //     this.shops = response.data.data;
+            // }
 
             console.log(this.shops);
         },

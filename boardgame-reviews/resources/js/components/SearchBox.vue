@@ -45,7 +45,6 @@ export default {
         VueSimpleSuggest
     },
     props: {
-        // shops: Array,
         simpleSuggestionList: Array
     },
     data() {

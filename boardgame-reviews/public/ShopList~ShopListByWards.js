@@ -108,7 +108,6 @@ __webpack_require__.r(__webpack_exports__);
     VueSimpleSuggest: vue_simple_suggest__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   props: {
-    // shops: Array,
     simpleSuggestionList: Array
   },
   data: function data() {
@@ -263,8 +262,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       byo: false,
       // sorts: ["ソート順", "レビュー数", "フォロワー数"],
-      sort: null,
-      boardgame: null,
+      sort: "",
+      boardgame: "",
       prices: ["~1000", "2000", "3000以上"]
     };
   },

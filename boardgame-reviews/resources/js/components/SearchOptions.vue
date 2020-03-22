@@ -114,8 +114,8 @@ export default {
         return {
             byo: false,
             // sorts: ["ソート順", "レビュー数", "フォロワー数"],
-            sort: null,
-            boardgame: null,
+            sort: "",
+            boardgame: "",
             prices: ["~1000", "2000", "3000以上"]
         };
     },

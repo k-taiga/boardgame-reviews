@@ -352,67 +352,62 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _sort = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(value) {
-        var sort, filter, response, _response;
-
+        var sort, filter, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
                 console.log(value);
                 sort = value.sort;
-                filter = value.filter;
+                filter = [];
+                filter["boardgame"] = value.filter;
+                console.log(filter);
 
-                if (!(sort != null)) {
+                if (!(sort != "" && filter != "")) {
                   _context4.next = 13;
                   break;
                 }
 
-                _context4.next = 6;
-                return axios.get("/api/wards/".concat(this.wardId, "/").concat(sort));
+                _context4.next = 8;
+                return axios.post("/api/wards/".concat(this.wardId, "/").concat(sort), $filter);
 
-              case 6:
+              case 8:
                 response = _context4.sent;
 
                 if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
-                  _context4.next = 10;
+                  _context4.next = 12;
                   break;
                 }
 
                 this.$store.commit("error/setCode", response.status);
                 return _context4.abrupt("return", false);
 
-              case 10:
+              case 12:
                 this.shops = response.data.data;
-                _context4.next = 21;
-                break;
 
               case 13:
-                if (!(filter != null)) {
-                  _context4.next = 21;
-                  break;
-                }
-
-                _context4.next = 16;
-                return axios.get("/api/wards/".concat(this.wardId, "/").concat(filter));
-
-              case 16:
-                _response = _context4.sent;
-
-                if (!(_response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
-                  _context4.next = 20;
-                  break;
-                }
-
-                this.$store.commit("error/setCode", _response.status);
-                return _context4.abrupt("return", false);
-
-              case 20:
-                this.shops = _response.data.data;
-
-              case 21:
+                // else if (sort != "") {
+                //     const response = await axios.get(
+                //         `/api/wards/${this.wardId}/${sort}`
+                //     );
+                //     if (response.status !== OK) {
+                //         this.$store.commit("error/setCode", response.status);
+                //         return false;
+                //     }
+                //     this.shops = response.data.data;
+                // } else if (filter != "") {
+                //     const response = await axios.get(
+                //         `/api/wards/${this.wardId}/${filter}`
+                //     );
+                //     if (response.status !== OK) {
+                //         this.$store.commit("error/setCode", response.status);
+                //         return false;
+                //     }
+                //     this.shops = response.data.data;
+                // }
                 console.log(this.shops);
 
-              case 22:
+              case 14:
               case "end":
                 return _context4.stop();
             }
