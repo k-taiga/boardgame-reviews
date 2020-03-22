@@ -257,42 +257,46 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       byo: false,
       // sorts: ["ソート順", "レビュー数", "フォロワー数"],
-      sorts: null,
-      boardgames: ["100", "200", "300以上"],
+      sort: null,
+      boardgame: null,
       prices: ["~1000", "2000", "3000以上"]
     };
   },
   computed: {
     sortSelected: {
       get: function get() {
-        return this.sorts;
+        return this.sort;
       },
       set: function set(value) {
-        this.sorts = value;
-        this.$emit("sort", value);
+        this.sort = value;
+        this.$emit("sort", {
+          sort: this.sortSelected
+        });
       }
     },
     boardgameSelected: {
       get: function get() {
-        return this.boardgames;
+        return this.boardgame;
       },
       set: function set(value) {
-        console.log(this.sortSelected);
+        console.log(this.boardgameSelected); // if (this.sortSelected != null) {
 
-        if (this.sortSelected != null) {
-          this.$emit("sort", value);
-        }
+        this.boardgame = value;
+        this.$emit("sort", {
+          sort: this.sortSelected,
+          filter: this.boardgameSelected
+        }); // } else {
+        //     this.$emit("sort", {
+        //         sort: null,
+        //         filter: value
+        //     });
+        // }
       }
     }
   },
@@ -755,7 +759,6 @@ var render = function() {
                       expression: "sortSelected"
                     }
                   ],
-                  attrs: { options: "sorts" },
                   on: {
                     change: function($event) {
                       var $$selectedVal = Array.prototype.filter
@@ -827,17 +830,9 @@ var render = function() {
                   }
                 },
                 [
-                  _c(
-                    "option",
-                    {
-                      attrs: {
-                        disabled: "disabled",
-                        hidden: "hidden",
-                        selected: ""
-                      }
-                    },
-                    [_vm._v("ボードゲームの数")]
-                  ),
+                  _c("option", { attrs: { disabled: "" } }, [
+                    _vm._v("ボードゲームの数")
+                  ]),
                   _vm._v(" "),
                   _c("option", { attrs: { value: "100" } }, [_vm._v("100")]),
                   _vm._v(" "),

@@ -8,7 +8,7 @@
                 <div class="field">
                     <div class="control has-icons-left">
                         <span class="select is-empty">
-                            <select v-model="sortSelected" options="sorts">
+                            <select v-model="sortSelected">
                                 <option value="">ソート順</option>
                                 <option value="review">レビュー数</option>
                                 <option value="follower">フォロワー数</option>
@@ -33,12 +33,7 @@
                     <div class="control has-icons-left">
                         <span class="select is-empty">
                             <select v-model="boardgameSelected">
-                                <option
-                                    disabled="disabled"
-                                    hidden="hidden"
-                                    selected
-                                    >ボードゲームの数</option
-                                >
+                                <option disabled>ボードゲームの数</option>
                                 <option value="100">100</option>
                                 <option value="200">200</option>
                                 <option value="300">300個以上</option>
@@ -119,30 +114,41 @@ export default {
         return {
             byo: false,
             // sorts: ["ソート順", "レビュー数", "フォロワー数"],
-            sorts: null,
-            boardgames: ["100", "200", "300以上"],
+            sort: null,
+            boardgame: null,
             prices: ["~1000", "2000", "3000以上"]
         };
     },
     computed: {
         sortSelected: {
             get() {
-                return this.sorts;
+                return this.sort;
             },
             set(value) {
-                this.sorts = value;
-                this.$emit("sort", value);
+                this.sort = value;
+                this.$emit("sort", {
+                    sort: this.sortSelected
+                });
             }
         },
         boardgameSelected: {
             get() {
-                return this.boardgames;
+                return this.boardgame;
             },
             set(value) {
-                console.log(this.sortSelected);
-                if (this.sortSelected != null) {
-                    this.$emit("sort", value);
-                }
+                console.log(this.boardgameSelected);
+                // if (this.sortSelected != null) {
+                this.boardgame = value;
+                this.$emit("sort", {
+                    sort: this.sortSelected,
+                    filter: this.boardgameSelected
+                });
+                // } else {
+                //     this.$emit("sort", {
+                //         sort: null,
+                //         filter: value
+                //     });
+                // }
             }
         }
     },

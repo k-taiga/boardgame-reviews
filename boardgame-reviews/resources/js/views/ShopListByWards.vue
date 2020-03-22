@@ -1,7 +1,7 @@
 <template>
     <div class="shop-list container">
         <bdBread :ward_id="wardId"></bdBread>
-        <bd-search-options @sort="sort(sort, filter)"></bd-search-options>
+        <bd-search-options @sort="sort"></bd-search-options>
         <div class="grid">
             <shop
                 class="grid__item"
@@ -110,33 +110,32 @@ export default {
                 return shop;
             });
         },
-        async search(keyword) {
-            console.log(keyword);
+        async sort(value) {
+            console.log(value);
 
-            const response = await axios.post(`/api/shops/${keyword}`);
+            const sort = value.sort;
+            const filter = value.filter;
 
-            if (response.status !== OK) {
-                this.$store.commit("error/setCode", response.status);
-                return false;
+            if (sort != null) {
+                const response = await axios.get(
+                    `/api/wards/${this.wardId}/${sort}`
+                );
+                if (response.status !== OK) {
+                    this.$store.commit("error/setCode", response.status);
+                    return false;
+                }
+                this.shops = response.data.data;
+            } else if (filter != null) {
+                const response = await axios.get(
+                    `/api/wards/${this.wardId}/${filter}`
+                );
+                if (response.status !== OK) {
+                    this.$store.commit("error/setCode", response.status);
+                    return false;
+                }
+                this.shops = response.data.data;
             }
 
-            this.shops = response.data;
-            console.log(this.shops);
-        },
-        async sort(sort, filter) {
-            console.log(sort);
-            console.log(filter);
-
-            const response = await axios.get(
-                `/api/wards/${this.wardId}/${sort}`
-            );
-
-            if (response.status !== OK) {
-                this.$store.commit("error/setCode", response.status);
-                return false;
-            }
-
-            this.shops = response.data.data;
             console.log(this.shops);
         },
         valuecheck() {

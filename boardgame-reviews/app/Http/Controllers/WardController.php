@@ -55,7 +55,12 @@ class WardController extends Controller
                 // 3.そして結合したreviewsをサブクエリでcountしその数が大きい順にソート
                 ->withCount('reviews')->orderBy('reviews_count', 'desc')->paginate();
         } elseif ($sort === "follower") {
-            $shops = Shop::select('shops.*')->leftjoin('likes', 'shops.id', '=', 'likes.shop_id')->where('ward_id', $id)->distinct()->with(['photos', 'likes'])->withCount('likes')->orderBy('likes_count', 'desc')->paginate();
+            $shops =
+                Shop::select('shops.*')->leftjoin('likes', 'shops.id', '=', 'likes.shop_id')->where('ward_id', $id)
+                ->distinct()->with(['photos', 'likes'])
+                ->withCount('likes')->orderBy('likes_count', 'desc')->paginate();
+        } else {
+            $shops = Shop::where('ward_id', $id)->where('boardgame_num', '>', $sort)->with(['photos', 'likes'])->orderBy(Shop::CREATED_AT, 'desc')->paginate();
         }
 
         clock($shops);
