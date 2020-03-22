@@ -460,7 +460,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
  // import dayjs from "dayjs";
 
 
@@ -1197,7 +1196,7 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.user.icon_url == null ? _c("bdUserIcon") : _vm._e(),
+                _vm.user.icon_url == "" ? _c("bdUserIcon") : _vm._e(),
                 _vm._v(" "),
                 _vm.user
                   ? _c(

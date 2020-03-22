@@ -198,6 +198,66 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -282,9 +342,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context.abrupt("return", false);
 
               case 6:
+                console.log(response);
                 this.shop = response.data;
 
-              case 7:
+              case 8:
               case "end":
                 return _context.stop();
             }
@@ -654,15 +715,27 @@ var render = function() {
                   _c("div", { staticClass: "tile is-parent is-vertical" }, [
                     _c("article", { staticClass: "tile is-child box" }, [
                       _c("p", { staticClass: "title has-text-centered" }, [
-                        _vm._v(_vm._s(_vm.shop.shop_name))
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.shop.shop_name) +
+                            "\n                        "
+                        )
                       ]),
                       _vm._v(" "),
                       _c("p", { staticClass: "subtitle has-text-centered" }, [
-                        _vm._v(_vm._s(_vm.shop.address))
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.shop.address) +
+                            "\n                        "
+                        )
                       ]),
                       _vm._v(" "),
                       _c("p", { staticClass: "content has-text-centered" }, [
-                        _vm._v(_vm._s(_vm.shop.content))
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.shop.content) +
+                            "\n                        "
+                        )
                       ]),
                       _vm._v(" "),
                       _vm._m(0),
@@ -707,7 +780,7 @@ var render = function() {
                                         "article",
                                         { staticClass: "media" },
                                         [
-                                          review.user_photo.photos
+                                          review.user_photo.icon_url
                                             ? _c(
                                                 "figure",
                                                 { staticClass: "media-left" },
@@ -723,7 +796,7 @@ var render = function() {
                                                         attrs: {
                                                           src:
                                                             review.user_photo
-                                                              .photos.url
+                                                              .icon_url
                                                         }
                                                       })
                                                     ]
@@ -732,7 +805,7 @@ var render = function() {
                                               )
                                             : _vm._e(),
                                           _vm._v(" "),
-                                          !review.user_photo.photos
+                                          review.user_photo.icon_url == ""
                                             ? _c("el-avatar", {
                                                 attrs: {
                                                   size: 50,
@@ -753,11 +826,11 @@ var render = function() {
                                                   _c("p", [
                                                     _c("strong", [
                                                       _vm._v(
-                                                        "\n                            " +
+                                                        "\n                                                        " +
                                                           _vm._s(
                                                             review.author.name
                                                           ) +
-                                                          "\n                          "
+                                                          "\n                                                    "
                                                       )
                                                     ]),
                                                     _vm._v(" "),
@@ -769,9 +842,9 @@ var render = function() {
                                                     _vm._v(" "),
                                                     _c("br"),
                                                     _vm._v(
-                                                      "\n                          " +
+                                                      "\n                                                    " +
                                                         _vm._s(review.content) +
-                                                        "\n                        "
+                                                        "\n                                                "
                                                     )
                                                   ])
                                                 ]
@@ -824,7 +897,11 @@ var render = function() {
                                             _vm.reviewErrors.content,
                                             function(msg) {
                                               return _c("li", { key: msg }, [
-                                                _vm._v(_vm._s(msg))
+                                                _vm._v(
+                                                  "\n                                        " +
+                                                    _vm._s(msg) +
+                                                    "\n                                    "
+                                                )
                                               ])
                                             }
                                           ),
@@ -839,7 +916,7 @@ var render = function() {
                                   "figure",
                                   { staticClass: "media-left" },
                                   [
-                                    _vm.user.photos
+                                    _vm.user.icon_url
                                       ? _c(
                                           "figure",
                                           { staticClass: "media-left" },
@@ -850,7 +927,7 @@ var render = function() {
                                               [
                                                 _c("img", {
                                                   attrs: {
-                                                    src: _vm.user.photos.url
+                                                    src: _vm.user.icon_url
                                                   }
                                                 })
                                               ]
@@ -859,7 +936,7 @@ var render = function() {
                                         )
                                       : _vm._e(),
                                     _vm._v(" "),
-                                    _vm.user.photos == null
+                                    _vm.user.icon_url == ""
                                       ? _c("el-avatar", {
                                           attrs: {
                                             size: 50,
@@ -916,7 +993,7 @@ var render = function() {
                           _vm._v(" "),
                           _c("span", [
                             _vm._v(
-                              "\n                  View on\n                  "
+                              "\n                                    View on\n                                    "
                             ),
                             _c(
                               "a",
@@ -976,7 +1053,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("h2", { staticClass: "photo-detail__title" }, [
       _c("i", { staticClass: "icon ion-md-chatboxes" }),
-      _vm._v("Review\n            ")
+      _vm._v("Review\n                        ")
     ])
   },
   function() {
@@ -993,7 +1070,11 @@ var staticRenderFns = [
                 staticClass: "button button--inverse",
                 attrs: { type: "submit" }
               },
-              [_vm._v("レビューを投稿する")]
+              [
+                _vm._v(
+                  "\n                                                        レビューを投稿する\n                                                    "
+                )
+              ]
             )
           ])
         ])

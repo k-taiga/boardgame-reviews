@@ -9,8 +9,7 @@
                         <figure v-if="user.icon_url" class="image is-4by3">
                             <img :src="user.icon_url" />
                         </figure>
-                        <bdUserIcon v-if="user.icon_url == null"></bdUserIcon>
-
+                        <bdUserIcon v-if="user.icon_url == ''"></bdUserIcon>
                         <p
                             v-if="user"
                             class="subtitle has-text-centered has-text-dark"
