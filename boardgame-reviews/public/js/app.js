@@ -3640,7 +3640,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
-      user: null
+      user: null,
+      isRouterShow: true
+    };
+  },
+  provide: function provide() {
+    return {
+      reload: this.reload
     };
   },
   // storeのステートを算出プロパティで参照しwatchで監視する
@@ -3751,7 +3757,40 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.$store.commit("auth/setLoginErrorMessages", null);
       this.$store.commit("auth/setRegisterErrorMessages", null);
       console.log("clearErrorしました。");
-    }
+    },
+    reload: function () {
+      var _reload = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                this.isRouterShow = false;
+                _context3.next = 3;
+                return this.$nextTick();
+
+              case 3:
+                this.$router.go({
+                  path: this.$router.currentRoute.path,
+                  force: true
+                });
+                this.isRouterShow = true;
+
+              case 5:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function reload() {
+        return _reload.apply(this, arguments);
+      }
+
+      return reload;
+    }()
   }
 });
 
@@ -6001,7 +6040,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\n.fade-enter[data-v-f348271a],\n.fade-leave-to[data-v-f348271a] {\n  opacity: 0;\n}\n.fade-enter-to[data-v-f348271a],\n.fade-leave[data-v-f348271a] {\n  opacity: 1;\n}\n.fade-enter-active[data-v-f348271a],\n.fade-leave-active[data-v-f348271a] {\n  -webkit-transition: opacity 0.3s;\n  transition: opacity 0.3s;\n}\n.container[data-v-f348271a] {\n  min-height: 100vh;\n}\n", ""]);
+exports.push([module.i, "\n.fade-enter[data-v-f348271a],\n.fade-leave-to[data-v-f348271a] {\n    opacity: 0;\n}\n.fade-enter-to[data-v-f348271a],\n.fade-leave[data-v-f348271a] {\n    opacity: 1;\n}\n.fade-enter-active[data-v-f348271a],\n.fade-leave-active[data-v-f348271a] {\n    -webkit-transition: opacity 0.3s;\n    transition: opacity 0.3s;\n}\n.container[data-v-f348271a] {\n    min-height: 100vh;\n}\n", ""]);
 
 // exports
 
@@ -66556,7 +66595,11 @@ var render = function() {
           _c(
             "transition",
             { attrs: { name: "fade", mode: "out-in" } },
-            [_c("router-view")],
+            [
+              _vm.isRouterShow
+                ? _c("router-view", { staticClass: "reload" })
+                : _vm._e()
+            ],
             1
           )
         ],

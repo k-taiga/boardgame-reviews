@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'icon_url',
     ];
 
     /** JSONに含めるアクセサ */
@@ -28,7 +28,7 @@ class User extends Authenticatable
 
     /** JSONに含める属性(実際に返ってくる値) */
     protected $visible = [
-        'id', 'name',  'email', 'photos', 'favorite_shops', 'password'
+        'id', 'name',  'email', 'icon_url', 'favorite_shops', 'password',
     ];
 
     /**

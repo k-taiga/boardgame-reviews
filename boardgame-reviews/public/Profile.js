@@ -444,6 +444,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
  // import dayjs from "dayjs";
 
 
@@ -460,6 +477,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     bdBread: _components_Breadcrumb__WEBPACK_IMPORTED_MODULE_6__["default"]
   },
   name: "profile",
+  inject: ["reload"],
   data: function data() {
     return {
       user: null,
@@ -493,7 +511,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context.abrupt("return", false);
 
               case 6:
-                this.user = response.data;
+                this.user = response.data; // // this.$set(this.user, "icon_url", this.user.icon_url);
+                // this.user = Object.assign({}, this.user);
+                // this.user = Object.assign({}, this.user, {
+                //     icon_url: this.user.icon_url
+                // });
+
                 console.log(this.user);
 
               case 8:
@@ -549,6 +572,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 10:
                 // 更新後のユーザー情報を取得
                 this.fetchUser();
+                this.reload();
                 console.log(this.user); // 更新が終了したので終了処理を行う
 
                 if (val.teardown) {
@@ -557,7 +581,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 this.editProfileModalActive = false;
 
-              case 14:
+              case 15:
               case "end":
                 return _context2.stop();
             }
@@ -632,6 +656,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.errors = null;
       this.editProfileModalActive = false;
       this.retireModalActive = false;
+    },
+    reload: function reload() {
+      this.$router.go({
+        path: this.$router.currentRoute.path,
+        force: true
+      });
     }
   },
   watch: {
@@ -704,7 +734,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.favorite_shops[data-v-25b9215a] {\n  background-color: white;\n  margin-bottom: 4em;\n  padding: 2em;\n  border-radius: 0.5em;\n}\n.favorite_shop[data-v-25b9215a] {\n  background-color: whitesmoke;\n  margin: 0.5em;\n  border-radius: 0.5em;\n}\n", ""]);
+exports.push([module.i, "\n.favorite_shops[data-v-25b9215a] {\n    background-color: white;\n    margin-bottom: 4em;\n    padding: 2em;\n    border-radius: 0.5em;\n}\n.favorite_shop[data-v-25b9215a] {\n    background-color: whitesmoke;\n    margin: 0.5em;\n    border-radius: 0.5em;\n}\n", ""]);
 
 // exports
 
@@ -1160,13 +1190,13 @@ var render = function() {
               "div",
               { staticClass: "card-content" },
               [
-                _vm.user.photos
+                _vm.user.icon_url
                   ? _c("figure", { staticClass: "image is-4by3" }, [
-                      _c("img", { attrs: { src: _vm.user.photos.url } })
+                      _c("img", { attrs: { src: _vm.user.icon_url } })
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.user.photos == null ? _c("bdUserIcon") : _vm._e(),
+                _vm.user.icon_url == null ? _c("bdUserIcon") : _vm._e(),
                 _vm._v(" "),
                 _vm.user
                   ? _c(
@@ -1174,7 +1204,13 @@ var render = function() {
                       {
                         staticClass: "subtitle has-text-centered has-text-dark"
                       },
-                      [_vm._v("name: " + _vm._s(_vm.user.name))]
+                      [
+                        _vm._v(
+                          "\n                        name: " +
+                            _vm._s(_vm.user.name) +
+                            "\n                    "
+                        )
+                      ]
                     )
                   : _vm._e()
               ],
@@ -1189,7 +1225,7 @@ var render = function() {
                     "button is-small is-primary is-outlined is-fullwidth",
                   on: { click: _vm.showProfileEditModal }
                 },
-                [_vm._v("編集")]
+                [_vm._v("\n                        編集\n                    ")]
               ),
               _vm._v(" "),
               _c(
@@ -1199,7 +1235,7 @@ var render = function() {
                     "button is-small is-primary is-outlined is-fullwidth",
                   on: { click: _vm.showRetireModal }
                 },
-                [_vm._v("退会")]
+                [_vm._v("\n                        退会\n                    ")]
               )
             ])
           ])
@@ -1273,7 +1309,9 @@ var staticRenderFns = [
       _c("div", { staticClass: "level-left" }, [
         _c("div", { staticClass: "level-item" }, [
           _c("h2", { staticClass: "title is-6 has-text-left" }, [
-            _vm._v("Favorite Shops")
+            _vm._v(
+              "\n                                Favorite Shops\n                            "
+            )
           ])
         ])
       ])
