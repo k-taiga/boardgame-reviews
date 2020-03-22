@@ -36,6 +36,9 @@ Route::get('/wards', 'WardController@index')->name('ward.index');
 // 23区詳細
 Route::get('/wards/{id}', 'WardController@show')->name('ward.show');
 
+// 23区でのソート
+Route::get('/wards/{id}/{sort}', 'WardController@sort')->name('ward.sort');
+
 // レビュー
 Route::post('/shops/{shop}/reviews', 'ShopController@addReview')->name('shop.review');
 

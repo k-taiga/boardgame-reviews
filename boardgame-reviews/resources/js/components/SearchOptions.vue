@@ -8,16 +8,13 @@
                 <div class="field">
                     <div class="control has-icons-left">
                         <span class="select is-empty">
-                            <select>
-                                <option
-                                    disabled="disabled"
-                                    hidden="hidden"
-                                    selected
-                                    >ソート順</option
-                                >
-                                <option value="reviews">レビュー数</option>
+                            <select v-model="sortSelected" options="sorts">
+                                <option value="">ソート順</option>
+                                <option value="review">レビュー数</option>
                                 <option value="follower">フォロワー数</option>
-                                <option value="Price">Price</option>
+                                <!-- <option v-for="sort in sorts" :key="sort.id">{{
+                                    sort
+                                }}</option> -->
                             </select>
                         </span>
                         <span class="icon is-left">
@@ -35,16 +32,16 @@
                 <div class="field">
                     <div class="control has-icons-left">
                         <span class="select is-empty">
-                            <select>
+                            <select v-model="boardgameSelected">
                                 <option
                                     disabled="disabled"
                                     hidden="hidden"
                                     selected
                                     >ボードゲームの数</option
                                 >
-                                <option value="1">0~100</option>
-                                <option value="2">100~300</option>
-                                <option value="3">300個以上</option>
+                                <option value="100">100</option>
+                                <option value="200">200</option>
+                                <option value="300">300個以上</option>
                             </select>
                         </span>
                         <span class="icon is-left">
@@ -64,9 +61,11 @@
                                     selected
                                     >予算</option
                                 >
-                                <option value="1000">1,000</option>
-                                <option value="2000">2,000</option>
-                                <option value="3000">3,000以上</option>
+                                <option
+                                    v-for="price in prices"
+                                    :key="price.id"
+                                    >{{ price }}</option
+                                >
                             </select>
                         </span>
                         <span class="icon is-left">
@@ -80,7 +79,7 @@
                     <label class="switch">
                         <span class="check">
                             <el-switch
-                                v-model="value2"
+                                v-model="byo"
                                 active-color="#13ce66"
                                 inactive-color="#b5b5b5"
                             ></el-switch>
@@ -114,11 +113,63 @@
 </template>
 
 <script>
+import { OK } from "../util";
 export default {
     data() {
         return {
-            value2: false
+            byo: false,
+            // sorts: ["ソート順", "レビュー数", "フォロワー数"],
+            sorts: null,
+            boardgames: ["100", "200", "300以上"],
+            prices: ["~1000", "2000", "3000以上"]
         };
+    },
+    computed: {
+        sortSelected: {
+            get() {
+                return this.sorts;
+            },
+            set(value) {
+                this.sorts = value;
+                this.$emit("sort", value);
+            }
+        },
+        boardgameSelected: {
+            get() {
+                return this.boardgames;
+            },
+            set(value) {
+                console.log(this.sortSelected);
+                if (this.sortSelected != null) {
+                    this.$emit("sort", value);
+                }
+            }
+        }
+    },
+    // watch: {
+    //     sortSelected: function(val, oldVal) {
+    //         console.log(val);
+    //         console.log(oldVal);
+    //         this.$emit("sort", val);
+    //     }
+    // },
+    methods: {
+        async fetchSortShops() {
+            const response = await axios.get(`/api/wards/${this.wardId}`);
+
+            if (response.status !== OK) {
+                this.$store.commit("error/setCode", response.status);
+                return false;
+            }
+
+            this.shops = response.data.data;
+            this.hiddenShops = response.data.data;
+            // console.log(response.data.data);
+            console.log(this.shops);
+
+            this.currentPage = response.data.current_page;
+            this.lastPage = response.data.last_page;
+        }
     }
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
     <div class="shop-list container">
         <bdBread :ward_id="wardId"></bdBread>
-        <bd-search-options></bd-search-options>
+        <bd-search-options @sort="sort(sort, filter)"></bd-search-options>
         <div class="grid">
             <shop
                 class="grid__item"
@@ -121,6 +121,22 @@ export default {
             }
 
             this.shops = response.data;
+            console.log(this.shops);
+        },
+        async sort(sort, filter) {
+            console.log(sort);
+            console.log(filter);
+
+            const response = await axios.get(
+                `/api/wards/${this.wardId}/${sort}`
+            );
+
+            if (response.status !== OK) {
+                this.$store.commit("error/setCode", response.status);
+                return false;
+            }
+
+            this.shops = response.data.data;
             console.log(this.shops);
         },
         valuecheck() {

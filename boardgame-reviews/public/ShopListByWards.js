@@ -390,6 +390,49 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return search;
     }(),
+    sort: function () {
+      var _sort2 = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(_sort, filter) {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                console.log(_sort);
+                console.log(filter);
+                _context5.next = 4;
+                return axios.get("/api/wards/".concat(this.wardId, "/").concat(_sort));
+
+              case 4:
+                response = _context5.sent;
+
+                if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
+                  _context5.next = 8;
+                  break;
+                }
+
+                this.$store.commit("error/setCode", response.status);
+                return _context5.abrupt("return", false);
+
+              case 8:
+                this.shops = response.data.data;
+                console.log(this.shops);
+
+              case 10:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, this);
+      }));
+
+      function sort(_x4, _x5) {
+        return _sort2.apply(this, arguments);
+      }
+
+      return sort;
+    }(),
     valuecheck: function valuecheck() {
       console.log(this.wardId);
     },
@@ -402,12 +445,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       handler: function () {
         var _handler = _asyncToGenerator(
         /*#__PURE__*/
-        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
-          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
             while (1) {
-              switch (_context5.prev = _context5.next) {
+              switch (_context6.prev = _context6.next) {
                 case 0:
-                  _context5.next = 2;
+                  _context6.next = 2;
                   return this.fetchShops();
 
                 case 2:
@@ -416,10 +459,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 case 3:
                 case "end":
-                  return _context5.stop();
+                  return _context6.stop();
               }
             }
-          }, _callee5, this);
+          }, _callee6, this);
         }));
 
         function handler() {
@@ -598,7 +641,13 @@ var render = function() {
     [
       _c("bdBread", { attrs: { ward_id: _vm.wardId } }),
       _vm._v(" "),
-      _c("bd-search-options"),
+      _c("bd-search-options", {
+        on: {
+          sort: function($event) {
+            return _vm.sort(_vm.sort, _vm.filter)
+          }
+        }
+      }),
       _vm._v(" "),
       _c(
         "div",
