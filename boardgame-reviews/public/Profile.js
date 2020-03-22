@@ -657,6 +657,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.editProfileModalActive = false;
       this.retireModalActive = false;
     },
+    // リロードしてS3の画像を更新する
     reload: function reload() {
       this.$router.go({
         path: this.$router.currentRoute.path,

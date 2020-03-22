@@ -3640,13 +3640,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
-      user: null,
-      isRouterShow: true
-    };
-  },
-  provide: function provide() {
-    return {
-      reload: this.reload
+      user: null
     };
   },
   // storeのステートを算出プロパティで参照しwatchで監視する
@@ -3702,9 +3696,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
             case 2:
               this.user = _context.sent;
+              this.user = this.$store.getters["auth/check"];
               console.log(this.user);
 
-            case 4:
+            case 5:
             case "end":
               return _context.stop();
           }
@@ -3757,40 +3752,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.$store.commit("auth/setLoginErrorMessages", null);
       this.$store.commit("auth/setRegisterErrorMessages", null);
       console.log("clearErrorしました。");
-    },
-    reload: function () {
-      var _reload = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                this.isRouterShow = false;
-                _context3.next = 3;
-                return this.$nextTick();
-
-              case 3:
-                this.$router.go({
-                  path: this.$router.currentRoute.path,
-                  force: true
-                });
-                this.isRouterShow = true;
-
-              case 5:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3, this);
-      }));
-
-      function reload() {
-        return _reload.apply(this, arguments);
-      }
-
-      return reload;
-    }()
+    }
   }
 });
 
@@ -66595,11 +66557,7 @@ var render = function() {
           _c(
             "transition",
             { attrs: { name: "fade", mode: "out-in" } },
-            [
-              _vm.isRouterShow
-                ? _c("router-view", { staticClass: "reload" })
-                : _vm._e()
-            ],
+            [_c("router-view")],
             1
           )
         ],

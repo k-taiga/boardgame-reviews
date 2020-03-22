@@ -196,6 +196,7 @@ export default {
             this.editProfileModalActive = false;
             this.retireModalActive = false;
         },
+        // リロードしてS3の画像を更新する
         reload() {
             this.$router.go({
                 path: this.$router.currentRoute.path,
@@ -203,7 +204,6 @@ export default {
             });
         }
     },
-
     watch: {
         $route: {
             async handler() {

@@ -4,7 +4,7 @@
         <main class="container">
             <message />
             <transition name="fade" mode="out-in">
-                <router-view v-if="isRouterShow" class="reload" />
+                <router-view />
             </transition>
         </main>
         <bdFooter></bdFooter>
@@ -28,13 +28,7 @@ export default {
     components: { bdNavbar, bdFooter, message, errorModal, bdCarousel },
     data() {
         return {
-            user: null,
-            isRouterShow: true
-        };
-    },
-    provide() {
-        return {
-            reload: this.reload
+            user: null
         };
     },
     // storeのステートを算出プロパティで参照しwatchで監視する
@@ -79,6 +73,7 @@ export default {
     },
     async created() {
         this.user = await this.$store.dispatch("auth/currentUser");
+        this.user = this.$store.getters["auth/check"];
         console.log(this.user);
     },
     updated() {
@@ -98,15 +93,6 @@ export default {
             this.$store.commit("auth/setLoginErrorMessages", null);
             this.$store.commit("auth/setRegisterErrorMessages", null);
             console.log("clearErrorしました。");
-        },
-        async reload() {
-            this.isRouterShow = false;
-            await this.$nextTick();
-            this.$router.go({
-                path: this.$router.currentRoute.path,
-                force: true
-            });
-            this.isRouterShow = true;
         }
     }
 };
