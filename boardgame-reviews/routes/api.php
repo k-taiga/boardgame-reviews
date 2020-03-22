@@ -18,7 +18,6 @@ Route::get('/user', function () {
     return Auth::user();
 })->name('user');
 
-
 // 店舗登録
 Route::post('/shops', 'ShopController@create')->name('shop.create');
 

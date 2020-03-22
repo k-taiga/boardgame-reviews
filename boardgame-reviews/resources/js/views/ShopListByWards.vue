@@ -1,18 +1,18 @@
 <template>
-  <div class="shop-list container">
-    <bdBread :ward_id="wardId"></bdBread>
-    <bd-search-options></bd-search-options>
-    <div class="grid">
-      <shop
-        class="grid__item"
-        v-for="shop in shops"
-        :key="shop.id"
-        :item="shop"
-        @like="onLikeClick"
-      />
+    <div class="shop-list container">
+        <bdBread :ward_id="wardId"></bdBread>
+        <bd-search-options></bd-search-options>
+        <div class="grid">
+            <shop
+                class="grid__item"
+                v-for="shop in shops"
+                :key="shop.id"
+                :item="shop"
+                @like="onLikeClick"
+            />
+        </div>
+        <pagination :current-page="currentPage" :last-page="lastPage" />
     </div>
-    <pagination :current-page="currentPage" :last-page="lastPage" />
-  </div>
 </template>
 
 <script>
@@ -25,122 +25,120 @@ import bdSearchOptions from "../components/SearchOptions.vue";
 import bdBread from "../components/Breadcrumb";
 
 export default {
-  components: {
-    shop,
-    pagination,
-    bdCarousel,
-    bdSearchBox,
-    bdSearchOptions,
-    bdBread
-  },
-  data() {
-    return {
-      shops: [],
-      currentPage: 0,
-      lastPage: 0
-    };
-  },
-  props: {
-    page: {
-      type: Number,
-      required: false,
-      default: 1
-    }
-  },
-  computed: {
-    wardId() {
-      return this.$route.params.id;
-    }
-  },
-  methods: {
-    async fetchShops() {
-      const response = await axios.get(
-        `/api/shops/?page=${this.$route.query.page}`
-      );
-
-      if (response.status !== OK) {
-        this.$store.commit("error/setCode", response.status);
-        return false;
-      }
-
-      console.log(response.data);
-      this.shops = response.data.data;
-      this.currentPage = response.data.current_page;
-      this.lastPage = response.data.last_page;
+    components: {
+        shop,
+        pagination,
+        bdCarousel,
+        bdSearchBox,
+        bdSearchOptions,
+        bdBread
     },
-    onLikeClick({ id, liked }) {
-      if (!this.$store.getters["auth/check"]) {
-        alert("いいねするにはログインをしてください");
-        return false;
-      }
-      if (liked) {
-        this.unlike(id);
-      } else {
-        this.like(id);
-      }
+    data() {
+        return {
+            shops: [],
+            currentPage: 0,
+            lastPage: 0
+        };
     },
-    async like(id) {
-      const response = await axios.put(`/api/shops/${id}/like`);
-
-      if (response.status !== OK) {
-        this.$store.commit("error/setCode", response.status);
-        return false;
-      }
-
-      this.shops = this.shops.map(shop => {
-        if (shop.id == response.data.shop_id) {
-          shop.likes_count += 1;
-          shop.liked_by_user = true;
+    props: {
+        page: {
+            type: Number,
+            required: false,
+            default: 1
         }
-        return shop;
-      });
     },
-    async unlike(id) {
-      const response = await axios.delete(`/api/shops/${id}/unlike`);
-
-      if (response.status !== OK) {
-        this.$store.commit("error/setCode", response.status);
-        return false;
-      }
-
-      this.shops = this.shops.map(shop => {
-        if (shop.id == response.data.shop_id) {
-          shop.likes_count -= 1;
-          shop.liked_by_user = false;
+    computed: {
+        wardId() {
+            return this.$route.params.id;
         }
-
-        return shop;
-      });
     },
-    async search(keyword) {
-      console.log(keyword);
+    methods: {
+        async fetchShops() {
+            const response = await axios.get(`/api/wards/${this.wardId}`);
 
-      const response = await axios.post(`/api/shops/${keyword}`);
+            if (response.status !== OK) {
+                this.$store.commit("error/setCode", response.status);
+                return false;
+            }
 
-      if (response.status !== OK) {
-        this.$store.commit("error/setCode", response.status);
-        return false;
-      }
+            console.log(response.data);
+            this.shops = response.data.data;
+            this.currentPage = response.data.current_page;
+            this.lastPage = response.data.last_page;
+        },
+        onLikeClick({ id, liked }) {
+            if (!this.$store.getters["auth/check"]) {
+                alert("いいねするにはログインをしてください");
+                return false;
+            }
+            if (liked) {
+                this.unlike(id);
+            } else {
+                this.like(id);
+            }
+        },
+        async like(id) {
+            const response = await axios.put(`/api/shops/${id}/like`);
 
-      this.shops = response.data;
-      console.log(this.shops);
+            if (response.status !== OK) {
+                this.$store.commit("error/setCode", response.status);
+                return false;
+            }
+
+            this.shops = this.shops.map(shop => {
+                if (shop.id == response.data.shop_id) {
+                    shop.likes_count += 1;
+                    shop.liked_by_user = true;
+                }
+                return shop;
+            });
+        },
+        async unlike(id) {
+            const response = await axios.delete(`/api/shops/${id}/unlike`);
+
+            if (response.status !== OK) {
+                this.$store.commit("error/setCode", response.status);
+                return false;
+            }
+
+            this.shops = this.shops.map(shop => {
+                if (shop.id == response.data.shop_id) {
+                    shop.likes_count -= 1;
+                    shop.liked_by_user = false;
+                }
+
+                return shop;
+            });
+        },
+        async search(keyword) {
+            console.log(keyword);
+
+            const response = await axios.post(`/api/shops/${keyword}`);
+
+            if (response.status !== OK) {
+                this.$store.commit("error/setCode", response.status);
+                return false;
+            }
+
+            this.shops = response.data;
+            console.log(this.shops);
+        },
+        valuecheck() {
+            console.log(this.wardId);
+        },
+        setId() {
+            this.$store.commit("ward/setId", this.$route.params.id);
+        }
     },
-    valuecheck() {
-      console.log(this.wardId);
-    },
-    setId() {
-      this.$store.commit("ward/setId", this.$route.params.id);
+    watch: {
+        $route: {
+            async handler() {
+                await this.fetchShops();
+                // this.valuecheck();
+                this.setId();
+            },
+            immediate: true
+        }
     }
-  },
-  watch: {
-    $route: {
-      async handler() {
-        await this.fetchShops();
-        // this.valuecheck();
-        this.setId();
-      },
-      immediate: true
-    }
-  }
 };
 </script>
