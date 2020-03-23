@@ -715,7 +715,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card[data-v-7c8db59d] {\r\n  width: 30%;\n}\n.is-slightly-rounded[data-v-7c8db59d] {\r\n  border-radius: 2%;\n}\r\n", ""]);
+exports.push([module.i, "\n.card[data-v-7c8db59d] {\n  width: 30%;\n}\n.is-slightly-rounded[data-v-7c8db59d] {\n  border-radius: 2%;\n}\n", ""]);
 
 // exports
 
@@ -734,7 +734,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.favorite_shops[data-v-25b9215a] {\r\n    background-color: white;\r\n    margin-bottom: 4em;\r\n    padding: 2em;\r\n    border-radius: 0.5em;\n}\n.favorite_shop[data-v-25b9215a] {\r\n    background-color: whitesmoke;\r\n    margin: 0.5em;\r\n    border-radius: 0.5em;\n}\r\n", ""]);
+exports.push([module.i, "\n.favorite_shops[data-v-25b9215a] {\n    background-color: white;\n    margin-bottom: 4em;\n    padding: 2em;\n    border-radius: 0.5em;\n}\n.favorite_shop[data-v-25b9215a] {\n    background-color: whitesmoke;\n    margin: 0.5em;\n    border-radius: 0.5em;\n}\n", ""]);
 
 // exports
 

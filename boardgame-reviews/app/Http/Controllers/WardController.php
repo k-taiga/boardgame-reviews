@@ -108,6 +108,24 @@ class WardController extends Controller
                 ->where('price', '<=', $filter["price"])
                 ->where('byo_flg', $filter["byo_flg"])
                 ->with(['photos', 'likes'])->orderBy(Shop::CREATED_AT, 'desc')->paginate();
+        } elseif ($filter["boardgame"] !== null) {
+            // ボードゲームのみ
+            $shops =
+                Shop::where('ward_id', $id)
+                ->where('boardgame_num', '>=', $filter["boardgame"])
+                ->with(['photos', 'likes'])->orderBy(Shop::CREATED_AT, 'desc')->paginate();
+        } elseif ($filter["price"] !== null) {
+            // priceのみ
+            $shops =
+                Shop::where('ward_id', $id)
+                ->where('price', '<=', $filter["price"])
+                ->with(['photos', 'likes'])->orderBy(Shop::CREATED_AT, 'desc')->paginate();
+        } elseif ($filter["byo_flg"] !== null) {
+            // byo_flgのみ
+            $shops =
+                Shop::where('ward_id', $id)
+                ->where('byo_flg', $filter["byo_flg"])
+                ->with(['photos', 'likes'])->orderBy(Shop::CREATED_AT, 'desc')->paginate();
         }
 
         clock($shops);

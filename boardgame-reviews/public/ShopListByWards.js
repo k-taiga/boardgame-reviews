@@ -364,11 +364,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 filter = {
                   boardgame: value.boardgame,
                   price: value.price,
-                  byo_flg: value.byo
+                  byo_flg: value.byo ? "1" : ""
                 };
                 console.log(filter); // filterは複数の可能性があるため、配列でPOSTする
 
-                if (!(sort !== "" && (filter.boardgame !== "" || filter.price !== "" || filter.byo !== ""))) {
+                if (!(sort !== "" && (filter.boardgame !== "" || filter.price !== "" || filter.byo_flg !== ""))) {
                   _context4.next = 16;
                   break;
                 }
@@ -395,7 +395,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 16:
                 if (!( // ソートだけ
-                sort !== "" && filter.boardgame === "" && filter.price === "" && filter.byo === "")) {
+                sort !== "" && filter.boardgame === "" && filter.price === "" && filter.byo_flg === "")) {
                   _context4.next = 26;
                   break;
                 }
@@ -421,7 +421,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 26:
                 if (!( // フィルターだけ
-                sort === "" && (filter.boardgame !== "" || filter.price !== "" || filter.byo !== ""))) {
+                sort === "" && (filter.boardgame !== "" || filter.price !== "" || filter.byo_flg !== ""))) {
                   _context4.next = 36;
                   break;
                 }
@@ -447,7 +447,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 36:
                 if (!( // 全て空の場合は元に戻す
-                sort === "" && filter.boardgame === "" && filter.price === "" && filter.byo === "")) {
+                sort === "" && filter.boardgame === "" && filter.price === "" && filter.byo_flg === "")) {
                   _context4.next = 44;
                   break;
                 }

@@ -118,7 +118,7 @@ export default {
             filter = {
                 boardgame: value.boardgame,
                 price: value.price,
-                byo_flg: value.byo
+                byo_flg: value.byo ? "1" : ""
             };
 
             console.log(filter);
@@ -128,7 +128,7 @@ export default {
                 sort !== "" &&
                 (filter.boardgame !== "" ||
                     filter.price !== "" ||
-                    filter.byo !== "")
+                    filter.byo_flg !== "")
             ) {
                 console.log("ifの中に通った！");
                 const response = await axios.post(
@@ -145,7 +145,7 @@ export default {
                 sort !== "" &&
                 filter.boardgame === "" &&
                 filter.price === "" &&
-                filter.byo === ""
+                filter.byo_flg === ""
             ) {
                 const response = await axios.get(
                     `/api/wards/${this.wardId}/${sort}`
@@ -160,7 +160,7 @@ export default {
                 sort === "" &&
                 (filter.boardgame !== "" ||
                     filter.price !== "" ||
-                    filter.byo !== "")
+                    filter.byo_flg !== "")
             ) {
                 const response = await axios.post(
                     `/api/wards/${this.wardId}/`,
@@ -176,7 +176,7 @@ export default {
                 sort === "" &&
                 filter.boardgame === "" &&
                 filter.price === "" &&
-                filter.byo === ""
+                filter.byo_flg === ""
             ) {
                 const response = await axios.get(`/api/wards/${this.wardId}`);
 

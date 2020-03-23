@@ -153,22 +153,16 @@ export default {
         },
         byoSelected: {
             get() {
-                // if (this.byo) {
-                //     return "1";
-                // } else {
-                //     return "0";
-                // }
                 return this.byo;
             },
             set(value) {
                 this.byo = value;
 
-                let byo_flg = value ? "1" : "";
                 this.$emit("sort", {
                     sort: this.sortSelected,
                     boardgame: this.boardgameSelected,
                     price: this.priceSelected,
-                    byo: byo_flg
+                    byo: this.byoSelected
                 });
             }
         }

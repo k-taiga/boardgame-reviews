@@ -301,21 +301,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     byoSelected: {
       get: function get() {
-        // if (this.byo) {
-        //     return "1";
-        // } else {
-        //     return "0";
-        // }
         return this.byo;
       },
       set: function set(value) {
         this.byo = value;
-        var byo_flg = value ? "1" : "";
         this.$emit("sort", {
           sort: this.sortSelected,
           boardgame: this.boardgameSelected,
           price: this.priceSelected,
-          byo: byo_flg
+          byo: this.byoSelected
         });
       }
     }
