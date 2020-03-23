@@ -92,6 +92,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => 'ショップ娯楽屋　秋葉原スペース店',
                 'address'      => '東京都千代田区外神田2-13-5　MINTRON秋葉原ビル　2F',
                 'boardgame_num'          => '399',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'https://gryfreeagshop.jimdo.com/',
                 'content'      => 'テーブルを使った遊びの利用や、新しい仲間を見つける場となりえる場所として、
 
@@ -108,6 +110,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => 'ディアシュピール',
                 'address'      => '東京都中野区東中野4-9-1 第一元太ビル4-A/3-A',
                 'boardgame_num'          => '1404',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'http://www.dear-spiele.com/',
                 'content'      => '当店「DEAR SPIELE（ディアシュピール）」は、JR東中野駅東口より徒歩1分！
 
@@ -120,6 +124,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => 'パイナップルゲームズ',
                 'address'      => '東京都港区芝5-29-2　三善ビル8階',
                 'boardgame_num'          => '456',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'https://www.pineapple7games.com/',
                 'content'      => 'パイナップルゲームズはJR山手線 田町駅から徒歩3分、自称都内で最もリーズナブルに遊べるボードゲームカフェです。
                 フード&ドリンク(アルコール含)持込OKのため、プレイ代金以外は発生いたしません(๑'ᴗ'๑)'
@@ -129,6 +135,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -137,6 +145,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -145,6 +155,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -153,6 +165,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -161,6 +175,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -169,6 +185,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -177,6 +195,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -185,6 +205,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -193,6 +215,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -201,6 +225,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -209,6 +235,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -217,6 +245,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -225,6 +255,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -233,6 +265,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -241,6 +275,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -249,6 +285,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -257,6 +295,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -265,6 +305,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -273,6 +315,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -281,6 +325,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -289,6 +335,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -297,6 +345,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -305,6 +355,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -313,6 +365,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -321,6 +375,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -329,6 +385,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -337,6 +395,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -345,6 +405,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -353,6 +415,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -361,6 +425,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -369,6 +435,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -377,6 +445,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -385,6 +455,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -393,6 +465,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -401,6 +475,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -409,6 +485,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -417,6 +495,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -425,6 +505,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -433,6 +515,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -441,6 +525,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -449,6 +535,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -457,6 +545,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -465,6 +555,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -473,6 +565,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -481,6 +575,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -489,6 +585,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -497,6 +595,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -505,6 +605,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -513,6 +615,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -521,6 +625,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -529,6 +635,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -537,6 +645,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -545,6 +655,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -553,6 +665,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -561,6 +675,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -569,6 +685,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -577,6 +695,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -585,6 +705,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -593,6 +715,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -601,6 +725,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -609,6 +735,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -617,6 +745,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -625,6 +755,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -633,6 +765,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -641,6 +775,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -649,6 +785,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -657,6 +795,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -665,6 +805,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -673,6 +815,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -681,6 +825,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -689,6 +835,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -697,6 +845,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -705,6 +855,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -713,6 +865,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -721,6 +875,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -729,6 +885,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -737,6 +895,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -745,6 +905,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -753,6 +915,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -761,6 +925,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -769,6 +935,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -777,6 +945,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -785,6 +955,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -793,6 +965,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -801,6 +975,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -809,6 +985,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -817,6 +995,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -825,6 +1005,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -833,6 +1015,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -841,6 +1025,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -849,6 +1035,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -857,6 +1045,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -865,6 +1055,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -873,6 +1065,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -881,6 +1075,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -889,6 +1085,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -897,6 +1095,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -905,6 +1105,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -913,6 +1115,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -921,6 +1125,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -929,6 +1135,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -937,6 +1145,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -945,6 +1155,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -953,6 +1165,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -961,6 +1175,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -969,6 +1185,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -977,6 +1195,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ],
@@ -985,6 +1205,8 @@ class ShopsTableSeeder extends Seeder
                 'shop_name'           => '',
                 'address'      => '',
                 'boardgame_num'          => '',
+                'price' =>'',
+                'byo_flg' => '',
                 'home_url'       =>'',
                 'content'      => ''
             ]
