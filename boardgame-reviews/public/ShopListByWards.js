@@ -360,97 +360,89 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 console.log(value);
                 sort = value.sort;
-                filter = {};
-
-                if (value.boardgame !== "") {
-                  filter = {
-                    boardgame: value.boardgame
-                  };
-                }
-
-                if (value.price !== "") {
-                  filter = {
-                    price: value.price
-                  };
-                }
-
+                filter = "";
+                filter = {
+                  boardgame: value.boardgame,
+                  price: value.price
+                };
                 console.log(filter); // filterは複数の可能性があるため、配列でPOSTする
 
-                if (!(sort !== "" && filter !== "")) {
-                  _context4.next = 17;
+                if (!(sort !== "" && (filter.boardgame !== "" || filter.price !== ""))) {
+                  _context4.next = 16;
                   break;
                 }
 
                 console.log("ifの中に通った！");
-                _context4.next = 10;
+                _context4.next = 9;
                 return axios.post("/api/wards/".concat(this.wardId, "/").concat(sort), filter);
 
-              case 10:
+              case 9:
                 response = _context4.sent;
 
                 if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
-                  _context4.next = 14;
+                  _context4.next = 13;
                   break;
                 }
 
                 this.$store.commit("error/setCode", response.status);
                 return _context4.abrupt("return", false);
 
-              case 14:
+              case 13:
                 this.shops = response.data.data;
-                _context4.next = 35;
+                _context4.next = 34;
                 break;
 
-              case 17:
-                if (!(sort != "")) {
-                  _context4.next = 27;
+              case 16:
+                if (!( // ソートだけ
+                sort !== "" && filter.boardgame === "" && filter.price === "")) {
+                  _context4.next = 26;
                   break;
                 }
 
-                _context4.next = 20;
+                _context4.next = 19;
                 return axios.get("/api/wards/".concat(this.wardId, "/").concat(sort));
 
-              case 20:
+              case 19:
                 _response = _context4.sent;
 
                 if (!(_response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
-                  _context4.next = 24;
+                  _context4.next = 23;
                   break;
                 }
 
                 this.$store.commit("error/setCode", _response.status);
                 return _context4.abrupt("return", false);
 
-              case 24:
-                this.shops = _response.data.data; // フィルターだけ
-
-                _context4.next = 35;
+              case 23:
+                this.shops = _response.data.data;
+                _context4.next = 34;
                 break;
 
-              case 27:
-                if (!(filter != "")) {
-                  _context4.next = 35;
+              case 26:
+                if (!( // フィルターだけ
+                sort === "" && (filter.boardgame !== "" || filter.price !== ""))) {
+                  _context4.next = 34;
                   break;
                 }
 
-                _context4.next = 30;
-                return axios.get("/api/wards/".concat(this.wardId, "/").concat(filter));
+                _context4.next = 29;
+                return axios.post("/api/wards/".concat(this.wardId, "/"), filter);
 
-              case 30:
+              case 29:
                 _response2 = _context4.sent;
 
                 if (!(_response2.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
-                  _context4.next = 34;
+                  _context4.next = 33;
                   break;
                 }
 
                 this.$store.commit("error/setCode", _response2.status);
                 return _context4.abrupt("return", false);
 
-              case 34:
+              case 33:
                 this.shops = _response2.data.data;
 
-              case 35:
+              case 34:
               case "end":
                 return _context4.stop();
             }
@@ -521,7 +513,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\na[data-v-c259b9a4] {\r\n  color: #69569c;\r\n  font-weight: bold;\n}\r\n", ""]);
+exports.push([module.i, "\na[data-v-c259b9a4] {\n  color: #69569c;\n  font-weight: bold;\n}\n", ""]);
 
 // exports
 

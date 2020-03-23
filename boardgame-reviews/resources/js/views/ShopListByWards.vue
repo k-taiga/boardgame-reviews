@@ -114,20 +114,16 @@ export default {
             console.log(value);
 
             const sort = value.sort;
-            let filter = {};
-
-            if(value.boardgame !== "") {
-                filter =  { boardgame: value.boardgame };
-            }
-
-            if(value.price !== "") {
-                filter =  { price: value.price };
-            }
+            let filter = "";
+            filter = { boardgame: value.boardgame, price: value.price };
 
             console.log(filter);
 
             // filterは複数の可能性があるため、配列でPOSTする
-            if (sort !== "" && filter !== "") {
+            if (
+                sort !== "" &&
+                (filter.boardgame !== "" || filter.price !== "")
+            ) {
                 console.log("ifの中に通った！");
                 const response = await axios.post(
                     `/api/wards/${this.wardId}/${sort}`,
@@ -138,9 +134,12 @@ export default {
                     return false;
                 }
                 this.shops = response.data.data;
-            }
-            // ソートだけ
-            else if (sort != "") {
+            } else if (
+                // ソートだけ
+                sort !== "" &&
+                filter.boardgame === "" &&
+                filter.price === ""
+            ) {
                 const response = await axios.get(
                     `/api/wards/${this.wardId}/${sort}`
                 );
@@ -149,10 +148,14 @@ export default {
                     return false;
                 }
                 this.shops = response.data.data;
-            // フィルターだけ
-            } else if (filter != "") {
-                const response = await axios.get(
-                    `/api/wards/${this.wardId}/${filter}`
+            } else if (
+                // フィルターだけ
+                sort === "" &&
+                (filter.boardgame !== "" || filter.price !== "")
+            ) {
+                const response = await axios.post(
+                    `/api/wards/${this.wardId}/`,
+                    filter
                 );
                 if (response.status !== OK) {
                     this.$store.commit("error/setCode", response.status);

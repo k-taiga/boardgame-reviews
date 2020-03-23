@@ -36,7 +36,6 @@ class WardController extends Controller
         return $shops ?? abort(404);
     }
 
-
     /**
      * 23区毎のページでのソート
      * @param string $id
@@ -60,7 +59,8 @@ class WardController extends Controller
                 ->distinct()->with(['photos', 'likes'])
                 ->withCount('likes')->orderBy('likes_count', 'desc')->paginate();
         } else {
-            $shops = Shop::where('ward_id', $id)->where('boardgame_num', '>', $filter)->with(['photos', 'likes'])->orderBy(Shop::CREATED_AT, 'desc')->paginate();
+            // defaultのソート順が来たら戻す
+            $shops = Shop::where('ward_id', $id)->with(['photos', 'likes'])->orderBy(Shop::CREATED_AT, 'desc')->paginate();
         }
 
         clock($shops);
@@ -69,8 +69,9 @@ class WardController extends Controller
     }
 
     /**
-     * 23区毎のページでのソート
+     * 23区毎のページでのフィルター
      * @param string $id
+     * @param Request $request
      * @return Shop
      */
     public function filter(string $id, Request $request)
@@ -78,20 +79,21 @@ class WardController extends Controller
 
         $filter = $request->all();
 
+        clock($filter);
         clock($filter["boardgame"]);
-        clock($id);
-        if ($filter["boardgame"] !== "" && $filter["price"] !== "") {
+        clock($filter["price"]);
+        if ($filter["boardgame"] !== null && $filter["price"] !== null) {
             $shops =
                 Shop::where('ward_id', $id)
                 ->where('boardgame_num', '>', $filter["boardgame"])
                 ->where('price', '>', $filter["price"])
                 ->with(['photos', 'likes'])->orderBy(Shop::CREATED_AT, 'desc')->paginate();
-        } elseif ($filter["boardgame"] !== "") {
+        } elseif ($filter["boardgame"] !== null) {
             $shops =
                 Shop::where('ward_id', $id)
                 ->where('boardgame_num', '>', $filter["boardgame"])
                 ->with(['photos', 'likes'])->orderBy(Shop::CREATED_AT, 'desc')->paginate();
-        } elseif ($filter["price"] !== "") {
+        } elseif ($filter["price"] !== null) {
             $shops =
                 Shop::where('ward_id', $id)
                 ->where('price', '>', $filter["price"])
@@ -106,6 +108,7 @@ class WardController extends Controller
     /**
      * 23区毎のページでのfilterとsort
      * @param string $id
+     * @param Request $request
      * @return Shop
      */
     public function filterSort(string $id, string $sort, Request $request)

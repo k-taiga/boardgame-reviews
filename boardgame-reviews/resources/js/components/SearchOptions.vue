@@ -12,9 +12,6 @@
                                 <option value="">ソート順</option>
                                 <option value="review">レビュー数</option>
                                 <option value="follower">フォロワー数</option>
-                                <!-- <option v-for="sort in sorts" :key="sort.id">{{
-                                    sort
-                                }}</option> -->
                             </select>
                         </span>
                         <span class="icon is-left">
@@ -49,7 +46,7 @@
                 <div class="field">
                     <div class="control has-icons-left">
                         <span class="select is-empty">
-                            <select>
+                            <select v-model="priceSelected">
                                 <option value="">予算</option>
                                 <option value="1000">1000円未満</option>
                                 <option value="2000">2000円</option>
@@ -106,10 +103,9 @@ export default {
     data() {
         return {
             byo: false,
-            // sorts: ["ソート順", "レビュー数", "フォロワー数"],
             sort: "",
             boardgame: "",
-            prices: ""
+            price: ""
         };
     },
     computed: {
@@ -120,7 +116,9 @@ export default {
             set(value) {
                 this.sort = value;
                 this.$emit("sort", {
-                    sort: this.sortSelected
+                    sort: this.sortSelected,
+                    boardgame: this.boardgameSelected,
+                    price: this.priceSelected
                 });
             }
         },
@@ -129,19 +127,25 @@ export default {
                 return this.boardgame;
             },
             set(value) {
-                console.log(this.boardgameSelected);
-                // if (this.sortSelected != null) {
                 this.boardgame = value;
                 this.$emit("sort", {
                     sort: this.sortSelected,
-                    boardgame: this.boardgameSelected
+                    boardgame: this.boardgameSelected,
+                    price: this.priceSelected
                 });
-                // } else {
-                //     this.$emit("sort", {
-                //         sort: null,
-                //         filter: value
-                //     });
-                // }
+            }
+        },
+        priceSelected: {
+            get() {
+                return this.price;
+            },
+            set(value) {
+                this.price = value;
+                this.$emit("sort", {
+                    sort: this.sortSelected,
+                    boardgame: this.boardgameSelected,
+                    price: this.priceSelected
+                });
             }
         }
     },

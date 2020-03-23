@@ -246,18 +246,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       byo: false,
-      // sorts: ["ソート順", "レビュー数", "フォロワー数"],
       sort: "",
       boardgame: "",
-      prices: ""
+      price: ""
     };
   },
   computed: {
@@ -268,7 +264,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       set: function set(value) {
         this.sort = value;
         this.$emit("sort", {
-          sort: this.sortSelected
+          sort: this.sortSelected,
+          boardgame: this.boardgameSelected,
+          price: this.priceSelected
         });
       }
     },
@@ -277,18 +275,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return this.boardgame;
       },
       set: function set(value) {
-        console.log(this.boardgameSelected); // if (this.sortSelected != null) {
-
         this.boardgame = value;
         this.$emit("sort", {
           sort: this.sortSelected,
-          boardgame: this.boardgameSelected
-        }); // } else {
-        //     this.$emit("sort", {
-        //         sort: null,
-        //         filter: value
-        //     });
-        // }
+          boardgame: this.boardgameSelected,
+          price: this.priceSelected
+        });
+      }
+    },
+    priceSelected: {
+      get: function get() {
+        return this.price;
+      },
+      set: function set(value) {
+        this.price = value;
+        this.$emit("sort", {
+          sort: this.sortSelected,
+          boardgame: this.boardgameSelected,
+          price: this.priceSelected
+        });
       }
     }
   },
@@ -420,7 +425,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.button.is-medium[data-v-fefb60b0] {\r\n    background-color: #5bafc4;\n}\r\n", ""]);
+exports.push([module.i, "\n.button.is-medium[data-v-fefb60b0] {\n    background-color: #5bafc4;\n}\n", ""]);
 
 // exports
 
@@ -458,7 +463,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.title[data-v-e1ea323e],\r\n.subtitle[data-v-e1ea323e],\r\n.content[data-v-e1ea323e] {\r\n  font-family: Merriweather;\n}\r\n", ""]);
+exports.push([module.i, "\n.title[data-v-e1ea323e],\n.subtitle[data-v-e1ea323e],\n.content[data-v-e1ea323e] {\n  font-family: Merriweather;\n}\n", ""]);
 
 // exports
 
@@ -842,7 +847,59 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(4),
+      _c("div", { staticClass: "level-item" }, [
+        _c("div", { staticClass: "field" }, [
+          _c("div", { staticClass: "control has-icons-left" }, [
+            _c("span", { staticClass: "select is-empty" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.priceSelected,
+                      expression: "priceSelected"
+                    }
+                  ],
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.priceSelected = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "" } }, [_vm._v("予算")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "1000" } }, [
+                    _vm._v("1000円未満")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "2000" } }, [
+                    _vm._v("2000円")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "3000" } }, [
+                    _vm._v("3000円以上")
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _vm._m(4)
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "level-item" }, [
         _c("div", { staticClass: "field" }, [
@@ -948,28 +1005,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "level-item" }, [
-      _c("div", { staticClass: "field" }, [
-        _c("div", { staticClass: "control has-icons-left" }, [
-          _c("span", { staticClass: "select is-empty" }, [
-            _c("select", [
-              _c("option", { attrs: { value: "" } }, [_vm._v("予算")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "1000" } }, [
-                _vm._v("1000円未満")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "2000" } }, [_vm._v("2000円")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "3000" } }, [_vm._v("3000円以上")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "icon is-left" }, [
-            _c("i", { staticClass: "fas fa-money-bill-wave" })
-          ])
-        ])
-      ])
+    return _c("span", { staticClass: "icon is-left" }, [
+      _c("i", { staticClass: "fas fa-money-bill-wave" })
     ])
   }
 ]
