@@ -33,14 +33,14 @@
                     <div class="control has-icons-left">
                         <span class="select is-empty">
                             <select v-model="boardgameSelected">
-                                <option disabled>ボードゲームの数</option>
+                                <option value="">ボードゲームの数</option>
                                 <option value="100">100</option>
                                 <option value="200">200</option>
                                 <option value="300">300個以上</option>
                             </select>
                         </span>
                         <span class="icon is-left">
-                            <i class="fas fa-sort-numeric-down-alt"></i>
+                            <i class="fas fa-dice"></i>
                         </span>
                     </div>
                 </div>
@@ -50,17 +50,10 @@
                     <div class="control has-icons-left">
                         <span class="select is-empty">
                             <select>
-                                <option
-                                    disabled="disabled"
-                                    hidden="hidden"
-                                    selected
-                                    >予算</option
-                                >
-                                <option
-                                    v-for="price in prices"
-                                    :key="price.id"
-                                    >{{ price }}</option
-                                >
+                                <option value="">予算</option>
+                                <option value="1000">1000円未満</option>
+                                <option value="2000">2000円</option>
+                                <option value="3000">3000円以上</option>
                             </select>
                         </span>
                         <span class="icon is-left">
@@ -116,7 +109,7 @@ export default {
             // sorts: ["ソート順", "レビュー数", "フォロワー数"],
             sort: "",
             boardgame: "",
-            prices: ["~1000", "2000", "3000以上"]
+            prices: ""
         };
     },
     computed: {

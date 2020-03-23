@@ -249,13 +249,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -264,7 +257,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       // sorts: ["ソート順", "レビュー数", "フォロワー数"],
       sort: "",
       boardgame: "",
-      prices: ["~1000", "2000", "3000以上"]
+      prices: ""
     };
   },
   computed: {
@@ -427,7 +420,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.button.is-medium[data-v-fefb60b0] {\n    background-color: #5bafc4;\n}\n", ""]);
+exports.push([module.i, "\n.button.is-medium[data-v-fefb60b0] {\r\n    background-color: #5bafc4;\n}\r\n", ""]);
 
 // exports
 
@@ -465,7 +458,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.title[data-v-e1ea323e],\n.subtitle[data-v-e1ea323e],\n.content[data-v-e1ea323e] {\n  font-family: Merriweather;\n}\n", ""]);
+exports.push([module.i, "\n.title[data-v-e1ea323e],\r\n.subtitle[data-v-e1ea323e],\r\n.content[data-v-e1ea323e] {\r\n  font-family: Merriweather;\n}\r\n", ""]);
 
 // exports
 
@@ -829,7 +822,7 @@ var render = function() {
                   }
                 },
                 [
-                  _c("option", { attrs: { disabled: "" } }, [
+                  _c("option", { attrs: { value: "" } }, [
                     _vm._v("ボードゲームの数")
                   ]),
                   _vm._v(" "),
@@ -849,39 +842,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "level-item" }, [
-        _c("div", { staticClass: "field" }, [
-          _c("div", { staticClass: "control has-icons-left" }, [
-            _c("span", { staticClass: "select is-empty" }, [
-              _c(
-                "select",
-                [
-                  _c(
-                    "option",
-                    {
-                      attrs: {
-                        disabled: "disabled",
-                        hidden: "hidden",
-                        selected: ""
-                      }
-                    },
-                    [_vm._v("予算")]
-                  ),
-                  _vm._v(" "),
-                  _vm._l(_vm.prices, function(price) {
-                    return _c("option", { key: price.id }, [
-                      _vm._v(_vm._s(price))
-                    ])
-                  })
-                ],
-                2
-              )
-            ]),
-            _vm._v(" "),
-            _vm._m(4)
-          ])
-        ])
-      ]),
+      _vm._m(4),
       _vm._v(" "),
       _c("div", { staticClass: "level-item" }, [
         _c("div", { staticClass: "field" }, [
@@ -980,15 +941,35 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "icon is-left" }, [
-      _c("i", { staticClass: "fas fa-sort-numeric-down-alt" })
+      _c("i", { staticClass: "fas fa-dice" })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "icon is-left" }, [
-      _c("i", { staticClass: "fas fa-money-bill-wave" })
+    return _c("div", { staticClass: "level-item" }, [
+      _c("div", { staticClass: "field" }, [
+        _c("div", { staticClass: "control has-icons-left" }, [
+          _c("span", { staticClass: "select is-empty" }, [
+            _c("select", [
+              _c("option", { attrs: { value: "" } }, [_vm._v("予算")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "1000" } }, [
+                _vm._v("1000円未満")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "2000" } }, [_vm._v("2000円")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "3000" } }, [_vm._v("3000円以上")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "icon is-left" }, [
+            _c("i", { staticClass: "fas fa-money-bill-wave" })
+          ])
+        ])
+      ])
     ])
   }
 ]

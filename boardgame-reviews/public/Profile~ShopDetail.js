@@ -163,7 +163,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\na[data-v-c259b9a4] {\n  color: #69569c;\n  font-weight: bold;\n}\n", ""]);
+exports.push([module.i, "\na[data-v-c259b9a4] {\r\n  color: #69569c;\r\n  font-weight: bold;\n}\r\n", ""]);
 
 // exports
 
@@ -182,7 +182,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.user_icon[data-v-581af77e] {\n  fill: #c0c4cc;\n}\n", ""]);
+exports.push([module.i, "\n.user_icon[data-v-581af77e] {\r\n  fill: #c0c4cc;\n}\r\n", ""]);
 
 // exports
 

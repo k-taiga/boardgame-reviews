@@ -114,7 +114,7 @@ export default {
             console.log(value);
 
             const sort = value.sort;
-            var filter = [];
+            let filter = [];
             filter["boardgame"] = value.filter;
             console.log(filter);
 

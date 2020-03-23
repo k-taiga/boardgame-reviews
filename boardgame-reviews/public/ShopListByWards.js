@@ -478,7 +478,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\na[data-v-c259b9a4] {\n  color: #69569c;\n  font-weight: bold;\n}\n", ""]);
+exports.push([module.i, "\na[data-v-c259b9a4] {\r\n  color: #69569c;\r\n  font-weight: bold;\n}\r\n", ""]);
 
 // exports
 
