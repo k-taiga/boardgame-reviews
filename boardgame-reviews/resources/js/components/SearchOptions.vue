@@ -48,9 +48,9 @@
                         <span class="select is-empty">
                             <select v-model="priceSelected">
                                 <option value="">予算</option>
-                                <option value="1000">1000円未満</option>
-                                <option value="2000">2000円</option>
-                                <option value="3000">3000円以上</option>
+                                <option value="1000">1000円以内</option>
+                                <option value="2000">2000円以内</option>
+                                <option value="3000">3000円以内</option>
                             </select>
                         </span>
                         <span class="icon is-left">
@@ -64,7 +64,7 @@
                     <label class="switch">
                         <span class="check">
                             <el-switch
-                                v-model="byo"
+                                v-model="byoSelected"
                                 active-color="#13ce66"
                                 inactive-color="#b5b5b5"
                             ></el-switch>
@@ -118,7 +118,8 @@ export default {
                 this.$emit("sort", {
                     sort: this.sortSelected,
                     boardgame: this.boardgameSelected,
-                    price: this.priceSelected
+                    price: this.priceSelected,
+                    byo: this.byoSelected
                 });
             }
         },
@@ -131,7 +132,8 @@ export default {
                 this.$emit("sort", {
                     sort: this.sortSelected,
                     boardgame: this.boardgameSelected,
-                    price: this.priceSelected
+                    price: this.priceSelected,
+                    byo: this.byoSelected
                 });
             }
         },
@@ -144,7 +146,29 @@ export default {
                 this.$emit("sort", {
                     sort: this.sortSelected,
                     boardgame: this.boardgameSelected,
-                    price: this.priceSelected
+                    price: this.priceSelected,
+                    byo: this.byoSelected
+                });
+            }
+        },
+        byoSelected: {
+            get() {
+                // if (this.byo) {
+                //     return "1";
+                // } else {
+                //     return "0";
+                // }
+                return this.byo;
+            },
+            set(value) {
+                this.byo = value;
+
+                let byo_flg = value ? "1" : "";
+                this.$emit("sort", {
+                    sort: this.sortSelected,
+                    boardgame: this.boardgameSelected,
+                    price: this.priceSelected,
+                    byo: byo_flg
                 });
             }
         }

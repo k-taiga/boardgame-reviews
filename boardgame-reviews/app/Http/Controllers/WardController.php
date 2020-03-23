@@ -58,9 +58,6 @@ class WardController extends Controller
                 Shop::select('shops.*')->leftjoin('likes', 'shops.id', '=', 'likes.shop_id')->where('ward_id', $id)
                 ->distinct()->with(['photos', 'likes'])
                 ->withCount('likes')->orderBy('likes_count', 'desc')->paginate();
-        } else {
-            // defaultのソート順が来たら戻す
-            $shops = Shop::where('ward_id', $id)->with(['photos', 'likes'])->orderBy(Shop::CREATED_AT, 'desc')->paginate();
         }
 
         clock($shops);
@@ -82,21 +79,34 @@ class WardController extends Controller
         clock($filter);
         clock($filter["boardgame"]);
         clock($filter["price"]);
-        if ($filter["boardgame"] !== null && $filter["price"] !== null) {
+        // フィルター全部
+        if ($filter["boardgame"] !== null && $filter["price"] !== null && $filter["byo_flg"] !== null) {
             $shops =
                 Shop::where('ward_id', $id)
                 ->where('boardgame_num', '>', $filter["boardgame"])
-                ->where('price', '>', $filter["price"])
+                ->where('price', '<=', $filter["price"])
+                ->where('byo_flg', $filter["byo_flg"])
                 ->with(['photos', 'likes'])->orderBy(Shop::CREATED_AT, 'desc')->paginate();
-        } elseif ($filter["boardgame"] !== null) {
+            // ボードゲームと予算
+        } elseif ($filter["boardgame"] !== null && $filter["price"] !== null) {
             $shops =
                 Shop::where('ward_id', $id)
-                ->where('boardgame_num', '>', $filter["boardgame"])
+                ->where('boardgame_num', '>=', $filter["boardgame"])
+                ->where('price', '<=', $filter["price"])
                 ->with(['photos', 'likes'])->orderBy(Shop::CREATED_AT, 'desc')->paginate();
-        } elseif ($filter["price"] !== null) {
+            // ボードゲームとBYOフラグ
+        } elseif ($filter["boardgame"] !== null && $filter["byo_flg"] !== null) {
             $shops =
                 Shop::where('ward_id', $id)
-                ->where('price', '>', $filter["price"])
+                ->where('boardgame_num', '>=', $filter["boardgame"])
+                ->where('byo_flg', $filter["byo_flg"])
+                ->with(['photos', 'likes'])->orderBy(Shop::CREATED_AT, 'desc')->paginate();
+            // 予算とBYOフラグ
+        } elseif ($filter["price"] !== null && $filter["byo_flg"] !== null) {
+            $shops =
+                Shop::where('ward_id', $id)
+                ->where('price', '<=', $filter["price"])
+                ->where('byo_flg', $filter["byo_flg"])
                 ->with(['photos', 'likes'])->orderBy(Shop::CREATED_AT, 'desc')->paginate();
         }
 
@@ -123,21 +133,90 @@ class WardController extends Controller
 
         clock($filter["boardgame"]);
 
-        // boardgameの絞り込みとそれのsort
-        if ($sort === "review" && $filter["boardgame"] !== "") {
-            $shops =
-                Shop::select('shops.*')->leftjoin('reviews', 'shops.id', '=', 'reviews.shop_id')->where('ward_id', $id)
-                ->where('boardgame_num', '>', $filter["boardgame"])
-                ->distinct()->with(['photos', 'likes'])
-                ->withCount('reviews')->orderBy('reviews_count', 'desc')->paginate();
-        } elseif ($sort === "follower" && $filter["boardgame"] !== "") {
-            $shops =
-                Shop::select('shops.*')->leftjoin('likes', 'shops.id', '=', 'likes.shop_id')
-                ->where('ward_id', $id)
-                ->where('boardgame_num', '>', $filter["boardgame"])
-                ->distinct()->with(['photos', 'likes'])
-                ->withCount('likes')->orderBy('likes_count', 'desc')->paginate();
+        // sort review
+        if ($sort === "review") {
+            // フィルター全部
+            if ($filter["boardgame"] !== null && $filter["price"] !== null && $filter["byo_flg"] !== null) {
+                $shops =
+                    Shop::select('shops.*')->leftjoin('reviews', 'shops.id', '=', 'reviews.shop_id')
+                    ->where('ward_id', $id)
+                    ->where('boardgame_num', '>', $filter["boardgame"])
+                    ->where('price', '<=', $filter["price"])
+                    ->where('byo_flg', $filter["byo_flg"])
+                    ->distinct()->with(['photos', 'likes'])
+                    ->withCount('reviews')->orderBy('reviews_count', 'desc')->paginate();
+                // ボードゲームと予算
+            } elseif ($filter["boardgame"] !== null && $filter["price"] !== null) {
+                $shops =
+                    Shop::select('shops.*')->leftjoin('reviews', 'shops.id', '=', 'reviews.shop_id')
+                    ->where('ward_id', $id)
+                    ->where('boardgame_num', '>', $filter["boardgame"])
+                    ->where('price', '<=', $filter["price"])
+                    ->distinct()->with(['photos', 'likes'])
+                    ->withCount('reviews')->orderBy('reviews_count', 'desc')->paginate();
+
+                // ボードゲームとBYOフラグ
+            } elseif ($filter["boardgame"] !== null && $filter["byo_flg"] !== null) {
+                $shops =
+                    Shop::select('shops.*')->leftjoin('reviews', 'shops.id', '=', 'reviews.shop_id')
+                    ->where('ward_id', $id)
+                    ->where('boardgame_num', '>', $filter["boardgame"])
+                    ->where('byo_flg', $filter["byo_flg"])
+                    ->distinct()->with(['photos', 'likes'])
+                    ->withCount('reviews')->orderBy('reviews_count', 'desc')->paginate();
+                // 予算とBYOフラグ
+            } elseif ($filter["price"] !== null && $filter["byo_flg"] !== null) {
+                $shops =
+                    Shop::select('shops.*')->leftjoin('reviews', 'shops.id', '=', 'reviews.shop_id')
+                    ->where('ward_id', $id)
+                    ->where('price', '<=', $filter["price"])
+                    ->where('byo_flg', $filter["byo_flg"])
+                    ->distinct()->with(['photos', 'likes'])
+                    ->withCount('reviews')->orderBy('reviews_count', 'desc')->paginate();
+            }
+        } elseif ($sort === "follower") {
+            // フィルター全部
+            if ($filter["boardgame"] !== null && $filter["price"] !== null && $filter["byo_flg"] !== null) {
+                $shops =
+                    Shop::select('shops.*')->leftjoin('likes', 'shops.id', '=', 'likes.shop_id')
+                    ->where('ward_id', $id)
+                    ->where('boardgame_num', '>', $filter["boardgame"])
+                    ->where('price', '<=', $filter["price"])
+                    ->where('byo_flg', $filter["byo_flg"])
+                    ->distinct()->with(['photos', 'likes'])
+                    ->withCount('likes')->orderBy('likes_count', 'desc')->paginate();
+
+                // ボードゲームと予算
+            } elseif ($filter["boardgame"] !== null && $filter["price"] !== null) {
+                $shops =
+                    Shop::select('shops.*')->leftjoin('likes', 'shops.id', '=', 'likes.shop_id')
+                    ->where('ward_id', $id)
+                    ->where('boardgame_num', '>', $filter["boardgame"])
+                    ->where('price', '<=', $filter["price"])
+                    ->distinct()->with(['photos', 'likes'])
+                    ->withCount('likes')->orderBy('likes_count', 'desc')->paginate();
+
+                // ボードゲームとBYOフラグ
+            } elseif ($filter["boardgame"] !== null && $filter["byo_flg"] !== null) {
+                $shops =
+                    Shop::select('shops.*')->leftjoin('likes', 'shops.id', '=', 'likes.shop_id')
+                    ->where('ward_id', $id)
+                    ->where('boardgame_num', '>', $filter["boardgame"])
+                    ->where('byo_flg', $filter["byo_flg"])
+                    ->distinct()->with(['photos', 'likes'])
+                    ->withCount('likes')->orderBy('likes_count', 'desc')->paginate();
+                // 予算とBYOフラグ
+            } elseif ($filter["price"] !== null && $filter["byo_flg"] !== null) {
+                $shops =
+                    Shop::select('shops.*')->leftjoin('likes', 'shops.id', '=', 'likes.shop_id')
+                    ->where('ward_id', $id)
+                    ->where('price', '<=', $filter["price"])
+                    ->where('byo_flg', $filter["byo_flg"])
+                    ->distinct()->with(['photos', 'likes'])
+                    ->withCount('likes')->orderBy('likes_count', 'desc')->paginate();
+            }
         }
+
 
         // clock($shops);
 

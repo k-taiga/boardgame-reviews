@@ -266,7 +266,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.$emit("sort", {
           sort: this.sortSelected,
           boardgame: this.boardgameSelected,
-          price: this.priceSelected
+          price: this.priceSelected,
+          byo: this.byoSelected
         });
       }
     },
@@ -279,7 +280,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.$emit("sort", {
           sort: this.sortSelected,
           boardgame: this.boardgameSelected,
-          price: this.priceSelected
+          price: this.priceSelected,
+          byo: this.byoSelected
         });
       }
     },
@@ -292,7 +294,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.$emit("sort", {
           sort: this.sortSelected,
           boardgame: this.boardgameSelected,
-          price: this.priceSelected
+          price: this.priceSelected,
+          byo: this.byoSelected
+        });
+      }
+    },
+    byoSelected: {
+      get: function get() {
+        // if (this.byo) {
+        //     return "1";
+        // } else {
+        //     return "0";
+        // }
+        return this.byo;
+      },
+      set: function set(value) {
+        this.byo = value;
+        var byo_flg = value ? "1" : "";
+        this.$emit("sort", {
+          sort: this.sortSelected,
+          boardgame: this.boardgameSelected,
+          price: this.priceSelected,
+          byo: byo_flg
         });
       }
     }
@@ -882,15 +905,15 @@ var render = function() {
                   _c("option", { attrs: { value: "" } }, [_vm._v("予算")]),
                   _vm._v(" "),
                   _c("option", { attrs: { value: "1000" } }, [
-                    _vm._v("1000円未満")
+                    _vm._v("1000円以内")
                   ]),
                   _vm._v(" "),
                   _c("option", { attrs: { value: "2000" } }, [
-                    _vm._v("2000円")
+                    _vm._v("2000円以内")
                   ]),
                   _vm._v(" "),
                   _c("option", { attrs: { value: "3000" } }, [
-                    _vm._v("3000円以上")
+                    _vm._v("3000円以内")
                   ])
                 ]
               )
@@ -914,11 +937,11 @@ var render = function() {
                     "inactive-color": "#b5b5b5"
                   },
                   model: {
-                    value: _vm.byo,
+                    value: _vm.byoSelected,
                     callback: function($$v) {
-                      _vm.byo = $$v
+                      _vm.byoSelected = $$v
                     },
-                    expression: "byo"
+                    expression: "byoSelected"
                   }
                 })
               ],

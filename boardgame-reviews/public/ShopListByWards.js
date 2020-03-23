@@ -352,7 +352,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _sort = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(value) {
-        var sort, filter, response, _response, _response2;
+        var sort, filter, response, _response, _response2, _response3;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
@@ -363,11 +363,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 filter = "";
                 filter = {
                   boardgame: value.boardgame,
-                  price: value.price
+                  price: value.price,
+                  byo_flg: value.byo
                 };
                 console.log(filter); // filterは複数の可能性があるため、配列でPOSTする
 
-                if (!(sort !== "" && (filter.boardgame !== "" || filter.price !== ""))) {
+                if (!(sort !== "" && (filter.boardgame !== "" || filter.price !== "" || filter.byo !== ""))) {
                   _context4.next = 16;
                   break;
                 }
@@ -389,12 +390,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 13:
                 this.shops = response.data.data;
-                _context4.next = 34;
+                _context4.next = 44;
                 break;
 
               case 16:
                 if (!( // ソートだけ
-                sort !== "" && filter.boardgame === "" && filter.price === "")) {
+                sort !== "" && filter.boardgame === "" && filter.price === "" && filter.byo === "")) {
                   _context4.next = 26;
                   break;
                 }
@@ -415,13 +416,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 23:
                 this.shops = _response.data.data;
-                _context4.next = 34;
+                _context4.next = 44;
                 break;
 
               case 26:
                 if (!( // フィルターだけ
-                sort === "" && (filter.boardgame !== "" || filter.price !== ""))) {
-                  _context4.next = 34;
+                sort === "" && (filter.boardgame !== "" || filter.price !== "" || filter.byo !== ""))) {
+                  _context4.next = 36;
                   break;
                 }
 
@@ -441,8 +442,34 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 33:
                 this.shops = _response2.data.data;
+                _context4.next = 44;
+                break;
 
-              case 34:
+              case 36:
+                if (!( // 全て空の場合は元に戻す
+                sort === "" && filter.boardgame === "" && filter.price === "" && filter.byo === "")) {
+                  _context4.next = 44;
+                  break;
+                }
+
+                _context4.next = 39;
+                return axios.get("/api/wards/".concat(this.wardId));
+
+              case 39:
+                _response3 = _context4.sent;
+
+                if (!(_response3.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
+                  _context4.next = 43;
+                  break;
+                }
+
+                this.$store.commit("error/setCode", _response3.status);
+                return _context4.abrupt("return", false);
+
+              case 43:
+                this.shops = _response3.data.data;
+
+              case 44:
               case "end":
                 return _context4.stop();
             }

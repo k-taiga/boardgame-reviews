@@ -115,14 +115,20 @@ export default {
 
             const sort = value.sort;
             let filter = "";
-            filter = { boardgame: value.boardgame, price: value.price };
+            filter = {
+                boardgame: value.boardgame,
+                price: value.price,
+                byo_flg: value.byo
+            };
 
             console.log(filter);
 
             // filterは複数の可能性があるため、配列でPOSTする
             if (
                 sort !== "" &&
-                (filter.boardgame !== "" || filter.price !== "")
+                (filter.boardgame !== "" ||
+                    filter.price !== "" ||
+                    filter.byo !== "")
             ) {
                 console.log("ifの中に通った！");
                 const response = await axios.post(
@@ -138,7 +144,8 @@ export default {
                 // ソートだけ
                 sort !== "" &&
                 filter.boardgame === "" &&
-                filter.price === ""
+                filter.price === "" &&
+                filter.byo === ""
             ) {
                 const response = await axios.get(
                     `/api/wards/${this.wardId}/${sort}`
@@ -151,7 +158,9 @@ export default {
             } else if (
                 // フィルターだけ
                 sort === "" &&
-                (filter.boardgame !== "" || filter.price !== "")
+                (filter.boardgame !== "" ||
+                    filter.price !== "" ||
+                    filter.byo !== "")
             ) {
                 const response = await axios.post(
                     `/api/wards/${this.wardId}/`,
@@ -161,6 +170,21 @@ export default {
                     this.$store.commit("error/setCode", response.status);
                     return false;
                 }
+                this.shops = response.data.data;
+            } else if (
+                // 全て空の場合は元に戻す
+                sort === "" &&
+                filter.boardgame === "" &&
+                filter.price === "" &&
+                filter.byo === ""
+            ) {
+                const response = await axios.get(`/api/wards/${this.wardId}`);
+
+                if (response.status !== OK) {
+                    this.$store.commit("error/setCode", response.status);
+                    return false;
+                }
+
                 this.shops = response.data.data;
             }
 
