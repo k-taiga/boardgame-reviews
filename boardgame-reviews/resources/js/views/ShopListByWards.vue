@@ -139,25 +139,27 @@ export default {
                 }
                 this.shops = response.data.data;
             }
-            // else if (sort != "") {
-            //     const response = await axios.get(
-            //         `/api/wards/${this.wardId}/${sort}`
-            //     );
-            //     if (response.status !== OK) {
-            //         this.$store.commit("error/setCode", response.status);
-            //         return false;
-            //     }
-            //     this.shops = response.data.data;
-            // } else if (filter != "") {
-            //     const response = await axios.get(
-            //         `/api/wards/${this.wardId}/${filter}`
-            //     );
-            //     if (response.status !== OK) {
-            //         this.$store.commit("error/setCode", response.status);
-            //         return false;
-            //     }
-            //     this.shops = response.data.data;
-            // }
+            // ソートだけ
+            else if (sort != "") {
+                const response = await axios.get(
+                    `/api/wards/${this.wardId}/${sort}`
+                );
+                if (response.status !== OK) {
+                    this.$store.commit("error/setCode", response.status);
+                    return false;
+                }
+                this.shops = response.data.data;
+            // フィルターだけ
+            } else if (filter != "") {
+                const response = await axios.get(
+                    `/api/wards/${this.wardId}/${filter}`
+                );
+                if (response.status !== OK) {
+                    this.$store.commit("error/setCode", response.status);
+                    return false;
+                }
+                this.shops = response.data.data;
+            }
 
             // console.log(this.shops);
         },

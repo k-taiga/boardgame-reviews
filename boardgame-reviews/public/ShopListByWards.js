@@ -352,7 +352,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _sort = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(value) {
-        var sort, filter, response;
+        var sort, filter, response, _response, _response2;
+
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
@@ -376,7 +377,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 console.log(filter); // filterは複数の可能性があるため、配列でPOSTする
 
                 if (!(sort !== "" && filter !== "")) {
-                  _context4.next = 15;
+                  _context4.next = 17;
                   break;
                 }
 
@@ -397,8 +398,59 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 14:
                 this.shops = response.data.data;
+                _context4.next = 35;
+                break;
 
-              case 15:
+              case 17:
+                if (!(sort != "")) {
+                  _context4.next = 27;
+                  break;
+                }
+
+                _context4.next = 20;
+                return axios.get("/api/wards/".concat(this.wardId, "/").concat(sort));
+
+              case 20:
+                _response = _context4.sent;
+
+                if (!(_response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
+                  _context4.next = 24;
+                  break;
+                }
+
+                this.$store.commit("error/setCode", _response.status);
+                return _context4.abrupt("return", false);
+
+              case 24:
+                this.shops = _response.data.data; // フィルターだけ
+
+                _context4.next = 35;
+                break;
+
+              case 27:
+                if (!(filter != "")) {
+                  _context4.next = 35;
+                  break;
+                }
+
+                _context4.next = 30;
+                return axios.get("/api/wards/".concat(this.wardId, "/").concat(filter));
+
+              case 30:
+                _response2 = _context4.sent;
+
+                if (!(_response2.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
+                  _context4.next = 34;
+                  break;
+                }
+
+                this.$store.commit("error/setCode", _response2.status);
+                return _context4.abrupt("return", false);
+
+              case 34:
+                this.shops = _response2.data.data;
+
+              case 35:
               case "end":
                 return _context4.stop();
             }
