@@ -134,7 +134,7 @@ export default {
                 this.boardgame = value;
                 this.$emit("sort", {
                     sort: this.sortSelected,
-                    filter: this.boardgameSelected
+                    boardgame: this.boardgameSelected
                 });
                 // } else {
                 //     this.$emit("sort", {

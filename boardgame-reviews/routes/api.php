@@ -39,6 +39,9 @@ Route::get('/wards/{id}', 'WardController@show')->name('ward.show');
 // 23区でのソート
 Route::get('/wards/{id}/{sort}', 'WardController@sort')->name('ward.sort');
 
+// 23区でのフィルター
+Route::post('/wards/{id}/', 'WardController@filter')->name('ward.filter');
+
 // 23区でのフィルター＆ソート
 Route::post('/wards/{id}/{sort}', 'WardController@filterSort')->name('ward.filter_sort');
 

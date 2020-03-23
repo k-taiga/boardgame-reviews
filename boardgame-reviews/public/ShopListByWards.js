@@ -359,55 +359,46 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 console.log(value);
                 sort = value.sort;
-                filter = [];
-                filter["boardgame"] = value.filter;
-                console.log(filter);
+                filter = {};
 
-                if (!(sort != "" && filter != "")) {
-                  _context4.next = 13;
+                if (value.boardgame !== "") {
+                  filter = {
+                    boardgame: value.boardgame
+                  };
+                }
+
+                if (value.price !== "") {
+                  filter = {
+                    price: value.price
+                  };
+                }
+
+                console.log(filter); // filterは複数の可能性があるため、配列でPOSTする
+
+                if (!(sort !== "" && filter !== "")) {
+                  _context4.next = 15;
                   break;
                 }
 
-                _context4.next = 8;
-                return axios.post("/api/wards/".concat(this.wardId, "/").concat(sort), $filter);
+                console.log("ifの中に通った！");
+                _context4.next = 10;
+                return axios.post("/api/wards/".concat(this.wardId, "/").concat(sort), filter);
 
-              case 8:
+              case 10:
                 response = _context4.sent;
 
                 if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
-                  _context4.next = 12;
+                  _context4.next = 14;
                   break;
                 }
 
                 this.$store.commit("error/setCode", response.status);
                 return _context4.abrupt("return", false);
 
-              case 12:
+              case 14:
                 this.shops = response.data.data;
 
-              case 13:
-                // else if (sort != "") {
-                //     const response = await axios.get(
-                //         `/api/wards/${this.wardId}/${sort}`
-                //     );
-                //     if (response.status !== OK) {
-                //         this.$store.commit("error/setCode", response.status);
-                //         return false;
-                //     }
-                //     this.shops = response.data.data;
-                // } else if (filter != "") {
-                //     const response = await axios.get(
-                //         `/api/wards/${this.wardId}/${filter}`
-                //     );
-                //     if (response.status !== OK) {
-                //         this.$store.commit("error/setCode", response.status);
-                //         return false;
-                //     }
-                //     this.shops = response.data.data;
-                // }
-                console.log(this.shops);
-
-              case 14:
+              case 15:
               case "end":
                 return _context4.stop();
             }

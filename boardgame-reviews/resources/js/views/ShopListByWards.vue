@@ -114,14 +114,24 @@ export default {
             console.log(value);
 
             const sort = value.sort;
-            let filter = [];
-            filter["boardgame"] = value.filter;
+            let filter = {};
+
+            if(value.boardgame !== "") {
+                filter =  { boardgame: value.boardgame };
+            }
+
+            if(value.price !== "") {
+                filter =  { price: value.price };
+            }
+
             console.log(filter);
 
-            if (sort != "" && filter != "") {
+            // filterは複数の可能性があるため、配列でPOSTする
+            if (sort !== "" && filter !== "") {
+                console.log("ifの中に通った！");
                 const response = await axios.post(
                     `/api/wards/${this.wardId}/${sort}`,
-                    $filter
+                    filter
                 );
                 if (response.status !== OK) {
                     this.$store.commit("error/setCode", response.status);
@@ -149,7 +159,7 @@ export default {
             //     this.shops = response.data.data;
             // }
 
-            console.log(this.shops);
+            // console.log(this.shops);
         },
         valuecheck() {
             console.log(this.wardId);
