@@ -216,48 +216,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -398,8 +356,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 11:
                 this.fetchShop();
+                this.reviewMessage();
 
-              case 12:
+              case 13:
               case "end":
                 return _context2.stop();
             }
@@ -558,7 +517,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return fetchUser;
-    }()
+    }(),
+    reviewMessage: function reviewMessage() {
+      this.$notify({
+        message: "レビューしていただき誠にありがとうございます！",
+        position: "top-right"
+      });
+    }
   },
   watch: {
     $route: {
@@ -715,27 +680,15 @@ var render = function() {
                   _c("div", { staticClass: "tile is-parent is-vertical" }, [
                     _c("article", { staticClass: "tile is-child box" }, [
                       _c("p", { staticClass: "title has-text-centered" }, [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(_vm.shop.shop_name) +
-                            "\n                        "
-                        )
+                        _vm._v(_vm._s(_vm.shop.shop_name))
                       ]),
                       _vm._v(" "),
                       _c("p", { staticClass: "subtitle has-text-centered" }, [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(_vm.shop.address) +
-                            "\n                        "
-                        )
+                        _vm._v(_vm._s(_vm.shop.address))
                       ]),
                       _vm._v(" "),
                       _c("p", { staticClass: "content has-text-centered" }, [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(_vm.shop.content) +
-                            "\n                        "
-                        )
+                        _vm._v(_vm._s(_vm.shop.content))
                       ]),
                       _vm._v(" "),
                       _vm._m(0),
@@ -826,25 +779,27 @@ var render = function() {
                                                   _c("p", [
                                                     _c("strong", [
                                                       _vm._v(
-                                                        "\n                                                        " +
+                                                        "\n                            " +
                                                           _vm._s(
                                                             review.author.name
                                                           ) +
-                                                          "\n                                                    "
+                                                          "\n                          "
                                                       )
                                                     ]),
                                                     _vm._v(" "),
                                                     _c("small", [
                                                       _vm._v(
-                                                        _vm._s(review.date)
+                                                        "\n                            " +
+                                                          _vm._s(review.date) +
+                                                          "\n                          "
                                                       )
                                                     ]),
                                                     _vm._v(" "),
                                                     _c("br"),
                                                     _vm._v(
-                                                      "\n                                                    " +
+                                                      "\n                          " +
                                                         _vm._s(review.content) +
-                                                        "\n                                                "
+                                                        "\n                        "
                                                     )
                                                   ])
                                                 ]
@@ -897,11 +852,7 @@ var render = function() {
                                             _vm.reviewErrors.content,
                                             function(msg) {
                                               return _c("li", { key: msg }, [
-                                                _vm._v(
-                                                  "\n                                        " +
-                                                    _vm._s(msg) +
-                                                    "\n                                    "
-                                                )
+                                                _vm._v(_vm._s(msg))
                                               ])
                                             }
                                           ),
@@ -993,7 +944,7 @@ var render = function() {
                           _vm._v(" "),
                           _c("span", [
                             _vm._v(
-                              "\n                                    View on\n                                    "
+                              "\n                  View on\n                  "
                             ),
                             _c(
                               "a",
@@ -1053,7 +1004,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("h2", { staticClass: "photo-detail__title" }, [
       _c("i", { staticClass: "icon ion-md-chatboxes" }),
-      _vm._v("Review\n                        ")
+      _vm._v("Review\n            ")
     ])
   },
   function() {
@@ -1070,11 +1021,7 @@ var staticRenderFns = [
                 staticClass: "button button--inverse",
                 attrs: { type: "submit" }
               },
-              [
-                _vm._v(
-                  "\n                                                        レビューを投稿する\n                                                    "
-                )
-              ]
+              [_vm._v("レビューを投稿する")]
             )
           ])
         ])
