@@ -3676,10 +3676,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     //     },
     $route: function $route(to, from) {
       this.$store.commit("error/setCode", null);
+      console.log(to);
+      console.log(from);
 
       if (to.path == "/sign_in" || to.path == "/sign_up") {
-        console.log("$routerが切り替わりました");
+        // console.log("$routerが切り替わりました");
         this.clearError();
+      } // サインイン後のrouting
+
+
+      if (to.path == "/" && from.path == "/sign_in") {
+        this.loginMessage();
       }
     }
   },
@@ -3732,6 +3739,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 if (this.apiStatus) {
                   this.$router.push("/sign_in");
+                  this.logoutMessage();
                 }
 
               case 3:
@@ -3751,7 +3759,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     clearError: function clearError() {
       this.$store.commit("auth/setLoginErrorMessages", null);
       this.$store.commit("auth/setRegisterErrorMessages", null);
-      console.log("clearErrorしました。");
+    },
+    loginMessage: function loginMessage() {
+      this.$notify({
+        title: "ログインしました",
+        type: "success",
+        position: "bottom-left"
+      });
+    },
+    logoutMessage: function logoutMessage() {
+      this.$notify({
+        title: "ログアウトしました。",
+        type: "success",
+        position: "bottom-left"
+      });
     }
   }
 });
@@ -6006,7 +6027,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\n.fade-enter[data-v-f348271a],\r\n.fade-leave-to[data-v-f348271a] {\r\n    opacity: 0;\n}\n.fade-enter-to[data-v-f348271a],\r\n.fade-leave[data-v-f348271a] {\r\n    opacity: 1;\n}\n.fade-enter-active[data-v-f348271a],\r\n.fade-leave-active[data-v-f348271a] {\r\n    -webkit-transition: opacity 0.3s;\r\n    transition: opacity 0.3s;\n}\n.container[data-v-f348271a] {\r\n    min-height: 100vh;\n}\r\n", ""]);
+exports.push([module.i, "\n.fade-enter[data-v-f348271a],\n.fade-leave-to[data-v-f348271a] {\n  opacity: 0;\n}\n.fade-enter-to[data-v-f348271a],\n.fade-leave[data-v-f348271a] {\n  opacity: 1;\n}\n.fade-enter-active[data-v-f348271a],\n.fade-leave-active[data-v-f348271a] {\n  -webkit-transition: opacity 0.3s;\n  transition: opacity 0.3s;\n}\n.container[data-v-f348271a] {\n  min-height: 100vh;\n}\n", ""]);
 
 // exports
 
@@ -6082,7 +6103,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.navbar[data-v-6dde423b] {\r\n  background-color: #a6d4cc;\n}\n.button.is-text[data-v-6dde423b] {\r\n  text-decoration: none;\n}\r\n", ""]);
+exports.push([module.i, "\n.navbar[data-v-6dde423b] {\n  background-color: #a6d4cc;\n}\n.button.is-text[data-v-6dde423b] {\n  text-decoration: none;\n}\n", ""]);
 
 // exports
 

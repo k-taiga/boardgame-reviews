@@ -1,15 +1,15 @@
 <template>
-    <div id="app">
-        <bdNavbar :user="user" @sign-out-clicked="signOut"></bdNavbar>
-        <main class="container">
-            <message />
-            <transition name="fade" mode="out-in">
-                <router-view />
-            </transition>
-        </main>
-        <bdFooter></bdFooter>
-        <errorModal></errorModal>
-    </div>
+  <div id="app">
+    <bdNavbar :user="user" @sign-out-clicked="signOut"></bdNavbar>
+    <main class="container">
+      <message />
+      <transition name="fade" mode="out-in">
+        <router-view />
+      </transition>
+    </main>
+    <bdFooter></bdFooter>
+    <errorModal></errorModal>
+  </div>
 </template>
 
 <script>
@@ -24,94 +24,115 @@ import store from "./store";
 import { NOT_FOUND, UNAUTHORIZED, INTERNAL_SERVER_ERROR } from "./util";
 
 export default {
-    name: "app",
-    components: { bdNavbar, bdFooter, message, errorModal, bdCarousel },
-    data() {
-        return {
-            user: null
-        };
-    },
-    // storeのステートを算出プロパティで参照しwatchで監視する
-    computed: {
-        //     errorCode() {
-        //         const response = this.$store.state.error.code;
+  name: "app",
+  components: { bdNavbar, bdFooter, message, errorModal, bdCarousel },
+  data() {
+    return {
+      user: null
+    };
+  },
+  // storeのステートを算出プロパティで参照しwatchで監視する
+  computed: {
+    //     errorCode() {
+    //         const response = this.$store.state.error.code;
 
-        //         // this.$router.push("/error", this.$store.state.error.code);
-        //         // if (response === INTERNAL_SERVER_ERROR) {
-        //         //     this.$router.push("/500");
-        //         // }
-        //     },
-        apiStatus() {
-            return this.$store.state.auth.apiStatus;
-        }
-    },
-    watch: {
-        //     errorCode: {
-        //         async handler(val) {
-        //             if (val === INTERNAL_SERVER_ERROR) {
-        //                 this.$router.push("/500");
-        //             } else if (val === UNAUTHORIZED) {
-        //                 // トークンをリフレッシュ
-        //                 await axios.get("/api/refresh-token");
-        //                 // ストアのuserをクリア
-        //                 this.$store.commit("auth/setUser", null);
-        //                 // ログイン画面へ
-        //                 this.$router.push("/login");
-        //             } else if (val === NOT_FOUND) {
-        //                 this.$router.push("/not-found");
-        //             }
-        //         },
-        //         immediate: true
-        //     },
-        $route(to, from) {
-            this.$store.commit("error/setCode", null);
-            if (to.path == "/sign_in" || to.path == "/sign_up") {
-                console.log("$routerが切り替わりました");
-                this.clearError();
-            }
-        }
-    },
-    async created() {
-        this.user = await this.$store.dispatch("auth/currentUser");
-        this.user = this.$store.getters["auth/check"];
-        console.log(this.user);
-    },
-    updated() {
-        this.user = this.$store.getters["auth/check"];
-        // this.user = this.$store.dispatch("auth/currentUser");
-        // console.log(this.user);
-    },
-    methods: {
-        async signOut() {
-            await this.$store.dispatch("auth/logout");
-
-            if (this.apiStatus) {
-                this.$router.push("/sign_in");
-            }
-        },
-        clearError() {
-            this.$store.commit("auth/setLoginErrorMessages", null);
-            this.$store.commit("auth/setRegisterErrorMessages", null);
-            console.log("clearErrorしました。");
-        }
+    //         // this.$router.push("/error", this.$store.state.error.code);
+    //         // if (response === INTERNAL_SERVER_ERROR) {
+    //         //     this.$router.push("/500");
+    //         // }
+    //     },
+    apiStatus() {
+      return this.$store.state.auth.apiStatus;
     }
+  },
+  watch: {
+    //     errorCode: {
+    //         async handler(val) {
+    //             if (val === INTERNAL_SERVER_ERROR) {
+    //                 this.$router.push("/500");
+    //             } else if (val === UNAUTHORIZED) {
+    //                 // トークンをリフレッシュ
+    //                 await axios.get("/api/refresh-token");
+    //                 // ストアのuserをクリア
+    //                 this.$store.commit("auth/setUser", null);
+    //                 // ログイン画面へ
+    //                 this.$router.push("/login");
+    //             } else if (val === NOT_FOUND) {
+    //                 this.$router.push("/not-found");
+    //             }
+    //         },
+    //         immediate: true
+    //     },
+    $route(to, from) {
+      this.$store.commit("error/setCode", null);
+      console.log(to);
+      console.log(from);
+      if (to.path == "/sign_in" || to.path == "/sign_up") {
+        // console.log("$routerが切り替わりました");
+        this.clearError();
+      }
+
+      // サインイン後のrouting
+      if (to.path == "/" && from.path == "/sign_in") {
+        this.loginMessage();
+      }
+    }
+  },
+  async created() {
+    this.user = await this.$store.dispatch("auth/currentUser");
+    this.user = this.$store.getters["auth/check"];
+    console.log(this.user);
+  },
+  updated() {
+    this.user = this.$store.getters["auth/check"];
+    // this.user = this.$store.dispatch("auth/currentUser");
+    // console.log(this.user);
+  },
+  methods: {
+    async signOut() {
+      await this.$store.dispatch("auth/logout");
+
+      if (this.apiStatus) {
+        this.$router.push("/sign_in");
+        this.logoutMessage();
+      }
+    },
+    clearError() {
+      this.$store.commit("auth/setLoginErrorMessages", null);
+      this.$store.commit("auth/setRegisterErrorMessages", null);
+    },
+    loginMessage() {
+      this.$notify({
+        title: "ログインしました",
+        type: "success",
+        position: "bottom-left"
+      });
+    },
+    logoutMessage() {
+      this.$notify({
+        title: "ログアウトしました。",
+        type: "success",
+        position: "bottom-left"
+      });
+    }
+  }
 };
 </script>
 
 <style scoped>
 .fade-enter,
 .fade-leave-to {
-    opacity: 0;
+  opacity: 0;
 }
 .fade-enter-to,
 .fade-leave {
-    opacity: 1;
+  opacity: 1;
 }
 .fade-enter-active,
 .fade-leave-active {
-    transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 .container {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 </style>
