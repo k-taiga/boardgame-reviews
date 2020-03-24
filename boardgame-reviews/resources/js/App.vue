@@ -105,14 +105,16 @@ export default {
       this.$notify({
         title: "ログインしました",
         type: "success",
-        position: "bottom-left"
+        position: "bottom-left",
+        showClose: false
       });
     },
     logoutMessage() {
       this.$notify({
         title: "ログアウトしました。",
         type: "success",
-        position: "bottom-left"
+        position: "bottom-left",
+        showClose: false
       });
     }
   }

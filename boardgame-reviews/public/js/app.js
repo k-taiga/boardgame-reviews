@@ -3764,14 +3764,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.$notify({
         title: "ログインしました",
         type: "success",
-        position: "bottom-left"
+        position: "bottom-left",
+        showClose: false
       });
     },
     logoutMessage: function logoutMessage() {
       this.$notify({
         title: "ログアウトしました。",
         type: "success",
-        position: "bottom-left"
+        position: "bottom-left",
+        showClose: false
       });
     }
   }

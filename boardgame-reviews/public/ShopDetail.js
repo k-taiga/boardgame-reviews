@@ -521,7 +521,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     reviewMessage: function reviewMessage() {
       this.$notify({
         message: "レビューしていただき誠にありがとうございます！",
-        position: "top-right"
+        position: "top-right",
+        showClose: false
       });
     }
   },

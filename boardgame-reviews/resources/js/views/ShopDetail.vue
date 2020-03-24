@@ -315,7 +315,8 @@ export default {
     reviewMessage() {
       this.$notify({
         message: "レビューしていただき誠にありがとうございます！",
-        position: "top-right"
+        position: "top-right",
+        showClose: false
       });
     }
   },
