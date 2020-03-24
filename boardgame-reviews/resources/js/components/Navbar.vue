@@ -2,10 +2,10 @@
   <nav id="nav" class="navbar has-shadow" role="navigation" aria-label="main navigation">
     <div class="container">
       <div class="navbar-brand">
-        <router-link to="/" class="navbar-item">
+        <RouterLink to="/" class="navbar-item">
           <bdIcon name="chess-knight has-text-white"></bdIcon>
           <span class="has-text-white">BoardGameReviews</span>
-        </router-link>
+        </RouterLink>
         <a
           role="button"
           id="navbar-burger"
@@ -28,10 +28,14 @@
               <bdIcon name="user has-text-white"></bdIcon>
             </a>
             <div class="navbar-dropdown is-right">
-              <router-link class="navbar-item" :to="{ name: 'profile' }">
+              <RouterLink class="navbar-item" :to="{ name: 'profile' }">
                 <bdIcon name="address-card"></bdIcon>
                 <span>プロフィール</span>
-              </router-link>
+              </RouterLink>
+              <RouterLink class="navbar-item" :to="{ name: 'auth_edit' }">
+                <bdIcon name="user-edit"></bdIcon>
+                <span>認証情報変更</span>
+              </RouterLink>
               <a class="navbar-item" @click="signOut">
                 <bdIcon name="sign-out-alt has-text-black"></bdIcon>
                 <span class="has-text-black">ログアウト</span>
@@ -42,16 +46,16 @@
         <div class="navbar-end" v-else>
           <bd-tweet></bd-tweet>
           <div class="navbar-item">
-            <router-link :to="{ name: 'sign_in' }" class="button is-text">
+            <RouterLink :to="{ name: 'sign_in' }" class="button is-text">
               <bdIcon name="sign-in-alt has-text-white"></bdIcon>
               <span class="has-text-white">ログイン</span>
-            </router-link>
+            </RouterLink>
           </div>
           <div class="navbar-item">
-            <router-link :to="{ name: 'sign_up' }" class="button is-text">
+            <RouterLink :to="{ name: 'sign_up' }" class="button is-text">
               <bdIcon name="user-plus has-text-white"></bdIcon>
               <span class="has-text-white">ユーザー登録</span>
-            </router-link>
+            </RouterLink>
           </div>
         </div>
       </div>

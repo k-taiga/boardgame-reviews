@@ -50,19 +50,10 @@ class UserController extends Controller
     public function update(StoreUser $request)
     {
 
-        $user_id = Auth::user()->id;;
+        $user_id = Auth::user()->id;
 
         // ユーザーの写真を保存する処理
         if ($request->photo !== null) {
-            // // 写真の拡張子を取得
-            // $extension = $request->photo->extension();
-
-            // $photo = new UserPhoto();
-
-            // // インスタンス生成時に割り振られたランダムなID値(prefixはuser)と本来の拡張子を組み合わせてファイル名とする
-            // $photo->filename = $photo->id . '.' . $extension;
-
-            // $photo->filename = $user_id;
 
             // S3にファイルを保存する publicで公開
             $response = Storage::cloud()
@@ -78,24 +69,23 @@ class UserController extends Controller
         // トランザクションを利用する
         DB::beginTransaction();
 
-        // try {
-        if ($request->photo !== null) {
-            // $user->photos()->save($photo);
-            $icon_url = Storage::cloud()->url($response);
-            clock($icon_url);
-            $user->icon_url = $icon_url;
-            $user->update();
-        } else {
-            $user->save();
-        }
+        try {
+            if ($request->photo !== null) {
+                $icon_url = Storage::cloud()->url($response);
+                clock($icon_url);
+                $user->icon_url = $icon_url;
+                $user->update();
+            } else {
+                $user->save();
+            }
 
-        DB::commit();
-        // } catch (\Exception $exception) {
-        //     DB::rollBack();
-        //     // DBとの不整合を避けるためアップロードしたファイルを削除
-        //     Storage::cloud()->delete($photo->filename);
-        //     throw $exception;
-        // }
+            DB::commit();
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            // DBとの不整合を避けるためアップロードしたファイルを削除
+            Storage::cloud()->delete($icon_url);
+            throw $exception;
+        }
         // リソースの新規作成なので
         // レスポンスコードは201(CREATED)を返却する
         // vueでキャッチする
@@ -103,7 +93,7 @@ class UserController extends Controller
     }
 
     /**
-     * ユーザーのお気に入りだけ削除（レビューは退会後も残す)
+     * ユーザー退会時はお気に入りだけ削除（レビューは退会後も残す)
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response

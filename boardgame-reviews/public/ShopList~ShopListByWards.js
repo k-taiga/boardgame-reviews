@@ -442,7 +442,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.button.is-medium[data-v-fefb60b0] {\n    background-color: #5bafc4;\n}\n", ""]);
+exports.push([module.i, "\n.button.is-medium[data-v-fefb60b0] {\r\n    background-color: #5bafc4;\n}\r\n", ""]);
 
 // exports
 
@@ -461,7 +461,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.search-options[data-v-785acc7b] {\n    background-color: #5bafc4;\n    padding: 1rem;\n}\n.select.is-empty select[data-v-785acc7b] {\n    color: gray;\n}\n.select select option[data-v-785acc7b] {\n    color: #4a4a4a;\n    padding: 0.25em 0.5em;\n}\n.level-item[data-v-785acc7b] {\n    -webkit-box-align: center;\n    align-items: center;\n    display: -webkit-box;\n    display: flex;\n    flex-basis: auto;\n    -webkit-box-flex: 0;\n    flex-grow: 0;\n    flex-shrink: 0;\n    -webkit-box-pack: center;\n    justify-content: center;\n}\n.switch[data-v-785acc7b] {\n    cursor: pointer;\n    display: -webkit-inline-box;\n    display: inline-flex;\n    -webkit-box-align: center;\n    align-items: center;\n    -webkit-touch-callout: none;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n}\n.switch input[type=\"checkbox\"] + .check[data-v-785acc7b] {\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-align: center;\n    align-items: center;\n    flex-shrink: 0;\n    width: 2.75em;\n    height: 1.575em;\n    padding: 0.2em;\n    background: #b5b5b5;\n    border-radius: 1em;\n    -webkit-transition: background 0.15s ease-out;\n    transition: background 0.15s ease-out;\n}\n.el-button[data-v-785acc7b] {\n    padding: 0;\n    background-color: #5bafc4;\n    border: 1px solid #5bafc4;\n}\n", ""]);
+exports.push([module.i, "\n.search-options[data-v-785acc7b] {\r\n    background-color: #5bafc4;\r\n    padding: 1rem;\n}\n.select.is-empty select[data-v-785acc7b] {\r\n    color: gray;\n}\n.select select option[data-v-785acc7b] {\r\n    color: #4a4a4a;\r\n    padding: 0.25em 0.5em;\n}\n.level-item[data-v-785acc7b] {\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: flex;\r\n    flex-basis: auto;\r\n    -webkit-box-flex: 0;\r\n    flex-grow: 0;\r\n    flex-shrink: 0;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\n}\n.switch[data-v-785acc7b] {\r\n    cursor: pointer;\r\n    display: -webkit-inline-box;\r\n    display: inline-flex;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\n}\n.switch input[type=\"checkbox\"] + .check[data-v-785acc7b] {\r\n    display: -webkit-box;\r\n    display: flex;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 2.75em;\r\n    height: 1.575em;\r\n    padding: 0.2em;\r\n    background: #b5b5b5;\r\n    border-radius: 1em;\r\n    -webkit-transition: background 0.15s ease-out;\r\n    transition: background 0.15s ease-out;\n}\n.el-button[data-v-785acc7b] {\r\n    padding: 0;\r\n    background-color: #5bafc4;\r\n    border: 1px solid #5bafc4;\n}\r\n", ""]);
 
 // exports
 
@@ -480,7 +480,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.title[data-v-e1ea323e],\n.subtitle[data-v-e1ea323e],\n.content[data-v-e1ea323e] {\n  font-family: Merriweather;\n}\n", ""]);
+exports.push([module.i, "\n.title[data-v-e1ea323e],\r\n.subtitle[data-v-e1ea323e],\r\n.content[data-v-e1ea323e] {\r\n  font-family: Merriweather;\n}\r\n", ""]);
 
 // exports
 
