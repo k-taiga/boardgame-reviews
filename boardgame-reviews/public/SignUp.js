@@ -131,11 +131,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "sign_up",
@@ -441,8 +436,6 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
-                  _vm._m(0),
-                  _vm._v(" "),
                   _c(
                     "button",
                     {
@@ -456,25 +449,16 @@ var render = function() {
                 ],
                 1
               )
-            ])
+            ]),
+            _vm._v(" "),
+            _vm._m(0)
           ]
-        ),
-        _vm._v(" "),
-        _vm._m(1)
+        )
       ])
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "field" }, [
-      _c("input", { attrs: { type: "checkbox" } }),
-      _vm._v("\n              ログインしたままにする\n            ")
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

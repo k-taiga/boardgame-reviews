@@ -28,10 +28,6 @@
                 icon="lock"
                 v-model="loginForm.password"
               ></bdTextField>
-              <div class="field">
-                <input type="checkbox" />
-                ログインしたままにする
-              </div>
               <button
                 class="button is-block is-info is-large is-fullwidth"
                 @click="clearError"

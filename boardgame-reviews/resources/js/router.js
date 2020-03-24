@@ -15,6 +15,10 @@ const SignIn = () =>
     import(/* webpackChunkName:"SignIn" */ "./views/SignIn.vue");
 const ShopList = () =>
     import(/* webpackChunkName:"ShopList" */ "./views/ShopList.vue");
+const ShopListByWards = () =>
+    import(
+        /* webpackChunkName:"ShopListByWards" */ "./views/ShopListByWards.vue"
+    );
 const ShopDetail = () =>
     import(/* webpackChunkName:"ShopDetail" */ "./views/ShopDetail.vue");
 const Profile = () =>
@@ -48,11 +52,16 @@ const router = new VueRouter({
             name: "index",
             component: ShopList,
             props: route => {
-                // URL のクエリパラメータ page をページコンポーネントで取得しPhotoListのコンポーネントに返す
+                // URL のクエリパラメータ page をページコンポーネントで取得しShopListのコンポーネントに返す
                 // routeからpageを取得し正規表現でチェック
                 const page = route.query.page;
                 return { page: /^[1-9][0-9]*$/.test(page) ? page * 1 : 1 };
             }
+        },
+        {
+            path: "/wards/:id",
+            component: ShopListByWards,
+            props: true
         },
         {
             path: "/shops/:id",

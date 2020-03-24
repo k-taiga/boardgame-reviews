@@ -1,6 +1,10 @@
 <template>
     <div class="shop-list container">
-        <!-- <bdCarousel></bdCarousel> -->
+        <bd-search-box
+            :simpleSuggestionList="simpleSuggestionList"
+            @search="search"
+            @fetchShops="fetchShops"
+        ></bd-search-box>
         <div class="grid">
             <shop
                 class="grid__item"
@@ -19,18 +23,23 @@ import { OK } from "../util";
 import shop from "../components/Shop.vue";
 import pagination from "../components/Pagination.vue";
 import bdCarousel from "../components/Carousel.vue";
+import bdSearchBox from "../components/SearchBox.vue";
+import bdSearchOptions from "../components/SearchOptions.vue";
 
 export default {
     components: {
         shop,
         pagination,
-        bdCarousel
+        bdCarousel,
+        bdSearchBox,
+        bdSearchOptions
     },
     data() {
         return {
             shops: [],
             currentPage: 0,
-            lastPage: 0
+            lastPage: 0,
+            hiddenShops: []
         };
     },
     props: {
@@ -38,6 +47,15 @@ export default {
             type: Number,
             required: false,
             default: 1
+        }
+    },
+    computed: {
+        simpleSuggestionList() {
+            let shop_name = [];
+            this.hiddenShops.forEach(function(value) {
+                shop_name.push(value.shop_name);
+            });
+            return shop_name;
         }
     },
     methods: {
@@ -51,8 +69,8 @@ export default {
                 return false;
             }
 
-            console.log(response.data);
             this.shops = response.data.data;
+            this.hiddenShops = response.data.data;
             this.currentPage = response.data.current_page;
             this.lastPage = response.data.last_page;
         },
@@ -74,17 +92,14 @@ export default {
                 this.$store.commit("error/setCode", response.status);
                 return false;
             }
-            console.log(response);
 
             this.shops = this.shops.map(shop => {
-                console.log(shop);
                 if (shop.id == response.data.shop_id) {
                     shop.likes_count += 1;
                     shop.liked_by_user = true;
                 }
                 return shop;
             });
-            console.log(this.shops);
         },
         async unlike(id) {
             const response = await axios.delete(`/api/shops/${id}/unlike`);
@@ -102,12 +117,30 @@ export default {
 
                 return shop;
             });
+        },
+        async search(keyword) {
+            console.log(keyword);
+
+            const response = await axios.post(`/api/shops/${keyword}`);
+
+            if (response.status == 200) {
+                this.shops = response.data;
+            } else {
+                this.$store.commit("error/setCode", response.status);
+            }
+        },
+        setId() {
+            this.$store.commit("ward/setId", null);
+        },
+        valuecheck() {
+            console.log(this.simpleSuggestionList);
         }
     },
     watch: {
         $route: {
             async handler() {
                 await this.fetchShops();
+                this.setId();
             },
             immediate: true
         }

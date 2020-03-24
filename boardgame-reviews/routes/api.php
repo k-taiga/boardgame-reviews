@@ -18,7 +18,6 @@ Route::get('/user', function () {
     return Auth::user();
 })->name('user');
 
-
 // 店舗登録
 Route::post('/shops', 'ShopController@create')->name('shop.create');
 
@@ -27,6 +26,24 @@ Route::get('/shops', 'ShopController@index')->name('shop.index');
 
 // 店舗詳細
 Route::get('/shops/{id}', 'ShopController@show')->name('shop.show');
+
+// 店舗検索
+Route::post('/shops/{search}', 'ShopController@search')->name('shop.show');
+
+// 23区一覧
+Route::get('/wards', 'WardController@index')->name('ward.index');
+
+// 23区詳細
+Route::get('/wards/{id}', 'WardController@show')->name('ward.show');
+
+// 23区でのソート
+Route::get('/wards/{id}/{sort}', 'WardController@sort')->name('ward.sort');
+
+// 23区でのフィルター
+Route::post('/wards/{id}/', 'WardController@filter')->name('ward.filter');
+
+// 23区でのフィルター＆ソート
+Route::post('/wards/{id}/{sort}', 'WardController@filterSort')->name('ward.filter_sort');
 
 // レビュー
 Route::post('/shops/{shop}/reviews', 'ShopController@addReview')->name('shop.review');

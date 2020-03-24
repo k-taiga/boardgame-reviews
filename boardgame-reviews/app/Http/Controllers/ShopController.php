@@ -21,7 +21,7 @@ class ShopController extends Controller
     {
         // 認証に通す
         // authに通らなくても使えるもの
-        $this->middleware('auth')->except(['index', 'show', 'create']);
+        $this->middleware('auth')->except(['index', 'show', 'create', 'search']);
     }
 
     /**
@@ -100,11 +100,29 @@ class ShopController extends Controller
      */
     public function show(string $id)
     {
+
         $shop = Shop::where('id', $id)->with(['photos', 'reviews.author', 'likes'])->first();
 
         clock($shop);
 
         return $shop ?? abort(404);
+    }
+
+    /**
+     * 店舗検索
+     * @param string $keyword
+     * @return Shop
+     */
+    public function search($keyword)
+    {
+
+        clock($keyword);
+
+        $shops = Shop::where('shop_name', 'LIKE', '%' . $keyword . '%')->with(['photos', 'likes'])->get();
+
+        clock($shops);
+
+        return $shops;
     }
 
     /**
