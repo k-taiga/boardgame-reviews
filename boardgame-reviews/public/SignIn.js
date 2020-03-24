@@ -159,6 +159,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 if (this.apiStatus) {
                   this.$router.push("/");
+                  this.loginMessage();
                 }
 
               case 3:
@@ -177,6 +178,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }(),
     clearError: function clearError() {
       this.$store.commit("auth/setLoginErrorMessages", null);
+    },
+    loginMessage: function loginMessage() {
+      this.$notify({
+        title: "ログインしました",
+        type: "success",
+        position: "bottom-left",
+        showClose: false
+      });
     }
   },
   created: function created() {
@@ -198,7 +207,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.error-enter[data-v-4cda74a1],\r\n.error-leave-to[data-v-4cda74a1] {\r\n  opacity: 0;\n}\n.error-enter-to[data-v-4cda74a1],\r\n.error-leave[data-v-4cda74a1] {\r\n  opacity: 1;\n}\n.error-enter-active[data-v-4cda74a1],\r\n.error-leave-active[data-v-4cda74a1] {\r\n  -webkit-transition: opacity 1s;\r\n  transition: opacity 1s;\n}\r\n", ""]);
+exports.push([module.i, "\n.error-enter[data-v-4cda74a1],\n.error-leave-to[data-v-4cda74a1] {\n  opacity: 0;\n}\n.error-enter-to[data-v-4cda74a1],\n.error-leave[data-v-4cda74a1] {\n  opacity: 1;\n}\n.error-enter-active[data-v-4cda74a1],\n.error-leave-active[data-v-4cda74a1] {\n  -webkit-transition: opacity 1s;\n  transition: opacity 1s;\n}\n", ""]);
 
 // exports
 

@@ -101,14 +101,6 @@ export default {
       this.$store.commit("auth/setLoginErrorMessages", null);
       this.$store.commit("auth/setRegisterErrorMessages", null);
     },
-    loginMessage() {
-      this.$notify({
-        title: "ログインしました",
-        type: "success",
-        position: "bottom-left",
-        showClose: false
-      });
-    },
     logoutMessage() {
       this.$notify({
         title: "ログアウトしました。",

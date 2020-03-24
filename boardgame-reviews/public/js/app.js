@@ -3760,14 +3760,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.$store.commit("auth/setLoginErrorMessages", null);
       this.$store.commit("auth/setRegisterErrorMessages", null);
     },
-    loginMessage: function loginMessage() {
-      this.$notify({
-        title: "ログインしました",
-        type: "success",
-        position: "bottom-left",
-        showClose: false
-      });
-    },
     logoutMessage: function logoutMessage() {
       this.$notify({
         title: "ログアウトしました。",
