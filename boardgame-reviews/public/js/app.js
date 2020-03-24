@@ -5917,7 +5917,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.footer[data-v-61a7c374] {\n    background-color: #a6d4cc;\n}\n", ""]);
+exports.push([module.i, "\n.footer[data-v-61a7c374] {\r\n    background-color: #a6d4cc;\n}\r\n", ""]);
 
 // exports
 
@@ -5936,7 +5936,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.navbar[data-v-6dde423b] {\n    background-color: #a6d4cc;\n}\n.button.is-text[data-v-6dde423b] {\ntext-decoration: none;\n}\n", ""]);
+exports.push([module.i, "\n.navbar[data-v-6dde423b] {\r\n    background-color: #a6d4cc;\n}\n.button.is-text[data-v-6dde423b] {\r\ntext-decoration: none;\n}\r\n", ""]);
 
 // exports
 
