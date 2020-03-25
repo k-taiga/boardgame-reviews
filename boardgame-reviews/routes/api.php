@@ -64,7 +64,7 @@ Route::post('/profile/edit', 'UserController@update')->name('profile.update');
 Route::post('/profile/destroy', 'UserController@destroy')->name('profile.destroy');
 
 // ユーザー認証情報編集
-Route::post('/profile/credential', 'UserController@credentialUpdate')->name('profile.credentialUpdate');
+Route::post('/profile/credential', 'UserController@updateCredential')->name('profile.credentialUpdate');
 
 // トークンリフレッシュ
 Route::get('/reflesh-token', function (Illuminate\Http\Request $request) {

@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 
 use App\User;
-use App\UserPhoto;
 use App\Review;
 use App\Http\Requests\StoreUser;
 use App\Http\Requests\StorePassword;
@@ -118,36 +118,51 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // validationするRequestクラスを作る
     public function updateCredential(Request $request)
     {
+        // clock($request->all());
+        $request_data = $request->all();
 
-        $user_id = Auth::user()->id;
-
+        //現在のパスワードが正しいかを調べる
+        if (!(Hash::check($request_data["currentPassword"], Auth::user()->password))) {
+            clock("ifのなか");
+            return response(403);
+        } else {
+            clock("elseのなか");
+            // clock(Auth::user()->password);
+            // $errors = '現在のパスワードが違います。';
+            return response(200);
+        }
         $user = Auth::user();
-        $user->name = $request->get('name');
 
-        // データベースエラー時にファイル削除を行うため
-        // トランザクションを利用する
-        DB::beginTransaction();
+        if ($request_data["password"] !== "") {
 
-        try {
-            if ($request->photo !== null) {
-                $icon_url = Storage::cloud()->url($response);
-                clock($icon_url);
-                $user->icon_url = $icon_url;
-                $user->update();
-            } else {
-                $user->save();
+            //現在のパスワードと新しいパスワードが違っているかを調べる
+            if (strcmp($request_data["currentPassword"], $request_data["password"]) == 0) {
+                // エラーを返す
             }
 
-            DB::commit();
-        } catch (\Exception $exception) {
-            DB::rollBack();
-            throw $exception;
+            //パスワードを変更
+            $user->password = bcrypt($request_data["password"]);
         }
-        // リソースの新規作成なので
-        // レスポンスコードは201(CREATED)を返却する
+
+        if ($request_data["email"] !== "") {
+
+            //現在のパスワードと新しいパスワードが違っているかを調べる
+            if (strcmp($request_data["email"], Auth::user()->password) == 0) {
+                // エラーを返す
+            }
+
+            //emailを変更
+            $user->email = $request_data["email"];
+        }
+
+        $user->update();
+
+        // $user->update();
+
         // vueでキャッチする
-        return response($icon_url, 201);
+        // return response(403);
     }
 }
