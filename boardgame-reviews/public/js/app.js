@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"Home":"Home","NotFoundError":"NotFoundError","Profile~ShopDetail":"Profile~ShopDetail","Profile":"Profile","ShopDetail":"ShopDetail","SignIn":"SignIn","SignUp":"SignUp","SystemError":"SystemError","vendors~ShopList~ShopListByWards":"vendors~ShopList~ShopListByWards","ShopList~ShopListByWards":"ShopList~ShopListByWards","ShopList":"ShopList","ShopListByWards":"ShopListByWards"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"Credential~Profile~ShopDetail":"Credential~Profile~ShopDetail","Credential~Profile":"Credential~Profile","Credential":"Credential","Profile":"Profile","ShopDetail":"ShopDetail","Home":"Home","NotFoundError":"NotFoundError","SignIn":"SignIn","SignUp":"SignUp","SystemError":"SystemError","vendors~ShopList~ShopListByWards":"vendors~ShopList~ShopListByWards","ShopList~ShopListByWards":"ShopList~ShopListByWards","ShopList":"ShopList","ShopListByWards":"ShopListByWards"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -3676,17 +3676,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     //     },
     $route: function $route(to, from) {
       this.$store.commit("error/setCode", null);
-      console.log(to);
-      console.log(from);
 
       if (to.path == "/sign_in" || to.path == "/sign_up") {
         // console.log("$routerが切り替わりました");
         this.clearError();
-      } // サインイン後のrouting
-
-
-      if (to.path == "/" && from.path == "/sign_in") {
-        this.loginMessage();
       }
     }
   },
@@ -83994,11 +83987,15 @@ var ShopListByWards = function ShopListByWards() {
 };
 
 var ShopDetail = function ShopDetail() {
-  return Promise.all(/*! import() | ShopDetail */[__webpack_require__.e("Profile~ShopDetail"), __webpack_require__.e("ShopDetail")]).then(__webpack_require__.bind(null, /*! ./views/ShopDetail.vue */ "./resources/js/views/ShopDetail.vue"));
+  return Promise.all(/*! import() | ShopDetail */[__webpack_require__.e("Credential~Profile~ShopDetail"), __webpack_require__.e("ShopDetail")]).then(__webpack_require__.bind(null, /*! ./views/ShopDetail.vue */ "./resources/js/views/ShopDetail.vue"));
 };
 
 var Profile = function Profile() {
-  return Promise.all(/*! import() | Profile */[__webpack_require__.e("Profile~ShopDetail"), __webpack_require__.e("Profile")]).then(__webpack_require__.bind(null, /*! ./views/Profile.vue */ "./resources/js/views/Profile.vue"));
+  return Promise.all(/*! import() | Profile */[__webpack_require__.e("Credential~Profile~ShopDetail"), __webpack_require__.e("Credential~Profile"), __webpack_require__.e("Profile")]).then(__webpack_require__.bind(null, /*! ./views/Profile.vue */ "./resources/js/views/Profile.vue"));
+};
+
+var Credential = function Credential() {
+  return Promise.all(/*! import() | Credential */[__webpack_require__.e("Credential~Profile~ShopDetail"), __webpack_require__.e("Credential~Profile"), __webpack_require__.e("Credential")]).then(__webpack_require__.bind(null, /*! ./views/Credential.vue */ "./resources/js/views/Credential.vue"));
 };
 
 var SystemError = function SystemError() {
@@ -84076,7 +84073,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: "/credential",
     name: "credential",
-    component: Profile,
+    component: Credential,
     meta: {
       login: true
     }

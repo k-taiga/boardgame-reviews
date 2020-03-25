@@ -63,6 +63,9 @@ Route::post('/profile/edit', 'UserController@update')->name('profile.update');
 // ユーザー退会
 Route::post('/profile/destroy', 'UserController@destroy')->name('profile.destroy');
 
+// ユーザー認証情報編集
+Route::post('/profile/credential', 'UserController@credentialUpdate')->name('profile.credentialUpdate');
+
 // トークンリフレッシュ
 Route::get('/reflesh-token', function (Illuminate\Http\Request $request) {
     $request->session()->regenerateToken();

@@ -65,16 +65,9 @@ export default {
     //     },
     $route(to, from) {
       this.$store.commit("error/setCode", null);
-      console.log(to);
-      console.log(from);
       if (to.path == "/sign_in" || to.path == "/sign_up") {
         // console.log("$routerが切り替わりました");
         this.clearError();
-      }
-
-      // サインイン後のrouting
-      if (to.path == "/" && from.path == "/sign_in") {
-        this.loginMessage();
       }
     }
   },

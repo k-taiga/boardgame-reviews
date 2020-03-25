@@ -86,10 +86,8 @@ class UserController extends Controller
             Storage::cloud()->delete($icon_url);
             throw $exception;
         }
-        // リソースの新規作成なので
-        // レスポンスコードは201(CREATED)を返却する
-        // vueでキャッチする
-        return response($icon_url, 201);
+
+        return response(200);
     }
 
     /**
@@ -112,5 +110,44 @@ class UserController extends Controller
             DB::user('id')->where('id', $user_id)->delete();
             return response(200);
         }
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function updateCredential(Request $request)
+    {
+
+        $user_id = Auth::user()->id;
+
+        $user = Auth::user();
+        $user->name = $request->get('name');
+
+        // データベースエラー時にファイル削除を行うため
+        // トランザクションを利用する
+        DB::beginTransaction();
+
+        try {
+            if ($request->photo !== null) {
+                $icon_url = Storage::cloud()->url($response);
+                clock($icon_url);
+                $user->icon_url = $icon_url;
+                $user->update();
+            } else {
+                $user->save();
+            }
+
+            DB::commit();
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            throw $exception;
+        }
+        // リソースの新規作成なので
+        // レスポンスコードは201(CREATED)を返却する
+        // vueでキャッチする
+        return response($icon_url, 201);
     }
 }
