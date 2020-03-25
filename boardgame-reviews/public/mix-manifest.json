@@ -1,10 +1,10 @@
 {
-    "/js/app.js": "/js/app.js?id=0270f085136cdd6754b3",
+    "/js/app.js": "/js/app.js?id=98ac19badd20d2b28a63",
     "/css/app.css": "/css/app.css?id=be157a0f3e740ec31082",
     "/Home.js": "/Home.js?id=50c894ca1a3fa1912e6f",
     "/NotFoundError.js": "/NotFoundError.js?id=d9351a6d3687c5a1674f",
-    "/Profile.js": "/Profile.js?id=7924e91d0cd4a69d09ce",
-    "/Profile~ShopDetail.js": "/Profile~ShopDetail.js?id=f68dfe4c70b0594880d2",
+    "/Profile.js": "/Profile.js?id=133e0734021f4897fe0c",
+    "/Profile~ShopDetail.js": "/Profile~ShopDetail.js?id=f0731a1fe1ea88419b96",
     "/ShopDetail.js": "/ShopDetail.js?id=4c32e70ee535c04e0b28",
     "/ShopList.js": "/ShopList.js?id=68ce934c2f484c5c185e",
     "/ShopListByWards.js": "/ShopListByWards.js?id=54b36012291ee81cbd18",
@@ -12,7 +12,5 @@
     "/SignIn.js": "/SignIn.js?id=711074edda763673882b",
     "/SignUp.js": "/SignUp.js?id=489d0417a329f25ee9cf",
     "/SystemError.js": "/SystemError.js?id=47ffbfee321632e6ca64",
-    "/vendors~ShopList~ShopListByWards.js": "/vendors~ShopList~ShopListByWards.js?id=6e75ca9cb5a76abcf5a1",
-    "/ErrorModal.js": "/ErrorModal.js?id=4793c2e3baae98dc6313",
-    "/Profile~ShopDetail~ShopListByWards.js": "/Profile~ShopDetail~ShopListByWards.js?id=b2cba178bee48fdbbecd"
+    "/vendors~ShopList~ShopListByWards.js": "/vendors~ShopList~ShopListByWards.js?id=472e45faa9296e278e7f"
 }

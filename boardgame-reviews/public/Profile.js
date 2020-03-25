@@ -367,12 +367,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_RetireModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/RetireModal */ "./resources/js/components/RetireModal.vue");
 /* harmony import */ var _components_UserSvg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/UserSvg */ "./resources/js/components/UserSvg.vue");
 /* harmony import */ var _components_Breadcrumb__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/Breadcrumb */ "./resources/js/components/Breadcrumb.vue");
+/* harmony import */ var _components_TextField__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/TextField */ "./resources/js/components/TextField.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -467,22 +475,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     shop: _components_FavoriteShop_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     bdProfileEditModal: _components_ProfileEditModal__WEBPACK_IMPORTED_MODULE_3__["default"],
     bdRetireModal: _components_RetireModal__WEBPACK_IMPORTED_MODULE_4__["default"],
     bdUserIcon: _components_UserSvg__WEBPACK_IMPORTED_MODULE_5__["default"],
-    bdBread: _components_Breadcrumb__WEBPACK_IMPORTED_MODULE_6__["default"]
+    bdBread: _components_Breadcrumb__WEBPACK_IMPORTED_MODULE_6__["default"],
+    bdTextField: _components_TextField__WEBPACK_IMPORTED_MODULE_7__["default"]
   },
   name: "profile",
-  inject: ["reload"],
   data: function data() {
     return {
       user: null,
       errors: null,
       editProfileModalActive: false,
-      retireModalActive: false
+      retireModalActive: false,
+      url: this.$route.path,
+      currentPassword: null,
+      email: null,
+      password: null
     };
   },
   methods: {
@@ -734,7 +747,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.favorite_shops[data-v-25b9215a] {\r\n    background-color: white;\r\n    margin-bottom: 4em;\r\n    padding: 2em;\r\n    border-radius: 0.5em;\n}\n.favorite_shop[data-v-25b9215a] {\r\n    background-color: whitesmoke;\r\n    margin: 0.5em;\r\n    border-radius: 0.5em;\n}\r\n", ""]);
+exports.push([module.i, "\n.favorite_shops[data-v-25b9215a] {\n  background-color: white;\n  margin-bottom: 4em;\n  padding: 2em;\n  border-radius: 0.5em;\n}\n.credential[data-v-25b9215a] {\n  background-color: white;\n  margin-bottom: 4em;\n  padding: 2em;\n  border-radius: 0.5em;\n}\n.favorite_shop[data-v-25b9215a] {\n  background-color: whitesmoke;\n  margin: 0.5em;\n  border-radius: 0.5em;\n}\n", ""]);
 
 // exports
 
@@ -1204,13 +1217,7 @@ var render = function() {
                       {
                         staticClass: "subtitle has-text-centered has-text-dark"
                       },
-                      [
-                        _vm._v(
-                          "\n                        name: " +
-                            _vm._s(_vm.user.name) +
-                            "\n                    "
-                        )
-                      ]
+                      [_vm._v("name: " + _vm._s(_vm.user.name))]
                     )
                   : _vm._e()
               ],
@@ -1225,7 +1232,7 @@ var render = function() {
                     "button is-small is-primary is-outlined is-fullwidth",
                   on: { click: _vm.showProfileEditModal }
                 },
-                [_vm._v("\n                        編集\n                    ")]
+                [_vm._v("編集")]
               ),
               _vm._v(" "),
               _c(
@@ -1235,37 +1242,110 @@ var render = function() {
                     "button is-small is-primary is-outlined is-fullwidth",
                   on: { click: _vm.showRetireModal }
                 },
-                [_vm._v("\n                        退会\n                    ")]
+                [_vm._v("退会")]
               )
             ])
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "column is-for-fifths" }, [
-          _c("div", { staticClass: "favorite_shops" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _vm.user.favorite_shops.count !== 0
-              ? _c(
-                  "div",
-                  { staticClass: "columns is-multiline" },
-                  _vm._l(_vm.user.favorite_shops, function(shop) {
-                    return _c("shop", {
-                      key: shop.id,
-                      staticClass: "favorite_shop",
-                      attrs: { item: shop }
-                    })
-                  }),
+          _vm.url == _vm.profile
+            ? _c("div", { staticClass: "favorite_shops" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _vm.user.favorite_shops.count !== 0
+                  ? _c(
+                      "div",
+                      { staticClass: "columns is-multiline" },
+                      _vm._l(_vm.user.favorite_shops, function(shop) {
+                        return _c("shop", {
+                          key: shop.id,
+                          staticClass: "favorite_shop",
+                          attrs: { item: shop }
+                        })
+                      }),
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.user.favorite_shops.length === 0
+                  ? _c("p", { staticClass: "has-text-left" }, [
+                      _c("strong", [_vm._v("まだお気に入りはありません。")])
+                    ])
+                  : _vm._e()
+              ])
+            : _c("div", { staticClass: "credential" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c(
+                  "form",
+                  [
+                    _c("bdTextField", {
+                      attrs: {
+                        type: "password",
+                        placeholder: "現在のパスワード（必須）",
+                        icon: "key"
+                      },
+                      model: {
+                        value: _vm.currentPassword,
+                        callback: function($$v) {
+                          _vm.currentPassword = $$v
+                        },
+                        expression: "currentPassword"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("bdTextField", {
+                      attrs: {
+                        type: "email",
+                        placeholder: "新しいメールアドレス",
+                        icon: "envelope"
+                      },
+                      model: {
+                        value: _vm.email,
+                        callback: function($$v) {
+                          _vm.email = $$v
+                        },
+                        expression: "email"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("bdTextField", {
+                      attrs: {
+                        type: "password",
+                        placeholder: "新しいパスワード",
+                        icon: "lock"
+                      },
+                      model: {
+                        value: _vm.password,
+                        callback: function($$v) {
+                          _vm.password = $$v
+                        },
+                        expression: "password"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "field is-grouped" }, [
+                      _c("div", { staticClass: "control" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "button is-primary",
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.update($event)
+                              }
+                            }
+                          },
+                          [_vm._v("更新")]
+                        )
+                      ])
+                    ])
+                  ],
                   1
                 )
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.user.favorite_shops.length === 0
-              ? _c("p", { staticClass: "has-text-left" }, [
-                  _c("strong", [_vm._v("まだお気に入りはありません。")])
-                ])
-              : _vm._e()
-          ])
+              ])
         ])
       ]),
       _vm._v(" "),
@@ -1309,9 +1389,21 @@ var staticRenderFns = [
       _c("div", { staticClass: "level-left" }, [
         _c("div", { staticClass: "level-item" }, [
           _c("h2", { staticClass: "title is-6 has-text-left" }, [
-            _vm._v(
-              "\n                                Favorite Shops\n                            "
-            )
+            _vm._v("Favorite Shops")
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "level" }, [
+      _c("div", { staticClass: "level-left" }, [
+        _c("div", { staticClass: "level-item" }, [
+          _c("h2", { staticClass: "title is-6 has-text-left" }, [
+            _vm._v("認証情報変更")
           ])
         ])
       ])

@@ -92,6 +92,12 @@ const router = new VueRouter({
             meta: { login: true }
         },
         {
+            path: "/credential",
+            name: "credential",
+            component: Profile,
+            meta: { login: true }
+        },
+        {
             path: "/500",
             name: "system_error",
             component: SystemError

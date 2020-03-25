@@ -66875,7 +66875,7 @@ var render = function() {
                   "div",
                   { staticClass: "navbar-end" },
                   [
-                    _c("bd-tweet"),
+                    _c("bdTweet"),
                     _vm._v(" "),
                     _c(
                       "div",
@@ -66916,7 +66916,7 @@ var render = function() {
                               "RouterLink",
                               {
                                 staticClass: "navbar-item",
-                                attrs: { to: { name: "auth_edit" } }
+                                attrs: { to: { name: "credential" } }
                               },
                               [
                                 _c("bdIcon", { attrs: { name: "user-edit" } }),
@@ -84069,6 +84069,13 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: "/profile",
     name: "profile",
+    component: Profile,
+    meta: {
+      login: true
+    }
+  }, {
+    path: "/credential",
+    name: "credential",
     component: Profile,
     meta: {
       login: true
