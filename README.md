@@ -26,7 +26,8 @@
   <br>を実行
 
 
-.envとvendorディレクトリは各laravelプロジェクトごとに異なるため、プロジェクトをpullしcomposer updateと.envsampleー＞.envに変更する
+.envとvendorディレクトリは各laravelプロジェクトごとに異なるため、<br>
+プロジェクトをpullしcomposer updateと.envsampleー＞.envに変更する
 
 またlaravelプロジェクトをpullして取得する場合はapplication keyが作成されていないため、
 ```php artisan key:generate```
