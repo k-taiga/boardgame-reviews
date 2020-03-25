@@ -23,14 +23,14 @@
 
 * docker-compose exec app bashで入ってcomposerを使って
 　<br>```composer create-project --prefer-dist laravel/laravel my-laravel-app```
-  <br>で作ってください
+  <br>を実行
 
 
 .envとvendorディレクトリは各laravelプロジェクトごとに異なるため、プロジェクトをpullしcomposer updateと.envsampleー＞.envに変更する
 
 またlaravelプロジェクトをpullして取得する場合はapplication keyが作成されていないため、
 ```php artisan key:generate```
-を実行する
+を実行
 
 * テスト用のDBを使う場合は.envとは別途、.env.testingを用意しphpunit.xmlにその環境を用いることを記述する
 
@@ -41,5 +41,3 @@
 Dockerなのでホットリロードを開発環境で使う場合は
 
 npm run watch-poll
-
-を利用する
