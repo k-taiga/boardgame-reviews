@@ -106,6 +106,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
  // import dayjs from "dayjs";
 
 
@@ -134,7 +150,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       credentialForm: {
         currentPassword: "",
         email: "",
-        password: ""
+        password: "",
+        errors: ""
       }
     };
   },
@@ -325,34 +342,53 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                _context4.next = 2;
+                if (!(this.credentialForm.email || this.credentialForm.password)) {
+                  _context4.next = 17;
+                  break;
+                }
+
+                _context4.next = 3;
                 return axios.post("/api/profile/credential", this.credentialForm);
 
-              case 2:
+              case 3:
                 response = _context4.sent;
                 console.log(response);
 
                 if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_1__["UNPROCESSABLE_ENTITY"])) {
-                  _context4.next = 9;
+                  _context4.next = 10;
                   break;
                 }
 
-                this.errors = response.data.errors;
+                this.credentialForm.errors = response.data.errors;
                 return _context4.abrupt("return", false);
 
-              case 9:
+              case 10:
                 if (!(response.status === 403)) {
-                  _context4.next = 12;
+                  _context4.next = 13;
                   break;
                 }
 
-                this.errors = response.data.message;
+                this.credentialForm.errors = {
+                  msg: response.data.message
+                };
                 return _context4.abrupt("return", false);
-
-              case 12:
-                this.$router.push("/profile");
 
               case 13:
+                this.clearForm();
+                alert("認証情報を変更しました！"); // this.$router.push(`/profile`);
+
+                _context4.next = 18;
+                break;
+
+              case 17:
+                // alert(
+                //   "新しいメールアドレスか新しいパスワードのどちらかは入力してください"
+                // );
+                this.credentialForm.errors = {
+                  "null": "　新しいメールアドレスか新しいパスワードのどちらかは入力してください"
+                };
+
+              case 18:
               case "end":
                 return _context4.stop();
             }
@@ -366,8 +402,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return updateCredential;
     }(),
-    valuecheck: function valuecheck() {
-      console.log(this.credentialFlg);
+    valuecheck: function valuecheck() {//   console.log(this.credentialFlg);
+    },
+    clearForm: function clearForm() {
+      this.credentialForm.errors = "";
+      this.credentialForm.currentPassword = "";
+      this.credentialForm.email = "";
+      this.credentialForm.password = "";
     }
   },
   watch: {
@@ -540,6 +581,28 @@ var render = function() {
             { staticClass: "credential" },
             [
               _vm._m(0),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "error" } }, [
+                _vm.credentialForm.errors
+                  ? _c("div", { staticClass: "errors" }, [
+                      _vm.credentialForm.errors.msg
+                        ? _c("ul", [
+                            _c("li", [
+                              _vm._v(_vm._s(_vm.credentialForm.errors.msg))
+                            ])
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.credentialForm.errors.null
+                        ? _c("ul", [
+                            _c("li", [
+                              _vm._v(_vm._s(_vm.credentialForm.errors.null))
+                            ])
+                          ])
+                        : _vm._e()
+                    ])
+                  : _vm._e()
+              ]),
               _vm._v(" "),
               _c("bdTextField", {
                 attrs: {

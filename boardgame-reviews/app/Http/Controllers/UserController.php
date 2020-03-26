@@ -121,44 +121,53 @@ class UserController extends Controller
     // validationするRequestクラスを作る
     public function updateCredential(Request $request)
     {
-        // clock($request->all());
+        clock($request->all());
+
         $request_data = $request->all();
 
         //現在のパスワードが正しいかを調べる
         if (!(Hash::check($request_data["currentPassword"], Auth::user()->password))) {
-            clock("ifのなか");
-            return response(403);
+            // clock("ifのなか");
+            // return response(403);
+            $errors = '　現在のパスワードが違います。';
+            abort(403, $errors);
         } else {
             clock("elseのなか");
             // clock(Auth::user()->password);
             // $errors = '現在のパスワードが違います。';
+            $user = Auth::user();
+
+            if ($request_data["password"] !== null) {
+
+                //現在のパスワードと新しいパスワードが違っているかを調べる
+                if (strcmp($request_data["currentPassword"], $request_data["password"]) == 0) {
+                    // エラーを返す
+                    $errors = '　現在のパスワードと新しく設定するパスワードが同じです。';
+                    abort(403, $errors);
+                }
+
+                //パスワードを変更
+                $user->password = bcrypt($request_data["password"]);
+            }
+
+            if ($request_data["email"] !== null) {
+
+                //現在のemailと新しいが違っているかを調べる
+                if (strcmp($request_data["email"], Auth::user()->email) == 0) {
+                    // エラーを返す
+                    $errors = '　現在のメールアドレスと新しく設定するメールアドレスが同じです。';
+                    abort(403, $errors);
+                }
+
+                //emailを変更
+                $user->email = $request_data["email"];
+            }
+
+            $user->update();
+
             return response(200);
         }
-        $user = Auth::user();
 
-        if ($request_data["password"] !== "") {
-
-            //現在のパスワードと新しいパスワードが違っているかを調べる
-            if (strcmp($request_data["currentPassword"], $request_data["password"]) == 0) {
-                // エラーを返す
-            }
-
-            //パスワードを変更
-            $user->password = bcrypt($request_data["password"]);
-        }
-
-        if ($request_data["email"] !== "") {
-
-            //現在のパスワードと新しいパスワードが違っているかを調べる
-            if (strcmp($request_data["email"], Auth::user()->password) == 0) {
-                // エラーを返す
-            }
-
-            //emailを変更
-            $user->email = $request_data["email"];
-        }
-
-        $user->update();
 
         // $user->update();
 

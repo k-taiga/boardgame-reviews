@@ -36,6 +36,22 @@
               </div>
             </div>
           </div>
+          <transition name="error">
+            <div v-if="credentialForm.errors" class="errors">
+              <ul v-if="credentialForm.errors.msg">
+                <li>{{ credentialForm.errors.msg }}</li>
+              </ul>
+              <!-- <ul v-if="credentialForm.errors.email">
+                <li v-for="msg in loginErrors.email" :key="msg">{{ msg }}</li>
+              </ul>
+              <ul v-if="credentialForm.errors.password">
+                <li v-for="msg in loginErrors.password" :key="msg">{{ msg }}</li>
+              </ul>-->
+              <ul v-if="credentialForm.errors.null">
+                <li>{{ credentialForm.errors.null }}</li>
+              </ul>
+            </div>
+          </transition>
           <bdTextField
             type="password"
             placeholder="現在のパスワード（必須）"
@@ -110,7 +126,8 @@ export default {
       credentialForm: {
         currentPassword: "",
         email: "",
-        password: ""
+        password: "",
+        errors: ""
       }
     };
   },
@@ -205,25 +222,43 @@ export default {
       });
     },
     async updateCredential() {
-      const response = await axios.post(
-        "/api/profile/credential",
-        this.credentialForm
-      );
+      if (this.credentialForm.email || this.credentialForm.password) {
+        const response = await axios.post(
+          "/api/profile/credential",
+          this.credentialForm
+        );
 
-      console.log(response);
+        console.log(response);
 
-      if (response.status === UNPROCESSABLE_ENTITY) {
-        this.errors = response.data.errors;
-        return false;
-      } else if (response.status === 403) {
-        this.errors = response.data.message;
-        return false;
+        if (response.status === UNPROCESSABLE_ENTITY) {
+          this.credentialForm.errors = response.data.errors;
+          return false;
+        } else if (response.status === 403) {
+          this.credentialForm.errors = { msg: response.data.message };
+          return false;
+        }
+
+        this.clearForm();
+        alert("認証情報を変更しました！");
+        // this.$router.push(`/profile`);
+      } else {
+        // alert(
+        //   "新しいメールアドレスか新しいパスワードのどちらかは入力してください"
+        // );
+        this.credentialForm.errors = {
+          null:
+            "　新しいメールアドレスか新しいパスワードのどちらかは入力してください"
+        };
       }
-
-      this.$router.push(`/profile`);
     },
     valuecheck() {
-      console.log(this.credentialFlg);
+      //   console.log(this.credentialFlg);
+    },
+    clearForm() {
+      this.credentialForm.errors = "";
+      this.credentialForm.currentPassword = "";
+      this.credentialForm.email = "";
+      this.credentialForm.password = "";
     }
   },
   watch: {
