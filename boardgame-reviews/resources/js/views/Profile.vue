@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <bdBread :profile="user"></bdBread>
+    <bdBread></bdBread>
     <div class="columns">
       <div class="column is-one-fifth">
         <div class="card">

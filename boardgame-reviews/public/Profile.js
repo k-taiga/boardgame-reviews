@@ -414,7 +414,7 @@ var render = function() {
     "div",
     { staticClass: "container" },
     [
-      _c("bdBread", { attrs: { profile: _vm.user } }),
+      _c("bdBread"),
       _vm._v(" "),
       _c("div", { staticClass: "columns" }, [
         _c("div", { staticClass: "column is-one-fifth" }, [

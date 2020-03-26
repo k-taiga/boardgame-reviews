@@ -47,16 +47,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     shop: Object,
-    ward_id: String,
-    profile: Object
+    ward_id: String
   },
   data: function data() {
     return {
-      wards: []
+      wards: [],
+      url: this.$route.path
     };
   },
   methods: {
@@ -540,7 +543,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\na[data-v-c259b9a4] {\r\n  color: #69569c;\r\n  font-weight: bold;\n}\r\n", ""]);
+exports.push([module.i, "\na[data-v-c259b9a4] {\n  color: #69569c;\n  font-weight: bold;\n}\n", ""]);
 
 // exports
 
@@ -644,12 +647,24 @@ var render = function() {
                     )
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.profile
+                _vm.url == "/profile"
                   ? _c(
                       "li",
                       [
                         _c("RouterLink", { attrs: { to: "/profile" } }, [
                           _vm._v("プロフィール")
+                        ])
+                      ],
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.url == "/credential"
+                  ? _c(
+                      "li",
+                      [
+                        _c("RouterLink", { attrs: { to: "/credential" } }, [
+                          _vm._v("認証情報変更")
                         ])
                       ],
                       1
