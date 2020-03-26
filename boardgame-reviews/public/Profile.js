@@ -94,6 +94,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
  // import dayjs from "dayjs";
 
 
@@ -117,12 +131,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       user: null,
       errors: null,
       editProfileModalActive: false,
-      retireModalActive: false,
-      credentialForm: {
-        currentPassword: "",
-        email: "",
-        password: ""
-      }
+      retireModalActive: false
     };
   },
   methods: {
@@ -358,7 +367,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.favorite_shops[data-v-25b9215a] {\r\n  background-color: white;\r\n  margin-bottom: 4em;\r\n  padding: 2em;\r\n  border-radius: 0.5em;\n}\n.credential[data-v-25b9215a] {\r\n  background-color: white;\r\n  margin-bottom: 4em;\r\n  padding: 2em;\r\n  border-radius: 0.5em;\n}\n.favorite_shop[data-v-25b9215a] {\r\n  background-color: whitesmoke;\r\n  margin: 0.5em;\r\n  border-radius: 0.5em;\n}\r\n", ""]);
+exports.push([module.i, "\n.favorite_shops[data-v-25b9215a] {\n    background-color: white;\n    margin-bottom: 4em;\n    padding: 2em;\n    border-radius: 0.5em;\n}\n.credential[data-v-25b9215a] {\n    background-color: white;\n    margin-bottom: 4em;\n    padding: 2em;\n    border-radius: 0.5em;\n}\n.favorite_shop[data-v-25b9215a] {\n    background-color: whitesmoke;\n    margin: 0.5em;\n    border-radius: 0.5em;\n}\n", ""]);
 
 // exports
 
@@ -437,7 +446,13 @@ var render = function() {
                       {
                         staticClass: "subtitle has-text-centered has-text-dark"
                       },
-                      [_vm._v("name: " + _vm._s(_vm.user.name))]
+                      [
+                        _vm._v(
+                          "\n                        name: " +
+                            _vm._s(_vm.user.name) +
+                            "\n                    "
+                        )
+                      ]
                     )
                   : _vm._e()
               ],
@@ -452,7 +467,7 @@ var render = function() {
                     "button is-small is-primary is-outlined is-fullwidth",
                   on: { click: _vm.showProfileEditModal }
                 },
-                [_vm._v("編集")]
+                [_vm._v("\n                        編集\n                    ")]
               ),
               _vm._v(" "),
               _c(
@@ -462,7 +477,7 @@ var render = function() {
                     "button is-small is-primary is-outlined is-fullwidth",
                   on: { click: _vm.showRetireModal }
                 },
-                [_vm._v("退会")]
+                [_vm._v("\n                        退会\n                    ")]
               )
             ])
           ])
@@ -536,7 +551,9 @@ var staticRenderFns = [
       _c("div", { staticClass: "level-left" }, [
         _c("div", { staticClass: "level-item" }, [
           _c("h2", { staticClass: "title is-6 has-text-left" }, [
-            _vm._v("Favorite Shops")
+            _vm._v(
+              "\n                                Favorite Shops\n                            "
+            )
           ])
         ])
       ])

@@ -6033,7 +6033,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\na[data-v-89adc34a] {\r\n  color: #a6d4cc;\n}\n.navbar-dropdown[data-v-89adc34a] {\r\n  background-color: #fff;\r\n  border-bottom-left-radius: 6px;\r\n  border-bottom-right-radius: 6px;\r\n  border-top: 2px solid #dbdbdb;\r\n  box-shadow: 0 8px 8px hsla(0, 0%, 4%, 0.1);\r\n  display: none;\r\n  font-size: 0.875rem;\r\n  left: 0;\r\n  min-width: 100%;\r\n  position: absolute;\r\n  top: 100%;\r\n  z-index: 20;\n}\nul.wards[data-v-89adc34a] {\r\n  max-height: 150px;\r\n  z-index: 99;\r\n  width: 100%;\r\n  display: -webkit-box;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n  flex-direction: column;\r\n  flex-wrap: wrap;\r\n  -webkit-box-pack: center;\r\n  justify-content: center;\n}\nul.wards li[data-v-89adc34a] {\r\n  font-size: 1.1rem;\r\n  padding-left: 1rem;\r\n  margin: 0 1rem 0.25rem 0;\n}\r\n", ""]);
+exports.push([module.i, "\na[data-v-89adc34a] {\n  color: #a6d4cc;\n}\n.navbar-dropdown[data-v-89adc34a] {\n  background-color: #fff;\n  border-bottom-left-radius: 6px;\n  border-bottom-right-radius: 6px;\n  border-top: 2px solid #dbdbdb;\n  box-shadow: 0 8px 8px hsla(0, 0%, 4%, 0.1);\n  display: none;\n  font-size: 0.875rem;\n  left: 0;\n  min-width: 100%;\n  position: absolute;\n  top: 100%;\n  z-index: 20;\n}\nul.wards[data-v-89adc34a] {\n  max-height: 150px;\n  z-index: 99;\n  width: 100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  flex-direction: column;\n  flex-wrap: wrap;\n  -webkit-box-pack: center;\n  justify-content: center;\n}\nul.wards li[data-v-89adc34a] {\n  font-size: 1.1rem;\n  padding-left: 1rem;\n  margin: 0 1rem 0.25rem 0;\n}\n", ""]);
 
 // exports
 
@@ -6052,7 +6052,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.el-carousel {\r\n    margin-bottom: 3rem;\n}\n.el-carousel__item {\r\n    color: #475669;\r\n    font-size: 18px;\r\n    opacity: 0.75;\r\n    line-height: 300px;\r\n    margin: 0;\r\n    height: 250px;\r\n    text-align: center;\r\n    background-color: darkcyan;\n}\n.el-carousel__item div {\r\n    margin: 10px;\n}\r\n\r\n/* .el-carousel__item:nth-child(2n) {\r\n    background-color: #99a9bf;\r\n}\r\n\r\n.el-carousel__item:nth-child(2n + 1) {\r\n    background-color: #d3dce6;\r\n} */\r\n", ""]);
+exports.push([module.i, "\n.el-carousel {\n    margin-bottom: 3rem;\n}\n.el-carousel__item {\n    color: #475669;\n    font-size: 18px;\n    opacity: 0.75;\n    line-height: 300px;\n    margin: 0;\n    height: 250px;\n    text-align: center;\n    background-color: darkcyan;\n}\n.el-carousel__item div {\n    margin: 10px;\n}\n\n/* .el-carousel__item:nth-child(2n) {\n    background-color: #99a9bf;\n}\n\n.el-carousel__item:nth-child(2n + 1) {\n    background-color: #d3dce6;\n} */\n", ""]);
 
 // exports
 
@@ -6071,7 +6071,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.footer[data-v-61a7c374] {\r\n    background-color: #a6d4cc;\n}\r\n", ""]);
+exports.push([module.i, "\n.footer[data-v-61a7c374] {\n    background-color: #a6d4cc;\n}\n", ""]);
 
 // exports
 
