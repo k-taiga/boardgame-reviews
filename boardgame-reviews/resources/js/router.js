@@ -23,6 +23,8 @@ const ShopDetail = () =>
     import(/* webpackChunkName:"ShopDetail" */ "./views/ShopDetail.vue");
 const Profile = () =>
     import(/* webpackChunkName:"Profile" */ "./views/Profile.vue");
+const Credential = () =>
+    import(/* webpackChunkName:"Credential" */ "./views/Credential.vue");
 const SystemError = () =>
     import(/* webpackChunkName:"SystemError" */ "./views/errors/System.vue");
 const NotFoundError = () =>
@@ -89,6 +91,12 @@ const router = new VueRouter({
             path: "/profile",
             name: "profile",
             component: Profile,
+            meta: { login: true }
+        },
+        {
+            path: "/credential",
+            name: "credential",
+            component: Credential,
             meta: { login: true }
         },
         {

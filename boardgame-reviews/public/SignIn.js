@@ -159,6 +159,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 if (this.apiStatus) {
                   this.$router.push("/");
+                  this.loginMessage();
                 }
 
               case 3:
@@ -177,6 +178,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }(),
     clearError: function clearError() {
       this.$store.commit("auth/setLoginErrorMessages", null);
+    },
+    loginMessage: function loginMessage() {
+      this.$notify({
+        title: "ログインしました",
+        type: "success",
+        position: "bottom-left",
+        showClose: false
+      });
     }
   },
   created: function created() {

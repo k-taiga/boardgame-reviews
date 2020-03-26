@@ -28,27 +28,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "bd-error-modal",
+  name: "error-modal",
   data: function data() {
     return {
       message: null,
-      active: true
+      code: null,
+      active: false
     };
   },
-  props: {
-    code: {
-      type: String,
-      required: true
+  computed: {
+    Code: function Code() {
+      var response = this.$store.state.error.code;
+      return response; // console.log(response);
     }
   },
-  computed: {
-    errorCode: function errorCode() {
-      if (this.code === _util__WEBPACK_IMPORTED_MODULE_0__["INTERNAL_SERVER_ERROR"]) {
-        this.message = "システムエラーが発生しました。";
-      } else if (this.code === _util__WEBPACK_IMPORTED_MODULE_0__["UNAUTHORIZED"]) {
-        this.message = "システムエラーが発生しました。";
-      } else if (this.code === _util__WEBPACK_IMPORTED_MODULE_0__["NOT_FOUND"]) {
-        this.message = "お探しのページが見つかりません。";
+  watch: {
+    Code: {
+      handler: function handler(val) {
+        if (val !== "") {
+          this.active = true;
+        }
+
+        if (val === _util__WEBPACK_IMPORTED_MODULE_0__["INTERNAL_SERVER_ERROR"]) {
+          this.message = "システムエラーが発生しました。";
+        } else if (val === _util__WEBPACK_IMPORTED_MODULE_0__["UNAUTHORIZED"]) {
+          this.message = "システムエラーが発生しました。";
+        } else if (val === _util__WEBPACK_IMPORTED_MODULE_0__["NOT_FOUND"]) {
+          this.message = "お探しのページが見つかりません。";
+        }
       }
     }
   },
@@ -86,7 +93,7 @@ var render = function() {
       }),
       _vm._v(" "),
       _c("div", { staticClass: "modal-content" }, [
-        _c("div", { staticClass: "notification is-warning" }, [
+        _c("div", { staticClass: "notification is-danger" }, [
           _c("button", {
             staticClass: "delete",
             attrs: { "aria-label": "close" },

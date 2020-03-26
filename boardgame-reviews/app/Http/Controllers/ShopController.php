@@ -100,7 +100,6 @@ class ShopController extends Controller
      */
     public function show(string $id)
     {
-
         $shop = Shop::where('id', $id)->with(['photos', 'reviews.author', 'likes'])->first();
 
         clock($shop);

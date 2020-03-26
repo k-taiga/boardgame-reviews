@@ -1,9 +1,9 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/Credential.js": "/Credential.js?id=03cae06a3a5bfbc7dd7b",
-    "/Credential~Profile.js": "/Credential~Profile.js?id=4c34d0cbf563c36d96e2",
-    "/Credential~Profile~ShopDetail.js": "/Credential~Profile~ShopDetail.js?id=c61366b7a4b5397841f8",
+    "/Credential.js": "/Credential.js",
+    "/Credential~Profile.js": "/Credential~Profile.js",
+    "/Credential~Profile~ShopDetail.js": "/Credential~Profile~ShopDetail.js",
     "/Home.js": "/Home.js",
     "/NotFoundError.js": "/NotFoundError.js",
     "/Profile.js": "/Profile.js",

@@ -16,8 +16,11 @@
               <li v-if="shop">
                 <RouterLink :to="`/shops/${shop.id}`">{{shop.shop_name}}</RouterLink>
               </li>
-              <li v-if="profile">
+              <li v-if="url == `/profile`">
                 <RouterLink :to="`/profile`">プロフィール</RouterLink>
+              </li>
+              <li v-if="url == `/credential`">
+                <RouterLink :to="`/credential`">認証情報変更</RouterLink>
               </li>
             </ul>
           </nav>
@@ -32,12 +35,12 @@ import { OK } from "../util";
 export default {
   props: {
     shop: Object,
-    ward_id: String,
-    profile: Object
+    ward_id: String
   },
   data() {
     return {
-      wards: []
+      wards: [],
+      url: this.$route.path
     };
   },
   methods: {

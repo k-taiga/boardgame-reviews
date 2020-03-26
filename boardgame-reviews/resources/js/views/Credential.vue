@@ -28,25 +28,53 @@
         </div>
       </div>
       <div class="column is-for-fifths">
-        <div class="favorite_shops">
+        <div class="credential">
           <div class="level">
             <div class="level-left">
               <div class="level-item">
-                <h2 class="title is-6 has-text-left">Favorite Shops</h2>
+                <h2 class="title is-6 has-text-left">認証情報変更</h2>
               </div>
             </div>
           </div>
-          <div class="columns is-multiline" v-if="user.favorite_shops.count !== 0">
-            <shop
-              v-for="shop in user.favorite_shops"
-              :key="shop.id"
-              :item="shop"
-              class="favorite_shop"
-            />
+          <transition name="error">
+            <div v-if="credentialForm.errors" class="errors">
+              <ul v-if="credentialForm.errors.msg">
+                <li>{{ credentialForm.errors.msg }}</li>
+              </ul>
+              <!-- <ul v-if="credentialForm.errors.email">
+                <li v-for="msg in loginErrors.email" :key="msg">{{ msg }}</li>
+              </ul>
+              <ul v-if="credentialForm.errors.password">
+                <li v-for="msg in loginErrors.password" :key="msg">{{ msg }}</li>
+              </ul>-->
+              <ul v-if="credentialForm.errors.null">
+                <li>{{ credentialForm.errors.null }}</li>
+              </ul>
+            </div>
+          </transition>
+          <bdTextField
+            type="password"
+            placeholder="現在のパスワード（必須）"
+            icon="key"
+            v-model="credentialForm.currentPassword"
+          ></bdTextField>
+          <bdTextField
+            type="email"
+            placeholder="新しいメールアドレス"
+            icon="envelope"
+            v-model="credentialForm.email"
+          ></bdTextField>
+          <bdTextField
+            type="password"
+            placeholder="新しいパスワード"
+            icon="lock"
+            v-model="credentialForm.password"
+          ></bdTextField>
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-primary" @click.prevent="updateCredential">更新</button>
+            </div>
           </div>
-          <p v-if="user.favorite_shops.length === 0" class="has-text-left">
-            <strong>まだお気に入りはありません。</strong>
-          </p>
         </div>
       </div>
     </div>
@@ -94,10 +122,12 @@ export default {
       errors: null,
       editProfileModalActive: false,
       retireModalActive: false,
+      credentialFlg: this.$route.params.credential_flg,
       credentialForm: {
         currentPassword: "",
         email: "",
-        password: ""
+        password: "",
+        errors: ""
       }
     };
   },
@@ -190,6 +220,45 @@ export default {
         path: this.$router.currentRoute.path,
         force: true
       });
+    },
+    async updateCredential() {
+      if (this.credentialForm.email || this.credentialForm.password) {
+        const response = await axios.post(
+          "/api/profile/credential",
+          this.credentialForm
+        );
+
+        console.log(response);
+
+        if (response.status === UNPROCESSABLE_ENTITY) {
+          this.credentialForm.errors = response.data.errors;
+          return false;
+        } else if (response.status === 403) {
+          this.credentialForm.errors = { msg: response.data.message };
+          return false;
+        }
+
+        this.clearForm();
+        alert("認証情報を変更しました！");
+        // this.$router.push(`/profile`);
+      } else {
+        // alert(
+        //   "新しいメールアドレスか新しいパスワードのどちらかは入力してください"
+        // );
+        this.credentialForm.errors = {
+          null:
+            "　新しいメールアドレスか新しいパスワードのどちらかは入力してください"
+        };
+      }
+    },
+    valuecheck() {
+      //   console.log(this.credentialFlg);
+    },
+    clearForm() {
+      this.credentialForm.errors = "";
+      this.credentialForm.currentPassword = "";
+      this.credentialForm.email = "";
+      this.credentialForm.password = "";
     }
   },
   watch: {

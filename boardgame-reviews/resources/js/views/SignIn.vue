@@ -77,10 +77,19 @@ export default {
       await this.$store.dispatch("auth/login", this.loginForm);
       if (this.apiStatus) {
         this.$router.push("/");
+        this.loginMessage();
       }
     },
     clearError() {
       this.$store.commit("auth/setLoginErrorMessages", null);
+    },
+    loginMessage() {
+      this.$notify({
+        title: "ログインしました",
+        type: "success",
+        position: "bottom-left",
+        showClose: false
+      });
     }
   },
   created() {

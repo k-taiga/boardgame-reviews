@@ -22,17 +22,17 @@
       </div>
       <div id="navbar-links" class="navbar-menu">
         <div class="navbar-end" v-if="user">
-          <bd-tweet></bd-tweet>
+          <bdTweet></bdTweet>
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
               <bdIcon name="user has-text-white"></bdIcon>
             </a>
             <div class="navbar-dropdown is-right">
-              <RouterLink class="navbar-item" :to="{ name: 'profile' }">
+              <RouterLink class="navbar-item" :to="{ name: 'profile'}">
                 <bdIcon name="address-card"></bdIcon>
                 <span>プロフィール</span>
               </RouterLink>
-              <RouterLink class="navbar-item" :to="{ name: 'auth_edit' }">
+              <RouterLink class="navbar-item" :to="{ name: 'credential'}">
                 <bdIcon name="user-edit"></bdIcon>
                 <span>認証情報変更</span>
               </RouterLink>
