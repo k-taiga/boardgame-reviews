@@ -6109,7 +6109,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.bd-tw-button[data-v-4683c2d4] {\r\n  background-color: #55acee;\r\n  color: white;\n}\r\n", ""]);
+exports.push([module.i, "\n.bd-tw-button[data-v-4683c2d4] {\n  background-color: #55acee;\n  color: white;\n}\n", ""]);
 
 // exports
 
@@ -67076,7 +67076,7 @@ var staticRenderFns = [
                 "data-social-target": "https://bodoge-cafe-reviews.work",
                 target: "_blank",
                 href:
-                  "https://twitter.com/intent/tweet?text=&hashtags=&url=http://bodoge-cafe-reviews.work&via=jgthms"
+                  "https://twitter.com/intent/tweet?text=ボードゲームカフェのレビューができるサイトです！ ぜひ使ってください！;hashtags=&url=http://bodoge-cafe-reviews.work&"
               }
             },
             [

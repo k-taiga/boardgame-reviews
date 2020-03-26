@@ -118,7 +118,6 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    // validationするRequestクラスを作る
     public function updateCredential(Request $request)
     {
         clock($request->all());
@@ -127,14 +126,9 @@ class UserController extends Controller
 
         //現在のパスワードが正しいかを調べる
         if (!(Hash::check($request_data["currentPassword"], Auth::user()->password))) {
-            // clock("ifのなか");
-            // return response(403);
             $errors = '　現在のパスワードが違います。';
             abort(403, $errors);
         } else {
-            clock("elseのなか");
-            // clock(Auth::user()->password);
-            // $errors = '現在のパスワードが違います。';
             $user = Auth::user();
 
             if ($request_data["password"] !== null) {
@@ -167,11 +161,5 @@ class UserController extends Controller
 
             return response(200);
         }
-
-
-        // $user->update();
-
-        // vueでキャッチする
-        // return response(403);
     }
 }
