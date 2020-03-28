@@ -1,12 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-// import Home from "./views/Home.vue";
-// import SignUp from "./views/SignUp.vue";
-// import SignIn from "./views/SignIn.vue";
-// import SystemError from "./views/errors/System.vue";
-
-// import PhotoList from "./views/PhotoList.vue";
 
 const Home = () => import(/* webpackChunkName:"Home" */ "./views/Home.vue");
 const SignUp = () =>

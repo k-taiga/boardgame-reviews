@@ -245,7 +245,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 console.log(keyword);
                 _context4.next = 3;
-                return axios.get("/api/shops/".concat(keyword));
+                return axios.post("/api/shops/".concat(keyword));
 
               case 3:
                 response = _context4.sent;

@@ -121,7 +121,7 @@ export default {
         async search(keyword) {
             console.log(keyword);
 
-            const response = await axios.get(`/api/shops/${keyword}`);
+            const response = await axios.post(`/api/shops/${keyword}`);
 
             if (response.status == 200) {
                 this.shops = response.data;

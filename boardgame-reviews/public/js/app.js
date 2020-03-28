@@ -83960,11 +83960,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
 
- // import Home from "./views/Home.vue";
-// import SignUp from "./views/SignUp.vue";
-// import SignIn from "./views/SignIn.vue";
-// import SystemError from "./views/errors/System.vue";
-// import PhotoList from "./views/PhotoList.vue";
+
 
 var Home = function Home() {
   return __webpack_require__.e(/*! import() | Home */ "Home").then(__webpack_require__.bind(null, /*! ./views/Home.vue */ "./resources/js/views/Home.vue"));

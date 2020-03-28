@@ -28,7 +28,7 @@ Route::get('/shops', 'ShopController@index')->name('shop.index');
 Route::get('/shops/{id}', 'ShopController@show')->name('shop.show');
 
 // 店舗検索
-Route::get('/shops/{search}', 'ShopController@search')->name('shop.show');
+Route::post('/shops/{keyword}', 'ShopController@search')->name('shop.search');
 
 // 23区一覧
 Route::get('/wards', 'WardController@index')->name('ward.index');
