@@ -84052,17 +84052,11 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: "/sign_up",
     name: "sign_up",
-    component: SignUp,
-    meta: {
-      login: true
-    }
+    component: SignUp
   }, {
     path: "/sign_in",
     name: "sign_in",
-    component: SignIn,
-    meta: {
-      login: true
-    }
+    component: SignIn
   }, {
     path: "/profile",
     name: "profile",
@@ -84091,28 +84085,30 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     component: ErrorModal
   }]
 }); // ナビゲーションガード の登録
-// router.beforeEach((to, from, next) => {
-//     console.log(store.getters["auth/user"]);
-//     // 表示しようとしているページがlogin設定されているかどうかを判別する
-//     if (to.matched.some(rec => rec.meta.login)) {
-//         console.log(to);
-//         if (store.getters["auth/user"]) {
-//             // if (store.getters["auth/check"]) {
-//             // ログインしているので(/)を表示
-//             console.log(store.getters["auth/user"]);
-//             next({ name: "index" });
-//             // next("/");
-//         } else {
-//             // ログインしていないのでそのまま表示する
-//             console.log(store.getters["auth/user"]);
-//             next();
-//             // next({ name: "home" });
-//         }
-//     } else {
-//         next();
-//     }
-// });
 
+router.beforeEach(function (to, from, next) {
+  console.log(_store__WEBPACK_IMPORTED_MODULE_2__["default"].getters["auth/user"]); // 表示しようとしているページがlogin設定されているかどうかを判別する
+
+  if (to.matched.some(function (rec) {
+    return rec.meta.login;
+  })) {
+    console.log(to);
+
+    if (_store__WEBPACK_IMPORTED_MODULE_2__["default"].getters["auth/user"]) {
+      // ログインしているのでそのまま表示
+      console.log(_store__WEBPACK_IMPORTED_MODULE_2__["default"].getters["auth/user"]);
+      next();
+    } else {
+      // ログインしていないので(/)に移動する
+      console.log(_store__WEBPACK_IMPORTED_MODULE_2__["default"].getters["auth/user"]);
+      next({
+        name: "index"
+      });
+    }
+  } else {
+    next();
+  }
+});
 /* harmony default export */ __webpack_exports__["default"] = (router);
 
 /***/ }),

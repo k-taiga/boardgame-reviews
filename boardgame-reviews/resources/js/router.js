@@ -79,13 +79,11 @@ const router = new VueRouter({
             path: "/sign_up",
             name: "sign_up",
             component: SignUp,
-            meta: { login: true }
         },
         {
             path: "/sign_in",
             name: "sign_in",
             component: SignIn,
-            meta: { login: true }
         },
         {
             path: "/profile",
@@ -118,26 +116,23 @@ const router = new VueRouter({
 });
 
 // ナビゲーションガード の登録
-// router.beforeEach((to, from, next) => {
-//     console.log(store.getters["auth/user"]);
-//     // 表示しようとしているページがlogin設定されているかどうかを判別する
-//     if (to.matched.some(rec => rec.meta.login)) {
-//         console.log(to);
-//         if (store.getters["auth/user"]) {
-//             // if (store.getters["auth/check"]) {
-//             // ログインしているので(/)を表示
-//             console.log(store.getters["auth/user"]);
-//             next({ name: "index" });
-//             // next("/");
-//         } else {
-//             // ログインしていないのでそのまま表示する
-//             console.log(store.getters["auth/user"]);
-//             next();
-//             // next({ name: "home" });
-//         }
-//     } else {
-//         next();
-//     }
-// });
+router.beforeEach((to, from, next) => {
+    console.log(store.getters["auth/user"]);
+    // 表示しようとしているページがlogin設定されているかどうかを判別する
+    if (to.matched.some(rec => rec.meta.login)) {
+        console.log(to);
+        if (store.getters["auth/user"]) {
+            // ログインしているのでそのまま表示
+            console.log(store.getters["auth/user"]);
+            next();
+        } else {
+            // ログインしていないので(/)に移動する
+            console.log(store.getters["auth/user"]);
+            next({ name: "index" });
+        }
+    } else {
+        next();
+    }
+});
 
 export default router;
