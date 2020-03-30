@@ -1136,318 +1136,318 @@ class ShopsTableSeeder extends Seeder
                 'ward_id' => '1',
                 'boardgame_num'          => '441',
                 'price' =>'2000',
-                'byo_flg' => '',
+                'byo_flg' => '0',
                 'home_url'       =>'http://asobicafe.com/',
                 'content'      => 'アソビCafe」は世界中のボードゲームを遊べるカフェバーです。 美味しい食事や飲み物を片手に、ゲームやコミュニケーションを楽しむことが出来ます。当店で特に重視しているのは「ひとりで来ても安心」であることです。 スタッフによるお客様同士のテーブルセッティングや、ゲームのご紹介、 初めて遊ぶ方や初心者さんのサポートなどを行なうことで 快適な「誰でも遊べるゲームカフェ」を実現いたします。'
             ],
             // 84
             [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
+                'shop_name'           => 'JELLY JELLY CAFE 下北沢店',
+                'address'      => '東京都世田谷区北沢2-11-3-202',
+                'ward_id' => '12',
+                'boardgame_num'          => '335',
+                'price' =>'1500',
+                'byo_flg' => '1',
+                'home_url'       =>'http://jellyjellycafe.com/shoplist/shimokitazawa',
+                'content'      => 'JELLY JELLY CAFE 下北沢店は、演劇やバンド、古着など様々なカルチャーの聖地とも言える下北沢駅より徒歩1分という好アクセスな店舗です。最大6名まで座れる円卓も設置されています。下北沢散策と合わせてボードゲームも楽しんでください！'
             ],
             // 85
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 86
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 87
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 88
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 89
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 90
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 91
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 92
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 93
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 94
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 95
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 96
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 97
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 98
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 99
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 100
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 101
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 102
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 103
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 104
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 105
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 106
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 107
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 108
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 109
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 110
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ],
-            // 111
-            [
-                'shop_name'           => '',
-                'address'      => '',
-                'ward_id' => '',
-                'boardgame_num'          => '',
-                'price' =>'',
-                'byo_flg' => '',
-                'home_url'       =>'',
-                'content'      => ''
-            ]
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 86
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 87
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 88
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 89
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 90
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 91
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 92
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 93
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 94
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 95
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 96
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 97
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 98
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 99
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 100
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 101
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 102
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 103
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 104
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 105
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 106
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 107
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 108
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 109
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 110
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ],
+            // // 111
+            // [
+            //     'shop_name'           => '',
+            //     'address'      => '',
+            //     'ward_id' => '',
+            //     'boardgame_num'          => '',
+            //     'price' =>'',
+            //     'byo_flg' => '',
+            //     'home_url'       =>'',
+            //     'content'      => ''
+            // ]
         ]);
     }
 }
