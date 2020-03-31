@@ -23,7 +23,7 @@ class Shop extends Model
         'photos', 'reviews', 'likes_count', 'liked_by_user',
     ];
 
-    protected $perPage = 20;
+    protected $perPage = 18;
 
     // const HOUR = 10;
 
