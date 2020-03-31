@@ -159,7 +159,7 @@ class ShopsTableSeeder extends Seeder
             ],
             // 6
             [
-                'shop_name'           => '秋葉原集会所',
+                'shop_name'           => 'ゲームカフェ秋葉原集会所',
                 'address'      => '東京都千代田区外神田3-8-5 イサミヤ第2ビル3F',
                 'ward_id' => '1',
                 'boardgame_num'          => '546',
@@ -883,14 +883,14 @@ class ShopsTableSeeder extends Seeder
             ],
             // 63
             [
-                'shop_name'           => 'JELLY JELLY CAFE 池袋店',
+                'shop_name'           => 'JELLY JELLY CAFE 池袋店２号店',
                 'address'      => '東京都豊島区西池袋3-27-16 広瀬ビル2 4F',
                 'ward_id' => '16',
                 'boardgame_num'          => '414',
                 'price' =>'1500',
                 'byo_flg' => '1',
-                'home_url'       =>'http://jellyjellycafe.com/shoplist/ikebukuro',
-                'content'      => 'ついに池袋にボードゲームカフェがオープンいたしました。木のぬくもりたっぷりの店内で、お友達や恋人とお酒を片手にボードゲームで遊んでみませんか？ 池袋駅西口より徒歩3分。マルイから徒歩1分です。'
+                'home_url'       =>'https://jellyjellycafe.com/shoplist/ikebukuro2',
+                'content'      => '池袋に2店舗目のJELLY JELLY CAFE（ボードゲームカフェ）が誕生しました！無垢の木材に囲まれた広々とした店内で、ゆったりとした時間をお過ごしいただけます。オシャレに楽しくボードゲームを遊んでみませんか？'
             ],
             // 64
             [
