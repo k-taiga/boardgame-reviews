@@ -216,6 +216,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 
@@ -690,6 +693,15 @@ var render = function() {
                       _vm._v(" "),
                       _c("p", { staticClass: "content has-text-centered" }, [
                         _vm._v(_vm._s(_vm.shop.content))
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "has-text-left" }, [
+                        _c("i", { staticClass: "fas fa-money-bill-wave" }),
+                        _vm._v(
+                          "  予算：約" +
+                            _vm._s(_vm.shop.price) +
+                            "円\n            "
+                        )
                       ]),
                       _vm._v(" "),
                       _vm._m(0),
