@@ -21,7 +21,8 @@
     <!-- webアイコンフォント -->
     <link rel="stylesheet" href="https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css">
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    <!-- <link rel="stylesheet" href="{{ mix('/css/app.css') }}"> -->
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
 
 </head>
 
