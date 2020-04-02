@@ -369,16 +369,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   price: value.price,
                   byo_flg: value.byo ? "1" : ""
                 };
-                console.log(filter); // filterは複数の可能性があるため、配列でPOSTする
+                console.log(filter);
 
-                if (!(sort !== "" && (filter.boardgame !== "" || filter.price !== "" || filter.byo_flg !== ""))) {
+                if (!( // ソートだけ
+                sort !== "" && filter.boardgame === "" && filter.price === "" && filter.byo_flg === "")) {
                   _context4.next = 16;
                   break;
                 }
 
-                console.log("ifの中に通った！");
+                console.log("1個目のifの中に通った！");
                 _context4.next = 9;
-                return axios.post("/api/wards/".concat(this.wardId, "/").concat(sort), filter);
+                return axios.get("/api/wards/".concat(this.wardId, "/").concat(sort));
 
               case 9:
                 response = _context4.sent;
@@ -397,15 +398,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 break;
 
               case 16:
-                if (!( // ソートだけ
-                sort !== "" && filter.boardgame === "" && filter.price === "" && filter.byo_flg === "")) {
+                if (!( // フィルターだけ
+                sort === "" && (filter.boardgame !== "" || filter.price !== "" || filter.byo_flg !== ""))) {
                   _context4.next = 27;
                   break;
                 }
 
-                console.log("1個目のelseifの中に通った！");
+                console.log("2個目のelseifの中に通った！");
                 _context4.next = 20;
-                return axios.get("/api/wards/".concat(this.wardId, "/").concat(sort));
+                return axios.post("/api/wards/".concat(this.wardId, "/"), filter);
 
               case 20:
                 _response = _context4.sent;
@@ -424,15 +425,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 break;
 
               case 27:
-                if (!( // フィルターだけ
-                sort === "" && (filter.boardgame !== "" || filter.price !== "" || filter.byo_flg !== ""))) {
+                if (!( // 全て空の場合は元に戻す
+                sort === "" && filter.boardgame === "" && filter.price === "" && filter.byo_flg === "")) {
                   _context4.next = 38;
                   break;
                 }
 
-                console.log("2個目のelseifの中に通った！");
+                console.log("3個目のelseifの中に通った！");
                 _context4.next = 31;
-                return axios.post("/api/wards/".concat(this.wardId, "/"), filter);
+                return axios.get("/api/wards/".concat(this.wardId));
 
               case 31:
                 _response2 = _context4.sent;
@@ -451,15 +452,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 break;
 
               case 38:
-                if (!( // 全て空の場合は元に戻す
-                sort === "" && filter.boardgame === "" && filter.price === "" && filter.byo_flg === "")) {
+                if (!(sort !== "" && (filter.boardgame !== "" || filter.price !== "" || filter.byo_flg !== ""))) {
                   _context4.next = 47;
                   break;
                 }
 
-                console.log("3個目のelseifの中に通った！");
+                console.log("4個目のelse ifの中に通った！");
                 _context4.next = 42;
-                return axios.get("/api/wards/".concat(this.wardId));
+                return axios.post("/api/wards/".concat(this.wardId, "/").concat(sort), filter);
 
               case 42:
                 _response3 = _context4.sent;

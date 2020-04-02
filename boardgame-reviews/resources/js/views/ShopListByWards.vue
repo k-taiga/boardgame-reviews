@@ -123,31 +123,15 @@ export default {
 
             console.log(filter);
 
-            // filterは複数の可能性があるため、配列でPOSTする
+
             if (
-                sort !== "" &&
-                (filter.boardgame !== "" ||
-                    filter.price !== "" ||
-                    filter.byo_flg !== "")
-            ) {
-                console.log("ifの中に通った！");
-                const response = await axios.post(
-                    `/api/wards/${this.wardId}/${sort}`,
-                    filter
-                );
-                if (response.status !== OK) {
-                    this.$store.commit("error/setCode", response.status);
-                    return false;
-                }
-                this.shops = response.data.data;
-            } else if (
                 // ソートだけ
                 sort !== "" &&
                 filter.boardgame === "" &&
                 filter.price === "" &&
                 filter.byo_flg === ""
             ) {
-                console.log("1個目のelseifの中に通った！");
+                console.log("1個目のifの中に通った！");
                 const response = await axios.get(
                     `/api/wards/${this.wardId}/${sort}`
                 );
@@ -188,6 +172,24 @@ export default {
                     return false;
                 }
 
+                this.shops = response.data.data;
+            }
+            // filterは複数の可能性があるため、配列でPOSTする
+            else if (
+                sort !== "" &&
+                (filter.boardgame !== "" ||
+                    filter.price !== "" ||
+                    filter.byo_flg !== "")
+            ) {
+                console.log("4個目のelse ifの中に通った！");
+                const response = await axios.post(
+                    `/api/wards/${this.wardId}/${sort}`,
+                    filter
+                );
+                if (response.status !== OK) {
+                    this.$store.commit("error/setCode", response.status);
+                    return false;
+                }
                 this.shops = response.data.data;
             }
 
