@@ -281,7 +281,58 @@ class WardController extends Controller
                     ->distinct()->with(['photos', 'likes'])
                     ->withCount('likes')->orderBy('likes_count', 'desc')->paginate();
             }
+        } else if ($sort === "default") {
+            // フィルター全部
+            if ($filter["boardgame"] !== null && $filter["price"] !== null && $filter["byo_flg"] !== null) {
+                $shops =
+                    Shop::where('ward_id', $id)
+                    ->where('boardgame_num', '>', $filter["boardgame"])
+                    ->where('price', '<=', $filter["price"])
+                    ->where('byo_flg', $filter["byo_flg"])
+                    ->with(['photos', 'likes'])->orderBy(Shop::CREATED_AT, 'desc')->paginate();
+                // ボードゲームと予算
+            } elseif ($filter["boardgame"] !== null && $filter["price"] !== null) {
+                $shops =
+                    Shop::where('ward_id', $id)
+                    ->where('boardgame_num', '>=', $filter["boardgame"])
+                    ->where('price', '<=', $filter["price"])
+                    ->with(['photos', 'likes'])->orderBy(Shop::CREATED_AT, 'desc')->paginate();
+                // ボードゲームとBYOフラグ
+            } elseif ($filter["boardgame"] !== null && $filter["byo_flg"] !== null) {
+                $shops =
+                    Shop::where('ward_id', $id)
+                    ->where('boardgame_num', '>=', $filter["boardgame"])
+                    ->where('byo_flg', $filter["byo_flg"])
+                    ->with(['photos', 'likes'])->orderBy(Shop::CREATED_AT, 'desc')->paginate();
+                // 予算とBYOフラグ
+            } elseif ($filter["price"] !== null && $filter["byo_flg"] !== null) {
+                $shops =
+                    Shop::where('ward_id', $id)
+                    ->where('price', '<=', $filter["price"])
+                    ->where('byo_flg', $filter["byo_flg"])
+                    ->with(['photos', 'likes'])->orderBy(Shop::CREATED_AT, 'desc')->paginate();
+            } elseif ($filter["boardgame"] !== null) {
+                // ボードゲームのみ
+                $shops =
+                    Shop::where('ward_id', $id)
+                    ->where('boardgame_num', '>=', $filter["boardgame"])
+                    ->with(['photos', 'likes'])->orderBy(Shop::CREATED_AT, 'desc')->paginate();
+            } elseif ($filter["price"] !== null) {
+                // priceのみ
+                $shops =
+                    Shop::where('ward_id', $id)
+                    ->where('price', '<=', $filter["price"])
+                    ->with(['photos', 'likes'])->orderBy(Shop::CREATED_AT, 'desc')->paginate();
+            } elseif ($filter["byo_flg"] !== null) {
+                // byo_flgのみ
+                $shops =
+                    Shop::where('ward_id', $id)
+                    ->where('byo_flg', $filter["byo_flg"])
+                    ->with(['photos', 'likes'])->orderBy(Shop::CREATED_AT, 'desc')->paginate();
+            }
+
         }
+
 
 
         // clock($shops);

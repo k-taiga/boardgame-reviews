@@ -113,7 +113,7 @@ export default {
         async sort(value) {
             console.log(value);
 
-            const sort = value.sort;
+            let sort = value.sort;
             let filter = "";
             filter = {
                 boardgame: value.boardgame,
@@ -147,9 +147,10 @@ export default {
                     filter.price !== "" ||
                     filter.byo_flg !== "")
             ) {
+                sort = "default";
                 console.log("2個目のelseifの中に通った！");
                 const response = await axios.post(
-                    `/api/wards/${this.wardId}/`,
+                    `/api/wards/${this.wardId}/${sort}`,
                     filter
                 );
                 if (response.status !== OK) {
