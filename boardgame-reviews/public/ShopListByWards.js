@@ -393,86 +393,89 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 13:
                 this.shops = response.data.data;
-                _context4.next = 44;
+                _context4.next = 47;
                 break;
 
               case 16:
                 if (!( // ソートだけ
                 sort !== "" && filter.boardgame === "" && filter.price === "" && filter.byo_flg === "")) {
-                  _context4.next = 26;
+                  _context4.next = 27;
                   break;
                 }
 
-                _context4.next = 19;
+                console.log("1個目のelseifの中に通った！");
+                _context4.next = 20;
                 return axios.get("/api/wards/".concat(this.wardId, "/").concat(sort));
 
-              case 19:
+              case 20:
                 _response = _context4.sent;
 
                 if (!(_response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
-                  _context4.next = 23;
+                  _context4.next = 24;
                   break;
                 }
 
                 this.$store.commit("error/setCode", _response.status);
                 return _context4.abrupt("return", false);
 
-              case 23:
+              case 24:
                 this.shops = _response.data.data;
-                _context4.next = 44;
+                _context4.next = 47;
                 break;
 
-              case 26:
+              case 27:
                 if (!( // フィルターだけ
                 sort === "" && (filter.boardgame !== "" || filter.price !== "" || filter.byo_flg !== ""))) {
-                  _context4.next = 36;
+                  _context4.next = 38;
                   break;
                 }
 
-                _context4.next = 29;
+                console.log("2個目のelseifの中に通った！");
+                _context4.next = 31;
                 return axios.post("/api/wards/".concat(this.wardId, "/"), filter);
 
-              case 29:
+              case 31:
                 _response2 = _context4.sent;
 
                 if (!(_response2.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
-                  _context4.next = 33;
+                  _context4.next = 35;
                   break;
                 }
 
                 this.$store.commit("error/setCode", _response2.status);
                 return _context4.abrupt("return", false);
 
-              case 33:
+              case 35:
                 this.shops = _response2.data.data;
-                _context4.next = 44;
+                _context4.next = 47;
                 break;
 
-              case 36:
+              case 38:
                 if (!( // 全て空の場合は元に戻す
                 sort === "" && filter.boardgame === "" && filter.price === "" && filter.byo_flg === "")) {
-                  _context4.next = 44;
+                  _context4.next = 47;
                   break;
                 }
 
-                _context4.next = 39;
+                console.log("3個目のelseifの中に通った！");
+                _context4.next = 42;
                 return axios.get("/api/wards/".concat(this.wardId));
 
-              case 39:
+              case 42:
                 _response3 = _context4.sent;
 
                 if (!(_response3.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
-                  _context4.next = 43;
+                  _context4.next = 46;
                   break;
                 }
 
                 this.$store.commit("error/setCode", _response3.status);
                 return _context4.abrupt("return", false);
 
-              case 43:
+              case 46:
                 this.shops = _response3.data.data;
 
-              case 44:
+              case 47:
               case "end":
                 return _context4.stop();
             }

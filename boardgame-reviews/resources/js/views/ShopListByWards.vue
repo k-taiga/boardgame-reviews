@@ -147,6 +147,7 @@ export default {
                 filter.price === "" &&
                 filter.byo_flg === ""
             ) {
+                console.log("1個目のelseifの中に通った！");
                 const response = await axios.get(
                     `/api/wards/${this.wardId}/${sort}`
                 );
@@ -162,6 +163,7 @@ export default {
                     filter.price !== "" ||
                     filter.byo_flg !== "")
             ) {
+                console.log("2個目のelseifの中に通った！");
                 const response = await axios.post(
                     `/api/wards/${this.wardId}/`,
                     filter
@@ -178,6 +180,7 @@ export default {
                 filter.price === "" &&
                 filter.byo_flg === ""
             ) {
+                console.log("3個目のelseifの中に通った！");
                 const response = await axios.get(`/api/wards/${this.wardId}`);
 
                 if (response.status !== OK) {
