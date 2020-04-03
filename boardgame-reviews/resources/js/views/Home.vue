@@ -1,33 +1,33 @@
 <template>
-    <div class="container">
-        <div class="hero is-fullheight">
-            <button
-                class="button is-info is-rounded is-hovered"
-                @click="showForm"
-            >
-                <i class="icon ion-md-add"></i>
-                Submit a photo
-            </button>
-            <div class="hero-body">
-                <photoForm v-model="show" />
-            </div>
-        </div>
+  <div class="hero is-fullheight">
+    <div class="hero-body">
+      <div class="container">
+        <shopForm />
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
-import photoForm from "../components/PhotoForm.vue";
+import shopForm from "../components/ShopForm.vue";
 export default {
-    data() {
-        return {
-            show: false
-        };
-    },
-    components: { photoForm },
-    methods: {
-        showForm() {
-            this.show = !this.show;
-        }
+  data() {
+    return {
+      show: true
+    };
+  },
+  components: { shopForm },
+  methods: {
+    showForm() {
+      this.show = !this.show;
     }
+  }
 };
 </script>
+
+<style scoped>
+.hero-body {
+  background: url("https://boardgame-reviews.s3-ap-northeast-1.amazonaws.com/images/background.jpg")
+    center bottom / cover;
+}
+</style>

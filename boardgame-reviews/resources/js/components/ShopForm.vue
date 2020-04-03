@@ -1,32 +1,36 @@
 <template>
-  <div v-show="value" class="photo-form">
-    <h2 class="title">Submit a shop</h2>
-    <form class="form" @submit.prevent="submit">
-      <div class="errors" v-if="errors">
-        <ul v-if="errors.photo">
-          <li v-for="msg in errors.photo" :key="msg">{{ msg }}</li>
-        </ul>
-        <ul v-if="errors.shop_name">
-          <li v-for="msg in errors.shop_name" :key="msg">{{ msg }}</li>
-        </ul>
-        <ul v-if="errors.address">
-          <li v-for="msg in errors.address" :key="msg">{{ msg }}</li>
-        </ul>
-      </div>
-      <input class="form__item" type="file" @change="onFileChange" />
-      <output class="form__output" v-if="preview">
-        <img :src="preview" alt />
-      </output>
-      <bdTextField placeholder="店舗名" v-model="shop_form.shopname"></bdTextField>
-      <bdTextField placeholder="住所" v-model="shop_form.address"></bdTextField>
-      <!-- <bdTextField placeholder="営業時間" v-model="shop_form.bussiness_hours"></bdTextField> -->
-      <bdTextField placeholder="ボードゲームの数" v-model="shop_form.boardgame_num"></bdTextField>
-      <bdTextField placeholder="説明文" v-model="shop_form.content"></bdTextField>
-      <bdTextField placeholder="ホームページ" v-model="shop_form.home_url"></bdTextField>
-      <div class="form__button">
-        <button type="submit" class="button button--inverse">submit</button>
-      </div>
-    </form>
+  <div class="columns">
+    <div
+      class="column is-12-mobile is-8-tablet is-offset-2-tablet is-6-desktop is-offset-3-desktop"
+    >
+      <h2 class="title">Add shop</h2>
+      <form class="form" @submit.prevent="submit">
+        <div class="errors" v-if="errors">
+          <ul v-if="errors.photo">
+            <li v-for="msg in errors.photo" :key="msg">{{ msg }}</li>
+          </ul>
+          <ul v-if="errors.shop_name">
+            <li v-for="msg in errors.shop_name" :key="msg">{{ msg }}</li>
+          </ul>
+          <ul v-if="errors.address">
+            <li v-for="msg in errors.address" :key="msg">{{ msg }}</li>
+          </ul>
+        </div>
+        <input class="form__item" type="file" @change="onFileChange" />
+        <output class="form__output" v-if="preview">
+          <img :src="preview" alt />
+        </output>
+        <bdTextField placeholder="店舗名" v-model="shop_form.shopname"></bdTextField>
+        <bdTextField placeholder="住所" v-model="shop_form.address"></bdTextField>
+        <!-- <bdTextField placeholder="営業時間" v-model="shop_form.bussiness_hours"></bdTextField> -->
+        <bdTextField placeholder="ボードゲームの数" v-model="shop_form.boardgame_num"></bdTextField>
+        <bdTextField placeholder="説明文" v-model="shop_form.content"></bdTextField>
+        <bdTextField placeholder="ホームページ" v-model="shop_form.home_url"></bdTextField>
+        <div class="form__button">
+          <button type="submit" class="button is-block is-medium is-fullwidth">submit</button>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -34,7 +38,7 @@
 import { CREATED, UNPROCESSABLE_ENTITY } from "../util";
 import bdTextField from "./TextField";
 export default {
-  name: "photoForm",
+  name: "shopForm",
   components: { bdTextField },
   data() {
     return {
@@ -131,3 +135,15 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.column {
+  padding: 1em;
+  background: hsla(0, 0%, 92%, 0.8);
+  text-align: center;
+}
+.button {
+  background-color: #5bafc4;
+  color: #fff;
+}
+</style>

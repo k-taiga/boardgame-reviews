@@ -58,7 +58,7 @@ class PhotosTableSeeder extends Seeder
             38 => 'chipdice_Akiba.jpeg',
             39 => 'ASOBAKO.jpg',
             40 => 'REALL.jpg',
-            41 => 'saikorobukuro.jpeg',
+            41 => 'saikorobukuro.jpg',
             42 => 'pasera_akiba.png',
             43 => 'raporu.jpg',
             44 => 'yanaka.png',

@@ -17,6 +17,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Carousel_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Carousel.vue */ "./resources/js/components/Carousel.vue");
 /* harmony import */ var _components_SearchBox_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/SearchBox.vue */ "./resources/js/components/SearchBox.vue");
 /* harmony import */ var _components_SearchOptions_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/SearchOptions.vue */ "./resources/js/components/SearchOptions.vue");
+/* harmony import */ var _components_FloatBtn_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/FloatBtn.vue */ "./resources/js/components/FloatBtn.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -43,6 +44,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+
 
 
 
@@ -55,7 +58,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     pagination: _components_Pagination_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
     bdCarousel: _components_Carousel_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
     bdSearchBox: _components_SearchBox_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
-    bdSearchOptions: _components_SearchOptions_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
+    bdSearchOptions: _components_SearchOptions_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
+    bdFloatBtn: _components_FloatBtn_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
   },
   data: function data() {
     return {
@@ -354,7 +358,9 @@ var render = function() {
       _vm._v(" "),
       _c("pagination", {
         attrs: { "current-page": _vm.currentPage, "last-page": _vm.lastPage }
-      })
+      }),
+      _vm._v(" "),
+      _c("bdFloatBtn")
     ],
     1
   )
