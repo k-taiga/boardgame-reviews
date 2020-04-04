@@ -8,7 +8,7 @@
           data-social-action="tweet"
           data-social-target="https://bodoge-cafe-reviews.work"
           target="_blank"
-          href="https://twitter.com/intent/tweet?text=ボードゲームカフェのレビューができるサイトです！ ぜひ使ってください！;hashtags=&amp;url=http://bodoge-cafe-reviews.work&amp;"
+          href="https://twitter.com/intent/tweet?text=ボードゲームカフェのレビューができるサイトです！ ぜひ使ってください！;hashtags=&amp;url=https://bodoge-cafe-reviews.work&amp;"
         >
           <span class="icon">
             <i class="fab fa-twitter"></i>

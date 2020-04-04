@@ -66917,7 +66917,7 @@ var staticRenderFns = [
                 "data-social-target": "https://bodoge-cafe-reviews.work",
                 target: "_blank",
                 href:
-                  "https://twitter.com/intent/tweet?text=ボードゲームカフェのレビューができるサイトです！ ぜひ使ってください！;hashtags=&url=http://bodoge-cafe-reviews.work&"
+                  "https://twitter.com/intent/tweet?text=ボードゲームカフェのレビューができるサイトです！ ぜひ使ってください！;hashtags=&url=https://bodoge-cafe-reviews.work&"
               }
             },
             [

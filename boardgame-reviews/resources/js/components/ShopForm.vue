@@ -3,7 +3,7 @@
     <div
       class="column is-12-mobile is-8-tablet is-offset-2-tablet is-6-desktop is-offset-3-desktop"
     >
-      <h2 class="title">Add shop</h2>
+      <h2 class="title">Regist shop</h2>
       <form class="form" @submit.prevent="submit">
         <div class="errors" v-if="errors">
           <ul v-if="errors.photo">
@@ -141,6 +141,9 @@ export default {
   padding: 1em;
   background: hsla(0, 0%, 92%, 0.8);
   text-align: center;
+}
+.title {
+  color: #fff;
 }
 .button {
   background-color: #5bafc4;

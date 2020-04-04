@@ -264,6 +264,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -295,7 +296,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.column[data-v-1477ed76] {\n  padding: 1em;\n  background: hsla(0, 0%, 92%, 0.8);\n  text-align: center;\n}\n.button[data-v-1477ed76] {\n  background-color: #5bafc4;\n  color: #fff;\n}\n", ""]);
+exports.push([module.i, "\n.column[data-v-1477ed76] {\n  padding: 1em;\n  background: hsla(0, 0%, 92%, 0.8);\n  text-align: center;\n}\n.title[data-v-1477ed76] {\n  color: #fff;\n}\n.button[data-v-1477ed76] {\n  background-color: #5bafc4;\n  color: #fff;\n}\n", ""]);
 
 // exports
 
@@ -314,7 +315,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.hero-body[data-v-63cd6604] {\n  background: url(\"https://boardgame-reviews.s3-ap-northeast-1.amazonaws.com/images/background.jpg\")\n    center bottom / cover;\n}\n", ""]);
+exports.push([module.i, "\n.hero-body[data-v-63cd6604] {\n  background: url(\"https://boardgame-reviews.s3-ap-northeast-1.amazonaws.com/images/background.jpg\")\n    center bottom / cover;\n}\n.title[data-v-63cd6604] {\n  color: whitesmoke;\n}\n", ""]);
 
 // exports
 
@@ -404,7 +405,7 @@ var render = function() {
           "column is-12-mobile is-8-tablet is-offset-2-tablet is-6-desktop is-offset-3-desktop"
       },
       [
-        _c("h2", { staticClass: "title" }, [_vm._v("Add shop")]),
+        _c("h2", { staticClass: "title" }, [_vm._v("Regist shop")]),
         _vm._v(" "),
         _c(
           "form",
@@ -616,7 +617,18 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "hero is-fullheight" }, [
     _c("div", { staticClass: "hero-body" }, [
-      _c("div", { staticClass: "container" }, [_c("shopForm")], 1)
+      _c(
+        "div",
+        { staticClass: "container" },
+        [
+          _c("h2", { staticClass: "title is-1 is-spaced has-text-centered" }, [
+            _vm._v("あなたのお店もぜひ紹介してください！")
+          ]),
+          _vm._v(" "),
+          _c("shopForm")
+        ],
+        1
+      )
     ])
   ])
 }
