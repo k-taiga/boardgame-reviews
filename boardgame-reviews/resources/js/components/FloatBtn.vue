@@ -1,5 +1,5 @@
 <template>
-  <RouterLink :to="`/home`">
+  <RouterLink :to="`/register`">
     <div class="float-btn">
       <div class="float-btn-icon">
         <i class="fas fa-home"></i>

@@ -19,6 +19,42 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -66,22 +102,68 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       preview: null,
       errors: null,
+      wards: [],
       shop_form: {
         photo: null,
         shopname: null,
         address: null,
-        // bussiness_hours: null,
         boardgame_num: null,
         content: null,
         home_url: null
+      },
+      ruleForm: {
+        name: "",
+        address: "",
+        wards: "",
+        byo: false,
+        type: [],
+        resource: "",
+        desc: ""
+      },
+      rules: {
+        name: [{
+          required: true,
+          message: "Please input Activity name",
+          trigger: "blur"
+        }, {
+          min: 3,
+          max: 5,
+          message: "Length should be 3 to 5",
+          trigger: "blur"
+        }],
+        address: [{
+          required: true,
+          message: "Please input Activity name",
+          trigger: "blur"
+        }],
+        wards: [{
+          required: true,
+          message: "Please select Activity zone",
+          trigger: "change"
+        }],
+        boardgame_num: [_defineProperty({
+          required: true,
+          message: "Please select Activity zone",
+          trigger: "blur",
+          type: "number"
+        }, "message", "boardgame_num must be a number")],
+        home_url: [{
+          required: true,
+          message: "domain can not be null",
+          trigger: "blur"
+        }],
+        resource: [{
+          required: true,
+          message: "Please select activity resource",
+          trigger: "change"
+        }],
+        content: [{
+          required: true,
+          message: "Please input activity form",
+          trigger: "blur"
+        }]
       }
     };
-  },
-  props: {
-    value: {
-      value: Boolean,
-      required: true
-    }
   },
   methods: {
     // formでファイルを選択したら実行
@@ -122,57 +204,46 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       this.$el.querySelector('input[type="file"]').value = null;
     },
-    submit: function () {
-      var _submit = _asyncToGenerator(
+    submitForm: function submitForm(formName) {
+      this.$refs[formName].validate(function (valid) {
+        if (valid) {
+          alert("submit!");
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
+    },
+    resetForm: function resetForm(formName) {
+      this.$refs[formName].resetFields();
+    },
+    fetchWards: function () {
+      var _fetchWards = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var formData, response;
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                formData = new FormData();
-                formData.append("photo", this.shop_form.photo);
-                formData.append("shop_name", this.shop_form.shopname);
-                formData.append("address", this.shop_form.address);
-                formData.append("boardgame_num", this.shop_form.boardgame_num);
-                formData.append("content", this.shop_form.content);
-                formData.append("home_url", this.shop_form.home_url);
-                console.log(formData);
-                _context.next = 10;
-                return axios.post("/api/shops", formData);
+                _context.next = 2;
+                return axios.get("/api/wards/");
 
-              case 10:
+              case 2:
                 response = _context.sent;
-                console.log(response);
 
-                if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_1__["UNPROCESSABLE_ENTITY"])) {
-                  _context.next = 15;
-                  break;
-                }
-
-                this.errors = response.data.errors;
-                return _context.abrupt("return", false);
-
-              case 15:
-                this.reset();
-                this.$emit("showForm");
-
-                if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["CREATED"])) {
-                  _context.next = 20;
+                if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
+                  _context.next = 6;
                   break;
                 }
 
                 this.$store.commit("error/setCode", response.status);
                 return _context.abrupt("return", false);
 
-              case 20:
-                this.$store.commit("message/setContent", {
-                  content: "写真が投稿されました！",
-                  timeout: 6000
-                }); //   this.$router.push(`/`);
+              case 6:
+                this.wards = response.data;
 
-              case 21:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -180,14 +251,79 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee, this);
       }));
 
-      function submit() {
-        return _submit.apply(this, arguments);
+      function fetchWards() {
+        return _fetchWards.apply(this, arguments);
       }
 
-      return submit;
+      return fetchWards;
     }()
+  },
+  created: function created() {
+    this.fetchWards();
   }
-});
+}); //   methods: {
+//     // formでファイルを選択したら実行
+//     onFileChange(event) {
+//       // 何も選択されていなかったら処理中断
+//       if (event.target.files.length === 0) {
+//         this.reset();
+//         return false;
+//       }
+//       // ファイルが画像でなくても処理を中断
+//       if (!event.target.files[0].type.match("image.*")) {
+//         this.reset();
+//         return false;
+//       }
+//       // FileReaderクラスのインスタンスを取得
+//       const reader = new FileReader();
+//       // ファイルを読み込み終わったタイミングで実行する処理
+//       reader.onload = e => {
+//         // previewに読み込み結果（データURL）を代入する
+//         // previewに値が入ると<output>につけたv-ifがtrueと判定される
+//         // また<output>内部の<img>のsrc属性はpreviewの値を参照しているので
+//         // 結果として画像が表示される
+//         this.preview = e.target.result;
+//       };
+//       // ファイルを読み込む
+//       // 読み込まれたファイルはデータURL形式で受け取れる
+//       reader.readAsDataURL(event.target.files[0]);
+//       this.shop_form.photo = event.target.files[0];
+//     },
+//     reset() {
+//       this.preview = "";
+//       this.photo = null;
+//       // $elはDOMそのものを指す
+//       this.$el.querySelector('input[type="file"]').value = null;
+//     },
+//     async submit() {
+//       const formData = new FormData();
+//       formData.append("photo", this.shop_form.photo);
+//       formData.append("shop_name", this.shop_form.shopname);
+//       formData.append("address", this.shop_form.address);
+//       formData.append("boardgame_num", this.shop_form.boardgame_num);
+//       formData.append("content", this.shop_form.content);
+//       formData.append("home_url", this.shop_form.home_url);
+//       console.log(formData);
+//       const response = await axios.post("/api/shops", formData);
+//       console.log(response);
+//       if (response.status === UNPROCESSABLE_ENTITY) {
+//         this.errors = response.data.errors;
+//         return false;
+//       }
+//       this.reset();
+//       this.$emit("showForm");
+//       if (response.status !== CREATED) {
+//         this.$store.commit("error/setCode", response.status);
+//         return false;
+//       }
+//       this.$store.commit("message/setContent", {
+//         content: "写真が投稿されました！",
+//         timeout: 6000
+//       });
+//   this.$router.push(`/`);
+// }
+//   }
+// };
 
 /***/ }),
 
@@ -296,7 +432,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.column[data-v-1477ed76] {\n  padding: 1em;\n  background: hsla(0, 0%, 92%, 0.8);\n  text-align: center;\n}\n.title[data-v-1477ed76] {\n  color: #fff;\n}\n.button[data-v-1477ed76] {\n  background-color: #5bafc4;\n  color: #fff;\n}\n", ""]);
+exports.push([module.i, "\nh2[data-v-1477ed76] {\n  text-align: center;\n}\n.form__item[data-v-1477ed76] {\n  padding-top: 0.5em;\n  padding-right: 0.75em;\n  padding-bottom: 0.5em;\n  padding-left: 2em;\n  border: 1px solid transparent;\n}\n.column[data-v-1477ed76] {\n  padding: 1em;\n  background: hsla(0, 0%, 92%, 0.8);\n}\n.title[data-v-1477ed76] {\n  color: #fff;\n}\n\n/* .el-button {\n  padding: 0;\n  background-color: transparent;\n  border: 1px solid transparent;\n} */\n", ""]);
 
 // exports
 
@@ -408,51 +544,16 @@ var render = function() {
         _c("h2", { staticClass: "title" }, [_vm._v("Regist shop")]),
         _vm._v(" "),
         _c(
-          "form",
+          "el-form",
           {
-            staticClass: "form",
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                return _vm.submit($event)
-              }
+            ref: "ruleForm",
+            attrs: {
+              model: _vm.ruleForm,
+              rules: _vm.rules,
+              "label-width": "120px"
             }
           },
           [
-            _vm.errors
-              ? _c("div", { staticClass: "errors" }, [
-                  _vm.errors.photo
-                    ? _c(
-                        "ul",
-                        _vm._l(_vm.errors.photo, function(msg) {
-                          return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
-                        }),
-                        0
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.errors.shop_name
-                    ? _c(
-                        "ul",
-                        _vm._l(_vm.errors.shop_name, function(msg) {
-                          return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
-                        }),
-                        0
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.errors.address
-                    ? _c(
-                        "ul",
-                        _vm._l(_vm.errors.address, function(msg) {
-                          return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
-                        }),
-                        0
-                      )
-                    : _vm._e()
-                ])
-              : _vm._e(),
-            _vm._v(" "),
             _c("input", {
               staticClass: "form__item",
               attrs: { type: "file" },
@@ -465,86 +566,191 @@ var render = function() {
                 ])
               : _vm._e(),
             _vm._v(" "),
-            _c("bdTextField", {
-              attrs: { placeholder: "店舗名" },
-              model: {
-                value: _vm.shop_form.shopname,
-                callback: function($$v) {
-                  _vm.$set(_vm.shop_form, "shopname", $$v)
-                },
-                expression: "shop_form.shopname"
-              }
-            }),
+            _c(
+              "el-form-item",
+              { attrs: { label: "店舗名", prop: "name" } },
+              [
+                _c("el-input", {
+                  model: {
+                    value: _vm.ruleForm.name,
+                    callback: function($$v) {
+                      _vm.$set(_vm.ruleForm, "name", $$v)
+                    },
+                    expression: "ruleForm.name"
+                  }
+                })
+              ],
+              1
+            ),
             _vm._v(" "),
-            _c("bdTextField", {
-              attrs: { placeholder: "住所" },
-              model: {
-                value: _vm.shop_form.address,
-                callback: function($$v) {
-                  _vm.$set(_vm.shop_form, "address", $$v)
-                },
-                expression: "shop_form.address"
-              }
-            }),
+            _c(
+              "el-form-item",
+              { attrs: { label: "住所", prop: "address" } },
+              [
+                _c("el-input", {
+                  model: {
+                    value: _vm.ruleForm.address,
+                    callback: function($$v) {
+                      _vm.$set(_vm.ruleForm, "address", $$v)
+                    },
+                    expression: "ruleForm.address"
+                  }
+                })
+              ],
+              1
+            ),
             _vm._v(" "),
-            _c("bdTextField", {
-              attrs: { placeholder: "ボードゲームの数" },
-              model: {
-                value: _vm.shop_form.boardgame_num,
-                callback: function($$v) {
-                  _vm.$set(_vm.shop_form, "boardgame_num", $$v)
-                },
-                expression: "shop_form.boardgame_num"
-              }
-            }),
+            _c(
+              "el-form-item",
+              { attrs: { label: "東京23区", prop: "wards" } },
+              [
+                _c(
+                  "el-select",
+                  {
+                    attrs: { placeholder: "千代田区" },
+                    model: {
+                      value: _vm.ruleForm.wards,
+                      callback: function($$v) {
+                        _vm.$set(_vm.ruleForm, "wards", $$v)
+                      },
+                      expression: "ruleForm.wards"
+                    }
+                  },
+                  _vm._l(_vm.wards, function(ward) {
+                    return _c("el-option", { key: ward.id }, [
+                      _vm._v(_vm._s(ward.name))
+                    ])
+                  }),
+                  1
+                )
+              ],
+              1
+            ),
             _vm._v(" "),
-            _c("bdTextField", {
-              attrs: { placeholder: "説明文" },
-              model: {
-                value: _vm.shop_form.content,
-                callback: function($$v) {
-                  _vm.$set(_vm.shop_form, "content", $$v)
-                },
-                expression: "shop_form.content"
-              }
-            }),
+            _c(
+              "el-form-item",
+              { attrs: { label: "BYO", prop: "byo" } },
+              [
+                _c(
+                  "el-tooltip",
+                  {
+                    attrs: {
+                      content: "持ち込み可かどうか選択して下さい",
+                      placement: "top",
+                      effect: "light"
+                    }
+                  },
+                  [
+                    _c("span", { staticClass: "icon is-small" }, [
+                      _c("i", { staticClass: "far fa-question-circle" })
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("el-switch", {
+                  model: {
+                    value: _vm.ruleForm.byo,
+                    callback: function($$v) {
+                      _vm.$set(_vm.ruleForm, "byo", $$v)
+                    },
+                    expression: "ruleForm.byo"
+                  }
+                })
+              ],
+              1
+            ),
             _vm._v(" "),
-            _c("bdTextField", {
-              attrs: { placeholder: "ホームページ" },
-              model: {
-                value: _vm.shop_form.home_url,
-                callback: function($$v) {
-                  _vm.$set(_vm.shop_form, "home_url", $$v)
-                },
-                expression: "shop_form.home_url"
-              }
-            }),
+            _c(
+              "el-form-item",
+              { attrs: { label: "ボードゲーム数", prop: "boardgame_num" } },
+              [
+                _c("el-input", {
+                  model: {
+                    value: _vm.ruleForm.boardgame_num,
+                    callback: function($$v) {
+                      _vm.$set(_vm.ruleForm, "boardgame_num", $$v)
+                    },
+                    expression: "ruleForm.boardgame_num"
+                  }
+                })
+              ],
+              1
+            ),
             _vm._v(" "),
-            _vm._m(0)
+            _c(
+              "el-form-item",
+              { attrs: { label: "HOME URL", prop: "home_url" } },
+              [
+                _c("el-input", {
+                  model: {
+                    value: _vm.ruleForm.home_url,
+                    callback: function($$v) {
+                      _vm.$set(_vm.ruleForm, "home_url", $$v)
+                    },
+                    expression: "ruleForm.home_url"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "el-form-item",
+              { attrs: { label: "紹介文", prop: "content" } },
+              [
+                _c("el-input", {
+                  attrs: { type: "textarea" },
+                  model: {
+                    value: _vm.ruleForm.content,
+                    callback: function($$v) {
+                      _vm.$set(_vm.ruleForm, "content", $$v)
+                    },
+                    expression: "ruleForm.content"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "el-form-item",
+              [
+                _c(
+                  "el-button",
+                  {
+                    attrs: { type: "submit" },
+                    on: {
+                      click: function($event) {
+                        return _vm.submitForm("ruleForm")
+                      }
+                    }
+                  },
+                  [_vm._v("Submit")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "el-button",
+                  {
+                    on: {
+                      click: function($event) {
+                        return _vm.resetForm("ruleForm")
+                      }
+                    }
+                  },
+                  [_vm._v("Reset")]
+                )
+              ],
+              1
+            )
           ],
           1
         )
-      ]
+      ],
+      1
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form__button" }, [
-      _c(
-        "button",
-        {
-          staticClass: "button is-block is-medium is-fullwidth",
-          attrs: { type: "submit" }
-        },
-        [_vm._v("submit")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

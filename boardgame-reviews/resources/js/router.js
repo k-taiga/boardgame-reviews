@@ -1,7 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-
 const Home = () => import(/* webpackChunkName:"Home" */ "./views/Home.vue");
 const SignUp = () =>
     import(/* webpackChunkName:"SignUp" */ "./views/SignUp.vue");
@@ -65,19 +64,19 @@ const router = new VueRouter({
             props: true
         },
         {
-            path: "/home",
-            name: "home",
+            path: "/register",
+            name: "register",
             component: Home
         },
         {
             path: "/sign_up",
             name: "sign_up",
-            component: SignUp,
+            component: SignUp
         },
         {
             path: "/sign_in",
             name: "sign_in",
-            component: SignIn,
+            component: SignIn
         },
         {
             path: "/profile",

@@ -797,7 +797,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("RouterLink", { attrs: { to: "/home" } }, [
+  return _c("RouterLink", { attrs: { to: "/register" } }, [
     _c("div", { staticClass: "float-btn" }, [
       _c("div", { staticClass: "float-btn-icon" }, [
         _c("i", { staticClass: "fas fa-home" })

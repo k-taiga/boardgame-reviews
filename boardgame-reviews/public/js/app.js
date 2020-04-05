@@ -83796,8 +83796,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     component: ShopDetail,
     props: true
   }, {
-    path: "/home",
-    name: "home",
+    path: "/register",
+    name: "register",
     component: Home
   }, {
     path: "/sign_up",
