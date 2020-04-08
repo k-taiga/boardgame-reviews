@@ -123,7 +123,6 @@ export default {
           // $elはDOMそのものを指す
           this.$el.querySelector('input[type="file"]').value = null;
           //   this.cancel();
-          console.log(this.active);
         }
       });
     },

@@ -86,7 +86,7 @@ const actions = {
     // ログインしているかどうかチェック
     async currentUser(context) {
         const response = await axios.get("/api/user");
-        console.log(response);
+        // console.log(response);
         // ログインしていなければnull
         const user = response.data || null;
         context.commit("setUser", user);
