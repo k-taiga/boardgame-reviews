@@ -73,7 +73,6 @@ export default {
   async created() {
     this.user = await this.$store.dispatch("auth/currentUser");
     this.user = this.$store.getters["auth/check"];
-    console.log(this.user);
   },
   updated() {
     this.user = this.$store.getters["auth/check"];
