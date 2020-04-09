@@ -122,7 +122,6 @@ export default {
       });
     },
     async search(keyword) {
-      console.log(keyword);
 
       const response = await axios.post(`/api/shops/${keyword}`);
 
@@ -136,7 +135,6 @@ export default {
       this.$store.commit("ward/setId", null);
     },
     valuecheck() {
-      console.log(this.simpleSuggestionList);
     }
   },
   watch: {

@@ -64,7 +64,6 @@ export default {
         return false;
       }
 
-      console.log(response.data);
       this.shops = response.data.data;
       this.currentPage = response.data.current_page;
       this.lastPage = response.data.last_page;
@@ -114,7 +113,6 @@ export default {
       });
     },
     async sort(value) {
-      console.log(value);
 
       let sort = value.sort;
       let filter = "";
@@ -124,8 +122,6 @@ export default {
         byo_flg: value.byo ? "1" : ""
       };
 
-      console.log(filter);
-
       if (
         // ソートだけ
         sort !== "" &&
@@ -133,7 +129,6 @@ export default {
         filter.price === "" &&
         filter.byo_flg === ""
       ) {
-        console.log("1個目のifの中に通った！");
         const response = await axios.get(`/api/wards/${this.wardId}/${sort}`);
         if (response.status !== OK) {
           this.$store.commit("error/setCode", response.status);
@@ -148,7 +143,6 @@ export default {
           filter.byo_flg !== "")
       ) {
         sort = "default";
-        console.log("2個目のelseifの中に通った！");
         const response = await axios.post(
           `/api/wards/${this.wardId}/${sort}`,
           filter
@@ -165,7 +159,6 @@ export default {
         filter.price === "" &&
         filter.byo_flg === ""
       ) {
-        console.log("3個目のelseifの中に通った！");
         const response = await axios.get(`/api/wards/${this.wardId}`);
 
         if (response.status !== OK) {
@@ -182,7 +175,6 @@ export default {
           filter.price !== "" ||
           filter.byo_flg !== "")
       ) {
-        console.log("4個目のelse ifの中に通った！");
         const response = await axios.post(
           `/api/wards/${this.wardId}/${sort}`,
           filter
@@ -197,7 +189,6 @@ export default {
       // console.log(this.shops);
     },
     valuecheck() {
-      console.log(this.wardId);
     },
     setId() {
       this.$store.commit("ward/setId", this.$route.params.id);

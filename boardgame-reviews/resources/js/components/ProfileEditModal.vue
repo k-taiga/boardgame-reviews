@@ -127,7 +127,6 @@ export default {
       });
     },
     cancel() {
-      console.log("キャンセルしました");
       // 再表示されたときに現在のデータを表示しないように初期状態に戻す
       this.user_form.name = this.name;
       this.user_form.photo = null;

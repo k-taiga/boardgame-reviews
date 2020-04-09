@@ -68,7 +68,6 @@ export default {
   watch: {
     $route() {
       // ルートの変更の検知...
-      console.log("$routerが切り替わりました");
     }
   },
   methods: {

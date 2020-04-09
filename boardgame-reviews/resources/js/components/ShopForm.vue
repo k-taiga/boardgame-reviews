@@ -100,57 +100,50 @@ export default {
         name: [
           {
             required: true,
-            message: "Please input Activity name",
+            message: "店舗名を入力してください",
             trigger: "blur"
           },
           {
-            min: 3,
-            max: 5,
-            message: "Length should be 3 to 5",
+            min: 1,
+            max: 32,
+            message: "Length should be 1 to 5",
             trigger: "blur"
           }
         ],
         address: [
           {
             required: true,
-            message: "Please input Activity name",
+            message: "住所を入力してください",
             trigger: "blur"
           }
         ],
         wards: [
           {
             required: true,
-            message: "Please select Activity zone",
+            message: "23区を入力してください",
             trigger: "change"
           }
         ],
         boardgame_num: [
           {
             required: true,
-            message: "Please select Activity zone",
+            message: "ボードゲームの数を入力してください",
             trigger: "blur",
             type: "number",
-            message: "boardgame_num must be a number"
+            message: "数字で入力してください"
           }
         ],
         home_url: [
           {
             required: true,
-            message: "domain can not be null",
+            message: "URLを入力してください",
             trigger: "blur"
-          }
-        ],
-        resource: [
-          {
-            required: true,
-            message: "Please select activity resource",
-            trigger: "change"
           }
         ],
         content: [
           {
             required: true,
-            message: "Please input activity form",
+            message: "紹介文を入力してください",
             trigger: "blur"
           }
         ]

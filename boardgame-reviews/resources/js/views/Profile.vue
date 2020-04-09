@@ -125,7 +125,6 @@ export default {
             // this.user = Object.assign({}, this.user, {
             //     icon_url: this.user.icon_url
             // });
-            console.log(this.user);
         },
         // プロファイル編集ダイアログ表示・非表示の切り替え処理
         showProfileEditModal() {
@@ -145,7 +144,6 @@ export default {
 
             const response = await axios.post("/api/profile/edit", formData);
 
-            console.log(response);
 
             if (response.status === UNPROCESSABLE_ENTITY) {
                 this.errors = response.data.errors;
@@ -156,7 +154,6 @@ export default {
             this.fetchUser();
             this.reload();
 
-            console.log(this.user);
 
             // 更新が終了したので終了処理を行う
             if (val.teardown) {
@@ -169,8 +166,6 @@ export default {
             const formData = new FormData();
             formData.append("password", val.password);
             const response = await axios.post("/api/profile/destroy", formData);
-
-            console.log(response);
 
             if (response.status === UNPROCESSABLE_ENTITY) {
                 this.errors = response.data.errors;

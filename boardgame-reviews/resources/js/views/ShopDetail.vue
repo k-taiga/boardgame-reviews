@@ -235,7 +235,6 @@ export default {
         return false;
       }
 
-      console.log(response);
 
       this.shop = response.data;
     },
@@ -332,7 +331,6 @@ export default {
           await this.fetchUser();
         }
         this.wardId = this.$store.state.ward.id;
-        console.log(this.wardId);
       },
       immediate: true
     }
