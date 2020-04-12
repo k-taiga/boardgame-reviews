@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /var/www/html/boardgame-reviews/resources/js/components/ShopForm.vue: Can not use keyword 'await' outside an async function (199:20)\n\n\u001b[0m \u001b[90m 197 | \u001b[39m\t\t\tformData\u001b[33m.\u001b[39mappend(\u001b[32m\"content\"\u001b[39m\u001b[33m,\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mrule_form\u001b[33m.\u001b[39mcontent)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 198 | \u001b[39m\t\t\tformData\u001b[33m.\u001b[39mappend(\u001b[32m\"home_url\"\u001b[39m\u001b[33m,\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mrule_form\u001b[33m.\u001b[39mhome_url)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 199 | \u001b[39m\t\t\t\u001b[36mconst\u001b[39m response \u001b[33m=\u001b[39m await axios\u001b[33m.\u001b[39mpost(\u001b[32m\"/api/shops\"\u001b[39m\u001b[33m,\u001b[39m formData)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m\t\t\t                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 200 | \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 201 | \u001b[39m\t\t\t\u001b[36mif\u001b[39m (response\u001b[33m.\u001b[39mstatus \u001b[33m===\u001b[39m \u001b[33mUNPROCESSABLE_ENTITY\u001b[39m) {\u001b[0m\n\u001b[0m \u001b[90m 202 | \u001b[39m\t\t\t\t\t\t\t\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39merrors \u001b[33m=\u001b[39m response\u001b[33m.\u001b[39mdata\u001b[33m.\u001b[39merrors\u001b[33m;\u001b[39m\u001b[0m\n    at Parser.raise (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:7012:17)\n    at Parser.checkReservedWord (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10405:14)\n    at Parser.parseIdentifierName (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10367:12)\n    at Parser.parseIdentifier (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10339:23)\n    at Parser.parseExprAtom (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9514:27)\n    at Parser.parseExprSubscripts (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9237:23)\n    at Parser.parseMaybeUnary (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9217:21)\n    at Parser.parseExprOps (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9083:23)\n    at Parser.parseMaybeConditional (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9056:23)\n    at Parser.parseMaybeAssign (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9015:21)\n    at Parser.parseVar (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:11341:26)\n    at Parser.parseVarStatement (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:11160:10)\n    at Parser.parseStatementContent (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10757:21)\n    at Parser.parseStatement (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10690:17)\n    at Parser.parseBlockOrModuleBlockBody (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:11266:25)\n    at Parser.parseBlockBody (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:11253:10)\n    at Parser.parseBlock (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:11237:10)\n    at Parser.parseStatementContent (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10766:21)\n    at Parser.parseStatement (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10690:17)\n    at Parser.parseIfStatement (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:11044:28)\n    at Parser.parseStatementContent (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10735:21)\n    at Parser.parseStatement (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10690:17)\n    at Parser.parseBlockOrModuleBlockBody (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:11266:25)\n    at Parser.parseBlockBody (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:11253:10)\n    at Parser.parseBlock (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:11237:10)\n    at Parser.parseFunctionBody (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10256:24)\n    at Parser.parseArrowExpression (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10197:10)\n    at Parser.parseExprAtom (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9535:18)\n    at Parser.parseExprSubscripts (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9237:23)\n    at Parser.parseMaybeUnary (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9217:21)\n    at Parser.parseExprOps (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9083:23)\n    at Parser.parseMaybeConditional (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9056:23)\n    at Parser.parseMaybeAssign (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9015:21)\n    at Parser.parseExprListItem (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10331:18)\n    at Parser.parseCallExpressionArguments (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9434:22)\n    at Parser.parseSubscript (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9342:29)");
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /var/www/html/boardgame-reviews/resources/js/components/ShopForm.vue: Can not use keyword 'await' outside an async function (200:20)\n\n\u001b[0m \u001b[90m 198 | \u001b[39m\t\t\tformData\u001b[33m.\u001b[39mappend(\u001b[32m\"home_url\"\u001b[39m\u001b[33m,\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mrule_form\u001b[33m.\u001b[39mhome_url)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 199 | \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 200 | \u001b[39m\t\t\t\u001b[36mconst\u001b[39m response \u001b[33m=\u001b[39m await axios\u001b[33m.\u001b[39mpost(\u001b[32m\"/api/shops\"\u001b[39m\u001b[33m,\u001b[39m formData)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m\t\t\t                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 201 | \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 202 | \u001b[39m\t\t\t\u001b[36mif\u001b[39m (response\u001b[33m.\u001b[39mstatus \u001b[33m===\u001b[39m \u001b[33mUNPROCESSABLE_ENTITY\u001b[39m) {\u001b[0m\n\u001b[0m \u001b[90m 203 | \u001b[39m        \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39merrors \u001b[33m=\u001b[39m response\u001b[33m.\u001b[39mdata\u001b[33m.\u001b[39merrors\u001b[33m;\u001b[39m\u001b[0m\n    at Parser.raise (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:7012:17)\n    at Parser.checkReservedWord (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10405:14)\n    at Parser.parseIdentifierName (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10367:12)\n    at Parser.parseIdentifier (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10339:23)\n    at Parser.parseExprAtom (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9514:27)\n    at Parser.parseExprSubscripts (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9237:23)\n    at Parser.parseMaybeUnary (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9217:21)\n    at Parser.parseExprOps (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9083:23)\n    at Parser.parseMaybeConditional (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9056:23)\n    at Parser.parseMaybeAssign (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9015:21)\n    at Parser.parseVar (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:11341:26)\n    at Parser.parseVarStatement (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:11160:10)\n    at Parser.parseStatementContent (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10757:21)\n    at Parser.parseStatement (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10690:17)\n    at Parser.parseBlockOrModuleBlockBody (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:11266:25)\n    at Parser.parseBlockBody (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:11253:10)\n    at Parser.parseBlock (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:11237:10)\n    at Parser.parseStatementContent (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10766:21)\n    at Parser.parseStatement (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10690:17)\n    at Parser.parseIfStatement (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:11044:28)\n    at Parser.parseStatementContent (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10735:21)\n    at Parser.parseStatement (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10690:17)\n    at Parser.parseBlockOrModuleBlockBody (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:11266:25)\n    at Parser.parseBlockBody (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:11253:10)\n    at Parser.parseBlock (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:11237:10)\n    at Parser.parseFunctionBody (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10256:24)\n    at Parser.parseArrowExpression (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10197:10)\n    at Parser.parseExprAtom (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9535:18)\n    at Parser.parseExprSubscripts (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9237:23)\n    at Parser.parseMaybeUnary (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9217:21)\n    at Parser.parseExprOps (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9083:23)\n    at Parser.parseMaybeConditional (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9056:23)\n    at Parser.parseMaybeAssign (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9015:21)\n    at Parser.parseExprListItem (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:10331:18)\n    at Parser.parseCallExpressionArguments (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9434:22)\n    at Parser.parseSubscript (/var/www/html/boardgame-reviews/node_modules/@babel/parser/lib/index.js:9342:29)");
 
 /***/ }),
 
@@ -177,9 +177,9 @@ var render = function() {
         _c(
           "el-form",
           {
-            ref: "ruleForm",
+            ref: "registerForm",
             attrs: {
-              model: _vm.ruleForm,
+              model: _vm.registerForm,
               rules: _vm.rules,
               "label-width": "120px"
             }
@@ -203,11 +203,11 @@ var render = function() {
               [
                 _c("el-input", {
                   model: {
-                    value: _vm.ruleForm.name,
+                    value: _vm.registerForm.name,
                     callback: function($$v) {
-                      _vm.$set(_vm.ruleForm, "name", $$v)
+                      _vm.$set(_vm.registerForm, "name", $$v)
                     },
-                    expression: "ruleForm.name"
+                    expression: "registerForm.name"
                   }
                 })
               ],
@@ -220,11 +220,11 @@ var render = function() {
               [
                 _c("el-input", {
                   model: {
-                    value: _vm.ruleForm.address,
+                    value: _vm.registerForm.address,
                     callback: function($$v) {
-                      _vm.$set(_vm.ruleForm, "address", $$v)
+                      _vm.$set(_vm.registerForm, "address", $$v)
                     },
-                    expression: "ruleForm.address"
+                    expression: "registerForm.address"
                   }
                 })
               ],
@@ -240,11 +240,11 @@ var render = function() {
                   {
                     attrs: { placeholder: "千代田区" },
                     model: {
-                      value: _vm.ruleForm.wards,
+                      value: _vm.registerForm.wards,
                       callback: function($$v) {
-                        _vm.$set(_vm.ruleForm, "wards", $$v)
+                        _vm.$set(_vm.registerForm, "wards", $$v)
                       },
-                      expression: "ruleForm.wards"
+                      expression: "registerForm.wards"
                     }
                   },
                   _vm._l(_vm.wards, function(ward) {
@@ -280,11 +280,11 @@ var render = function() {
                 _vm._v(" "),
                 _c("el-switch", {
                   model: {
-                    value: _vm.ruleForm.byo,
+                    value: _vm.registerForm.byo,
                     callback: function($$v) {
-                      _vm.$set(_vm.ruleForm, "byo", $$v)
+                      _vm.$set(_vm.registerForm, "byo", $$v)
                     },
-                    expression: "ruleForm.byo"
+                    expression: "registerForm.byo"
                   }
                 })
               ],
@@ -297,11 +297,11 @@ var render = function() {
               [
                 _c("el-input", {
                   model: {
-                    value: _vm.ruleForm.boardgame_num,
+                    value: _vm.registerForm.boardgame_num,
                     callback: function($$v) {
-                      _vm.$set(_vm.ruleForm, "boardgame_num", $$v)
+                      _vm.$set(_vm.registerForm, "boardgame_num", $$v)
                     },
-                    expression: "ruleForm.boardgame_num"
+                    expression: "registerForm.boardgame_num"
                   }
                 })
               ],
@@ -314,11 +314,11 @@ var render = function() {
               [
                 _c("el-input", {
                   model: {
-                    value: _vm.ruleForm.home_url,
+                    value: _vm.registerForm.home_url,
                     callback: function($$v) {
-                      _vm.$set(_vm.ruleForm, "home_url", $$v)
+                      _vm.$set(_vm.registerForm, "home_url", $$v)
                     },
-                    expression: "ruleForm.home_url"
+                    expression: "registerForm.home_url"
                   }
                 })
               ],
@@ -332,11 +332,11 @@ var render = function() {
                 _c("el-input", {
                   attrs: { type: "textarea" },
                   model: {
-                    value: _vm.ruleForm.content,
+                    value: _vm.registerForm.content,
                     callback: function($$v) {
-                      _vm.$set(_vm.ruleForm, "content", $$v)
+                      _vm.$set(_vm.registerForm, "content", $$v)
                     },
-                    expression: "ruleForm.content"
+                    expression: "registerForm.content"
                   }
                 })
               ],
@@ -352,7 +352,7 @@ var render = function() {
                     attrs: { type: "submit" },
                     on: {
                       click: function($event) {
-                        return _vm.submitForm("ruleForm")
+                        return _vm.submitForm("registerForm")
                       }
                     }
                   },
@@ -364,7 +364,7 @@ var render = function() {
                   {
                     on: {
                       click: function($event) {
-                        return _vm.resetForm("ruleForm")
+                        return _vm.resetForm("registerForm")
                       }
                     }
                   },

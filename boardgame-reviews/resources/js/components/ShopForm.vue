@@ -26,19 +26,19 @@
 		  <button type="submit" class="button is-block is-medium is-fullwidth">submit</button>
 		</div>
       </form>-->
-      <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="120px">
+      <el-form :model="registerForm" :rules="rules" ref="registerForm" label-width="120px">
         <input class="form__item" type="file" @change="onFileChange" />
         <output class="form__output" v-if="preview">
           <img :src="preview" alt />
         </output>
         <el-form-item label="店舗名" prop="name">
-          <el-input v-model="ruleForm.name"></el-input>
+          <el-input v-model="registerForm.name"></el-input>
         </el-form-item>
         <el-form-item label="住所" prop="address">
-          <el-input v-model="ruleForm.address"></el-input>
+          <el-input v-model="registerForm.address"></el-input>
         </el-form-item>
         <el-form-item label="東京23区" prop="wards">
-          <el-select v-model="ruleForm.wards" placeholder="千代田区">
+          <el-select v-model="registerForm.wards" placeholder="千代田区">
             <el-option v-for="ward in wards" :key="ward.id">{{ward.name}}</el-option>
           </el-select>
         </el-form-item>
@@ -48,20 +48,20 @@
               <i class="far fa-question-circle"></i>
             </span>
           </el-tooltip>
-          <el-switch v-model="ruleForm.byo"></el-switch>
+          <el-switch v-model="registerForm.byo"></el-switch>
         </el-form-item>
         <el-form-item label="ボードゲーム数" prop="boardgame_num">
-          <el-input v-model="ruleForm.boardgame_num"></el-input>
+          <el-input v-model="registerForm.boardgame_num"></el-input>
         </el-form-item>
         <el-form-item label="HOME URL" prop="home_url">
-          <el-input v-model="ruleForm.home_url"></el-input>
+          <el-input v-model="registerForm.home_url"></el-input>
         </el-form-item>
         <el-form-item label="紹介文" prop="content">
-          <el-input type="textarea" v-model="ruleForm.content"></el-input>
+          <el-input type="textarea" v-model="registerForm.content"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="submit" @click="submitForm('ruleForm')">Submit</el-button>
-          <el-button @click="resetForm('ruleForm')">Reset</el-button>
+          <el-button type="submit" @click="submitForm('registerForm')">Submit</el-button>
+          <el-button @click="resetForm('registerForm')">Reset</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -87,7 +87,7 @@ export default {
 		content: null,
 		home_url: null
 	  },
-	  ruleForm: {
+	  registerForm: {
 		name: "",
 		address: "",
 		wards: "",
@@ -185,7 +185,7 @@ export default {
 	  reader.readAsDataURL(event.target.files[0]);
 	  this.shop_form.photo = event.target.files[0];
 	},
-	async submitForm(formName) {
+	submitForm(formName) {
 	  this.$refs[formName].validate(valid => {
 		if (valid) {
 			console.log(response);
@@ -196,16 +196,17 @@ export default {
 			formData.append("boardgame_num", this.rule_form.boardgame_num);
 			formData.append("content", this.rule_form.content);
 			formData.append("home_url", this.rule_form.home_url);
+
 			const response = await axios.post("/api/shops", formData);
 
 			if (response.status === UNPROCESSABLE_ENTITY) {
-							this.errors = response.data.errors;
-							return false;
+        this.errors = response.data.errors;
+        return false;
 			}
 
 			if (response.status !== CREATED) {
-							this.$store.commit("error/setCode", response.status);
-							return false;
+        this.$store.commit("error/setCode", response.status);
+        return false;
 			}
 
 			this.resetForm();
