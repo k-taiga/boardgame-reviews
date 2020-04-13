@@ -4,20 +4,19 @@
       class="column is-12-mobile is-8-tablet is-offset-2-tablet is-6-desktop is-offset-3-desktop"
     >
       <h2 class="title">Regist shop</h2>
-      <!-- <form class="form" @submit.prevent="submit">
-		<div class="errors" v-if="errors">
-		  <ul v-if="errors.photo">
-			<li v-for="msg in errors.photo" :key="msg">{{ msg }}</li>
-		  </ul>
-		  <ul v-if="errors.shop_name">
-			<li v-for="msg in errors.shop_name" :key="msg">{{ msg }}</li>
-		  </ul>
-		  <ul v-if="errors.address">
-			<li v-for="msg in errors.address" :key="msg">{{ msg }}</li>
-		  </ul>
-		</div>
-
-		<bdTextField placeholder="店舗名" v-model="shop_form.shopname"></bdTextField>
+      <!-- <form class="form" @submit.prevent="submit"> -->
+      <div class="errors" v-if="errors">
+        <ul v-if="errors.photo">
+          <li v-for="msg in errors.photo" :key="msg">{{ msg }}</li>
+        </ul>
+        <ul v-if="errors.shop_name">
+          <li v-for="msg in errors.shop_name" :key="msg">{{ msg }}</li>
+        </ul>
+        <ul v-if="errors.address">
+          <li v-for="msg in errors.address" :key="msg">{{ msg }}</li>
+        </ul>
+      </div>
+      <!-- <bdTextField placeholder="店舗名" v-model="shop_form.shopname"></bdTextField>
 		<bdTextField placeholder="住所" v-model="shop_form.address"></bdTextField>
 		<bdTextField placeholder="ボードゲームの数" v-model="shop_form.boardgame_num"></bdTextField>
 		<bdTextField placeholder="説明文" v-model="shop_form.content"></bdTextField>
@@ -26,19 +25,19 @@
 		  <button type="submit" class="button is-block is-medium is-fullwidth">submit</button>
 		</div>
       </form>-->
-      <el-form :model="registerForm" :rules="rules" ref="registerForm" label-width="120px">
+      <el-form :model="register_form" :rules="rules" ref="register_form" label-width="120px">
         <input class="form__item" type="file" @change="onFileChange" />
         <output class="form__output" v-if="preview">
           <img :src="preview" alt />
         </output>
         <el-form-item label="店舗名" prop="name">
-          <el-input v-model="registerForm.name"></el-input>
+          <el-input v-model="register_form.name"></el-input>
         </el-form-item>
         <el-form-item label="住所" prop="address">
-          <el-input v-model="registerForm.address"></el-input>
+          <el-input v-model="register_form.address"></el-input>
         </el-form-item>
         <el-form-item label="東京23区" prop="wards">
-          <el-select v-model="registerForm.wards" placeholder="千代田区">
+          <el-select v-model="register_form.wards" placeholder="千代田区">
             <el-option v-for="ward in wards" :key="ward.id">{{ward.name}}</el-option>
           </el-select>
         </el-form-item>
@@ -48,20 +47,20 @@
               <i class="far fa-question-circle"></i>
             </span>
           </el-tooltip>
-          <el-switch v-model="registerForm.byo"></el-switch>
+          <el-switch v-model="register_form.byo"></el-switch>
         </el-form-item>
         <el-form-item label="ボードゲーム数" prop="boardgame_num">
-          <el-input v-model="registerForm.boardgame_num"></el-input>
+          <el-input v-model="register_form.boardgame_num"></el-input>
         </el-form-item>
         <el-form-item label="HOME URL" prop="home_url">
-          <el-input v-model="registerForm.home_url"></el-input>
+          <el-input v-model="register_form.home_url"></el-input>
         </el-form-item>
         <el-form-item label="紹介文" prop="content">
-          <el-input type="textarea" v-model="registerForm.content"></el-input>
+          <el-input type="textarea" v-model="register_form.content"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="submit" @click="submitForm('registerForm')">Submit</el-button>
-          <el-button @click="resetForm('registerForm')">Reset</el-button>
+          <el-button type="submit" @click="submitForm('register_form')">Submit</el-button>
+          <el-button @click="resetForm('register_form')">Reset</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -75,168 +74,176 @@ export default {
   name: "shopForm",
   components: { bdTextField },
   data() {
-	return {
-	  preview: null,
-	  errors: null,
-	  wards: [],
-	  shop_form: {
-		photo: null,
-		shopname: null,
-		address: null,
-		boardgame_num: null,
-		content: null,
-		home_url: null
-	  },
-	  registerForm: {
-		name: "",
-		address: "",
-		wards: "",
-		byo: false,
-		type: [],
-		resource: "",
-		desc: ""
-	  },
-	  rules: {
-		name: [
-		  {
-			required: true,
-			message: "店舗名を入力してください",
-			trigger: "blur"
-		  },
-		  {
-			min: 1,
-			max: 32,
-			message: "32文字以内で入力してください",
-			trigger: "blur"
-		  }
-		],
-		address: [
-		  {
-			required: true,
-			message: "住所を入力してください",
-			trigger: "blur"
-		  }
-		],
-		wards: [
-		  {
-			required: true,
-			message: "23区を入力してください",
-			trigger: "change"
-		  }
-		],
-		boardgame_num: [
-		  {
-			required: true,
-			message: "ボードゲームの数を入力してください",
-			trigger: "blur",
-		  },
-		  {
-			type: "number",
-			message: "数字で入力してください",
-			trigger: "blur"
-		  }
-		],
-		home_url: [
-		  {
-			required: true,
-			message: "URLを入力してください",
-			trigger: "blur"
-		  }
-		],
-		content: [
-		  {
-			required: true,
-			message: "紹介文を入力してください",
-			trigger: "blur"
-		  }
-		]
-	  }
-	};
+    return {
+      preview: null,
+      errors: null,
+      wards: [],
+      shop_form: {
+        photo: null,
+        shopname: null,
+        address: null,
+        boardgame_num: null,
+        content: null,
+        home_url: null
+      },
+      register_form: {
+        photo: null,
+        name: "",
+        address: "",
+        wards: "",
+        byo: false,
+        type: [],
+        resource: "",
+        desc: ""
+      },
+      rules: {
+        name: [
+          {
+            required: true,
+            message: "店舗名を入力してください",
+            trigger: "blur"
+          },
+          {
+            min: 1,
+            max: 32,
+            message: "32文字以内で入力してください",
+            trigger: "blur"
+          }
+        ],
+        address: [
+          {
+            required: true,
+            message: "住所を入力してください",
+            trigger: "blur"
+          }
+        ],
+        wards: [
+          {
+            required: true,
+            message: "23区を入力してください",
+            trigger: "change"
+          }
+        ],
+        boardgame_num: [
+          {
+            required: true,
+            message: "ボードゲームの数を入力してください",
+            trigger: "blur"
+          },
+          {
+            type: "number",
+            message: "数字で入力してください",
+            trigger: "blur"
+          }
+        ],
+        home_url: [
+          {
+            required: true,
+            message: "URLを入力してください",
+            trigger: "blur"
+          }
+        ],
+        content: [
+          {
+            required: true,
+            message: "紹介文を入力してください",
+            trigger: "blur"
+          }
+        ]
+      }
+    };
   },
   methods: {
-	// formでファイルを選択したら実行
-	onFileChange(event) {
-	  // 何も選択されていなかったら処理中断
-	  if (event.target.files.length === 0) {
-		this.reset();
-		return false;
-	  }
+    // formでファイルを選択したら実行
+    onFileChange(event) {
+      // 何も選択されていなかったら処理中断
+      if (event.target.files.length === 0) {
+        this.reset();
+        return false;
+      }
 
-	  // ファイルが画像でなくても処理を中断
-	  if (!event.target.files[0].type.match("image.*")) {
-		this.reset();
-		return false;
-	  }
+      // ファイルが画像でなくても処理を中断
+      if (!event.target.files[0].type.match("image.*")) {
+        this.reset();
+        return false;
+      }
 
-	  // FileReaderクラスのインスタンスを取得
-	  const reader = new FileReader();
+      // FileReaderクラスのインスタンスを取得
+      const reader = new FileReader();
 
-	  // ファイルを読み込み終わったタイミングで実行する処理
-	  reader.onload = e => {
-		// previewに読み込み結果（データURL）を代入する
-		// previewに値が入ると<output>につけたv-ifがtrueと判定される
-		// また<output>内部の<img>のsrc属性はpreviewの値を参照しているので
-		// 結果として画像が表示される
-		this.preview = e.target.result;
-	  };
+      // ファイルを読み込み終わったタイミングで実行する処理
+      reader.onload = e => {
+        // previewに読み込み結果（データURL）を代入する
+        // previewに値が入ると<output>につけたv-ifがtrueと判定される
+        // また<output>内部の<img>のsrc属性はpreviewの値を参照しているので
+        // 結果として画像が表示される
+        this.preview = e.target.result;
+      };
 
-	  // ファイルを読み込む
-	  // 読み込まれたファイルはデータURL形式で受け取れる
-	  reader.readAsDataURL(event.target.files[0]);
-	  this.shop_form.photo = event.target.files[0];
-	},
-	submitForm(formName) {
-	  this.$refs[formName].validate(valid => {
-		if (valid) {
-			console.log(response);
-			const formData = new FormData();
-			formData.append("photo", this.rule_form.photo);
-			formData.append("shop_name", this.rule_form.shopname);
-			formData.append("address", this.rule_form.address);
-			formData.append("boardgame_num", this.rule_form.boardgame_num);
-			formData.append("content", this.rule_form.content);
-			formData.append("home_url", this.rule_form.home_url);
+      // ファイルを読み込む
+      // 読み込まれたファイルはデータURL形式で受け取れる
+      reader.readAsDataURL(event.target.files[0]);
+      this.register_form.photo = event.target.files[0];
+    },
+    async submit() {
+      const formData = new FormData();
+      formData.append("photo", this.register_form.photo);
+      formData.append("shop_name", this.register_form.name);
+      formData.append("address", this.register_form.address);
+      formData.append("shop_name", this.register_form.wards);
+      formData.append("content", this.register_form.byo);
+      formData.append("boardgame_num", this.register_form.boardgame_num);
+      formData.append("home_url", this.register_form.home_url);
+      formData.append("content", this.register_form.content);
 
-			const response = await axios.post("/api/shops", formData);
+      const response = await axios.post("/api/shops", formData);
+      console.log(response);
 
-			if (response.status === UNPROCESSABLE_ENTITY) {
+      if (response.status === UNPROCESSABLE_ENTITY) {
         this.errors = response.data.errors;
         return false;
-			}
+      }
 
-			if (response.status !== CREATED) {
+      if (response.status !== CREATED) {
         this.$store.commit("error/setCode", response.status);
         return false;
-			}
+      }
+    },
+    submitForm(formName) {
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          console.log(response);
 
-			this.resetForm();
-		  alert("submit!");
-		} else {
-		  console.log("error submit!!");
-		  return false;
-		}
-	  });
-	},
-	resetForm(formName) {
-	  this.$refs[formName].resetFields();
-	  this.preview = "";
-	  this.photo = null;
-	  // $elはDOMそのものを指す
-	  this.$el.querySelector('input[type="file"]').value = null;
-	},
-	async fetchWards() {
-	  const response = await axios.get(`/api/wards/`);
+          this.submit();
 
-	  if (response.status !== OK) {
-		this.$store.commit("error/setCode", response.status);
-		return false;
-	  }
+          this.resetForm();
+          alert("submit!");
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
+    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
+      this.preview = "";
+      this.photo = null;
+      // $elはDOMそのものを指す
+      this.$el.querySelector('input[type="file"]').value = null;
+    },
+    async fetchWards() {
+      const response = await axios.get(`/api/wards/`);
 
-	  this.wards = response.data;
-	}
+      if (response.status !== OK) {
+        this.$store.commit("error/setCode", response.status);
+        return false;
+      }
+
+      this.wards = response.data;
+    }
   },
   created() {
-	this.fetchWards();
+    this.fetchWards();
   }
 };
 //   methods: {
