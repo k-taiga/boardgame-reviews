@@ -137,7 +137,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         wards: [{
           required: true,
           message: "23区を入力してください",
-          trigger: "change"
+          trigger: "blur"
         }],
         boardgame_num: [{
           required: true,
@@ -207,7 +207,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData.append("photo", this.register_form.photo);
                 formData.append("shop_name", this.register_form.name);
                 formData.append("address", this.register_form.address);
-                formData.append("shop_name", this.register_form.wards);
+                formData.append("wards", this.register_form.wards);
                 formData.append("content", this.register_form.byo);
                 formData.append("boardgame_num", this.register_form.boardgame_num);
                 formData.append("home_url", this.register_form.home_url);
@@ -709,9 +709,11 @@ var render = function() {
                     }
                   },
                   _vm._l(_vm.wards, function(ward) {
-                    return _c("el-option", { key: ward.id }, [
-                      _vm._v(_vm._s(ward.name))
-                    ])
+                    return _c(
+                      "el-option",
+                      { key: ward.id, attrs: { value: ward.name } },
+                      [_vm._v(_vm._s(ward.name))]
+                    )
                   }),
                   1
                 )
@@ -941,14 +943,15 @@ render._withStripped = true
 /*!**********************************************!*\
   !*** ./resources/js/components/ShopForm.vue ***!
   \**********************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ShopForm_vue_vue_type_template_id_1477ed76_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ShopForm.vue?vue&type=template&id=1477ed76&scoped=true& */ "./resources/js/components/ShopForm.vue?vue&type=template&id=1477ed76&scoped=true&");
 /* harmony import */ var _ShopForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ShopForm.vue?vue&type=script&lang=js& */ "./resources/js/components/ShopForm.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _ShopForm_vue_vue_type_style_index_0_id_1477ed76_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ShopForm.vue?vue&type=style&index=0&id=1477ed76&scoped=true&lang=css& */ "./resources/js/components/ShopForm.vue?vue&type=style&index=0&id=1477ed76&scoped=true&lang=css&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _ShopForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _ShopForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _ShopForm_vue_vue_type_style_index_0_id_1477ed76_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ShopForm.vue?vue&type=style&index=0&id=1477ed76&scoped=true&lang=css& */ "./resources/js/components/ShopForm.vue?vue&type=style&index=0&id=1477ed76&scoped=true&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -980,7 +983,7 @@ component.options.__file = "resources/js/components/ShopForm.vue"
 /*!***********************************************************************!*\
   !*** ./resources/js/components/ShopForm.vue?vue&type=script&lang=js& ***!
   \***********************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

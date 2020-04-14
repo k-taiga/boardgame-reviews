@@ -38,7 +38,7 @@
         </el-form-item>
         <el-form-item label="東京23区" prop="wards">
           <el-select v-model="register_form.wards" placeholder="千代田区">
-            <el-option v-for="ward in wards" :key="ward.id">{{ward.name}}</el-option>
+            <el-option v-for="ward in wards" :key="ward.id" :value="ward.name">{{ward.name}}</el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="BYO" prop="byo">
@@ -121,7 +121,7 @@ export default {
           {
             required: true,
             message: "23区を入力してください",
-            trigger: "change"
+            trigger: "blur"
           }
         ],
         boardgame_num: [
@@ -190,7 +190,7 @@ export default {
       formData.append("photo", this.register_form.photo);
       formData.append("shop_name", this.register_form.name);
       formData.append("address", this.register_form.address);
-      formData.append("shop_name", this.register_form.wards);
+      formData.append("wards", this.register_form.wards);
       formData.append("content", this.register_form.byo);
       formData.append("boardgame_num", this.register_form.boardgame_num);
       formData.append("home_url", this.register_form.home_url);

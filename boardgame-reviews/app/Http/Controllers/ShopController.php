@@ -39,8 +39,12 @@ class ShopController extends Controller
      * @param StoreShop $request
      * @return \Illuminate\Http\Response
      */
-    public function create(StoreShop $request)
+    public function create(Request $request)
     {
+
+        clock($request);
+        return response(200);
+
         // 写真の拡張子を取得
         $extension = $request->photo->extension();
         $photo = new Photo();
@@ -51,6 +55,7 @@ class ShopController extends Controller
         //     'id',
         //     '4KtCDo-ulGOL'
         // )->first();
+
 
         // S3にファイルを保存する publicで公開
         Storage::cloud()
