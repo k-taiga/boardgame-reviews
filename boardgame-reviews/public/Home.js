@@ -161,6 +161,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     };
   },
+  filters: {
+    toWardName: function toWardName(val) {}
+  },
   methods: {
     // formでファイルを選択したら実行
     onFileChange: function onFileChange(event) {
@@ -198,45 +201,51 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _submit = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var formData, response;
+        var ward_name, ward_id, formData, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                ward_name = this.register_form.wards;
+                this.wards.forEach(function (ward) {
+                  if (ward.name == ward_name) {
+                    ward_id = ward.id;
+                  }
+                });
                 formData = new FormData();
                 formData.append("photo", this.register_form.photo);
                 formData.append("shop_name", this.register_form.name);
                 formData.append("address", this.register_form.address);
-                formData.append("wards", this.register_form.wards);
+                formData.append("wards", ward_id);
                 formData.append("content", this.register_form.byo);
                 formData.append("boardgame_num", this.register_form.boardgame_num);
                 formData.append("home_url", this.register_form.home_url);
                 formData.append("content", this.register_form.content);
-                _context.next = 11;
+                _context.next = 13;
                 return axios.post("/api/shops", formData);
 
-              case 11:
+              case 13:
                 response = _context.sent;
                 console.log(response);
 
                 if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_1__["UNPROCESSABLE_ENTITY"])) {
-                  _context.next = 16;
+                  _context.next = 18;
                   break;
                 }
 
                 this.errors = response.data.errors;
                 return _context.abrupt("return", false);
 
-              case 16:
+              case 18:
                 if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["CREATED"])) {
-                  _context.next = 19;
+                  _context.next = 21;
                   break;
                 }
 
                 this.$store.commit("error/setCode", response.status);
                 return _context.abrupt("return", false);
 
-              case 19:
+              case 21:
               case "end":
                 return _context.stop();
             }
@@ -255,8 +264,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       this.$refs[formName].validate(function (valid) {
         if (valid) {
-          console.log(response);
-
           _this2.submit();
 
           _this2.resetForm();
@@ -943,15 +950,14 @@ render._withStripped = true
 /*!**********************************************!*\
   !*** ./resources/js/components/ShopForm.vue ***!
   \**********************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ShopForm_vue_vue_type_template_id_1477ed76_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ShopForm.vue?vue&type=template&id=1477ed76&scoped=true& */ "./resources/js/components/ShopForm.vue?vue&type=template&id=1477ed76&scoped=true&");
 /* harmony import */ var _ShopForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ShopForm.vue?vue&type=script&lang=js& */ "./resources/js/components/ShopForm.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _ShopForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _ShopForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _ShopForm_vue_vue_type_style_index_0_id_1477ed76_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ShopForm.vue?vue&type=style&index=0&id=1477ed76&scoped=true&lang=css& */ "./resources/js/components/ShopForm.vue?vue&type=style&index=0&id=1477ed76&scoped=true&lang=css&");
+/* empty/unused harmony star reexport *//* harmony import */ var _ShopForm_vue_vue_type_style_index_0_id_1477ed76_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ShopForm.vue?vue&type=style&index=0&id=1477ed76&scoped=true&lang=css& */ "./resources/js/components/ShopForm.vue?vue&type=style&index=0&id=1477ed76&scoped=true&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -983,7 +989,7 @@ component.options.__file = "resources/js/components/ShopForm.vue"
 /*!***********************************************************************!*\
   !*** ./resources/js/components/ShopForm.vue?vue&type=script&lang=js& ***!
   \***********************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

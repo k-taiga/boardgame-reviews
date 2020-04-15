@@ -153,6 +153,9 @@ export default {
       }
     };
   },
+  filters: {
+    toWardName: function(val) {}
+  },
   methods: {
     // formでファイルを選択したら実行
     onFileChange(event) {
@@ -186,11 +189,19 @@ export default {
       this.register_form.photo = event.target.files[0];
     },
     async submit() {
+      var ward_name = this.register_form.wards;
+      var ward_id;
+      this.wards.forEach(function(ward) {
+        if (ward.name == ward_name) {
+          ward_id = ward.id;
+        }
+      });
       const formData = new FormData();
+
       formData.append("photo", this.register_form.photo);
       formData.append("shop_name", this.register_form.name);
       formData.append("address", this.register_form.address);
-      formData.append("wards", this.register_form.wards);
+      formData.append("wards", ward_id);
       formData.append("content", this.register_form.byo);
       formData.append("boardgame_num", this.register_form.boardgame_num);
       formData.append("home_url", this.register_form.home_url);
@@ -212,8 +223,6 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          console.log(response);
-
           this.submit();
 
           this.resetForm();
