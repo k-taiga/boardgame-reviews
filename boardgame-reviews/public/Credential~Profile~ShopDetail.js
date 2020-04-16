@@ -63,9 +63,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   methods: {
-    valuecheck: function valuecheck() {
-      console.log(this.ward_id);
-    },
+    // valuecheck() {
+    //   console.log(this.ward_id);
+    // },
     fetchWards: function () {
       var _fetchWards = _asyncToGenerator(
       /*#__PURE__*/
@@ -107,14 +107,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return fetchWards;
     }()
   },
-  watch: {
-    $route: {
-      handler: function handler() {
-        this.valuecheck();
-      },
-      immediate: true
-    }
-  },
+  //   watch: {
+  //     $route: {
+  //       handler() {
+  //         this.valuecheck();
+  //       },
+  //       immediate: true
+  //     }
+  //   },
   created: function created() {
     this.fetchWards();
   }

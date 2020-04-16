@@ -110,17 +110,13 @@ const router = new VueRouter({
 
 // ナビゲーションガード の登録
 router.beforeEach((to, from, next) => {
-    console.log(store.getters["auth/user"]);
     // 表示しようとしているページがlogin設定されているかどうかを判別する
     if (to.matched.some(rec => rec.meta.login)) {
-        console.log(to);
         if (store.getters["auth/user"]) {
             // ログインしているのでそのまま表示
-            console.log(store.getters["auth/user"]);
             next();
         } else {
             // ログインしていないので(/)に移動する
-            console.log(store.getters["auth/user"]);
             next({ name: "index" });
         }
     } else {

@@ -44,9 +44,9 @@ export default {
     };
   },
   methods: {
-    valuecheck() {
-      console.log(this.ward_id);
-    },
+    // valuecheck() {
+    //   console.log(this.ward_id);
+    // },
     async fetchWards() {
       const response = await axios.get(`/api/wards/`);
 
@@ -58,14 +58,14 @@ export default {
       this.wards = response.data;
     }
   },
-  watch: {
-    $route: {
-      handler() {
-        this.valuecheck();
-      },
-      immediate: true
-    }
-  },
+  //   watch: {
+  //     $route: {
+  //       handler() {
+  //         this.valuecheck();
+  //       },
+  //       immediate: true
+  //     }
+  //   },
   created() {
     this.fetchWards();
   }
