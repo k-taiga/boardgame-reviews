@@ -41,10 +41,6 @@ class ShopController extends Controller
      */
     public function create(Request $request)
     {
-
-        clock($request);
-        return response(200);
-
         // 写真の拡張子を取得
         $extension = $request->photo->extension();
         $photo = new Photo();

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class Shop extends Model
 {
     // 複数代入のため
-    protected $fillable = ['shop_name', 'address', 'boardgame_num', 'content', 'home_url'];
+    protected $fillable = ['ward_id','shop_name', 'address', 'boardgame_num', 'content', 'home_url', 'price', 'byo_flg'];
 
     /** JSONに含めるアクセサ */
     protected $appends = [

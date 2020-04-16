@@ -88,6 +88,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -114,9 +117,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         address: "",
         wards: "",
         byo: false,
-        type: [],
-        resource: "",
-        desc: ""
+        boardgame_num: "",
+        home_url: "",
+        price: "",
+        content: ""
       },
       rules: {
         name: [{
@@ -143,14 +147,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           required: true,
           message: "ボードゲームの数を入力してください",
           trigger: "blur"
-        }, {
-          type: "number",
-          message: "数字で入力してください",
-          trigger: "blur"
         }],
         home_url: [{
           required: true,
           message: "URLを入力してください",
+          trigger: "blur"
+        }],
+        price: [{
+          required: true,
+          message: "予算を入力してください",
           trigger: "blur"
         }],
         content: [{
@@ -201,7 +206,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _submit = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var ward_name, ward_id, formData, response;
+        var ward_name, ward_id, byo_flg, formData, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -212,40 +217,46 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     ward_id = ward.id;
                   }
                 });
+                byo_flg = this.register_form ? 1 : 0;
                 formData = new FormData();
                 formData.append("photo", this.register_form.photo);
                 formData.append("shop_name", this.register_form.name);
                 formData.append("address", this.register_form.address);
-                formData.append("wards", ward_id);
-                formData.append("content", this.register_form.byo);
+                formData.append("ward_id", ward_id);
+                formData.append("byo_flg", byo_flg);
                 formData.append("boardgame_num", this.register_form.boardgame_num);
                 formData.append("home_url", this.register_form.home_url);
+                formData.append("price", this.register_form.price);
                 formData.append("content", this.register_form.content);
-                _context.next = 13;
+                _context.next = 15;
                 return axios.post("/api/shops", formData);
 
-              case 13:
+              case 15:
                 response = _context.sent;
                 console.log(response);
 
                 if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_1__["UNPROCESSABLE_ENTITY"])) {
-                  _context.next = 18;
+                  _context.next = 20;
                   break;
                 }
 
                 this.errors = response.data.errors;
                 return _context.abrupt("return", false);
 
-              case 18:
+              case 20:
                 if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["CREATED"])) {
-                  _context.next = 21;
+                  _context.next = 23;
                   break;
                 }
 
                 this.$store.commit("error/setCode", response.status);
                 return _context.abrupt("return", false);
 
-              case 21:
+              case 23:
+                this.resetForm("register_form");
+                alert("submit!");
+
+              case 25:
               case "end":
                 return _context.stop();
             }
@@ -265,12 +276,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.$refs[formName].validate(function (valid) {
         if (valid) {
           _this2.submit();
-
-          _this2.resetForm();
-
-          alert("submit!");
         } else {
-          console.log("error submit!!");
           return false;
         }
       });
@@ -789,6 +795,23 @@ var render = function() {
                       _vm.$set(_vm.register_form, "home_url", $$v)
                     },
                     expression: "register_form.home_url"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "el-form-item",
+              { attrs: { label: "予算", prop: "price" } },
+              [
+                _c("el-input", {
+                  model: {
+                    value: _vm.register_form.price,
+                    callback: function($$v) {
+                      _vm.$set(_vm.register_form, "price", $$v)
+                    },
+                    expression: "register_form.price"
                   }
                 })
               ],

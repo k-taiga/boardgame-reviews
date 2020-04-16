@@ -55,6 +55,9 @@
         <el-form-item label="HOME URL" prop="home_url">
           <el-input v-model="register_form.home_url"></el-input>
         </el-form-item>
+        <el-form-item label="予算" prop="price">
+          <el-input v-model="register_form.price"></el-input>
+        </el-form-item>
         <el-form-item label="紹介文" prop="content">
           <el-input type="textarea" v-model="register_form.content"></el-input>
         </el-form-item>
@@ -92,9 +95,10 @@ export default {
         address: "",
         wards: "",
         byo: false,
-        type: [],
-        resource: "",
-        desc: ""
+        boardgame_num: "",
+        home_url: "",
+        price: "",
+        content: ""
       },
       rules: {
         name: [
@@ -129,17 +133,19 @@ export default {
             required: true,
             message: "ボードゲームの数を入力してください",
             trigger: "blur"
-          },
-          {
-            type: "number",
-            message: "数字で入力してください",
-            trigger: "blur"
           }
         ],
         home_url: [
           {
             required: true,
             message: "URLを入力してください",
+            trigger: "blur"
+          }
+        ],
+        price: [
+          {
+            required: true,
+            message: "予算を入力してください",
             trigger: "blur"
           }
         ],
@@ -189,22 +195,25 @@ export default {
       this.register_form.photo = event.target.files[0];
     },
     async submit() {
-      var ward_name = this.register_form.wards;
-      var ward_id;
+      let ward_name = this.register_form.wards;
+      let ward_id;
       this.wards.forEach(function(ward) {
         if (ward.name == ward_name) {
           ward_id = ward.id;
         }
       });
+
+      let byo_flg = this.register_form ? 1 : 0;
       const formData = new FormData();
 
       formData.append("photo", this.register_form.photo);
       formData.append("shop_name", this.register_form.name);
       formData.append("address", this.register_form.address);
-      formData.append("wards", ward_id);
-      formData.append("content", this.register_form.byo);
+      formData.append("ward_id", ward_id);
+      formData.append("byo_flg", byo_flg);
       formData.append("boardgame_num", this.register_form.boardgame_num);
       formData.append("home_url", this.register_form.home_url);
+      formData.append("price", this.register_form.price);
       formData.append("content", this.register_form.content);
 
       const response = await axios.post("/api/shops", formData);
@@ -219,16 +228,15 @@ export default {
         this.$store.commit("error/setCode", response.status);
         return false;
       }
+
+      this.resetForm("register_form");
+      alert("submit!");
     },
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
           this.submit();
-
-          this.resetForm();
-          alert("submit!");
         } else {
-          console.log("error submit!!");
           return false;
         }
       });
