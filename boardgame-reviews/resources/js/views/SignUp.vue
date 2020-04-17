@@ -49,9 +49,9 @@
               >登録する</button>
             </div>
           </div>
-         <p class="has-text-grey">
-           <a href="..">パスワードを忘れた方はこちら</a>
-         </p>
+          <p class="has-text-grey">
+            <a href="..">パスワードを忘れた方はこちら</a>
+          </p>
         </form>
       </div>
     </div>
@@ -117,5 +117,10 @@ export default {
 .error-enter-active,
 .error-leave-active {
   transition: opacity 1s;
+}
+
+.hero-body {
+  background: url("https://boardgame-reviews.s3-ap-northeast-1.amazonaws.com/images/background.jpg")
+    center bottom / cover;
 }
 </style>

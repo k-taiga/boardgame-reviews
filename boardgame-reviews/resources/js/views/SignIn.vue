@@ -110,4 +110,9 @@ export default {
 .error-leave-active {
   transition: opacity 1s;
 }
+
+.hero-body {
+  background: url("https://boardgame-reviews.s3-ap-northeast-1.amazonaws.com/images/background.jpg")
+    center bottom / cover;
+}
 </style>
