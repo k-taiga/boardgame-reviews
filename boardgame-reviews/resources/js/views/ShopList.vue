@@ -64,7 +64,7 @@ export default {
   methods: {
     async fetchShops() {
       const response = await axios.get(
-        `/api/shops/?page=${this.$route.query.page}`
+        `/api/shops?page=${this.$route.query.page}`
       );
 
       if (response.status !== OK) {
@@ -122,7 +122,6 @@ export default {
       });
     },
     async search(keyword) {
-
       const response = await axios.post(`/api/shops/${keyword}`);
 
       if (response.status == 200) {
@@ -134,8 +133,7 @@ export default {
     setId() {
       this.$store.commit("ward/setId", null);
     },
-    valuecheck() {
-    }
+    valuecheck() {}
   },
   watch: {
     $route: {

@@ -133,7 +133,7 @@ export default {
   },
   methods: {
     async fetchUser() {
-      const response = await axios.get(`/api/profile/`);
+      const response = await axios.get(`/api/profile`);
 
       if (response.status !== OK) {
         this.$store.commit("error/setCode", response.status);
@@ -164,7 +164,6 @@ export default {
       formData.append("photo", val.file);
 
       const response = await axios.post("/api/profile/edit", formData);
-
 
       if (response.status === UNPROCESSABLE_ENTITY) {
         this.errors = response.data.errors;

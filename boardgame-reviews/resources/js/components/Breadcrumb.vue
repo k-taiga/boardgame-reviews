@@ -48,7 +48,7 @@ export default {
     //   console.log(this.ward_id);
     // },
     async fetchWards() {
-      const response = await axios.get(`/api/wards/`);
+      const response = await axios.get(`/api/wards`);
 
       if (response.status !== OK) {
         this.$store.commit("error/setCode", response.status);

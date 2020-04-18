@@ -27,7 +27,8 @@
               <p class="subtitle has-text-centered">{{ shop.address }}</p>
               <p class="content has-text-centered">{{ shop.content }}</p>
               <p class="has-text-left">
-                <i class="fas fa-money-bill-wave"></i>  予算：約{{ shop.price }}円
+                <i class="fas fa-money-bill-wave"></i>
+                予算：約{{ shop.price }}円
               </p>
               <h2 class="photo-detail__title">
                 <i class="icon ion-md-chatboxes"></i>Review
@@ -235,7 +236,6 @@ export default {
         return false;
       }
 
-
       this.shop = response.data;
     },
     async addReview() {
@@ -306,7 +306,7 @@ export default {
       }, 1000);
     },
     async fetchUser() {
-      const response = await axios.get(`/api/profile/`);
+      const response = await axios.get(`/api/profile`);
 
       if (response.status !== OK) {
         this.$store.commit("error/setCode", response.status);
