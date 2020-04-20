@@ -14,4 +14,4 @@
 https://qiita.com/kobaaaan/private/29498082b50224726b13
 
 ## Demo
-http://bodoge-cafe-reviews.com/
+https://bodoge-cafe-reviews.com/
