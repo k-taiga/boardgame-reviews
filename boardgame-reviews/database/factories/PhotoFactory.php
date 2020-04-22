@@ -7,10 +7,8 @@ use Illuminate\Support\Str;
 
 $factory->define(App\Photo::class, function (Faker $faker) {
     return [
-        'id' => Str::random(12),
-        'user_id' => fn () => factory(App\User::class)->create()->id,
+        'id' => mt_rand(1,85),
+        'shop_id' => mt_rand(1,85),
         'filename' => Str::random(12) . '.jpg',
-        'created_at' => $faker->dateTime(),
-        'updated_at' => $faker->dateTime(),
     ];
 });
