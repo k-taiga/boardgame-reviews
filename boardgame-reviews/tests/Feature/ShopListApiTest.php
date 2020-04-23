@@ -2,15 +2,15 @@
 
 namespace Tests\Feature;
 
+use App\Shop;
 use App\Photo;
-use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class PhotoListApiTest extends TestCase
+class ShopListApiTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -19,27 +19,33 @@ class PhotoListApiTest extends TestCase
      */
     public function test_correct_json()
     {
-        // 5つの写真データを生成する
-        factory(Photo::class, 5)->create();
+        $this->withoutExceptionHandling();
 
-        $response = $this->json('GET', route('photo.index'));
+        // 5つの店舗データを生成する
+        factory(Shop::class, 5)->create();
+
+        $response = $this->json('GET', route('shop.index'));
 
         // 生成した写真データを作成日降順で取得
-        $photos = Photo::with(['owner'])->orderBy('created_at', 'desc')->get();
+        $shops = Shop::with(['photos'])->orderBy('created_at', 'desc')->get();
 
         // data項目の期待値
-        $expected_data = $photos->map(function ($photo) {
+        $expected_data = $shops->map(function ($shop) {
             return [
-                'id' => $photo->id,
-                'url' => $photo->url,
-                'owner' => [
-                    'name' => $photo->owner->name,
-                ],
+                'id' => $shop->id,
+                'ward_id' => $shop->ward_id,
+                'shop_name' => $shop->shop_name,
+                'address' => $shop->address,
+                'boardgame_num' => $shop->boardgame_num,
+                'content' => $shop->content,
+                'price' => $shop->price,
+                'home_url' => $shop->home_url,
+                'photos' => null,
                 'liked_by_user' => false,
                 'likes_count' => 0,
             ];
         })
-            ->all();
+        ->all();
 
         $response->assertStatus(200)
             // レスポンスJSONのdata項目に含まれる要素が5つであること

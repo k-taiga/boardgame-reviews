@@ -22,7 +22,6 @@ class ShopDetailApiTest extends TestCase
 
         factory(Shop::class)->create()->each(function ($shop) {
             $shop->reviews()->saveMany(factory(Review::class, 3)->make());
-            // $shop->reviews()->save(factory(Photo::class)->make());
         });
 
         $shop = Shop::first();
@@ -30,11 +29,6 @@ class ShopDetailApiTest extends TestCase
         $response = $this->json('GET', route('shop.show', [
             'id' => $shop->id,
         ]));
-
-        // error_log(print_r($shop->reviews));
-        // error_log(print_r($response));
-        // var_dump($shop->reviews);
-        // exit;
 
         $response->assertStatus(200)
             ->assertJsonFragment([
@@ -44,8 +38,8 @@ class ShopDetailApiTest extends TestCase
                 'address' => $shop->address,
                 'boardgame_num' => $shop->boardgame_num,
                 'content' => $shop->content,
-                // 'photos' => $shop->photos->filename,
                 'price' => $shop->price,
+                'home_url' => $shop->home_url,
                 'liked_by_user' => false,
                 'likes_count' => 0,
                 'reviews' => $shop->reviews
@@ -53,21 +47,21 @@ class ShopDetailApiTest extends TestCase
                     ->map(function ($review) {
                         return [
                             'author' => [
-                                'email' => $review->author->email,
-                                'name' => $review->author->name,
-                                'favorite_shops' => $review->author->favorite_shops,
-                                'icon_url' => $review->author->icon_url,
                                 'id' => $review->author->id,
+                                'name' => $review->author->name,
+                                'email' => $review->author->email,
                                 'password' => $review->author->password,
+                                'icon_url' => $review->author->icon_url,
+                                'favorite_shops' => $review->author->favorite_shops,
                             ],
                             'content' => $review->content,
                             'user_photo' => [
-                                'email' => $review->user_photo->email,
-                                'name' => $review->user_photo->name,
-                                'favorite_shops' => $review->user_photo->favorite_shops,
-                                'icon_url' => $review->user_photo->icon_url,
                                 'id' => $review->user_photo->id,
+                                'name' => $review->user_photo->name,
+                                'email' => $review->user_photo->email,
                                 'password' => $review->user_photo->password,
+                                'icon_url' => $review->user_photo->icon_url,
+                                'favorite_shops' => $review->user_photo->favorite_shops,
                             ],
                             'date' => $review->date,
                         ];
