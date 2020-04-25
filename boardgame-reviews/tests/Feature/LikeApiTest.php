@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Photo;
+use App\Shop;
 use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -18,8 +18,8 @@ class LikeApiTest extends TestCase
 
         $this->user = factory(User::class)->create();
 
-        factory(Photo::class)->create();
-        $this->photo = Photo::first();
+        factory(Shop::class)->create();
+        $this->shop = Shop::first();
     }
 
     /**
@@ -27,17 +27,18 @@ class LikeApiTest extends TestCase
      */
     public function test_add_likes()
     {
+        $this->withoutExceptionHandling();
         $response = $this->actingAs($this->user)
-            ->json('PUT', route('photo.like', [
-                'id' => $this->photo->id,
+            ->json('PUT', route('shop.like', [
+                'id' => $this->shop->id,
             ]));
 
         $response->assertStatus(200)
             ->assertJsonFragment([
-                'photo_id' => $this->photo->id,
+                'shop_id' => $this->shop->id,
             ]);
 
-        $this->assertEquals(1, $this->photo->likes()->count());
+        $this->assertEquals(1, $this->shop->likes()->count());
     }
 
     /**
@@ -45,11 +46,12 @@ class LikeApiTest extends TestCase
      */
     public function test_duplicate_likes()
     {
-        $param = ['id' => $this->photo->id];
-        $this->actingAs($this->user)->json('PUT', route('photo.like', $param));
-        $this->actingAs($this->user)->json('PUT', route('photo.like', $param));
+        $this->withoutExceptionHandling();
+        $param = ['id' => $this->shop->id];
+        $this->actingAs($this->user)->json('PUT', route('shop.like', $param));
+        $this->actingAs($this->user)->json('PUT', route('shop.like', $param));
 
-        $this->assertEquals(1, $this->photo->likes()->count());
+        $this->assertEquals(1, $this->shop->likes()->count());
     }
 
     /**
@@ -57,18 +59,19 @@ class LikeApiTest extends TestCase
      */
     public function test_remove_likes()
     {
-        $this->photo->likes()->attach($this->user->id);
+        $this->withoutExceptionHandling();
+        $this->shop->likes()->attach($this->user->id);
 
         $response = $this->actingAs($this->user)
-            ->json('DELETE', route('photo.like', [
-                'id' => $this->photo->id,
+            ->json('DELETE', route('shop.unlike', [
+                'id' => $this->shop->id,
             ]));
 
         $response->assertStatus(200)
             ->assertJsonFragment([
-                'photo_id' => $this->photo->id,
+                'shop_id' => $this->shop->id,
             ]);
 
-        $this->assertEquals(0, $this->photo->likes()->count());
+        $this->assertEquals(0, $this->shop->likes()->count());
     }
 }

@@ -52,7 +52,7 @@ Route::post('/shops/{shop}/reviews', 'ShopController@addReview')->name('shop.rev
 Route::put('/shops/{id}/like', 'ShopController@like')->name('shop.like');
 
 // いいね解除
-Route::delete('/shops/{id}/unlike', 'ShopController@unlike');
+Route::delete('/shops/{id}/unlike', 'ShopController@unlike')->name('shop.unlike');
 
 // ユーザー情報取得
 Route::get('/profile', 'UserController@show')->name('profile.show');

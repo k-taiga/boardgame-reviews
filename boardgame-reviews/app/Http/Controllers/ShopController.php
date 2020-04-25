@@ -96,10 +96,10 @@ class ShopController extends Controller
 
     /**
      * 店舗詳細
-     * @param string $id
+     * @param int $id
      * @return Shop
      */
-    public function show(string $id)
+    public function show(int $id)
     {
         $shop = Shop::where('id', $id)->with(['photos', 'reviews.author', 'likes'])->first();
 
@@ -146,10 +146,10 @@ class ShopController extends Controller
 
     /**
      * いいね
-     * @param string $id
+     * @param int $id
      * @return array
      */
-    public function like(string $id)
+    public function like(int $id)
     {
         $shop = Shop::where('id', $id)->with('likes')->first();
 
@@ -166,10 +166,10 @@ class ShopController extends Controller
 
     /**
      * いいね解除
-     * @param string $id
+     * @param int $id
      * @return array
      */
-    public function unlike(string $id)
+    public function unlike(int $id)
     {
         $shop = Shop::where('id', $id)->with('likes')->first();
 
