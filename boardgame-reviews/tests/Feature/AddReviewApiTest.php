@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Photo;
+use App\Shop;
 use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -25,30 +25,36 @@ class AddCommentApiTest extends TestCase
      */
     public function test_add_reviews()
     {
-        factory(Photo::class)->create();
-        $photo = Photo::first();
+        $this->withoutExceptionHandling();
+        factory(Shop::class)->create();
+        $shop = Shop::first();
 
         $content = 'sample content';
 
         $response = $this->actingAs($this->user)
-            ->json('POST', route('photo.comment', [
-                'photo' => $photo->id,
+            ->json('POST', route('shop.review', [
+                'shop' => $shop->id,
             ]), compact('content'));
 
-        $comments = $photo->comments()->get();
+        $review = $shop->reviews()->get();
 
         $response->assertStatus(201)
             // JSONフォーマットが期待通りであること
             ->assertJsonFragment([
                 "author" => [
+                    'id' => $this->user->id,
                     "name" => $this->user->name,
+                    'email' => $this->user->email,
+                    'password' => $this->user->password,
+                    'icon_url' => $this->user->icon_url,
+                    'favorite_shops' => $this->user->favorite_shops,
                 ],
                 "content" => $content,
             ]);
 
-        // DBにコメントが1件登録されていること
-        $this->assertEquals(1, $comments->count());
+        // DBにレビューが1件登録されていること
+        $this->assertEquals(1, $review->count());
         // 内容がAPIでリクエストしたものであること
-        $this->assertEquals($content, $comments[0]->content);
+        $this->assertEquals($content, $review[0]->content);
     }
 }
