@@ -122,7 +122,7 @@ export default {
       });
     },
     async search(keyword) {
-      const response = await axios.post(`/api/shops/${keyword}`);
+      const response = await axios.get(`/api/search-shops/${keyword}`);
 
       if (response.status == 200) {
         this.shops = response.data;

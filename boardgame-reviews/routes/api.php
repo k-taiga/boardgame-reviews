@@ -24,11 +24,20 @@ Route::post('/shops', 'ShopController@create')->name('shop.create');
 // 店舗一覧
 Route::get('/shops', 'ShopController@index')->name('shop.index');
 
+// 店舗検索
+Route::get('/search-shops/{keyword}', 'ShopController@search')->name('shop.search');
+
 // 店舗詳細
 Route::get('/shops/{id}', 'ShopController@show')->name('shop.show');
 
-// 店舗検索
-Route::post('/shops/{keyword}', 'ShopController@search')->name('shop.search');
+// レビュー
+Route::post('/shops/{shop}/reviews', 'ShopController@addReview')->name('shop.review');
+
+// いいね
+Route::put('/shops/{id}/like', 'ShopController@like')->name('shop.like');
+
+// いいね解除
+Route::delete('/shops/{id}/unlike', 'ShopController@unlike')->name('shop.unlike');
 
 // 23区一覧
 Route::get('/wards', 'WardController@index')->name('ward.index');
@@ -44,15 +53,6 @@ Route::post('/wards/{id}/', 'WardController@filter')->name('ward.filter');
 
 // 23区でのフィルター＆ソート
 Route::post('/wards/{id}/{sort}', 'WardController@filterSort')->name('ward.filter_sort');
-
-// レビュー
-Route::post('/shops/{shop}/reviews', 'ShopController@addReview')->name('shop.review');
-
-// いいね
-Route::put('/shops/{id}/like', 'ShopController@like')->name('shop.like');
-
-// いいね解除
-Route::delete('/shops/{id}/unlike', 'ShopController@unlike')->name('shop.unlike');
 
 // ユーザー情報取得
 Route::get('/profile', 'UserController@show')->name('profile.show');
