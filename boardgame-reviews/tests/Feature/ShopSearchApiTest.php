@@ -3,14 +3,13 @@
 namespace Tests\Feature;
 
 use App\Shop;
-use App\Photo;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class ShopListApiTest extends TestCase
+class ShopSearchApiTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -21,17 +20,21 @@ class ShopListApiTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        // 5つの店舗データを生成する
-        factory(Shop::class, 5)->create();
+        // 店舗データを生成する
+        factory(Shop::class)->create();
 
-        $response = $this->json('GET', route('shop.index'));
+        // 生成した店舗データ取得
+        $shop = Shop::with(['photos'])->first();
 
-        // 生成した店舗データを作成日降順で取得
-        $shops = Shop::with(['photos'])->orderBy('created_at', 'desc')->get();
+        $response = $this->json('GET', route(('shop.search'),$shop->shop_name));
 
-        // data項目の期待値
-        $expected_data = $shops->map(function ($shop) {
-            return [
+        $response->dump();
+
+        $response->assertStatus(200)
+            // レスポンスJSONの要素が1つであること
+            ->assertJsonCount(1)
+            // レスポンスJSONのdata項目が期待値と合致すること
+            ->assertJsonFragment([
                 'id' => $shop->id,
                 'ward_id' => $shop->ward_id,
                 'shop_name' => $shop->shop_name,
@@ -43,16 +46,6 @@ class ShopListApiTest extends TestCase
                 'photos' => null,
                 'liked_by_user' => false,
                 'likes_count' => 0,
-            ];
-        })
-        ->all();
-
-        $response->assertStatus(200)
-            // レスポンスJSONのdata項目に含まれる要素が5つであること
-            ->assertJsonCount(5, 'data')
-            // レスポンスJSONのdata項目が期待値と合致すること
-            ->assertJsonFragment([
-                "data" => $expected_data,
             ]);
     }
 }

@@ -6,6 +6,7 @@ use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Str;
 
 class RegisterApiTest extends TestCase
 {
@@ -16,6 +17,7 @@ class RegisterApiTest extends TestCase
      */
     public function testRegistUser()
     {
+        $this->withoutExceptionHandling();
         $data = [
             'name' => 'boardgameReviews user',
             'email' => 'dummy@email.com',
