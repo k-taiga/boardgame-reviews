@@ -19,6 +19,8 @@ class PhotoSubmitApiTest extends TestCase
 {
     use RefreshDatabase;
 
+    // vendor/bin/phpunit tests/Feature/PhotoSubmitApiTest --testdox
+
     public function setUp(): void
     {
         parent::setUp();
@@ -29,29 +31,39 @@ class PhotoSubmitApiTest extends TestCase
     /**
      * @test
      */
-    // public function test_file_upload()
-    // {
-    //     // S3ではなくテスト用のストレージを使用する
-    //     // → storage/framework/testing
-    //     Storage::fake('s3');
+    public function testFileUpload()
+    {
+        // S3ではなくテスト用のストレージを使用する
+        // → storage/framework/testing
+        Storage::fake('s3');
 
-    //     $response = $this->actingAs($this->user)
-    //         ->json('POST', route('photo.create'), [
-    //             // ダミーファイルを作成して送信している
-    //             'photo' => UploadedFile::fake()->image('photo.jpg'),
-    //         ]);
+        $response = $this->json('POST', route('shop.create'), [
+          'ward_id' => '1',
+          'shop_name' => 'boardgameReviews',
+          'address' => '000-0000',
+          'boardgame_num' => '100',
+          'content' => 'sample',
+          'home_url' => 'sample.com',
+          'price' => '1000',
+          'byo_flg' => '0',
+          // ダミーファイルを作成して送信
+          'photo' => UploadedFile::fake()->image('photo.png'),
+        ]);
 
-    //     // レスポンスが201(CREATED)であること
-    //     $response->assertStatus(201);
+        $response->dump();
+        exit;
 
-    //     $photo = Photo::first();
+        // レスポンスが201(CREATED)であること
+        $response->assertStatus(201);
 
-    //     // 写真のIDが12桁のランダムな文字列であること
-    //     $this->assertRegExp('/^[0-9a-zA-Z-_]{12}$/', $photo->id);
+        $photo = Photo::first();
 
-    //     // DBに挿入されたファイル名のファイルがストレージに保存されていること
-    //     Storage::cloud()->assertExists($photo->filename);
-    // }
+        // 写真のIDが12桁のランダムな文字列であること
+        $this->assertRegExp('/^[0-9a-zA-Z-_]{12}$/', $photo->id);
+
+        // DBに挿入されたファイル名のファイルがストレージに保存されていること
+        Storage::cloud()->assertExists($photo->filename);
+    }
 
     /**
      * @test

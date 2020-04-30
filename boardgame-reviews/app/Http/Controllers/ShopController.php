@@ -47,37 +47,18 @@ class ShopController extends Controller
         // インスタンス生成時に割り振られたランダムなID値(prefixはshop)と本来の拡張子を組み合わせてファイル名とする
         $photo->filename = $photo->id . '.' . $extension;
 
-        // $photo = Photo::where(
-        //     'id',
-        //     '4KtCDo-ulGOL'
-        // )->first();
-
-
         // S3にファイルを保存する publicで公開
         Storage::cloud()
             ->putFileAs('', $request->photo, $photo->filename, 'public');
-
-        // $shop = new Shop();
-        // clock($photo);
-        // $shop->shop_name = $request->shop_name;
-        // $shop->address = $request->address;
-        // $photo->shop_id = $shop->id;
-        // $shop->photos()->save($photo);
 
         // データベースエラー時にファイル削除を行うため
         // トランザクションを利用する
         DB::beginTransaction();
 
         try {
-            // Auth::user()->photos()->save($photo);
             $shop = new Shop();
-            // $shop->shop_name = $request->shop_name;
-            // $shop->address = $request->address;
-            clock()->info("{$shop}が logに出ています！");
-            clock()->info("{$request}が logに出ています！");
             $shop->fill($request->all())->save();
             // shopに登録後、紐づくphotoをsave
-            // $shop->save();
             $photo->shop_id = $shop->id;
             $shop->photos()->save($photo);
             DB::commit();

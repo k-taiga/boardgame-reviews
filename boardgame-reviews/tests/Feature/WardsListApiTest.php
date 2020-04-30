@@ -18,7 +18,7 @@ class WardsListApiTest extends TestCase
         $response = $this->json('GET', route('ward.index'));
 
         $response->assertStatus(200)
-        // レスポンスJSONの要素が1つであること
+        // レスポンスJSONの要素が24であること
         ->assertJsonCount(24);
     }
 }

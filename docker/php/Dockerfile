@@ -7,7 +7,11 @@ RUN apt-get update \
   git \
   zip \
   unzip \
-  vim
+  vim \
+  libjpeg-dev \
+  libfreetype6-dev \
+  && docker-php-ext-configure gd \
+  && docker-php-ext-install -j$(nproc) gd
 
 # install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
