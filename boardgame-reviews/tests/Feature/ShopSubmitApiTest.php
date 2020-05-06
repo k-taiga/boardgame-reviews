@@ -20,7 +20,7 @@ class ShopSubmitApiTest extends TestCase
 {
     use RefreshDatabase;
 
-    // vendor/bin/phpunit tests/Feature/PhotoSubmitApiTest --testdox
+    // vendor/bin/phpunit tests/Feature/ShopSubmitApiTest --testdox
 
     public function setUp(): void
     {
@@ -32,7 +32,7 @@ class ShopSubmitApiTest extends TestCase
     /**
      * @test
      */
-    public function testFileUpload()
+    public function test_file_upload()
     {
 
         $this->withoutExceptionHandling();
