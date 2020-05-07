@@ -1,13 +1,13 @@
 <?php
 
 namespace Tests\Feature;
-
 use App\Shop;
 use App\User;
 use App\Review;
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -33,7 +33,7 @@ class WardsSortApiTest extends TestCase
       ]));
   }
 
-  public function test_correct_json_for_sort()
+  public function test_correct_json()
   {
       $this->withoutExceptionHandling();
 
