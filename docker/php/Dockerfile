@@ -20,7 +20,7 @@ RUN apt-get install -y nodejs
 RUN apt-get update \
   && apt-get install -y libpq-dev \
   && apt-get install -y libpq-dev libzip-dev \
-  && docker-php-ext-install pdo_mysql pdo_pgsql \
+  && docker-php-ext-install pdo_mysql \
   && docker-php-ext-install zip
 
 
