@@ -11,7 +11,7 @@
 ![color:ff69b4](https://github.com/Kobatai/boardgame-reviews/blob/master/boardgame-reviews/doc/AWS.svg)
 
 ## Qiita
-https://qiita.com/kobaaaan/private/29498082b50224726b13
+https://qiita.com/K-taiga/items/29498082b50224726b13
 
 ## Demo
 https://bodoge-cafe-reviews.com/
