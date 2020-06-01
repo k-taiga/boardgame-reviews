@@ -13,6 +13,8 @@ RUN apt-get update \
   && docker-php-ext-configure gd \
   && docker-php-ext-install -j$(nproc) gd
 
+COPY php.ini /usr/local/etc/php/  
+
 # install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get install -y nodejs
