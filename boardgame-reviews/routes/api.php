@@ -72,3 +72,15 @@ Route::get('/reflesh-token', function (Illuminate\Http\Request $request) {
 
     return response()->json();
 });
+
+// ソーシャルログイン
+Route::prefix('auth')->middleware('guest')->group(function() {
+
+  Route::get('/{provider}', 'Auth\OAuthController@socialOAuth')
+      ->where('provider','google')
+      ->name('socialOAuth');
+
+   Route::get('/{provider}/callback', 'Auth\OAuthController@handleProviderCallback')
+       ->where('provider','google')
+       ->name('oauthCallback');
+});
