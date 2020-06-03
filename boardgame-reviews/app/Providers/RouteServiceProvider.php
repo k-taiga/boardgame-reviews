@@ -73,6 +73,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
+      // prefixにapiをつける
         Route::prefix('api')
             //ルート定義に適用されるミドルウェアグループをwebにする
              ->middleware('web')
