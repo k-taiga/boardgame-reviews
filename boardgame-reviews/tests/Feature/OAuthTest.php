@@ -19,7 +19,7 @@ class OAuthTest extends TestCase
      */
     public function test_Googleの認証画面を表示できる()
     {
-      $this->get(route('socialOauth', ['provider' => $this->providerName]))
+      $this->get(route('socialOAuth', ['provider' => $this->providerName]))
         ->assertStatus(200);
     }
 
@@ -28,7 +28,7 @@ class OAuthTest extends TestCase
      */
     public function test_Googleアカウントでユーザー登録できる()
     {
-      $this->get(route('oauthCallback', ['provider' => $this->providerName]))
+      $this->get(route('oAuthCallback', ['provider' => $this->providerName]))
         ->assertStatus(200);
     }
 
