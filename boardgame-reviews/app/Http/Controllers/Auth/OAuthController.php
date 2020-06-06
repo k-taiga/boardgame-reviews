@@ -36,6 +36,7 @@ class OAuthController extends Controller
       if(!$user->exists){
         // ソーシャルログインしたユーザーのデータを登録する
         $user->name = $socialUser->getNickname();
+        $user->email = $socialUser->getEmail();
         $user->provider_id = $socialUser->getId();
         $user->provider_name = $provider;
         $user->save();
