@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Socialite;
 
+use App\User;
+use Auth;
+
 class OAuthController extends Controller
 {
     /**
@@ -25,6 +28,20 @@ class OAuthController extends Controller
      */
     public function handleProviderCallback($provider)
     {
-        // TODO あとで実装
+      $socialUser = Socialite::driver($provider)->user();
+      // ソーシャルログインしたユーザーのemailがすでにあるかチェック
+      $user = User::firstOrNew(['email' => $socialUser->getEmail()]);
+
+      // なければユーザーデータを登録　あればそのままログイン
+      if(!$user->exists){
+        // ソーシャルログインしたユーザーのデータを登録する
+        $user->name = $socialUser->getNickname();
+        $user->provider_id = $socialUser->getId();
+        $user->provider_name = $provider;
+        $user->save();
+      }
+
+      Auth::login($user);
+      return redirect()->route('shop.index');
     }
 }

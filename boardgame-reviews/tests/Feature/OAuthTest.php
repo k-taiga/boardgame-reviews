@@ -13,6 +13,8 @@ use Mockery;
 
 class OAuthTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function setUp():void
     {
       parent::setUp();
@@ -79,13 +81,15 @@ class OAuthTest extends TestCase
      */
     public function test_Googleアカウントでユーザー登録できる()
     {
+      $this->withoutExceptionHandling();
+
       // withでshouldReceiveの引数を指定　そして返す中身はandReturnで指定
       Socialite::shouldReceive('driver')->with($this->providerName)->andReturn($this->provider);
 
       // URLをコール
-      $this->get(route('oauthCallback', ['service' => $this->providerName]))
+      $this->get(route('oAuthCallback', ['provider' => $this->providerName]))
           ->assertStatus(302)
-          ->assertRedirect(route('home'));
+          ->assertRedirect(route('shop.index'));
 
       // 各データが正しく登録されているかチェック
       $this->assertDatabaseHas('users', [
