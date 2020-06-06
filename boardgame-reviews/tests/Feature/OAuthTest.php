@@ -95,7 +95,7 @@ class OAuthTest extends TestCase
       $this->assertDatabaseHas('users', [
           'provider_id' => $this->user->getId(),
           'provider_name' => $this->providerName,
-          'name' => $this->user->getNickName(),
+          'name' => $this->user->getNickname(),
           'email' => $this->user->getEmail()
       ]);
 
