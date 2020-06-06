@@ -43,6 +43,7 @@ class OAuthController extends Controller
       }
 
       Auth::login($user);
-      return redirect()->route('/');
+      // return;
+      return redirect()->route('index');
     }
 }

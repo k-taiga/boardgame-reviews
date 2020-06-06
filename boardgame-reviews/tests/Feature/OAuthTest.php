@@ -89,7 +89,7 @@ class OAuthTest extends TestCase
       // URLをコール
       $this->get(route('oAuthCallback', ['provider' => $this->providerName]))
           ->assertStatus(302)
-          ->assertRedirect(route('shop.index'));
+          ->assertRedirect(route('index'));
 
       // 各データが正しく登録されているかチェック
       $this->assertDatabaseHas('users', [
@@ -102,5 +102,4 @@ class OAuthTest extends TestCase
       // 認証チェック
       $this->assertAuthenticated();
     }
-
 }
