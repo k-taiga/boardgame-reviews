@@ -18,12 +18,10 @@ jobs:
             docker-compose build
             docker-compose up -d
             docker-compose run app composer install -n --prefer-dist --no-dev --working-dir=./boardgame-reviews
-
       - save_cache:
           paths:
             - ./vendor
           key: v1-dependencies-{{ checksum "./boardgame-reviews/composer.json" }}
-
       - run:
           name: SetUp laravel & migration
           command: |
@@ -33,7 +31,9 @@ jobs:
             docker images
       - run:
           name: test_run
-          command: ./boardgame-reviews/vendor/bin/phpunit --testdox
+          command: |
+          cd boardgame-reviews
+          ./vendor/bin/phpunit --testdox
 
   build_image:
     docker:
