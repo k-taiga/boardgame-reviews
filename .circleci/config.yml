@@ -32,7 +32,9 @@ jobs:
       - run:
           name: test_run
           command: |
-            docker-compose run app php ./boardgame-reviews/vendor/bin/phpunit --testdox
+            docker-compose exec app bash
+            cd boardgame-reviews
+            ./vendor/bin/phpunit --testdox
 
   build_image:
     docker:
