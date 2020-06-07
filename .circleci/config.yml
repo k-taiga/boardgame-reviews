@@ -33,7 +33,7 @@ jobs:
             docker images
       - run:
           name: test_run
-          command: ./vendor/bin/phpunit --testdox
+          command: ./boardgame-reviews/vendor/bin/phpunit --testdox
 
   build_image:
     docker:
