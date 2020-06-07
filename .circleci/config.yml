@@ -32,8 +32,8 @@ jobs:
             docker-compose run app php ./boardgame-reviews/artisan migrate --force
             docker images
       - run:
-        name: test_run
-        command: ./vendor/bin/phpunit --testdox
+          name: test_run
+          command: ./vendor/bin/phpunit --testdox
 
   build_image:
     docker:
