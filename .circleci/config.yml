@@ -32,8 +32,8 @@ jobs:
       - run:
           name: test_run
           command: |
-          cd boardgame-reviews
-          ./vendor/bin/phpunit --testdox
+            cd boardgame-reviews
+            ./vendor/bin/phpunit --testdox
 
   build_image:
     docker:
