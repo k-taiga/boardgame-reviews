@@ -8,6 +8,14 @@ use Tests\TestCase;
 
 class WardsListApiTest extends TestCase
 {
+    use RefreshDatabase;
+
+    public function setUp():void
+    {
+      parent::setUp();
+
+      $this->seed('WardsTableSeeder');
+    }
     /**
      * @test
      */
