@@ -5,6 +5,15 @@
         <form class="form" @submit.prevent="signUp">
           <div class="column is-4 is-offset-4">
             <div class="box">
+              <!-- Google Button -->
+              <p class="buttons">
+                <a class="button is-fullwidth is-large is-google" href="auth/google">
+                  <span class="icon">
+                    <i class="fab fa-google"></i>
+                  </span>
+                  <span>Sign up with Google</span>
+                </a>
+              </p>
               <transition name="error">
                 <div v-if="registerErrors" class="errors">
                   <ul v-if="registerErrors.name">

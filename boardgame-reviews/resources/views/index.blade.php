@@ -24,6 +24,9 @@
     <!-- <link rel="stylesheet" href="{{ mix('/css/app.css') }}"> -->
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
 
+    <!-- Bulma-Social -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-social@1/bin/bulma-social.min.css">
+
 </head>
 
 <body>
