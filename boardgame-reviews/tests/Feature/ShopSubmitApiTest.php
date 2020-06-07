@@ -93,32 +93,32 @@ class ShopSubmitApiTest extends TestCase
     /**
      * @test
      */
-    public function test_not_file_upload_for_db_error()
-    {
-        // 乱暴だがこれでDBエラーを起こす
-        Schema::drop('photos');
+    // public function test_not_file_upload_for_db_error()
+    // {
+    //     // 乱暴だがこれでDBエラーを起こす
+    //     // Schema::drop('photos');
 
-        Storage::fake('s3');
+    //     Storage::fake('s3');
 
-        $response = $this->actingAs($this->user)
-            ->json('POST', route('shop.create'), [
-                'ward_id' => '1',
-                'shop_name' => 'boardgameReviews',
-                'address' => '000-0000',
-                'boardgame_num' => '100',
-                'content' => 'sample',
-                'home_url' => 'sample.com',
-                'price' => '1000',
-                'byo_flg' => '0',
-                'photo' => null,
-            ]);
+    //     $response = $this->actingAs($this->user)
+    //         ->json('POST', route('shop.create'), [
+    //             'ward_id' => '1',
+    //             'shop_name' => 'boardgameReviews',
+    //             'address' => '000-0000',
+    //             'boardgame_num' => '100',
+    //             'content' => 'sample',
+    //             'home_url' => 'sample.com',
+    //             'price' => '1000',
+    //             'byo_flg' => '0',
+    //             'photo' => null,
+    //         ]);
 
-        // レスポンスが500(INTERNAL SERVER ERROR)であること
-        $response->assertStatus(500);
+    //     // レスポンスが500(INTERNAL SERVER ERROR)であること
+    //     $response->assertStatus(500);
 
-        // ストレージにファイルが保存されていないこと
-        $this->assertEquals(0, count(Storage::cloud()->files()));
-    }
+    //     // ストレージにファイルが保存されていないこと
+    //     $this->assertEquals(0, count(Storage::cloud()->files()));
+    // }
 
     /**
      * @test

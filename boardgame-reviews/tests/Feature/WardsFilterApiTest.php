@@ -20,6 +20,8 @@ class WardsFilterApiTest extends TestCase
   {
       parent::setUp();
 
+      $this->seed('WardsTableSeeder');
+
       Storage::fake('s3');
 
       $this->ward_id = 1;
@@ -75,6 +77,8 @@ class WardsFilterApiTest extends TestCase
       ]));
 
       $count = 3;
+
+      var_dump($response['data']);
 
       $response->assertStatus(200)
       ->assertJsonCount($count, $key = 'data');
