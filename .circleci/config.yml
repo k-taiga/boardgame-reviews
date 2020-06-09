@@ -8,7 +8,7 @@ jobs:
     environment:
       - DB_CONNECTION: mysql_testing
 
-    working_directory: ~/repo/boardgame-reviews
+    working_directory: ~/repo
 
     steps:
       - checkout
@@ -24,16 +24,21 @@ jobs:
           name: install package
           command: |
             ls
+            cd boardgame-reviews
             composer install -n --prefer-dist --no-dev
 
       - save_cache:
           paths:
-            - ./vendor
+            - .boardgame-reviews/vendor
           key: v1-dependencies-{{ checksum "composer.json" }}
 
-      - run: php artisan migrate
-
-      - run: php ./vendor/bin/phpunit
+      - run:
+        name: migrate && test
+        command: |
+          ls
+          cd boardgame-reviews
+          php artisan migrate
+          ./vendor/bin/phpunit
 
   build_image:
     docker:
