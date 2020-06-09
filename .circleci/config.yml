@@ -1,41 +1,35 @@
 version: 2
 jobs:
   build:
-    machine:
-      image: circleci/classic:edge
+    docker:
+      - image: circleci/php:7.3.1-apache-node-browsers
+      - image: circleci/mysql:5.7
+
+    environment:
+      - DB_CONNECTION: mysql_testing
+
     working_directory: ~/repo
+
     steps:
       - checkout
-      - run:
-          name: Install Docker Compose
-          command: |
-            curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
-            chmod +x ~/docker-compose
-            sudo mv ~/docker-compose /usr/local/bin/docker-compose
-      - run:
-          name: Setup docker
-          command: |
-            docker-compose build
-            docker-compose up -d
-            docker-compose run app composer install -n --prefer-dist --no-dev --working-dir=./boardgame-reviews
+
+      - run: sudo docker-php-ext-install pdo_mysql
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "composer.json" }}
+            - v1-dependencies-
+
+      - run: composer install -n --prefer-dist
+
       - save_cache:
           paths:
             - ./vendor
-          key: v1-dependencies-{{ checksum "./boardgame-reviews/composer.json" }}
-      - run:
-          name: SetUp laravel & migration
-          command: |
-            cp ./boardgame-reviews/.env.circleci ./boardgame-reviews/.env
-            docker-compose run app php ./boardgame-reviews/artisan key:generate
-            docker-compose run app php ./boardgame-reviews/artisan migrate --force
-            docker images
-      - run:
-          name: test_run
-          command: |
-            docker-compose exec app bash
-            cd boardgame-reviews
-            ls
-            ./vendor/bin/phpunit --testdox
+          key: v1-dependencies-{{ checksum "composer.json" }}
+
+      - run: php artisan migrate
+
+      - run: php ./vendor/bin/phpunit
 
   build_image:
     docker:
