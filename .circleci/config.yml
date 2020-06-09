@@ -8,10 +8,10 @@ jobs:
     environment:
       - DB_CONNECTION: mysql_testing
 
+    working_directory: ~/repo/boardgame-reviews
+
     steps:
       - checkout
-    
-    working_directory: ~/repo/boardgame-reviews
 
       - run: sudo docker-php-ext-install pdo_mysql
 
