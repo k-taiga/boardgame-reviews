@@ -23,7 +23,6 @@ jobs:
       - run:
           name: install package
           command: |
-            ls
             cd boardgame-reviews
             composer install -n --prefer-dist --no-dev
 
@@ -33,12 +32,11 @@ jobs:
           key: v1-dependencies-{{ checksum "composer.json" }}
 
       - run:
-        name: migrate && test
-        command: |
-          ls
-          cd boardgame-reviews
-          php artisan migrate
-          ./vendor/bin/phpunit
+          name: migrate && test
+          command: |
+            cd boardgame-reviews
+            php artisan migrate
+            ./vendor/bin/phpunit
 
   build_image:
     docker:
