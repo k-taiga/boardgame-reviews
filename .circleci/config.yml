@@ -24,11 +24,11 @@ jobs:
           name: install package
           command: |
             cd boardgame-reviews
-            composer install -n --prefer-dist --no-dev
+            composer install -n --prefer-dist --dev
 
       - save_cache:
           paths:
-            - .boardgame-reviews/vendor
+            - ./boardgame-reviews/vendor
           key: v1-dependencies-{{ checksum "composer.json" }}
 
       - run:
