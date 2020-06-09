@@ -32,6 +32,13 @@ jobs:
           key: v1-dependencies-{{ checksum "composer.json" }}
 
       - run:
+          name: base64 decode env file
+          # ファイルに改行が含まれているので`-i`オプションを付ける
+          command: |
+            echo $ENV_FILE | base64 -di > .env.testing
+            cp .env.testing .env
+
+      - run:
           name: migrate && test
           command: |
             cd boardgame-reviews
