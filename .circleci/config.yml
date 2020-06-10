@@ -42,7 +42,7 @@ jobs:
           name: migrate
           command: |
             cd boardgame-reviews
-            php artisan migrate
+            php artisan migrate --force
 
   build_image:
     docker:
