@@ -31,18 +31,18 @@ jobs:
             - ./boardgame-reviews/vendor
           key: v1-dependencies-{{ checksum "composer.json" }}
 
-      - run:
-          name: base64 decode env file
-          # ファイルに改行が含まれているので`-i`オプションを付ける
-          command: |
-            echo $ENV_FILE | base64 -di > .env.testing
-            cp .env.testing .env
+      # - run:
+      #     name: base64 decode env file
+      #     # ファイルに改行が含まれているので`-i`オプションを付ける
+      #     command: |
+      #       echo $ENV_FILE | base64 -di > .env.testing
+      #       cp .env.testing .env
 
       - run:
           name: migrate
           command: |
             cd boardgame-reviews
-            php artisan migrate
+            php artisan migrate --force
 
   build_image:
     docker:
