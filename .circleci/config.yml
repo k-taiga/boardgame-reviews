@@ -39,11 +39,10 @@ jobs:
             cp .env.testing .env
 
       - run:
-          name: migrate && test
+          name: migrate
           command: |
             cd boardgame-reviews
             php artisan migrate
-            ./vendor/bin/phpunit
 
   build_image:
     docker:
