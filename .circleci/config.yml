@@ -6,7 +6,7 @@ jobs:
       - image: circleci/mysql:5.7
 
     environment:
-      - DB_CONNECTION: mysql_testing
+      - DB_CONNECTION: circle_test
 
     working_directory: ~/repo
 
@@ -43,13 +43,12 @@ jobs:
           command: |
             cd boardgame-reviews
             php artisan migrate --force
-            ./vendor/bin/phpunit
 
-      # - run:
-      #     name: test
-      #     command: |
-      #       cd boardgame-reviews
-      #       ./vendor/bin/phpunit
+      - run:
+          name: test
+          command: |
+            cd boardgame-reviews
+            ./vendor/bin/phpunit
 
   build_image:
     docker:
