@@ -12,8 +12,12 @@ jobs:
 
     steps:
       - checkout
-
-      - run: sudo docker-php-ext-install pdo_mysql
+      - run:
+          name: install php module
+          command: |
+            sudo docker-php-ext-install pdo_mysql
+            sudo docker-php-ext-configure gd 
+            sudo docker-php-ext-install -j$(nproc) gd
 
       - restore_cache:
           keys:
