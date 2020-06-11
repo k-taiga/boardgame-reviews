@@ -43,11 +43,12 @@ jobs:
           command: |
             cd boardgame-reviews
             php artisan migrate --force
+
       - run:
-        name: test
-        command: |
-          cd boardgame-reviews
-          ./vendor/bin/phpunit
+          name: test
+          command: |
+            cd boardgame-reviews
+            ./vendor/bin/phpunit
 
   build_image:
     docker:
