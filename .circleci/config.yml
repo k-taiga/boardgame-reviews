@@ -23,7 +23,7 @@ jobs:
 
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "composer.json" }}
+            - v1-dependencies-{{ checksum "./boardgame-reviews/composer.json" }}
             - v1-dependencies-
 
       - run:
@@ -35,7 +35,7 @@ jobs:
       - save_cache:
           paths:
             - ./boardgame-reviews/vendor
-          key: v1-dependencies-{{ checksum "composer.json" }}
+          key: v1-dependencies-{{ checksum "./boardgame-reviews/composer.json" }}
 
       # - run:
       #     name: base64 decode env file
