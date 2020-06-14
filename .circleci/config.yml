@@ -49,7 +49,7 @@ jobs:
             cd boardgame-reviews
             ./vendor/bin/phpunit
 
-  build_image:
+  deploy:
     docker:
       - image: docker:18.09.0
     steps:
@@ -59,25 +59,23 @@ jobs:
           name: install aws cli
           command: |
             apk add --no-cache --update py-pip
+            pip install --upgrade pip
             pip install awscli
       - run:
           name: aws configure list
           command: |
             aws configure list
-            ls
       - run:
           name: Install awsebcli
           command: |
-            pip install --upgrade pip
             pip install awsebcli --user
             eb --version
-
       - run:
           name: base64 decode env file
           # ファイルに改行が含まれているので`-i`オプションを付ける
           command: |
-            echo $ENV_FILE | base64 -di > .env.circle
-            cp .env.circle .env
+            echo $ENV_FILE | base64 -di > boardgame-reviews/.env.circle
+            cp boardgame-reviews/.env.circle boardgame-reviews/.env
       - run:
           name: eb deploy
           command: |
@@ -88,7 +86,7 @@ workflows:
   test:
     jobs:
       - build
-      - build_image:
+      - deploy:
           requires:
             - build
           filters:
