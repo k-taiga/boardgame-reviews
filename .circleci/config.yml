@@ -68,7 +68,7 @@ jobs:
       - run:
           name: Install awsebcli
           command: |
-            pip install awsebcli --user
+            pip install awsebcli --upgrade --user
             eb --version
       - run:
           name: base64 decode env file
