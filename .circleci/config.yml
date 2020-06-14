@@ -37,13 +37,6 @@ jobs:
             - ./boardgame-reviews/vendor
           key: v1-dependencies-{{ checksum "./boardgame-reviews/composer.json" }}
 
-      # - run:
-      #     name: base64 decode env file
-      #     # ファイルに改行が含まれているので`-i`オプションを付ける
-      #     command: |
-      #       echo $ENV_FILE | base64 -di > .env.testing
-      #       cp .env.testing .env
-
       - run:
           name: migrate
           command: |
@@ -78,6 +71,13 @@ jobs:
             pip install --upgrade pip
             pip install awsebcli --user
             eb --version
+
+      - run:
+          name: base64 decode env file
+          # ファイルに改行が含まれているので`-i`オプションを付ける
+          command: |
+            echo $ENV_FILE | base64 -di > .env.circle
+            cp .env.circle .env
       - run:
           name: eb deploy
           command: |
