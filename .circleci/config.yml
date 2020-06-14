@@ -51,7 +51,7 @@ jobs:
 
   deploy:
     docker:
-      - image: docker:18.09.0
+      - image: docker:19.03.8
     steps:
       - checkout
       - setup_remote_docker
