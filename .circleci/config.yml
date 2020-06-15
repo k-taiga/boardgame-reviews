@@ -53,11 +53,11 @@ jobs:
     machine:
       python:
         version: 3.7.3
-    dependencies:
-      pre:
-        - pip install awsebcli
     steps:
       - checkout
+      - run:
+          name: Install awsebcli
+          command: pip install awsebcli
       - run:
           name: base64 decode env file
           # ファイルに改行が含まれているので`-i`オプションを付ける
