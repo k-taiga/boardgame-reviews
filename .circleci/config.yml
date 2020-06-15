@@ -52,13 +52,12 @@ jobs:
   deploy:
     machine:
       python:
-        version: 2.7.9
+        version: 3.7.3
     dependencies:
       pre:
         - pip install awsebcli
     steps:
       - checkout
-      - setup_remote_docker
       - run:
           name: base64 decode env file
           # ファイルに改行が含まれているので`-i`オプションを付ける
