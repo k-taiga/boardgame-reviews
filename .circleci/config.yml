@@ -57,7 +57,9 @@ jobs:
       - checkout
       - run:
           name: Install awsebcli
-          command: pip install awsebcli
+          command: |
+            pip install --upgrade pip
+            pip install awsebcli
       - run:
           name: base64 decode env file
           # ファイルに改行が含まれているので`-i`オプションを付ける
