@@ -15,3 +15,5 @@ https://qiita.com/K-taiga/items/29498082b50224726b13
 
 ## Demo
 https://bodoge-cafe-reviews.com/
+
+※一旦停止中
